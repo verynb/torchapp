@@ -1,0 +1,18 @@
+<div class="swiper-container">
+	<div class="swiper-wrapper">
+		<div class="swiper-slide" style="min-height: 3rem;"><img class="banner-set widthall" src="img/icon/banner.png" alt="banner" /></div>
+		<div class="swiper-slide" style="min-height: 3rem;"><img class="banner-set widthall" src="img/icon/banner.png" alt="banner" /></div>
+	</div>
+	<div class="swiper-pagination"></div>
+</div>
+<div class="list-box"></div>
+
+<script type="text/javascript">
+	function loadhome(obj) {
+		var swiper = new Swiper('.swiper-container', {
+			pagination: '.swiper-pagination',
+			paginationClickable: true
+		});
+		homePage.initHomeMenu();
+	}
+</script>

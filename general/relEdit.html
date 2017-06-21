@@ -1,0 +1,73 @@
+<div class="list-panel">
+	<!--start-->
+	<div class="list-box">
+		<div class="list-defult-body box-h box-align">
+			<div class="box-flex" data-dir="general" data-tkey="stuView" data-transition="slide" onclick="common.loadPage(this);">
+				<span class="title-other">林晓婷</span>
+				<span class="subtitle-make">90分</span>
+			</div>
+			<div class="checkbox-box">
+				<label for="relEditcheckbox_0">
+					<input id="relEditcheckbox_0" type="checkbox" name="voice" value="0"  />
+					<span class="checkbox-btu"></span>
+				</label>
+			</div>
+		</div>
+	</div>
+	<!--end-->
+	<div class="list-box">
+		<div class="list-defult-body box-h box-align">
+			<div class="box-flex" data-dir="general" data-tkey="stuView" data-transition="slide" onclick="common.loadPage(this);">
+				<span class="title-other">王菲</span>
+				<span class="subtitle-make">89分</span>
+			</div>
+			<div class="checkbox-box">
+				<label for="relEditcheckbox_1">
+					<input id="relEditcheckbox_1" type="checkbox" name="voice" value="0"  />
+					<span class="checkbox-btu"></span>
+				</label>
+			</div>
+		</div>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h box-align">
+			<div class="box-flex" data-dir="general" data-tkey="stuView" data-transition="slide" onclick="common.loadPage(this);">
+				<span class="title-other">欧阳娜娜</span>
+				<span class="subtitle-make">89分</span>
+			</div>
+			<div class="checkbox-box">
+				<label for="relEditcheckbox_1">
+					<input id="relEditcheckbox_1" type="checkbox" name="voice" value="0"  />
+					<span class="checkbox-btu"></span>
+				</label>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	function loadrelEdit(obj) {
+		relEditFooter();
+		$('#relEdit label').on('click', function() {
+			if($(this).find('input[type="checkbox"]').prop("checked")) {
+				$(this).find('input[type="checkbox"]').removeAttr('checked');
+			} else {
+				$(this).find('input[type="checkbox"]').attr('checked', 'checked');
+			}
+		});
+	}
+
+	function relEditFooter() {
+		var btuHtml = '';
+		var jsondata = {};
+		btuHtml += '<div class="footerBtu bg-color-brown" data-tkey="relMoney" data-dir="general" data-transition="slide" onclick="relEditFooterFunc(this)">';
+		btuHtml += '<a class="all relEdit-save" href="javascript:void(0);">确认信息</a>';
+		btuHtml += '</div>';
+		jsondata.container = 'relEdit';
+		jsondata.buttonHtml = btuHtml;
+		common.commonFooterBtu(jsondata);
+	}
+
+	function relEditFooterFunc(obj) {
+		common.loadPage($(obj));
+	}
+</script>

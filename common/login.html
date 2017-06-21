@@ -1,0 +1,36 @@
+<div id="loginBody" class="padding-top-1">
+	<form>
+		<div class="row1">
+			<div class="rw1">
+				<input type="text" class="input-default icon-user" name="username" value="18380479234" required="required" data-warning="账号不能为空" placeholder="请输入账号" />
+			</div>
+			<div class="rw2">
+				<input type="password" class="input-default icon-pwd" name="password" value="fy12345q" required="required" data-check="^[0-9A-Za-z]{6,}$" data-warning="密码不能为空" data-warning-check="密码至少为6位" placeholder="请输入密码" />
+			</div>
+		</div>
+		<div class="row2 padding-top-3">
+			<div class="rw1">
+				<a href="javascript:void(0);" class="login-btu bg-color-brown">登录</a>
+			</div>
+			<div class="padding-top-1"></div>
+			<div class="rw2">
+				<a href="javascript:void(0);" class="bg-color-grey" data-dir="general" data-tkey="offVisList" data-transition="slide" onclick="common.loadPage(this);">离线家访录入</a>
+			</div>
+		</div>
+	</form>
+</div>
+
+<script type="text/javascript">
+	function loadlogin(obj) {
+		window.localStorage.setItem(G_COMKEY + ".token", "");
+		$.ui.hideMask();
+		$("#login .login-btu").text("登录" + G_SERVERS[G_ENV].name);
+		var oldUsername = window.localStorage.getItem(G_COMKEY + ".loginSet");
+		if(oldUsername != undefined && oldUsername != '') {
+			$("#login input[name='account']").val(oldUsername);
+		}
+		$("#login .login-btu").on('click', function() {
+			login.postLogin(this);
+		});
+	}
+</script>

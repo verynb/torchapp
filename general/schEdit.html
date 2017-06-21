@@ -1,0 +1,119 @@
+<div class="list-panel">
+	<div class="padding-top-1"></div>
+	<div class="list-box">
+		<div class="list-defult-body box-h ">
+			<div class="box-flex">
+				<span class="title">学校名称</span>
+			</div>
+			<div class="text-input-box">
+				<input class="editor-input" type="text" name="schoolname" required="required" placeholder="未填写 " value="" />
+			</div>
+			<div class="icon-next"></div>
+		</div>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h ">
+			<div class="box-flex">
+				<span class="title">学校省市区</span>
+			</div>
+			<div class="icon-text-box">
+				<span class="nav">四川省成都市</span>
+				<input hidden="hidden" name="province" readonly="readonly" />
+				<input hidden="hidden" name="city" readonly="readonly" />
+			</div>
+			<div class="icon-next">
+				<i class="icon-img icon-img-next"></i>
+			</div>
+		</div>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h boder-none">
+			<div class="box-flex">
+				<span class="title">街道地址</span>
+			</div>
+			<div class="text-input-box">
+				<input class="editor-input" type="text" name="address" required="required" placeholder="未填写 " value="" />
+			</div>
+			<div class="icon-next"></div>
+		</div>
+	</div>
+	<div class="header-title">
+		<span class="title">负责人</span>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h ">
+			<div class="box-flex">
+				<span class="title">姓名</span>
+			</div>
+			<div class="text-input-box">
+				<input class="editor-input" type="text" name="name" required="required" placeholder="未填写 " value="" />
+			</div>
+			<div class="icon-next"></div>
+		</div>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h ">
+			<div class="box-flex">
+				<span class="title">邮箱</span>
+			</div>
+			<div class="text-input-box">
+				<input class="editor-input" type="text" name="email" data-check="^\w+([-+.]\w+)*@\w+([-.]\\w+)*\.\w+([-.]\w+)*$" data-warning-check="邮箱格式不正确" placeholder="未填写 " value="" />
+			</div>
+			<div class="icon-next"></div>
+		</div>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h ">
+			<div class="box-flex">
+				<span class="title">QQ</span>
+			</div>
+			<div class="text-input-box">
+				<input class="editor-input" type="text" name="qq" data-check="^[0-9]*$" data-warning-check="qq账号格式不正确" placeholder="未填写 " value="" />
+			</div>
+			<div class="icon-next"></div>
+		</div>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h ">
+			<div class="box-flex">
+				<span class="title">电话</span>
+			</div>
+			<div class="text-input-box">
+				<input class="editor-input" type="text" name="mobile" required="required" placeholder="未填写 " value="" />
+			</div>
+			<div class="icon-next"></div>
+		</div>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h boder-none">
+			<div class="box-flex">
+				<span class="title">备注</span>
+			</div>
+			<div class="text-input-box">
+				<input class="editor-input" type="text" name="node" placeholder="未填写 " value="" />
+			</div>
+			<div class="icon-next"></div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	function loadschEdit(obj) {
+		schEditFooter();
+	}
+
+	function schEditFooter() {
+		var btuHtml = '';
+		var jsondata = {};
+		btuHtml += '<div class="footerBtu bg-color-brown" onclick="schEditFooterFunc(this)">';
+		btuHtml += '<a class="all schEdit-save" href="javascript:void(0);">保存</a>';
+		btuHtml += '</div>';
+		jsondata.container = 'schEdit';
+		jsondata.buttonHtml = btuHtml;
+		common.commonFooterBtu(jsondata);
+	}
+
+	function schEditFooterFunc(obj) {
+
+	}
+</script>

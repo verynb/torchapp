@@ -1,0 +1,34 @@
+<div class="list-panel">
+	<!--start-->
+	<div class="list-box" data-dir="general" data-tkey="supEdit" data-transition="slide" onclick="common.loadPage(this);">
+		<div class="list-defult-body box-h box-align">
+			<div class="box-flex">
+				<span class="title">资助人名字</span>
+			</div>
+			<div class="icon-next">
+				<i class="icon-img icon-img-next"></i>
+			</div>
+		</div>
+	</div>
+	<!--end-->
+</div>
+<script type="text/javascript">
+	function loadsupList(obj) {
+		supListFooter();
+	}
+
+	function supListFooter() {
+		var btuHtml = '';
+		var jsondata = {};
+		btuHtml += '<div class="footerBtu bg-color-brown" data-tkey="supEdit" data-dir="general" data-transition="slide" onclick="common.loadPage(this)" data-pageStatus="add">';
+		btuHtml += '<a class="all supList-save" href="javascript:void(0);">添加</a>';
+		btuHtml += '</div>';
+		jsondata.container = 'supList';
+		jsondata.buttonHtml = btuHtml;
+		common.commonFooterBtu(jsondata);
+	}
+
+	function supListFooterFunc(obj) {
+
+	}
+</script>

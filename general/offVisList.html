@@ -1,0 +1,35 @@
+<div class="list-panel">
+	<!--start-->
+	<div class="list-box">
+		<div class="list-defult-body box-h box-align">
+			<div class="box-flex" data-dir="general" data-tkey="offVisInfo" data-transition="slide" onclick="common.loadPage(this);">
+				<span class="title-other">林晓婷</span>
+				<span class="subtitle-make">录入完成</span>
+			</div>
+			<div class="icon-next">
+				<i class="icon-img icon-img-next"></i>
+			</div>
+		</div>
+	</div>
+	<!--end-->
+</div>
+<script type="text/javascript">
+	function loadoffVisList(obj) {
+		offVisListFooter();
+	}
+
+	function offVisListFooter() {
+		var btuHtml = '';
+		var jsondata = {};
+		btuHtml += '<div class="footerBtu bg-color-brown"  onclick="offVisListFooterFunc(this)">';
+		btuHtml += '<a class="all offVisList-save" href="javascript:void(0);">上传审核</a>';
+		btuHtml += '</div>';
+		jsondata.container = 'offVisList';
+		jsondata.buttonHtml = btuHtml;
+		common.commonFooterBtu(jsondata);
+	}
+
+	function offVisListFooterFunc(obj) {
+		common.toast("提交家访资料，如果没有审核完毕的在点击的时候提交已录入完成部分学生");
+	}
+</script>

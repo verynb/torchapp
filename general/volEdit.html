@@ -1,0 +1,305 @@
+<form>
+	<div id="volEditData" class="list-panel datasource" data-datasource="">
+		<!--start-->
+		<div class="padding-top-1"></div>
+		<div class="list-box img-photo-box">
+			<div class="list-defult-body box-h boder-none">
+				<div class="box-flex">
+					<span class="title">名称</span>
+				</div>
+				<div class="">
+					<img class="header-picture" src="img/icon/defult-photo.png" alt="默认头像" onclick="common.pickImg(this)" />
+					<input class="editor-input fromfield" data-fromfield="photo" type="hidden" name="photo" value="" />
+				</div>
+				<div class="icon-next">
+					<i class="icon-img icon-img-next"></i>
+				</div>
+			</div>
+		</div>
+		<!--end-->
+
+		<div class="padding-top-1"></div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">姓名</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="name" type="text" name="name" required="required" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">网名</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="netName" type="text" name="netName" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h">
+				<div class="box-flex">
+					<span class="title">年龄</span>
+				</div>
+				<div class="text-input-box">
+					<!--<input class="editor-input fromfield" type="text" name="birthday" data-minDate="1970-01-01" readonly="readonly" onclick="common.pickDateYMD(this);" placeholder="未填写" value="" />-->
+					<input class="editor-input fromfield" data-fromfield="age" type="number" name="age" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h boder-none">
+				<div class="box-flex">
+					<span class="title dataRoleName">角色</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="roleId" type="text" name="roleId" required="required" readonly="readonly" data-warning="名称长度必须为1~5个字符" placeholder="未填写 " value="" />
+					<input class="editor-input fromfield" data-fromfield="roleName" type="hidden" name="roleName" value="" />
+				</div>
+				<div class="icon-next">
+					<i class="icon-img icon-img-next"></i>
+				</div>
+			</div>
+		</div>
+		<div class="padding-top-1"></div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">密码</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="password" type="password" name="passwoed" required="required" data-check="^[0-9A-Za-z]{6,}$" data-warning="密码不能为空" data-warning-check="密码至少为6位" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">邮箱</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="email" type="text" name="email" data-check="^\w+([-+.]\w+)*@\w+([-.]\\w+)*\.\w+([-.]\w+)*$" data-warning-check="邮箱格式不正确" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">QQ</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="qq" type="text" name="qq" data-check="^[0-9]*$" data-warning-check="qq账号格式不正确" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">电话</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="mobile" type="text" name="mobile" required="required" data-warning="名称长度必须为1~5个字符" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">省市区</span>
+				</div>
+				<div class="icon-text-box">
+					<span id="sel_city" class="nav fromfield" data-fromfield="province,cities,areas"></span>
+					<input hidden="hidden" class="editor-input fromfield" data-fromfield="province" name="province" readonly="readonly" />
+				</div>
+				<div class="icon-next">
+					<i class="icon-img icon-img-next"></i>
+				</div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">详细地址</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="address" type="text" name="address" required="required" data-warning="名称长度必须为1~5个字符" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h boder-none">
+				<div class="box-flex">
+					<span class="title">加入时间</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield " data-fromfield="joinTime" type="text" name="joinTime" readonly="readonly" placeholder="未加入" value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+	</div>
+</form>
+
+<script type="text/javascript">
+	var getProvinces = true;
+
+	function loadvolEdit(obj) {
+		var id = $(obj).attr("data-id");
+		initVolEditInfo(id);
+		//		volEditFooter();
+		//		pageCom.getProvinces("#volEdit .provincesel");
+		addgetProvinces();
+	}
+
+	function volEditFooter() {
+		var btuHtml = '';
+		var jsondata = {};
+		btuHtml += '<div class="footerBtu bg-color-brown" onclick="volEditFooterFunc(this)">';
+		btuHtml += '<a class="all volEdit-save" href="javascript:void(0);">保存</a>';
+		btuHtml += '</div>';
+		jsondata.container = 'volEdit';
+		jsondata.buttonHtml = btuHtml;
+		common.commonFooterBtu(jsondata);
+	}
+
+	function initVolEditInfo(id) {
+		ajaxFuncs.get({
+			urlname: "/api/user/volunteer/" + id,
+			funcs: {
+				funcSuccessful: function(data) {
+					var btuHtml = '';
+					btuHtml += '<div class="footerBtu bg-color-brown" onclick="volEditFooterFunc(this)">';
+					btuHtml += '<a class="all volEdit-save" href="javascript:void(0);">保存</a>';
+					btuHtml += '</div>';
+					loadData.load({
+						data: data,
+						container: "volEdit",
+						readOnly: false,
+						buttons: btuHtml,
+						barbutton: true,
+						callback: function() {
+							pageCom.getProvinces("#volEdit .provincesel");
+							pageCom.getProvinces("#volEdit .provincesel");
+						}
+					});
+				}
+			}
+		});
+	}
+
+	function volEditFooterFunc(obj) {
+
+	}
+
+	function addgetProvinces() {
+		var nameEl = document.getElementById('sel_city');
+
+		var first = []; /* 省，直辖市 */
+		var second = []; /* 市 */
+		var third = []; /* 镇 */
+
+		var selectedIndex = [0, 0, 0]; /* 默认选中的地区 */
+
+		var checked = [0, 0, 0]; /* 已选选项 */
+		first = pageCom.getProvinces();
+		var picker = new Picker({
+			data: [first, second, third],
+			selectedIndex: selectedIndex,
+			title: '地址选择'
+		});
+
+		picker.on('picker.select', function(selectedVal, selectedIndex) {
+			var text1 = first[selectedIndex[0]].text;
+			var text2 = second[selectedIndex[1]].text;
+			var text3 = third[selectedIndex[2]] ? third[selectedIndex[2]].text : '';
+
+			nameEl.innerText = text1 + ' ' + text2 + ' ' + text3;
+		});
+
+		picker.on('picker.change', function(index, selectedIndex) {
+			if(index === 0) {
+				firstChange();
+			} else if(index === 1) {
+				secondChange();
+			}
+
+			function firstChange() {
+				second = [];
+				third = [];
+				checked[0] = selectedIndex;
+				var firstCity = city[selectedIndex];
+				if(firstCity.hasOwnProperty('sub')) {
+					creatList(firstCity.sub, second);
+
+					var secondCity = city[selectedIndex].sub[0]
+					if(secondCity.hasOwnProperty('sub')) {
+						creatList(secondCity.sub, third);
+					} else {
+						third = [{
+							text: '',
+							value: 0
+						}];
+						checked[2] = 0;
+					}
+				} else {
+					second = [{
+						text: '',
+						value: 0
+					}];
+					third = [{
+						text: '',
+						value: 0
+					}];
+					checked[1] = 0;
+					checked[2] = 0;
+				}
+
+				picker.refillColumn(1, second);
+				picker.refillColumn(2, third);
+				picker.scrollColumn(1, 0)
+				picker.scrollColumn(2, 0)
+			}
+
+			function secondChange() {
+				third = [];
+				checked[1] = selectedIndex;
+				var first_index = checked[0];
+				if(city[first_index].sub[selectedIndex].hasOwnProperty('sub')) {
+					var secondCity = city[first_index].sub[selectedIndex];
+					creatList(secondCity.sub, third);
+					picker.refillColumn(2, third);
+					picker.scrollColumn(2, 0)
+				} else {
+					third = [{
+						text: '',
+						value: 0
+					}];
+					checked[2] = 0;
+					picker.refillColumn(2, third);
+					picker.scrollColumn(2, 0)
+				}
+			}
+
+		});
+
+		picker.on('picker.valuechange', function(selectedVal, selectedIndex) {
+			console.log(selectedVal);
+			console.log(selectedIndex);
+		});
+
+		$("#sel_city").on('click', function() {
+			picker.show();
+		});
+	}
+</script>

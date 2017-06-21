@@ -1,0 +1,45 @@
+<div class="list-panel">
+	<div class="padding-top-1"></div>
+	<div class="list-box">
+		<div class="list-defult-body box-h ">
+			<div class="box-flex">
+				<span class="title">林晓婷</span>
+			</div>
+			<div class="text-input-box">
+				<input class="editor-input" type="text" name="name" required="required" placeholder="未填写 " value="4000" />元
+			</div>
+			<div class="icon-next"></div>
+		</div>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h ">
+			<div class="box-flex">
+				<span class="title">王菲</span>
+			</div>
+			<div class="text-input-box">
+				<input class="editor-input" type="text" name="name" required="required" placeholder="未填写 " value="" />元
+			</div>
+			<div class="icon-next"></div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	function loadrelMoney(obj) {
+		relMoneyFooter();
+	}
+
+	function relMoneyFooter() {
+		var btuHtml = '';
+		var jsondata = {};
+		btuHtml += '<div class="footerBtu bg-color-brown"  onclick="relMoneyFooterFunc(this)">';
+		btuHtml += '<a class="all relMoney-save" href="javascript:void(0);">保存</a>';
+		btuHtml += '</div>';
+		jsondata.container = 'relMoney';
+		jsondata.buttonHtml = btuHtml;
+		common.commonFooterBtu(jsondata);
+	}
+
+	function relMoneyFooterFunc(obj) {
+		common.toast('保存本批次成功，请通知老师审核');
+	}
+</script>

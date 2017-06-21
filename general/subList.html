@@ -1,0 +1,97 @@
+<div class="info-panel-default">
+	<p>批次号：000154</p>
+	<p>学 校：成都实验中学</p>
+	<p>地址：四川省成都市成华区广福路1号</p>
+	<p>发布时间：2016-12-15 14:45:30</p>
+</div>
+<div class="padding-top-1"></div>
+<div class="list-panel">
+	<!--start-->
+	<div class="list-box">
+		<div class="list-defult-body box-h box-align">
+			<div class="box-flex" data-dir="general" data-tkey="stuView" data-transition="slide" onclick="common.loadPage(this);">
+				<span class="title-other">林晓婷</span>
+			</div>
+			<div class="checkbox-box">
+				<label for="">
+					<input id="" type="checkbox" name="voice" value="0"  />
+					<span class="checkbox-btu"></span>
+				</label>
+			</div>
+		</div>
+	</div>
+	<!--end-->
+	<div class="list-box">
+		<div class="list-defult-body box-h box-align">
+			<div class="box-flex" data-dir="general" data-tkey="stuView" data-transition="slide" onclick="common.loadPage(this);">
+				<span class="title-other">林晓婷</span>
+			</div>
+			<div class="checkbox-box">
+				<label for="">
+					<input id="" type="checkbox" name="voice" value="0"  />
+					<span class="checkbox-btu"></span>
+				</label>
+			</div>
+		</div>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h box-align">
+			<div class="box-flex" data-dir="general" data-tkey="stuView" data-transition="slide" onclick="common.loadPage(this);">
+				<span class="title-other">林晓婷</span>
+			</div>
+			<div class="checkbox-box">
+				<label for="">
+					<input id="" type="checkbox" name="voice" value="0"  />
+					<span class="checkbox-btu"></span>
+				</label>
+			</div>
+		</div>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h box-align">
+			<div class="box-flex" data-dir="general" data-tkey="stuView" data-transition="slide" onclick="common.loadPage(this);">
+				<span class="title-other">林晓婷</span>
+			</div>
+			<div class="checkbox-box">
+				<label for="">
+					<input id="" type="checkbox" name="voice" value="0"  />
+					<span class="checkbox-btu"></span>
+				</label>
+			</div>
+		</div>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h box-align">
+			<div class="box-flex" data-dir="general" data-tkey="stuView" data-transition="slide" onclick="common.loadPage(this);">
+				<span class="title-other">林晓婷</span>
+			</div>
+			<div class="checkbox-box">
+				<label for="">
+					<input id="" type="checkbox" name="voice" value="0"  />
+					<span class="checkbox-btu"></span>
+				</label>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	function loadsubList(obj) {
+		subListFooter();
+	}
+
+	function subListFooter() {
+		var btuHtml = '';
+		var jsondata = {};
+		btuHtml += '<div class="footerBtu bg-color-brown" data-tkey="subCheck" data-dir="general" data-transition="slide" onclick="subListFooterFunc(this)">';
+		btuHtml += '<a class="all subList-save" href="javascript:void(0);">提交</a>';
+		btuHtml += '</div>';
+		jsondata.container = 'subList';
+		jsondata.buttonHtml = btuHtml;
+		common.commonFooterBtu(jsondata);
+	}
+
+	function subListFooterFunc(obj) {
+		common.loadPage($(obj));
+	}
+</script>

@@ -1,0 +1,63 @@
+.input-default {
+    width: 100%;
+    height: 100%;
+    text-indent: 4rem;
+    font-size: 1.6rem;
+}
+
+.checkbox-box,
+.radio-box {
+    padding-right: 1rem;
+    input[type="radio"],
+    input[type="checkbox"] {
+        height: 3rem;
+        width: 3rem;
+        //      display: none;
+        opacity: 0;
+        position: absolute;
+        right: -0.5rem;
+        top: 1.2rem;
+    }
+    label {
+        position: relative;
+        display: inline-block;
+        height: 5.5rem;
+        width: 4rem;
+        cursor: pointer;
+    }
+    span.checkbox-btu,
+    span.radio-btu {
+        position: absolute;
+        right: 0;
+        top: 1.8rem;
+        display: inline-block;
+        height: 2rem;
+        width: 2rem;
+        background-image: url(../img/icon/icon-check.png);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 1.9rem auto;
+        cursor: pointer;
+        pointer-events: none;
+    }
+    .icon-checkbox-active,
+    .icon-radio-active {
+        background: url(../img/icon/icon-checked-1.png) center center no-repeat;
+        background-size: 1.9rem auto;
+    }
+    input[type="radio"]:checked+span.radio-btu,
+    input[type="checkbox"]:checked+span.checkbox-btu {
+        background-image: url(../img/icon/icon-checked-1.png);
+    }
+}
+
+.modifyHeaderPicture {
+    height: 9.5rem !important;
+    line-height: 9.5rem !important;
+    img.header-picture {
+        width: 7.5rem;
+        height: 7.5rem;
+        border-radius: 7.5rem;
+        vertical-align: middle;
+    }
+}

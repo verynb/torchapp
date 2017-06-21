@@ -1,0 +1,36 @@
+<div class="padding-top-1"></div>
+<div class="info-panel-default">
+	<p>姓名：陈灿</p>
+	<p>年龄：17岁</p>
+	<p>学 校：成都实验中学</p>
+	<p>地址：四川省成都市成华区广福路1号</p>
+	<p class="color-paleRed">金额：￥4000</p>
+</div>
+<div class="padding-top-1"></div>
+<div class="info-panel-default">
+	<p>姓名：陈灿</p>
+	<p>年龄：17岁</p>
+	<p>学 校：成都实验中学</p>
+	<p>地址：四川省成都市成华区广福路1号</p>
+	<p class="color-paleRed">金额：￥4000</p>
+</div>
+<script type="text/javascript">
+	function loadsubCheck(obj) {
+		subCheckFooter();
+	}
+
+	function subCheckFooter() {
+		var btuHtml = '';
+		var jsondata = {};
+		btuHtml += '<div class="footerBtu bg-color-brown" data-tkey="subRecList" data-dir="general" data-transition="slide" onclick="subCheckFooterFunc(this)">';
+		btuHtml += '<a class="all subCheck-save" href="javascript:void(0);">提交</a>';
+		btuHtml += '</div>';
+		jsondata.container = 'subCheck';
+		jsondata.buttonHtml = btuHtml;
+		common.commonFooterBtu(jsondata);
+	}
+
+	function subCheckFooterFunc(obj) {
+		common.loadPage($(obj));
+	}
+</script>

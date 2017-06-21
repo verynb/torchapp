@@ -1,0 +1,156 @@
+<div class="list-panel">
+	<div class="padding-top-1"></div>
+	<div class="list-box">
+		<div class="list-defult-body box-h ">
+			<div class="box-flex">
+				<span class="title">姓名</span>
+			</div>
+			<div class="text-input-box">
+				<input class="editor-input" type="text" name="name" required="required" placeholder="未填写 " value="" />
+			</div>
+			<div class="icon-next"></div>
+		</div>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h ">
+			<div class="box-flex">
+				<span class="title">性别</span>
+			</div>
+			<div class="text-input-box">
+				<input class="editor-input" type="text" name="sex" required="required" placeholder="未填写 " value="" />
+			</div>
+			<div class="icon-next"></div>
+		</div>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h ">
+			<div class="box-flex">
+				<span class="title">出生日期</span>
+			</div>
+			<div class="text-input-box">
+				<input class="editor-input" type="text" name="birthday" required="required" placeholder="未填写 " value="" />
+			</div>
+			<div class="icon-next"></div>
+		</div>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h ">
+			<div class="box-flex">
+				<span class="title">年龄</span>
+			</div>
+			<div class="text-input-box">
+				<input class="editor-input" type="text" name="age" required="required" placeholder="未填写 " value="" />
+			</div>
+			<div class="icon-next"></div>
+		</div>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h ">
+			<div class="box-flex">
+				<span class="title">省市区</span>
+			</div>
+			<div class="icon-text-box">
+				<span class="nav">四川省成都市</span>
+				<input hidden="hidden" name="province" readonly="readonly" />
+				<input hidden="hidden" name="city" readonly="readonly" />
+			</div>
+			<div class="icon-next">
+				<i class="icon-img icon-img-next"></i>
+			</div>
+		</div>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h boder-none">
+			<div class="box-flex">
+				<span class="title">街道地址</span>
+			</div>
+			<div class="text-input-box">
+				<input class="editor-input" type="text" name="address" required="required" placeholder="未填写 " value="" />
+			</div>
+			<div class="icon-next"></div>
+		</div>
+	</div>
+	<div class="header-title">
+		<span class="title">非必填项</span>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h ">
+			<div class="box-flex">
+				<span class="title">身份证</span>
+			</div>
+			<div class="text-input-box">
+				<input class="editor-input" type="text" name="idcard" placeholder="未填写 " value="" />
+			</div>
+			<div class="icon-next"></div>
+		</div>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h ">
+			<div class="box-flex">
+				<span class="title">学校</span>
+			</div>
+			<div class="text-input-box">
+				<input class="editor-input" type="text" name="school" readonly="readonly" placeholder="未填写 " value="" />
+			</div>
+			<div class="icon-next">
+				<i class="icon-img icon-img-next"></i>
+			</div>
+		</div>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h ">
+			<div class="box-flex">
+				<span class="title">年级</span>
+			</div>
+			<div class="text-input-box">
+				<input class="editor-input" type="text" name="school" placeholder="未填写 " value="" />
+			</div>
+			<div class="icon-next"></div>
+		</div>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h ">
+			<div class="box-flex">
+				<span class="title">当前资助人</span>
+			</div>
+			<div class="text-input-box">
+				<input class="editor-input" type="text" name="vname" placeholder="未填写 " value="" />
+			</div>
+			<div class="icon-next"></div>
+		</div>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h boder-none">
+			<div class="box-flex">
+				<span class="title">学生状态</span>
+			</div>
+			<div class="text-input-box">
+				<input class="editor-input" type="text" name="node" readonly="readonly" placeholder="未填写 " value="" />
+			</div>
+			<div class="icon-next">
+				<i class="icon-img icon-img-next"></i>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	function loadstuEdit(obj) {
+		stuEditFooter();
+	}
+
+	function stuEditFooter() {
+		var btuHtml = '';
+		var jsondata = {};
+		btuHtml += '<div class="footerBtu bg-color-brown" onclick="stuEditFooterFunc(this)">';
+		btuHtml += '<a class="all stuEdit-save" href="javascript:void(0);">保存</a>';
+		btuHtml += '</div>';
+		jsondata.container = 'stuEdit';
+		jsondata.buttonHtml = btuHtml;
+		common.commonFooterBtu(jsondata);
+	}
+
+	function stuEditFooterFunc(obj) {
+
+	}
+</script>
