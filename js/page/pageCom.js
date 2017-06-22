@@ -1,46 +1,46 @@
 "use strict";;
 (function() {
 	var pageCom = {
-		getProvinces: function() {
-			/*获取查询全国所有的省份*/
+		volunteerRoles: function() {
+			var title = "角色选择";
 			ajaxFuncs.get({
-				urlname: "/api/regions/provinces",
+				urlname: "/api/volunteerRoles",
 				funcs: {
 					funcSuccessful: function(data) {
-
+						var buttons = [];
+						for(var i = 0; i < data.roleDtos.length; i++) {
+							var titVal = {};
+							titVal.title = data.roleDtos[i].name;
+							buttons.push(titVal);
+						}
+						plus.nativeUI.actionSheet({
+							title: title,
+							cancel: "取消",
+							buttons: buttons
+						}, function(selected) { /*actionSheet 按钮点击事件*/
+							var typeval = buttons[selected.index - 1].title;
+							var typeid = selected.index;
+							var container = "#" + $.ui.activeDiv.id;
+							$(container + " span.roleName").text(typeval);
+							$(container + " input[name='roleName']").val(typeval);
+							$(container + " input[name='roleId']").val(typeid);
+							$(container + " input[name='roleName']").attr("readonly", "readonly");
+							var el_shool = $(container + " .isshool");
+							if(typeval == "老师") {
+								if($(el_shool).hasClass("hidden")) {
+									$(container + " .isshool").removeClass('hidden');
+									$(container + " .isshool").find("input[name='school']").attr('required', 'required');
+								}
+							} else {
+								if(!$(el_shool).hasClass("hidden")) {
+									$(container + " .isshool").addClass('hidden');
+									$(container + " .isshool").find("input[name='school']").removeAttribute('required');
+								}
+							}
+						});
 					}
 				}
 			});
-		},
-		getCities: function(id) {
-			/*查询某个省下面的所有的市*/
-			if(id != undefined && id != '') {
-				ajaxFuncs.get({
-					urlname: "/api/regions/cities/" + id,
-					funcs: {
-						funcSuccessful: function(data) {
-
-						}
-					}
-				});
-			} else {
-				common.toast("请先选择省");
-			}
-		},
-		getAreas: function(id) {
-			/*查询某个市下面的所有的区/县*/
-			if(id != undefined && id != '') {
-				ajaxFuncs.get({
-					urlname: "/api/regions/areas/" + id,
-					funcs: {
-						funcSuccessful: function(data) {
-
-						}
-					}
-				});
-			} else {
-				common.toast("请先选择市");
-			}
 		}
 	};
 	window.pageCom = pageCom;

@@ -19,33 +19,32 @@
 
 <script type="text/javascript">
 	var volListPage = 0,
-		isAddPage = true;
+		isAddPage = true,
+		isBindS = true;
 
 	function loadvolList(obj) {
+		volListPage = 0;
+		isAddPage = true;
 		volListFooter();
 		volListPullDownAction(obj, undefined);
-		var jsondata = {};
-		jsondata.content = "volList";
-		jsondata.container = "list";
-		jsondata.containerScroll = "wrapper";
-		jsondata.funcPullDown = volListPullDownAction;
-		jsondata.funcpullUp = volListPullUpAction;
-		refreshAndPage.add(jsondata);
+	}
+
+	function reload() {
+		//刷新界面  
+		pageScrollToTop();
+		loadvolList($("#home"));
+		console.log("刷新");
 	}
 
 	function volListFooter() {
 		var btuHtml = '';
 		var jsondata = {};
-		btuHtml += '<div class="footerBtu bg-color-brown" data-tkey="volEdit" data-dir="general" data-transition="slide" onclick="common.loadPage(this)" data-pageStatus="add">';
+		btuHtml += '<div class="footerBtu bg-color-brown" data-tkey="volEdit" data-dir="general" data-transition="slide" onclick="common.loadPage(this)" data-id="0">';
 		btuHtml += '<a class="all volList-save" href="javascript:void(0);">添加</a>';
 		btuHtml += '</div>';
 		jsondata.container = 'volList';
 		jsondata.buttonHtml = btuHtml;
 		common.commonFooterBtu(jsondata);
-	}
-
-	function volListFooterFunc(obj) {
-
 	}
 
 	function volListPullDownAction(obj, callback) {
@@ -54,7 +53,7 @@
 			funcs: {
 				funcSuccessful: function(data) {
 					volListPage = 0;
-					if(data.resultDtos.length <= 15) {
+					if(data.resultDtos.length < 15) {
 						isAddPage = false;
 					} else {
 						isAddPage = true;
@@ -74,6 +73,17 @@
 							html += '</div>';
 						}
 						$("#volList .list-panel").empty().append(html);
+
+						if(isBindS) {
+							var jsondata = {};
+							jsondata.content = "volList";
+							jsondata.container = "list";
+							jsondata.containerScroll = "wrapper";
+							jsondata.funcPullDown = volListPullDownAction;
+							jsondata.funcpullUp = volListPullUpAction;
+							refreshAndPage.add(jsondata);
+						}
+						isBindS = false;
 					} else {
 						common.handleDefaultPage({
 							type: 1
@@ -100,7 +110,7 @@
 				urlname: "/api/user/volunteers?pageSize=15&currentPage=" + volListPage,
 				funcs: {
 					funcSuccessful: function(data) {
-						if(data.resultDtos.length <= 15) {
+						if(data.resultDtos.length < 15) {
 							isAddPage = false;
 						} else {
 							isAddPage = true;
@@ -138,7 +148,6 @@
 			if(callback != undefined) {
 				callback(0);
 			}
-			common.toast("没有了");
 		}
 	}
 </script>

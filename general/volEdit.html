@@ -54,13 +54,27 @@
 			</div>
 		</div>
 		<div class="list-box">
-			<div class="list-defult-body box-h boder-none">
+			<div class="list-defult-body box-h">
 				<div class="box-flex">
 					<span class="title dataRoleName">角色</span>
 				</div>
+				<div class="icon-text-box" onclick="pageCom.volunteerRoles()">
+					<span class="nav fromfield roleName" data-fromfield="roleName">请选择角色</span>
+					<input class="editor-input fromfield" data-fromfield="roleName" type="hidden" name="roleName" required="required" readonly="readonly" data-warning="请选择角色" placeholder="未填写 " value="" />
+					<input class="editor-input fromfield" data-fromfield="roleId" type="hidden" name="roleId" value="" />
+				</div>
+				<div class="icon-next">
+					<i class="icon-img icon-img-next"></i>
+				</div>
+			</div>
+		</div>
+		<div class="list-box hidden isshool">
+			<div class="list-defult-body box-h boder-none">
+				<div class="box-flex">
+					<span class="title dataRoleName">学校</span>
+				</div>
 				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="roleId" type="text" name="roleId" required="required" readonly="readonly" data-warning="名称长度必须为1~5个字符" placeholder="未填写 " value="" />
-					<input class="editor-input fromfield" data-fromfield="roleName" type="hidden" name="roleName" value="" />
+					<input class="editor-input fromfield" data-fromfield="school" type="text" name="school" readonly="readonly" data-warning="请选择角色" placeholder="未填写 " value="" />
 				</div>
 				<div class="icon-next">
 					<i class="icon-img icon-img-next"></i>
@@ -74,7 +88,7 @@
 					<span class="title">密码</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="password" type="password" name="passwoed" required="required" data-check="^[0-9A-Za-z]{6,}$" data-warning="密码不能为空" data-warning-check="密码至少为6位" placeholder="未填写 " value="" />
+					<input class="editor-input fromfield" data-fromfield="password" type="text" name="password" data-check="^[0-9A-Za-z]{6,}$" data-warning="密码不能为空" placeholder="未填写" data-warning-check="密码至少为6位" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
@@ -107,7 +121,7 @@
 					<span class="title">电话</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="mobile" type="text" name="mobile" required="required" data-warning="名称长度必须为1~5个字符" placeholder="未填写 " value="" />
+					<input class="editor-input fromfield" data-fromfield="mobile" type="text" name="mobile" required="required" data-warning="请选择" placeholder="未填写 " value="" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
@@ -117,9 +131,11 @@
 				<div class="box-flex">
 					<span class="title">省市区</span>
 				</div>
-				<div class="icon-text-box">
-					<span id="sel_city" class="nav fromfield" data-fromfield="province,cities,areas"></span>
-					<input hidden="hidden" class="editor-input fromfield" data-fromfield="province" name="province" readonly="readonly" />
+				<div class="icon-text-box " id="sel_city">
+					<span class="nav fromfield set_city" data-unionchar=" " data-fromfield="province,city,area">未选择</span>
+					<input hidden="hidden" class="editor-input fromfield" data-fromfield="province" name="province" value="" />
+					<input hidden="hidden" class="editor-input fromfield" data-fromfield="city" name="city" value="" />
+					<input hidden="hidden" class="editor-input fromfield" data-fromfield="area" name="area" value="" />
 				</div>
 				<div class="icon-next">
 					<i class="icon-img icon-img-next"></i>
@@ -132,7 +148,7 @@
 					<span class="title">详细地址</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="address" type="text" name="address" required="required" data-warning="名称长度必须为1~5个字符" placeholder="未填写 " value="" />
+					<input class="editor-input fromfield" data-fromfield="address" type="text" name="address" data-warning="请选择" placeholder="未填写 " value="" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
@@ -152,20 +168,24 @@
 </form>
 
 <script type="text/javascript">
-	var getProvinces = true;
+	var getProvinces = true,
+		updateId = null;
 
 	function loadvolEdit(obj) {
-		var id = $(obj).attr("data-id");
-		initVolEditInfo(id);
-		//		volEditFooter();
-		//		pageCom.getProvinces("#volEdit .provincesel");
-		addgetProvinces();
+		pageScrollToTop();
+		updateId = $(obj).attr("data-id");
+		cityfunc.add("sel_city");
+		if(updateId != 0) {
+			initVolEditInfo();
+		} else {
+			volEditFooter();
+		}
 	}
 
 	function volEditFooter() {
 		var btuHtml = '';
 		var jsondata = {};
-		btuHtml += '<div class="footerBtu bg-color-brown" onclick="volEditFooterFunc(this)">';
+		btuHtml += '<div class="footerBtu bg-color-brown" onclick="volEditFooterFuncAdd(this)">';
 		btuHtml += '<a class="all volEdit-save" href="javascript:void(0);">保存</a>';
 		btuHtml += '</div>';
 		jsondata.container = 'volEdit';
@@ -173,13 +193,13 @@
 		common.commonFooterBtu(jsondata);
 	}
 
-	function initVolEditInfo(id) {
+	function initVolEditInfo() {
 		ajaxFuncs.get({
-			urlname: "/api/user/volunteer/" + id,
+			urlname: "/api/user/volunteer/" + updateId,
 			funcs: {
 				funcSuccessful: function(data) {
 					var btuHtml = '';
-					btuHtml += '<div class="footerBtu bg-color-brown" onclick="volEditFooterFunc(this)">';
+					btuHtml += '<div class="footerBtu bg-color-brown" onclick="volEditFooterFuncPut(this)">';
 					btuHtml += '<a class="all volEdit-save" href="javascript:void(0);">保存</a>';
 					btuHtml += '</div>';
 					loadData.load({
@@ -188,118 +208,52 @@
 						readOnly: false,
 						buttons: btuHtml,
 						barbutton: true,
-						callback: function() {
-							pageCom.getProvinces("#volEdit .provincesel");
-							pageCom.getProvinces("#volEdit .provincesel");
-						}
+						callback: function() {}
 					});
 				}
 			}
 		});
 	}
 
-	function volEditFooterFunc(obj) {
-
+	function volEditFooterFuncPut(obj) {
+		var params = common.serializeToJson("#volEdit form");
+		if(!common.validate("#volEdit form", obj)) {
+			return false;
+		} else {
+			params.id = updateId;
+			ajaxFuncs.put({
+				clickobj: obj,
+				urlname: "/api/user/volunteer",
+				params: params,
+				funcs: {
+					funcSuccessful: function(data) {
+						common.toast("编辑成功");
+						//						$.ui.parsePanelFunctions($("#vollist"), $.query("#volEdit").get(0));
+						$.ui.goBack();
+						$.ui.parsePanelFunctions($.query("#vollist").get(0), $.query("#volEdit").get(0));
+					}
+				}
+			})
+		}
 	}
 
-	function addgetProvinces() {
-		var nameEl = document.getElementById('sel_city');
-
-		var first = []; /* 省，直辖市 */
-		var second = []; /* 市 */
-		var third = []; /* 镇 */
-
-		var selectedIndex = [0, 0, 0]; /* 默认选中的地区 */
-
-		var checked = [0, 0, 0]; /* 已选选项 */
-		first = pageCom.getProvinces();
-		var picker = new Picker({
-			data: [first, second, third],
-			selectedIndex: selectedIndex,
-			title: '地址选择'
-		});
-
-		picker.on('picker.select', function(selectedVal, selectedIndex) {
-			var text1 = first[selectedIndex[0]].text;
-			var text2 = second[selectedIndex[1]].text;
-			var text3 = third[selectedIndex[2]] ? third[selectedIndex[2]].text : '';
-
-			nameEl.innerText = text1 + ' ' + text2 + ' ' + text3;
-		});
-
-		picker.on('picker.change', function(index, selectedIndex) {
-			if(index === 0) {
-				firstChange();
-			} else if(index === 1) {
-				secondChange();
-			}
-
-			function firstChange() {
-				second = [];
-				third = [];
-				checked[0] = selectedIndex;
-				var firstCity = city[selectedIndex];
-				if(firstCity.hasOwnProperty('sub')) {
-					creatList(firstCity.sub, second);
-
-					var secondCity = city[selectedIndex].sub[0]
-					if(secondCity.hasOwnProperty('sub')) {
-						creatList(secondCity.sub, third);
-					} else {
-						third = [{
-							text: '',
-							value: 0
-						}];
-						checked[2] = 0;
+	function volEditFooterFuncAdd(obj) {
+		var params = common.serializeToJson("#volEdit form");
+		if(!common.validate("#volEdit form", obj)) {
+			return false;
+		} else {
+			ajaxFuncs.post({
+				clickobj: obj,
+				urlname: "/api/user/volunteer",
+				params: params,
+				funcs: {
+					funcSuccessful: function(data) {
+						common.toast("编辑成功");
+						$.ui.goBack();
+						$.ui.parsePanelFunctions($("#vollist"), $.query("#volEdit").get(0));
 					}
-				} else {
-					second = [{
-						text: '',
-						value: 0
-					}];
-					third = [{
-						text: '',
-						value: 0
-					}];
-					checked[1] = 0;
-					checked[2] = 0;
 				}
-
-				picker.refillColumn(1, second);
-				picker.refillColumn(2, third);
-				picker.scrollColumn(1, 0)
-				picker.scrollColumn(2, 0)
-			}
-
-			function secondChange() {
-				third = [];
-				checked[1] = selectedIndex;
-				var first_index = checked[0];
-				if(city[first_index].sub[selectedIndex].hasOwnProperty('sub')) {
-					var secondCity = city[first_index].sub[selectedIndex];
-					creatList(secondCity.sub, third);
-					picker.refillColumn(2, third);
-					picker.scrollColumn(2, 0)
-				} else {
-					third = [{
-						text: '',
-						value: 0
-					}];
-					checked[2] = 0;
-					picker.refillColumn(2, third);
-					picker.scrollColumn(2, 0)
-				}
-			}
-
-		});
-
-		picker.on('picker.valuechange', function(selectedVal, selectedIndex) {
-			console.log(selectedVal);
-			console.log(selectedIndex);
-		});
-
-		$("#sel_city").on('click', function() {
-			picker.show();
-		});
+			})
+		}
 	}
 </script>

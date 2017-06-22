@@ -26,6 +26,7 @@
 			"relogin": "登录失效，请重新登录",
 			"voiceChoiceTip": "至少选择一个语音设备主机网关或者gene6"
 		}
+
 	}
 	window.msgCode = msgCode;
 })();

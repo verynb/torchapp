@@ -265,7 +265,8 @@
 					"js/plug/msgCode.js",
 					"js/page/pageCom.js",
 					"lib/plugins/af.popup.js",
-					"lib/plugins/af.passwordBox.js"
+					"lib/plugins/af.passwordBox.js",
+					"js/page/city.js"
 				],
 				"refer": [],
 				"priority": 0
