@@ -8,7 +8,7 @@
 					<span class="title">名称</span>
 				</div>
 				<div class="">
-					<img class="header-picture" src="img/icon/defult-photo.png" alt="默认头像" onclick="common.pickImg(this)" />
+					<img class="header-picture fromfield" data-fromfield="photo" src="img/icon/defult-photo.png" alt="默认头像" onclick="common.pickImg(this)" />
 					<input class="editor-input fromfield" data-fromfield="photo" type="hidden" name="photo" value="" />
 				</div>
 				<div class="icon-next">
@@ -168,8 +168,7 @@
 </form>
 
 <script type="text/javascript">
-	var getProvinces = true,
-		updateId = null;
+	var updateId = null;
 
 	function loadvolEdit(obj) {
 		pageScrollToTop();

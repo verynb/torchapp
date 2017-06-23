@@ -266,7 +266,9 @@
 					"js/page/pageCom.js",
 					"lib/plugins/af.popup.js",
 					"lib/plugins/af.passwordBox.js",
-					"js/page/city.js"
+					"js/page/city.js",
+					"general/supList.html",
+					"general/schList.html"
 				],
 				"refer": [],
 				"priority": 0
@@ -314,7 +316,6 @@
 				"general/relEdit.html",
 				"general/subPayStyle.html",
 				"updatelog.txt",
-				"general/schList.html",
 				"general/relRecStuView.html",
 				"general/relRecSearch.html",
 				"css/scss/global.scss",
@@ -324,7 +325,6 @@
 				"js/plug/socket.io.js",
 				"img/no_order.png",
 				"general/relList.html",
-				"general/supList.html",
 				"img/icon/record-sm.png",
 				"css/scss/from.scss",
 				"img/no_function.png",

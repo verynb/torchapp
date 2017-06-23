@@ -63,7 +63,9 @@
 			"js/page/pageCom.js",
 			"lib/plugins/af.popup.js",
 			"lib/plugins/af.passwordBox.js",
-			"js/page/city.js"
+			"js/page/city.js",
+			"general/supList.html",
+			"general/schList.html"
 		]
 	}
 }

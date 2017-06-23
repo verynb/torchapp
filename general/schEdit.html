@@ -1,111 +1,122 @@
-<div class="list-panel">
-	<div class="padding-top-1"></div>
-	<div class="list-box">
-		<div class="list-defult-body box-h ">
-			<div class="box-flex">
-				<span class="title">学校名称</span>
-			</div>
-			<div class="text-input-box">
-				<input class="editor-input" type="text" name="schoolname" required="required" placeholder="未填写 " value="" />
-			</div>
-			<div class="icon-next"></div>
-		</div>
-	</div>
-	<div class="list-box">
-		<div class="list-defult-body box-h ">
-			<div class="box-flex">
-				<span class="title">学校省市区</span>
-			</div>
-			<div class="icon-text-box">
-				<span class="nav">四川省成都市</span>
-				<input hidden="hidden" name="province" readonly="readonly" />
-				<input hidden="hidden" name="city" readonly="readonly" />
-			</div>
-			<div class="icon-next">
-				<i class="icon-img icon-img-next"></i>
+<form>
+	<div id="schEditData" class="list-panel datasource" data-datasource="">
+		<div class="padding-top-1"></div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">学校名称</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="schoolName" type="text" name="schoolName" required="required" data-warning="学校名称不能为空" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
 			</div>
 		</div>
-	</div>
-	<div class="list-box">
-		<div class="list-defult-body box-h boder-none">
-			<div class="box-flex">
-				<span class="title">街道地址</span>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">学校省市区</span>
+				</div>
+				<div class="icon-text-box " id="sel_city">
+					<span class="nav fromfield set_city" data-unionchar=" " data-fromfield="province,city,area">未选择</span>
+					<input hidden="hidden" class="editor-input fromfield" data-fromfield="province" name="province" value="" />
+					<input hidden="hidden" class="editor-input fromfield" data-fromfield="city" name="city" value="" />
+					<input hidden="hidden" class="editor-input fromfield" data-fromfield="area" name="area" value="" />
+				</div>
+				<div class="icon-next">
+					<i class="icon-img icon-img-next"></i>
+				</div>
 			</div>
-			<div class="text-input-box">
-				<input class="editor-input" type="text" name="address" required="required" placeholder="未填写 " value="" />
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h boder-none">
+				<div class="box-flex">
+					<span class="title">街道地址</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="address" type="text" name="address" required="required" placeholder="未填写 " data-warning="详细地址不能为空" value="" />
+				</div>
+				<div class="icon-next"></div>
 			</div>
-			<div class="icon-next"></div>
+		</div>
+		<div class="header-title">
+			<span class="title">负责人</span>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">姓名</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="leaderName" type="text" name="leaderName" required="required" data-warning="负责人不能为空" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">邮箱</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="email" type="text" name="email" data-check="^\w+([-+.]\w+)*@\w+([-.]\\w+)*\.\w+([-.]\w+)*$" data-warning-check="邮箱格式不正确" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">QQ</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="qq" type="text" name="qq" data-check="^[0-9]*$" data-warning-check="qq账号格式不正确" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">电话</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="mobile" type="text" name="mobile" required="required" data-warning="联系电话不能为空" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h boder-none">
+				<div class="box-flex">
+					<span class="title">备注</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="remark" type="text" name="remark" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
 		</div>
 	</div>
-	<div class="header-title">
-		<span class="title">负责人</span>
-	</div>
-	<div class="list-box">
-		<div class="list-defult-body box-h ">
-			<div class="box-flex">
-				<span class="title">姓名</span>
-			</div>
-			<div class="text-input-box">
-				<input class="editor-input" type="text" name="name" required="required" placeholder="未填写 " value="" />
-			</div>
-			<div class="icon-next"></div>
-		</div>
-	</div>
-	<div class="list-box">
-		<div class="list-defult-body box-h ">
-			<div class="box-flex">
-				<span class="title">邮箱</span>
-			</div>
-			<div class="text-input-box">
-				<input class="editor-input" type="text" name="email" data-check="^\w+([-+.]\w+)*@\w+([-.]\\w+)*\.\w+([-.]\w+)*$" data-warning-check="邮箱格式不正确" placeholder="未填写 " value="" />
-			</div>
-			<div class="icon-next"></div>
-		</div>
-	</div>
-	<div class="list-box">
-		<div class="list-defult-body box-h ">
-			<div class="box-flex">
-				<span class="title">QQ</span>
-			</div>
-			<div class="text-input-box">
-				<input class="editor-input" type="text" name="qq" data-check="^[0-9]*$" data-warning-check="qq账号格式不正确" placeholder="未填写 " value="" />
-			</div>
-			<div class="icon-next"></div>
-		</div>
-	</div>
-	<div class="list-box">
-		<div class="list-defult-body box-h ">
-			<div class="box-flex">
-				<span class="title">电话</span>
-			</div>
-			<div class="text-input-box">
-				<input class="editor-input" type="text" name="mobile" required="required" placeholder="未填写 " value="" />
-			</div>
-			<div class="icon-next"></div>
-		</div>
-	</div>
-	<div class="list-box">
-		<div class="list-defult-body box-h boder-none">
-			<div class="box-flex">
-				<span class="title">备注</span>
-			</div>
-			<div class="text-input-box">
-				<input class="editor-input" type="text" name="node" placeholder="未填写 " value="" />
-			</div>
-			<div class="icon-next"></div>
-		</div>
-	</div>
-</div>
-
+</form>
 <script type="text/javascript">
+	var schupdateId = null;
+
 	function loadschEdit(obj) {
-		schEditFooter();
+		pageScrollToTop();
+		schupdateId = $(obj).attr("data-id");
+		cityfunc.add("sel_city");
+		if(schupdateId != 0) {
+			inischEditInfo();
+		} else {
+			schEditFooter();
+		}
 	}
 
 	function schEditFooter() {
 		var btuHtml = '';
 		var jsondata = {};
-		btuHtml += '<div class="footerBtu bg-color-brown" onclick="schEditFooterFunc(this)">';
+		btuHtml += '<div class="footerBtu bg-color-brown" onclick="schEditFooterFuncAdd(this)">';
 		btuHtml += '<a class="all schEdit-save" href="javascript:void(0);">保存</a>';
 		btuHtml += '</div>';
 		jsondata.container = 'schEdit';
@@ -113,7 +124,67 @@
 		common.commonFooterBtu(jsondata);
 	}
 
-	function schEditFooterFunc(obj) {
+	function inischEditInfo() {
+		ajaxFuncs.get({
+			urlname: "/api/school/" + schupdateId,
+			funcs: {
+				funcSuccessful: function(data) {
+					var btuHtml = '';
+					btuHtml += '<div class="footerBtu bg-color-brown" onclick="schEditFooterFuncPut(this)">';
+					btuHtml += '<a class="all schEdit-save" href="javascript:void(0);">保存</a>';
+					btuHtml += '</div>';
+					loadData.load({
+						data: data.school,
+						container: "schEdit",
+						readOnly: false,
+						buttons: btuHtml,
+						barbutton: true,
+						callback: function() {}
+					});
+				}
+			}
+		});
+	}
 
+	function schEditFooterFuncPut(obj) {
+		var params = common.serializeToJson("#schEdit form");
+		if(!common.validate("#schEdit form", obj)) {
+			return false;
+		} else {
+			params.id = schupdateId;
+			ajaxFuncs.put({
+				clickobj: obj,
+				urlname: "/api/school",
+				params: params,
+				funcs: {
+					funcSuccessful: function(data) {
+						common.toast("编辑成功");
+						//						$.ui.parsePanelFunctions($("#schlist"), $.query("#schEdit").get(0));
+						$.ui.goBack();
+						$.ui.parsePanelFunctions($.query("#schlist").get(0), $.query("#schEdit").get(0));
+					}
+				}
+			})
+		}
+	}
+
+	function schEditFooterFuncAdd(obj) {
+		var params = common.serializeToJson("#schEdit form");
+		if(!common.validate("#schEdit form", obj)) {
+			return false;
+		} else {
+			ajaxFuncs.post({
+				clickobj: obj,
+				urlname: "/api/school",
+				params: params,
+				funcs: {
+					funcSuccessful: function(data) {
+						common.toast("编辑成功");
+						$.ui.goBack();
+						$.ui.parsePanelFunctions($("#schlist"), $.query("#schEdit").get(0));
+					}
+				}
+			})
+		}
 	}
 </script>

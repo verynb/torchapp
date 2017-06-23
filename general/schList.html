@@ -1,26 +1,44 @@
-<div class="list-panel">
-	<!--start-->
-	<div class="list-box" data-dir="general" data-tkey="schEdit" data-transition="slide" onclick="common.loadPage(this);">
-		<div class="list-defult-body box-h box-align">
-			<div class="box-flex">
-				<span class="title">学校名字</span>
+<div id="schListBody" class="wrapper">
+	<div class="scrollerBody">
+		<div class="list-panel list">
+			<!--start-->
+			<div class="list-box" data-dir="general" data-tkey="schEdit" data-transition="slide" onclick="common.loadPage(this);">
+				<div class="list-defult-body box-h box-align">
+					<div class="box-flex">
+						<span class="title">资助人</span>
+					</div>
+					<div class="icon-next">
+						<i class="icon-img icon-img-next"></i>
+					</div>
+				</div>
 			</div>
-			<div class="icon-next">
-				<i class="icon-img icon-img-next"></i>
-			</div>
+			<!--end-->
 		</div>
 	</div>
-	<!--end-->
 </div>
 <script type="text/javascript">
+	var schListPage = 0,
+		schisAddPage = true,
+		schisBindS = true;
+
 	function loadschList(obj) {
+		schListPage = 0;
+		schisAddPage = true;
 		schListFooter();
+		schListPullDownAction(obj, undefined);
+	}
+
+	function schreload() {
+		//刷新界面  
+		pageScrollToTop();
+		loadschList($("#home"));
+		console.log("刷新");
 	}
 
 	function schListFooter() {
 		var btuHtml = '';
 		var jsondata = {};
-		btuHtml += '<div class="footerBtu bg-color-brown" data-tkey="schEdit" data-dir="general" data-transition="slide" onclick="common.loadPage(this)" data-pageStatus="add">';
+		btuHtml += '<div class="footerBtu bg-color-brown" data-tkey="schEdit" data-dir="general" data-transition="slide" onclick="common.loadPage(this)" data-id="0">';
 		btuHtml += '<a class="all schList-save" href="javascript:void(0);">添加</a>';
 		btuHtml += '</div>';
 		jsondata.container = 'schList';
@@ -28,7 +46,109 @@
 		common.commonFooterBtu(jsondata);
 	}
 
-	function schListFooterFunc(obj) {
+	function schListPullDownAction(obj, callback) {
+		ajaxFuncs.get({
+			urlname: "/api/schools?pageSize=15&currentPage=0",
+			funcs: {
+				funcSuccessful: function(data) {
+					schListPage = 0;
+					if(data.schools.length < 15) {
+						schisAddPage = false;
+					} else {
+						schisAddPage = true;
+					}
+					if(data.schools.length != 0) {
+						var html = '';
+						for(var i = 0; i < data.schools.length; i++) {
+							html += '<div class="list-box" data-id="' + data.schools[i].id + '" data-dir="general" data-tkey="schEdit" data-transition="slide" onclick="common.loadPage(this);">';
+							html += '<div class="list-defult-body box-h box-align">';
+							html += '<div class="box-flex">';
+							html += '<span class="title">' + data.schools[i].schoolName + '</span>';
+							html += '</div>';
+							html += '<div class="icon-next">';
+							html += '<i class="icon-img icon-img-next"></i>';
+							html += '</div>';
+							html += '</div>';
+							html += '</div>';
+						}
+						$("#schList .list-panel").empty().append(html);
 
+						if(data.schools.length == 15) {
+							if(schisBindS) {
+								var jsondata = {};
+								jsondata.content = "schList";
+								jsondata.container = "list";
+								jsondata.containerScroll = "wrapper";
+								jsondata.funcPullDown = schListPullDownAction;
+								jsondata.funcpullUp = schListPullUpAction;
+								refreshAndPage.add(jsondata);
+							}
+							schisBindS = false;
+						}
+					} else {
+						common.handleDefaultPage({
+							type: 2
+						});
+					}
+					if(callback != undefined) {
+						callback(0);
+					}
+				},
+				funcError: function(data) {
+					if(callback != undefined) {
+						callback(0);
+					}
+				}
+			}
+		});
+
+	}
+
+	function schListPullUpAction(obj, callback) {
+		if(schisAddPage == true) {
+			schListPage = schListPage + 1;
+			ajaxFuncs.get({
+				urlname: "/api/schools?pageSize=15&currentPage=" + schListPage,
+				funcs: {
+					funcSuccessful: function(data) {
+						if(data.schools.length < 15) {
+							schisAddPage = false;
+						} else {
+							schisAddPage = true;
+						}
+						if(data.schools.length != 0) {
+							var html = '';
+							for(var i = 0; i < data.schools.length; i++) {
+								html += '<div class="list-box" data-id="' + data.schools[i].id + '" data-dir="general" data-tkey="schEdit" data-transition="slide" onclick="common.loadPage(this);">';
+								html += '<div class="list-defult-body box-h box-align">';
+								html += '<div class="box-flex">';
+								html += '<span class="title">' + data.schools[i].schoolName + '</span>';
+								html += '</div>';
+								html += '<div class="icon-next">';
+								html += '<i class="icon-img icon-img-next"></i>';
+								html += '</div>';
+								html += '</div>';
+								html += '</div>';
+							}
+							$("#schList .list-panel").append(html);
+						} else {
+							common.toast("没有了");
+						}
+						if(callback != undefined) {
+							callback(0);
+						}
+					},
+					funcError: function(data) {
+						if(callback != undefined) {
+							callback(0);
+						}
+					}
+				}
+			});
+		} else {
+			if(callback != undefined) {
+				callback(0);
+			}
+		}
 	}
 </script>

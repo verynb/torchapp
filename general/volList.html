@@ -73,20 +73,21 @@
 							html += '</div>';
 						}
 						$("#volList .list-panel").empty().append(html);
-
-						if(isBindS) {
-							var jsondata = {};
-							jsondata.content = "volList";
-							jsondata.container = "list";
-							jsondata.containerScroll = "wrapper";
-							jsondata.funcPullDown = volListPullDownAction;
-							jsondata.funcpullUp = volListPullUpAction;
-							refreshAndPage.add(jsondata);
+						if(data.resultDtos.length == 15) {
+							if(isBindS) {
+								var jsondata = {};
+								jsondata.content = "volList";
+								jsondata.container = "list";
+								jsondata.containerScroll = "wrapper";
+								jsondata.funcPullDown = volListPullDownAction;
+								jsondata.funcpullUp = volListPullUpAction;
+								refreshAndPage.add(jsondata);
+							}
+							isBindS = false;
 						}
-						isBindS = false;
 					} else {
 						common.handleDefaultPage({
-							type: 1
+							type: 2
 						});
 					}
 					if(callback != undefined) {

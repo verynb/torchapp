@@ -12,13 +12,13 @@ G_SERVERS = {
 	"1": {
 		web: "http://owner.api.60living.com/",
 		push: "ws://owner.api.60living.com/socket",
-		img: "http://img.60living.com",
+		img: "http://",
 		name: ""
 	},
 	"0": {
 		web: "http://116.62.208.39:8080",
 		push: "ws://192.168.89.45:2080/socket",
-		img: "http://img.60community.com",
+		img: "http://",
 		name: "-0号"
 	}
 };
