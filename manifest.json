@@ -268,7 +268,9 @@
 					"lib/plugins/af.passwordBox.js",
 					"js/page/city.js",
 					"general/supList.html",
-					"general/schList.html"
+					"general/schList.html",
+					"general/stuList.html",
+					"general/offVisList.html"
 				],
 				"refer": [],
 				"priority": 0
@@ -279,7 +281,6 @@
 				"general/stuHomeVisitsInfo.html",
 				"lib/plugins/css/tabs.css",
 				"pro.txt",
-				"general/offVisList.html",
 				"usersconfig/userCenter.html",
 				"js/plug/pay.js",
 				"lib/plugins/css/af.accordion.css",
@@ -337,7 +338,6 @@
 				"general/stuHomeVisitsList.html",
 				"general/subPayStatus.html",
 				"img/icon/icon-bg.png",
-				"general/stuList.html",
 				"css/global.css.map",
 				"general/relRecStuList.html",
 				"lib/plugins/convertor.js",

@@ -1,59 +1,60 @@
 <form>
-	<div class="list-panel">
+	<div id="stuEditData" class="list-panel datasource" data-datasource="">
 		<div class="padding-top-1"></div>
 		<div class="list-box">
-			<div class="list-defult-body box-h ">
+			<div class="list-defult-body box-h">
 				<div class="box-flex">
 					<span class="title">姓名</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input" type="text" name="name" required="required" placeholder="未填写 " value="" />
+					<input class="editor-input fromfield" data-fromfield="name" type="text" name="name" required="required" placeholder="未填写" value="" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
 		</div>
 		<div class="list-box">
-			<div class="list-defult-body box-h ">
+			<div class="list-defult-body box-h">
 				<div class="box-flex">
 					<span class="title">性别</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input" type="text" name="sex" required="required" placeholder="未填写 " value="" />
+					<input class="editor-input fromfield" data-fromfield="gender" type="text" name="gender" required="required" placeholder="未填写" value="" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
 		</div>
 		<div class="list-box">
-			<div class="list-defult-body box-h ">
+			<div class="list-defult-body box-h">
 				<div class="box-flex">
 					<span class="title">出生日期</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input" type="text" name="birthday" required="required" placeholder="未填写 " value="" />
+					<input class="editor-input fromfield" data-fromfield="birthday" type="text" name="birthday" required="required" placeholder="未填写" onclick="common.pickDateYMD(this);" placeholder="点此选择您的生日" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
 		</div>
 		<div class="list-box">
-			<div class="list-defult-body box-h ">
+			<div class="list-defult-body box-h">
 				<div class="box-flex">
 					<span class="title">年龄</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input" type="text" name="age" required="required" placeholder="未填写 " value="" />
+					<input class="editor-input fromfield" data-fromfield="age" type="text" name="age" required="required" placeholder="未填写" value="" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
 		</div>
 		<div class="list-box">
-			<div class="list-defult-body box-h ">
+			<div class="list-defult-body box-h">
 				<div class="box-flex">
 					<span class="title">省市区</span>
 				</div>
-				<div class="icon-text-box">
-					<span class="nav">四川省成都市</span>
-					<input hidden="hidden" name="province" readonly="readonly" />
-					<input hidden="hidden" name="city" readonly="readonly" />
+				<div class="icon-text-box" id="sel_city">
+					<span class="nav fromfield set_city" data-unionchar="" data-fromfield="province,city,area">未选择</span>
+					<input hidden="hidden" class="editor-input fromfield" data-fromfield="province" name="province" value="" />
+					<input hidden="hidden" class="editor-input fromfield" data-fromfield="city" name="city" value="" />
+					<input hidden="hidden" class="editor-input fromfield" data-fromfield="area" name="area" value="" />
 				</div>
 				<div class="icon-next">
 					<i class="icon-img icon-img-next"></i>
@@ -61,12 +62,12 @@
 			</div>
 		</div>
 		<div class="list-box">
-			<div class="list-defult-body box-h boder-none">
+			<div class="list-defult-body box-h">
 				<div class="box-flex">
-					<span class="title">街道地址</span>
+					<span class="title">详细地址</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input" type="text" name="address" required="required" placeholder="未填写 " value="" />
+					<input class="editor-input fromfield" data-fromfield="address" type="text" name="address" data-warning="请选择" placeholder="未填写" value="" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
@@ -75,23 +76,24 @@
 			<span class="title">非必填项</span>
 		</div>
 		<div class="list-box">
-			<div class="list-defult-body box-h ">
+			<div class="list-defult-body box-h">
 				<div class="box-flex">
 					<span class="title">身份证</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input" type="text" name="idcard" placeholder="未填写 " value="" />
+					<input class="editor-input fromfield" data-fromfield="identityCard" type="text" name="identityCard" placeholder="未填写" data-check="^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$" data-warning-check="身份证格式不正确" value="" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
 		</div>
 		<div class="list-box">
-			<div class="list-defult-body box-h ">
+			<div class="list-defult-body box-h">
 				<div class="box-flex">
 					<span class="title">学校</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input" type="text" name="school" readonly="readonly" placeholder="未填写 " value="" />
+					<input class="editor-input fromfield" data-fromfield="schoolId" type="text" name="schoolId" readonly="readonly" placeholder="未填写" value="" />
+					<input class="editor-input fromfield" data-fromfield="schoolId" type="hidden" name="schoolId" readonly="readonly" placeholder="未填写" value="" />
 				</div>
 				<div class="icon-next">
 					<i class="icon-img icon-img-next"></i>
@@ -99,23 +101,24 @@
 			</div>
 		</div>
 		<div class="list-box">
-			<div class="list-defult-body box-h ">
+			<div class="list-defult-body box-h">
 				<div class="box-flex">
 					<span class="title">年级</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input" type="text" name="school" placeholder="未填写 " value="" />
+					<input class="editor-input fromfield" data-fromfield="grade" type="text" name="grade" placeholder="未填写" value="" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
 		</div>
 		<div class="list-box">
-			<div class="list-defult-body box-h ">
+			<div class="list-defult-body box-h">
 				<div class="box-flex">
 					<span class="title">当前资助人</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input" type="text" name="vname" placeholder="未填写 " value="" />
+					<input class="editor-input fromfield" data-fromfield="" type="text" name="" readonly="readonly" placeholder="未填写" value="无" />
+					<input class="editor-input fromfield" data-fromfield="sponsorId" type="hidden" name="sponsorId" placeholder="未填写" value="" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
@@ -126,24 +129,30 @@
 					<span class="title">学生状态</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input" type="text" name="node" readonly="readonly" placeholder="未填写 " value="" />
-				</div>
-				<div class="icon-next">
-					<i class="icon-img icon-img-next"></i>
+					<input class="editor-input fromfield" data-fromfield="status" type="text" name="status" readonly="readonly" placeholder="未填写" value="" />
 				</div>
 			</div>
 		</div>
 	</div>
 </form>
 <script type="text/javascript">
+	var stuupdateId = null;
+
 	function loadstuEdit(obj) {
-		stuEditFooter();
+		pageScrollToTop();
+		stuupdateId = $(obj).attr("data-id");
+		cityfunc.add("sel_city");
+		if(stuupdateId != 0) {
+			iniSupEditInfo();
+		} else {
+			stuEditFooter();
+		}
 	}
 
 	function stuEditFooter() {
 		var btuHtml = '';
 		var jsondata = {};
-		btuHtml += '<div class="footerBtu bg-color-brown" onclick="stuEditFooterFunc(this)">';
+		btuHtml += '<div class="footerBtu bg-color-brown" onclick="stuEditFooterFuncAdd(this)">';
 		btuHtml += '<a class="all stuEdit-save" href="javascript:void(0);">保存</a>';
 		btuHtml += '</div>';
 		jsondata.container = 'stuEdit';
@@ -151,7 +160,67 @@
 		common.commonFooterBtu(jsondata);
 	}
 
-	function stuEditFooterFunc(obj) {
+	function iniSupEditInfo() {
+		ajaxFuncs.get({
+			urlname: "/api/student/" + stuupdateId,
+			funcs: {
+				funcSuccessful: function(data) {
+					var btuHtml = '';
+					btuHtml += '<div class="footerBtu bg-color-brown" onclick="stuEditFooterFuncPut(this)">';
+					btuHtml += '<a class="all stuEdit-save" href="javascript:void(0);">保存</a>';
+					btuHtml += '</div>';
+					loadData.load({
+						data: data,
+						container: "stuEdit",
+						readOnly: false,
+						buttons: btuHtml,
+						barbutton: true,
+						callback: function() {}
+					});
+				}
+			}
+		});
+	}
 
+	function stuEditFooterFuncPut(obj) {
+		var params = common.serializeToJson("#stuEdit form");
+		if(!common.validate("#stuEdit form", obj)) {
+			return false;
+		} else {
+			params.id = stuupdateId;
+			ajaxFuncs.put({
+				clickobj: obj,
+				urlname: "/api/student",
+				params: params,
+				funcs: {
+					funcSuccessful: function(data) {
+						common.toast("编辑成功");
+						//						$.ui.parsePanelFunctions($("#stulist"), $.query("#stuEdit").get(0));
+						$.ui.goBack();
+						$.ui.parsePanelFunctions($.query("#stulist").get(0), $.query("#stuEdit").get(0));
+					}
+				}
+			})
+		}
+	}
+
+	function stuEditFooterFuncAdd(obj) {
+		var params = common.serializeToJson("#stuEdit form");
+		if(!common.validate("#stuEdit form", obj)) {
+			return false;
+		} else {
+			ajaxFuncs.post({
+				clickobj: obj,
+				urlname: "/api/student",
+				params: params,
+				funcs: {
+					funcSuccessful: function(data) {
+						common.toast("编辑成功");
+						$.ui.goBack();
+						$.ui.parsePanelFunctions($("#stulist"), $.query("#stuEdit").get(0));
+					}
+				}
+			})
+		}
 	}
 </script>

@@ -1,26 +1,44 @@
-<div class="list-panel">
-	<!--start-->
-	<div class="list-box" data-dir="general" data-tkey="stuEdit" data-transition="slide" onclick="common.loadPage(this);">
-		<div class="list-defult-body box-h box-align">
-			<div class="box-flex">
-				<span class="title">学生名字</span>
+<div id="stuListBody" class="wrapper">
+	<div class="scrollerBody">
+		<div class="list-panel list">
+			<!--start-->
+			<div class="list-box" data-dir="general" data-tkey="stuEdit" data-transition="slide" onclick="common.loadPage(this);">
+				<div class="list-defult-body box-h box-align">
+					<div class="box-flex">
+						<span class="title">学生姓名</span>
+					</div>
+					<div class="icon-next">
+						<i class="icon-img icon-img-next"></i>
+					</div>
+				</div>
 			</div>
-			<div class="icon-next">
-				<i class="icon-img icon-img-next"></i>
-			</div>
+			<!--end-->
 		</div>
 	</div>
-	<!--end-->
 </div>
 <script type="text/javascript">
+	var stuListPage = 0,
+		stuisAddPage = true,
+		stuisBindS = true;
+
 	function loadstuList(obj) {
+		stuListPage = 0;
+		stuisAddPage = true;
 		stuListFooter();
+		stuListPullDownAction(obj, undefined);
+	}
+
+	function stureload() {
+		//刷新界面  
+		pageScrollToTop();
+		loadstuList($("#home"));
+		console.log("刷新");
 	}
 
 	function stuListFooter() {
 		var btuHtml = '';
 		var jsondata = {};
-		btuHtml += '<div class="footerBtu bg-color-brown" data-tkey="stuEdit" data-dir="general" data-transition="slide" onclick="common.loadPage(this)" data-pageStatus="add">';
+		btuHtml += '<div class="footerBtu bg-color-brown" data-tkey="stuEdit" data-dir="general" data-transition="slide" onclick="common.loadPage(this)" data-id="0">';
 		btuHtml += '<a class="all stuList-save" href="javascript:void(0);">添加</a>';
 		btuHtml += '</div>';
 		jsondata.container = 'stuList';
@@ -28,7 +46,109 @@
 		common.commonFooterBtu(jsondata);
 	}
 
-	function stuListFooterFunc(obj) {
+	function stuListPullDownAction(obj, callback) {
+		ajaxFuncs.get({
+			urlname: "/api/students?pageSize=15&currentPage=0",
+			funcs: {
+				funcSuccessful: function(data) {
+					stuListPage = 0;
+					if(data.studentLists.length < 15) {
+						stuisAddPage = false;
+					} else {
+						stuisAddPage = true;
+					}
+					if(data.studentLists.length != 0) {
+						var html = '';
+						for(var i = 0; i < data.studentLists.length; i++) {
+							html += '<div class="list-box" data-id="' + data.studentLists[i].id + '" data-dir="general" data-tkey="stuEdit" data-transition="slide" onclick="common.loadPage(this);">';
+							html += '<div class="list-defult-body box-h box-align">';
+							html += '<div class="box-flex">';
+							html += '<span class="title">' + data.studentLists[i].name + '</span>';
+							html += '</div>';
+							html += '<div class="icon-next">';
+							html += '<i class="icon-img icon-img-next"></i>';
+							html += '</div>';
+							html += '</div>';
+							html += '</div>';
+						}
+						$("#stuList .list-panel").empty().append(html);
 
+						if(data.studentLists.length == 15) {
+							if(stuisBindS) {
+								var jsondata = {};
+								jsondata.content = "stuList";
+								jsondata.container = "list";
+								jsondata.containerScroll = "wrapper";
+								jsondata.funcPullDown = stuListPullDownAction;
+								jsondata.funcpullUp = stuListPullUpAction;
+								refreshAndPage.add(jsondata);
+							}
+							stuisBindS = false;
+						}
+					} else {
+						common.handleDefaultPage({
+							type: 2
+						});
+					}
+					if(callback != undefined) {
+						callback(0);
+					}
+				},
+				funcError: function(data) {
+					if(callback != undefined) {
+						callback(0);
+					}
+				}
+			}
+		});
+
+	}
+
+	function stuListPullUpAction(obj, callback) {
+		if(stuisAddPage == true) {
+			stuListPage = stuListPage + 1;
+			ajaxFuncs.get({
+				urlname: "/api/students?pageSize=15&currentPage=" + stuListPage,
+				funcs: {
+					funcSuccessful: function(data) {
+						if(data.studentLists.length < 15) {
+							stuisAddPage = false;
+						} else {
+							stuisAddPage = true;
+						}
+						if(data.studentLists.length != 0) {
+							var html = '';
+							for(var i = 0; i < data.studentLists.length; i++) {
+								html += '<div class="list-box" data-id="' + data.studentLists[i].id + '" data-dir="general" data-tkey="stuEdit" data-transition="slide" onclick="common.loadPage(this);">';
+								html += '<div class="list-defult-body box-h box-align">';
+								html += '<div class="box-flex">';
+								html += '<span class="title">' + data.studentLists[i].name + '</span>';
+								html += '</div>';
+								html += '<div class="icon-next">';
+								html += '<i class="icon-img icon-img-next"></i>';
+								html += '</div>';
+								html += '</div>';
+								html += '</div>';
+							}
+							$("#stuList .list-panel").append(html);
+						} else {
+							common.toast("没有了");
+						}
+						if(callback != undefined) {
+							callback(0);
+						}
+					},
+					funcError: function(data) {
+						if(callback != undefined) {
+							callback(0);
+						}
+					}
+				}
+			});
+		} else {
+			if(callback != undefined) {
+				callback(0);
+			}
+		}
 	}
 </script>

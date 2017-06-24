@@ -65,7 +65,9 @@
 			"lib/plugins/af.passwordBox.js",
 			"js/page/city.js",
 			"general/supList.html",
-			"general/schList.html"
+			"general/schList.html",
+			"general/stuList.html",
+			"general/offVisList.html"
 		]
 	}
 }
