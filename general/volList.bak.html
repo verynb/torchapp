@@ -1,0 +1,180 @@
+<div id="volListBody" class="wrapper">
+	<div class="scrollerBody">
+		<div class="list-panel list">
+			<!--start-->
+			<div class="list-box wrapper-box">
+				<div class="list-defult-body box-h box-align container-box" data-dir="general" data-tkey="volEdit" data-transition="slide">
+					<div class="box-flex">
+						<span class="title">义工名字</span>
+					</div>
+					<div class="icon-next">
+						<i class="icon-img icon-img-next"></i>
+					</div>
+					<div class="delete"><i class="iconfont icon-shanchu"></i>删除</div>
+				</div>
+			</div>
+			<!--end-->
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	var volListPage = 0,
+		volListmyScrollObj = null,
+		isAddPage = true,
+		isBindS = true;
+
+	function loadvolList(obj) {
+		volListPage = 0;
+		isAddPage = true;
+		volListFooter();
+		volListPullDownAction(null, undefined);
+		//		if(volListmyScrollObj != null) {
+		//			volListmyScrollObj.scrollTo(0, 0);
+		//			volListmyScrollObj.refresh();
+		//		}
+	}
+
+	function reload() { //刷新界面  
+		//		debugger
+		//		volListmyScrollObj.scrollTo(0, 0);
+		loadvolList($("#home"));
+		console.log("刷新");
+	}
+
+	function volListFooter() {
+		var btuHtml = '';
+		var jsondata = {};
+		btuHtml += '<div class="footerBtu bg-color-brown" data-tkey="volEdit" data-dir="general" data-transition="slide" onclick="common.loadPage(this)" data-id="0">';
+		btuHtml += '<a class="all volList-save" href="javascript:void(0);">添加</a>';
+		btuHtml += '</div>';
+		jsondata.container = 'volList';
+		jsondata.buttonHtml = btuHtml;
+		common.commonFooterBtu(jsondata);
+	}
+
+	function volListPullDownAction(obj, callback) {
+		ajaxFuncs.get({
+			urlname: "/api/user/volunteers?pageSize=15&currentPage=0",
+			funcs: {
+				funcSuccessful: function(data) {
+					volListPage = 0;
+					if(data.resultDtos.length < 15) {
+						isAddPage = false;
+					} else {
+						isAddPage = true;
+					}
+					if(data.resultDtos.length != 0) {
+						var html = '';
+						for(var i = 0; i < data.resultDtos.length; i++) {
+							html += '<div class="list-box wrapper-box" >';
+							html += '<div class="list-defult-body box-h box-align container-box" data-id="' + data.resultDtos[i].id + '"  data-dir="general" data-tkey="volEdit" data-transition="slide">';
+							html += '<div class="box-flex">';
+							html += '<span class="title">' + data.resultDtos[i].name + '</span>';
+							html += '</div>';
+							html += '<div class="icon-next">';
+							html += '<i class="icon-img icon-img-next"></i>';
+							html += '</div>';
+							html += '<div class="delete" onclick="volListDelete(this)" data-id="' + data.resultDtos[i].id + '" ><i class="iconfont icon-shanchu"></i>删除</div>';
+							html += '</div>';
+							html += '</div>';
+						}
+						$("#volList .list-panel").empty().append(html);
+						common.touchDel("volList");
+						if(data.resultDtos.length == 15) {
+							if(isBindS) {
+								var jsondata = {};
+								jsondata.content = "volList";
+								jsondata.container = "list";
+								jsondata.containerScroll = "wrapper";
+								jsondata.funcPullDown = volListPullDownAction;
+								jsondata.funcpullUp = volListPullUpAction;
+								refreshAndPage.add(jsondata);
+							}
+							isBindS = false;
+						}
+					} else {
+						common.handleDefaultPage({
+							type: 2
+						});
+					}
+					if(callback != undefined) {
+						callback(0);
+					}
+				},
+				funcError: function(data) {
+					if(callback != undefined) {
+						callback(0);
+					}
+				}
+			}
+		});
+	}
+
+	function volListPullUpAction(obj, callback) {
+		if(isAddPage == true) {
+			if(obj != null) {
+				volListmyScrollObj = obj;
+			}
+			volListPage = volListPage + 1;
+			ajaxFuncs.get({
+				urlname: "/api/user/volunteers?pageSize=15&currentPage=" + volListPage,
+				funcs: {
+					funcSuccessful: function(data) {
+						if(data.resultDtos.length < 15) {
+							isAddPage = false;
+						} else {
+							isAddPage = true;
+						}
+						if(data.resultDtos.length != 0) {
+							var html = '';
+							for(var i = 0; i < data.resultDtos.length; i++) {
+								html += '<div class="list-box wrapper-box" >';
+								html += '<div class="list-defult-body box-h box-align container-box" data-id="' + data.resultDtos[i].id + '"  data-dir="general" data-tkey="volEdit" data-transition="slide">';
+								html += '<div class="box-flex">';
+								html += '<span class="title">' + data.resultDtos[i].name + '</span>';
+								html += '</div>';
+								html += '<div class="icon-next">';
+								html += '<i class="icon-img icon-img-next"></i>';
+								html += '</div>';
+								html += '<div class="delete" onclick="volListDelete(this)" data-id="' + data.resultDtos[i].id + '" ><i class="iconfont icon-shanchu"></i>删除</div>';
+								html += '</div>';
+								html += '</div>';
+							}
+							$("#volList .list-panel").append(html);
+							common.touchDel("volList");
+						} else {
+							common.toast("没有了");
+						}
+						if(callback != undefined) {
+							callback(0);
+						}
+					},
+					funcError: function(data) {
+						if(callback != undefined) {
+							callback(0);
+						}
+					}
+				}
+			});
+		} else {
+			if(callback != undefined) {
+				callback(0);
+			}
+		}
+	}
+
+	function volListDelete(obj) {
+		var id = $(obj).attr("data-id");
+		$(obj).parents(".list-box").addClass("hidden-important");
+		ajaxFuncs.delete({
+			urlname: "/api/user/volunteer/" + id,
+			funcs: {
+				funcSuccessful: function(data) {
+					common.toast("删除成功");
+				}
+			}
+		});
+		event.stopPropagation();
+	}
+</script>

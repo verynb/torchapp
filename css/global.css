@@ -138,6 +138,10 @@ ul { list-style: none; }
 .list-panel .list-box .btu-box { width: auto; height: 5.3rem; padding: 0.65rem 0; }
 .list-panel .list-box .btu-box a { display: inline-block; height: 100%; line-height: 4rem; font-size: 1.2rem; background-color: #CCCCCC; }
 .list-panel .list-box .btu-box a:active { background-color: #CACECE; }
+.list-panel .wrapper-box { position: relative; overflow: hidden; }
+.list-panel .wrapper-box .container-box { position: absolute; left: 0; width: 100%; padding: 0 1.2rem; box-sizing: border-box; transition: left cubic-bezier(0.68, 0.69, 0.11, 0.4) 0.2s; -webkit-transition: left cubic-bezier(0.68, 0.69, 0.11, 0.4) 0.2s; }
+.list-panel .wrapper-box .delete { float: left; position: absolute; width: 10rem; top: 0; right: -10rem; background-color: #f00; color: #fff; text-align: center; height: 5.5rem; line-height: 5.5rem; }
+.list-panel .wrapper-box .delete i.iconfont { font-size: 1em; padding-right: 5px; }
 .list-panel .list-box-active:active { background-color: #EFEFEF; }
 .list-panel .img-photo-box { height: 9.5rem !important; line-height: 9.5rem !important; }
 .list-panel .img-photo-box img.header-picture { width: 7.5rem; height: 7.5rem; border-radius: 7.5rem; vertical-align: middle; margin-right: 1rem; }

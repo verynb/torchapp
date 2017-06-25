@@ -539,6 +539,35 @@ ul {
             }
         }
     }
+    .wrapper-box {
+        position: relative;
+        overflow: hidden;
+        .container-box {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            padding: 0 1.2rem;
+            box-sizing: border-box;
+            transition: left cubic-bezier(.68, .69, .11, .4) 0.2s;
+            -webkit-transition: left cubic-bezier(.68, .69, .11, .4) 0.2s;
+        }
+        .delete {
+            float: left;
+            position: absolute;
+            width: 10rem;
+            top: 0;
+            right: -10rem;
+            background-color: #f00;
+            color: #fff;
+            text-align: center;
+            height: 5.5rem;
+            line-height: 5.5rem;
+        }
+        .delete i.iconfont {
+            font-size: 1em;
+            padding-right: 5px;
+        }
+    }
     .list-box-active:active {
         background-color: #EFEFEF;
     }
