@@ -270,7 +270,9 @@
 					"general/supList.html",
 					"general/schList.html",
 					"general/stuList.html",
-					"general/offVisList.html"
+					"general/offVisList.html",
+					"usersconfig/userCenter.html",
+					"img/icon/subscription.png"
 				],
 				"refer": [],
 				"priority": 0
@@ -281,7 +283,6 @@
 				"general/stuHomeVisitsInfo.html",
 				"lib/plugins/css/tabs.css",
 				"pro.txt",
-				"usersconfig/userCenter.html",
 				"js/plug/pay.js",
 				"lib/plugins/css/af.accordion.css",
 				"general/schEdit.html",
@@ -329,7 +330,6 @@
 				"img/icon/record-sm.png",
 				"css/scss/from.scss",
 				"img/no_function.png",
-				"img/icon/subscription.png",
 				"css/from.css.map",
 				"help/userconfig/setting.json",
 				"img/icon/logo.png",

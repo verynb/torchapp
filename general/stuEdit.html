@@ -7,18 +7,18 @@
 					<span class="title">姓名</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="name" type="text" name="name" required="required" placeholder="未填写" value="" />
+					<input class="editor-input fromfield" data-fromfield="name" type="text" name="name" required="required" data-warning="姓名不能为空" placeholder="未填写" value="" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
 		</div>
 		<div class="list-box">
-			<div class="list-defult-body box-h">
+			<div class="list-defult-body box-h" onclick="pageCom.chooseSex(this);">
 				<div class="box-flex">
 					<span class="title">性别</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="gender" type="text" name="gender" required="required" placeholder="未填写" value="" />
+					<input class="editor-input fromfield" data-fromfield="gender" type="text" name="gender" required="required" readonly="readonly" data-warning="性别不能为空" placeholder="未填写" value="" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
@@ -29,7 +29,7 @@
 					<span class="title">出生日期</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="birthday" type="text" name="birthday" required="required" placeholder="未填写" onclick="common.pickDateYMD(this);" placeholder="点此选择您的生日" />
+					<input class="editor-input fromfield" data-fromfield="birthday" type="text" name="birthday" required="required" data-warning="出生日期不能为空" onclick="common.pickDateYMD(this);" placeholder="点此选择您的生日" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
@@ -40,7 +40,7 @@
 					<span class="title">年龄</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="age" type="text" name="age" required="required" placeholder="未填写" value="" />
+					<input class="editor-input fromfield" data-fromfield="age" type="text" name="age" required="required" data-warning="年龄不能为空" placeholder="未填写" value="" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
@@ -51,7 +51,7 @@
 					<span class="title">省市区</span>
 				</div>
 				<div class="icon-text-box" id="sel_city">
-					<span class="nav fromfield set_city" data-unionchar="" data-fromfield="province,city,area">未选择</span>
+					<span class="nav fromfield set_city" data-unionchar=" " data-fromfield="province,city,area">未选择</span>
 					<input hidden="hidden" class="editor-input fromfield" data-fromfield="province" name="province" value="" />
 					<input hidden="hidden" class="editor-input fromfield" data-fromfield="city" name="city" value="" />
 					<input hidden="hidden" class="editor-input fromfield" data-fromfield="area" name="area" value="" />
@@ -67,7 +67,7 @@
 					<span class="title">详细地址</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="address" type="text" name="address" data-warning="请选择" placeholder="未填写" value="" />
+					<input class="editor-input fromfield" data-fromfield="address" type="text" name="address" data-warning="详细地址不能为空" placeholder="未填写" value="" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
@@ -87,13 +87,13 @@
 			</div>
 		</div>
 		<div class="list-box">
-			<div class="list-defult-body box-h">
+			<div class="list-defult-body box-h" data-tkey="schChooseR" data-dir="general" data-transition="slide" onclick="common.loadPage(this)">
 				<div class="box-flex">
 					<span class="title">学校</span>
 				</div>
-				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="schoolId" type="text" name="schoolId" readonly="readonly" placeholder="未填写" value="" />
-					<input class="editor-input fromfield" data-fromfield="schoolId" type="hidden" name="schoolId" readonly="readonly" placeholder="未填写" value="" />
+				<div class="icon-text-box">
+					<span class="nav fromfield schoolName" data-fromfield="schoolName">选择学校</span>
+					<input class="editor-input fromfield" data-fromfield="schoolId" type="hidden" name="schoolId" readonly="readonly" data-warning="请选择角色" placeholder="未填写 " value="" />
 				</div>
 				<div class="icon-next">
 					<i class="icon-img icon-img-next"></i>
@@ -117,7 +117,7 @@
 					<span class="title">当前资助人</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="" type="text" name="" readonly="readonly" placeholder="未填写" value="无" />
+					<input class="editor-input fromfield" data-fromfield="sponsorName" type="text" name="sponsorName" readonly="readonly" placeholder="未填写" value="无" />
 					<input class="editor-input fromfield" data-fromfield="sponsorId" type="hidden" name="sponsorId" placeholder="未填写" value="" />
 				</div>
 				<div class="icon-next"></div>
@@ -142,6 +142,7 @@
 		pageScrollToTop();
 		stuupdateId = $(obj).attr("data-id");
 		cityfunc.add("sel_city");
+
 		if(stuupdateId != 0) {
 			iniSupEditInfo();
 		} else {

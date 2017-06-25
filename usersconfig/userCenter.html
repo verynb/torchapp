@@ -4,162 +4,291 @@
 		<div class="box-flex" data-tkey="userPwd" data-dir="usersconfig" data-transition="fade" onclick="common.loadPage(this,false)"><span class="">修改密码</span></div>
 	</div>
 </div>
+<form>
+	<div id="userCenterData" class="list-panel datasource" data-datasource="">
+		<!--start-->
+		<div class="padding-top-1"></div>
+		<div class="list-box img-photo-box">
+			<div class="list-defult-body box-h boder-none">
+				<div class="box-flex">
+					<span class="title">名称</span>
+				</div>
+				<div class="">
+					<img class="header-picture fromfield" data-fromfield="photo" src="img/icon/defult-photo.png" alt="默认头像" onclick="common.pickImg(this)" />
+					<input class="editor-input fromfield" data-fromfield="photo" type="hidden" name="photo" value="" />
+				</div>
+				<div class="icon-next">
+					<i class="icon-img icon-img-next"></i>
+				</div>
+			</div>
+		</div>
+		<!--end-->
 
-<div class="list-panel">
-	<!--start-->
-	<div class="padding-top-1"></div>
-	<div class="list-box img-photo-box">
-		<div class="list-defult-body box-h boder-none">
-			<div class="box-flex">
-				<span class="title">名称</span>
+		<div class="padding-top-1"></div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">姓名</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="name" type="text" name="name" required="required" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
 			</div>
-			<div class="">
-				<img class="header-picture" src="img/icon/defult-photo.png" alt="默认头像" />
-				<input class="editor-input" type="hidden" name="photo" required="required" data-warning="名称长度必须为1~5个字符" placeholder="未填写 " value="" />
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">网名</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="netName" type="text" name="netName" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
 			</div>
-			<div class="icon-next">
-				<i class="icon-img icon-img-next"></i>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h">
+				<div class="box-flex">
+					<span class="title">年龄</span>
+				</div>
+				<div class="text-input-box">
+					<!--<input class="editor-input fromfield" type="text" name="birthday" data-minDate="1970-01-01" readonly="readonly" onclick="common.pickDateYMD(this);" placeholder="未填写" value="" />-->
+					<input class="editor-input fromfield" data-fromfield="age" type="number" name="age" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box hidden isrole">
+			<div class="list-defult-body box-h">
+				<div class="box-flex">
+					<span class="title dataRoleName">角色</span>
+				</div>
+				<div class="icon-text-box">
+					<span class="nav fromfield roleName" data-fromfield="roleName">请选择角色</span>
+					<input class="editor-input fromfield" data-fromfield="roleName" type="hidden" name="roleName" required="required" readonly="readonly" data-warning="请选择角色" placeholder="未填写 " value="" />
+					<input class="editor-input fromfield" data-fromfield="roleId" type="hidden" name="roleId" value="" />
+				</div>
+			</div>
+		</div>
+		<div class="list-box hidden isshool">
+			<div class="list-defult-body box-h boder-none">
+				<div class="box-flex">
+					<span class="title dataRoleName">学校</span>
+				</div>
+				<div class="icon-text-box">
+					<span class="nav fromfield schoolName" data-fromfield="schoolName">请选择角色</span>
+					<input class="editor-input fromfield" data-fromfield="schoolIds" type="hidden" name="schoolIds" readonly="readonly" data-warning="请选择角色" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next">
+					<i class="icon-img icon-img-next"></i>
+				</div>
+			</div>
+		</div>
+		<div class="padding-top-1"></div>
+		<div class="list-box hidden">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">密码</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="password" type="text" name="password" data-check="^[0-9A-Za-z]{6,}$" data-warning="密码不能为空" placeholder="未填写" data-warning-check="密码至少为6位" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">邮箱</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="email" type="text" name="email" data-check="^\w+([-+.]\w+)*@\w+([-.]\\w+)*\.\w+([-.]\w+)*$" data-warning-check="邮箱格式不正确" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">QQ</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="qq" type="text" name="qq" data-check="^[0-9]*$" data-warning-check="qq账号格式不正确" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">电话</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="mobile" type="text" name="mobile" required="required" data-warning="请选择" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">省市区</span>
+				</div>
+				<div class="icon-text-box " id="sel_city">
+					<span class="nav fromfield set_city" data-unionchar=" " data-fromfield="province,city,area">未选择</span>
+					<input hidden="hidden" class="editor-input fromfield" data-fromfield="province" name="province" value="" />
+					<input hidden="hidden" class="editor-input fromfield" data-fromfield="city" name="city" value="" />
+					<input hidden="hidden" class="editor-input fromfield" data-fromfield="area" name="area" value="" />
+				</div>
+				<div class="icon-next">
+					<i class="icon-img icon-img-next"></i>
+				</div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">详细地址</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="address" type="text" name="address" data-warning="请选择" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h boder-none">
+				<div class="box-flex">
+					<span class="title">加入时间</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield " data-fromfield="joinTime" type="text" name="joinTime" readonly="readonly" onclick="common.pickDateYMD(this);" placeholder="未加入" value="" />
+				</div>
+				<div class="icon-next"></div>
 			</div>
 		</div>
 	</div>
-	<!--end-->
-	<div class="padding-top-1"></div>
-	<div class="list-box">
-		<div class="list-defult-body box-h ">
-			<div class="box-flex">
-				<span class="title">姓名</span>
-			</div>
-			<div class="text-input-box">
-				<input class="editor-input" type="text" name="name" required="required" data-warning="名称长度必须为1~5个字符" placeholder="未填写 " value="" />
-			</div>
-			<div class="icon-next"></div>
-		</div>
-	</div>
-	<div class="list-box">
-		<div class="list-defult-body box-h ">
-			<div class="box-flex">
-				<span class="title">网名</span>
-			</div>
-			<div class="text-input-box">
-				<input class="editor-input" type="text" name="netName" required="required" data-warning="名称长度必须为1~5个字符" placeholder="未填写 " value="" />
-			</div>
-			<div class="icon-next"></div>
-		</div>
-	</div>
-	<div class="list-box">
-		<div class="list-defult-body box-h">
-			<div class="box-flex">
-				<span class="title">年龄</span>
-			</div>
-			<div class="text-input-box">
-				<input class="editor-input" type="text" name="birthday" data-minDate="1970-01-01" readonly="readonly" onclick="common.pickDateYMD(this);" placeholder="未填写" value="" />
-			</div>
-			<div class="icon-next"></div>
-		</div>
-	</div>
-	<div class="list-box">
-		<div class="list-defult-body box-h boder-none">
-			<div class="box-flex">
-				<span class="title">角色</span>
-			</div>
-			<div class="text-input-box">
-				<input class="editor-input" type="text" name="roleId" required="required" readonly="readonly" data-warning="名称长度必须为1~5个字符" placeholder="未填写 " value="" />
-			</div>
-			<div class="icon-next">
-				<i class="icon-img icon-img-next"></i>
-			</div>
-		</div>
-	</div>
-	<div class="padding-top-1"></div>
-	<div class="list-box">
-		<div class="list-defult-body box-h ">
-			<div class="box-flex">
-				<span class="title">邮箱</span>
-			</div>
-			<div class="text-input-box">
-				<input class="editor-input" type="text" name="email" data-check="^\w+([-+.]\w+)*@\w+([-.]\\w+)*\.\w+([-.]\w+)*$" data-warning-check="邮箱格式不正确" placeholder="未填写 " value="" />
-			</div>
-			<div class="icon-next"></div>
-		</div>
-	</div>
-	<div class="list-box">
-		<div class="list-defult-body box-h ">
-			<div class="box-flex">
-				<span class="title">QQ</span>
-			</div>
-			<div class="text-input-box">
-				<input class="editor-input" type="text" name="qq" data-check="^[0-9]*$" data-warning-check="qq账号格式不正确" placeholder="未填写 " value="" />
-			</div>
-			<div class="icon-next"></div>
-		</div>
-	</div>
-	<div class="list-box">
-		<div class="list-defult-body box-h ">
-			<div class="box-flex">
-				<span class="title">电话</span>
-			</div>
-			<div class="text-input-box">
-				<input class="editor-input" type="text" name="mobile" required="required" data-warning="名称长度必须为1~5个字符" placeholder="未填写 " value="" />
-			</div>
-			<div class="icon-next"></div>
-		</div>
-	</div>
-	<div class="list-box">
-		<div class="list-defult-body box-h ">
-			<div class="box-flex">
-				<span class="title">省市区</span>
-			</div>
-			<div class="icon-text-box">
-				<span class="nav">四川省成都市</span>
-				<input hidden="hidden" name="province" readonly="readonly" />
-				<input hidden="hidden" name="city" readonly="readonly" />
-			</div>
-			<div class="icon-next">
-				<i class="icon-img icon-img-next"></i>
-			</div>
-		</div>
-	</div>
-	<div class="list-box">
-		<div class="list-defult-body box-h ">
-			<div class="box-flex">
-				<span class="title">详细地址</span>
-			</div>
-			<div class="text-input-box">
-				<input class="editor-input" type="text" name="address" required="required" data-warning="名称长度必须为1~5个字符" placeholder="未填写 " value="" />
-			</div>
-			<div class="icon-next"></div>
-		</div>
-	</div>
-	<div class="list-box">
-		<div class="list-defult-body box-h boder-none">
-			<div class="box-flex">
-				<span class="title">加入时间</span>
-			</div>
-			<div class="text-input-box">
-				<input class="editor-input" type="text" name="joinTime" readonly="readonly" placeholder="未加入" value="" />
-			</div>
-			<div class="icon-next"></div>
-		</div>
-	</div>
-</div>
+</form>
 
 <script type="text/javascript">
+	var userIdCenter = null,
+		userTypeCenter = null,
+		userRoleCenter = null;
+
 	function loaduserCenter(obj) {
-		userCenterFooter();
+		cityfunc.add("sel_city");
+		userIdCenter = window.localStorage.getItem(G_COMKEY + ".userId");
+		userTypeCenter = window.localStorage.getItem(G_COMKEY + ".userType");
+		userRoleCenter = window.localStorage.getItem(G_COMKEY + ".role");
+		userRoleCenter = JSON.parse(userRoleCenter);
+		if(userTypeCenter == 0) {
+			initVolEditInfouserCenter();
+			$("#userCenter .isrole").removeClass("hidden")
+			if(userRoleCenter.roleCode == "teacher") {
+				$("#userCenter .isshool").removeClass("hidden")
+			}
+		} else if(userTypeCenter == 1) {
+			iniSupEditInfouserCenter();
+		}
 	}
 
-	function userCenterFooter() {
-		var btuHtml = '';
-		var jsondata = {};
-		btuHtml += '<div class="footerBtu bg-color-brown" onclick="userCenterFooterFunc(this)">';
-		btuHtml += '<a class="all userCenter-save" href="javascript:void(0);">保存</a>';
-		btuHtml += '</div>';
-		jsondata.container = 'userCenter';
-		jsondata.buttonHtml = btuHtml;
-		common.commonFooterBtu(jsondata);
+	function initVolEditInfouserCenter() {
+		ajaxFuncs.get({
+			urlname: "/api/user/volunteer/" + userIdCenter,
+			funcs: {
+				funcSuccessful: function(data) {
+					var btuHtml = '';
+					btuHtml += '<div class="footerBtu bg-color-brown" onclick="volEditFooterFuncPutuserCenter(this)">';
+					btuHtml += '<a class="all userCenter-save" href="javascript:void(0);">保存</a>';
+					btuHtml += '</div>';
+					loadData.load({
+						data: data,
+						container: "userCenter",
+						readOnly: false,
+						buttons: btuHtml,
+						barbutton: true,
+						callback: function() {}
+					});
+					if(data.roleId == 6) {
+						$("#userCenter .isshool").removeClass("hidden");
+						if(data.schools.length != 0) {
+							var schoolsid = [];
+							var schoolsname = [];
+							for(var i = 0; i < data.schools.length; i++) {
+								schoolsid.push(data.schools[i].id);
+								schoolsname.push(data.schools[i].schoolName);
+							}
+							$("#userCenter .schoolName").html(schoolsname.join(','));
+							$("#userCenter input[name='schoolIds']").val(schoolsid.join(','));
+						}
+					}
+				}
+			}
+		});
 	}
 
-	function userCenterFooterFunc(obj) {
+	function volEditFooterFuncPutuserCenter(obj) {
+		var params = common.serializeToJson("#userCenter form");
+		if(!common.validate("#userCenter form", obj)) {
+			return false;
+		} else {
+			var schoolIds = params.schoolIds;
+			params.schoolIds = schoolIds.split(',');
+			params.id = userIdCenter;
+			ajaxFuncs.put({
+				clickobj: obj,
+				urlname: "/api/user/volunteer",
+				params: params,
+				funcs: {
+					funcSuccessful: function(data) {
+						common.toast("编辑成功");
+						$.ui.goBack();
+					}
+				}
+			});
+		}
+	}
 
+	function iniSupEditInfouserCenter() {
+		ajaxFuncs.get({
+			urlname: "/api/user/sponsor/" + userIdCenter,
+			funcs: {
+				funcSuccessful: function(data) {
+					var btuHtml = '';
+					btuHtml += '<div class="footerBtu bg-color-brown" onclick="supEditFooterFuncPutuserCenter(this)">';
+					btuHtml += '<a class="all userCenter-save" href="javascript:void(0);">保存</a>';
+					btuHtml += '</div>';
+					loadData.load({
+						data: data,
+						container: "userCenter",
+						readOnly: false,
+						buttons: btuHtml,
+						barbutton: true,
+						callback: function() {}
+					});
+				}
+			}
+		});
+	}
+
+	function supEditFooterFuncPutuserCenter(obj) {
+		var params = common.serializeToJson("#userCenter form");
+		if(!common.validate("#userCenter form", obj)) {
+			return false;
+		} else {
+			params.id = userIdCenter;
+			ajaxFuncs.put({
+				clickobj: obj,
+				urlname: "/api/user/sponsor",
+				params: params,
+				funcs: {
+					funcSuccessful: function(data) {
+						common.toast("编辑成功");
+						$.ui.goBack();
+					}
+				}
+			})
+		}
 	}
 </script>

@@ -1,0 +1,110 @@
+<div class="list-panel schChooseData">
+	<!--start-->
+	<div class="list-box">
+		<div class="list-defult-body box-h box-align">
+			<div class="box-flex" data-dir="general" data-tkey="stuView" data-transition="slide" onclick="common.loadPage(this);">
+				<span class="title-other">林晓婷</span>
+				<span class="subtitle-make">90分</span>
+			</div>
+			<div class="checkbox-box">
+				<label for="relEditcheckbox_0">
+					<input id="relEditcheckbox_0" type="checkbox" name="voice" value="0"  />
+					<span class="checkbox-btu"></span>
+				</label>
+			</div>
+		</div>
+	</div>
+	<!--end-->
+</div>
+
+<script type="text/javascript">
+	var oldschChoose = [];
+	var oldDiv = [];
+
+	function loadschChoose(obj) {
+		oldDiv = obj;
+		schChooseFooter();
+		schChooseinit(obj);
+		var oldschChooseval = $(obj).find("input[name='schoolIds']").val();
+		if(oldschChooseval != '') {
+			oldschChoose = oldschChooseval.split(",");
+		} else {
+			oldschChoose = [];
+		}
+		console.log(oldschChoose);
+	}
+
+	function schChooseFooter() {
+		var btuHtml = '';
+		var jsondata = {};
+		btuHtml += '<div class="footerBtu bg-color-brown" onclick="schChooseFooterFun(this)">';
+		btuHtml += '<a class="all schChoose-save" href="javascript:void(0);">确定</a>';
+		btuHtml += '</div>';
+		jsondata.container = 'schChoose';
+		jsondata.buttonHtml = btuHtml;
+		common.commonFooterBtu(jsondata);
+	}
+
+	function schChooseFooterFun(obj) {
+		var chooseLength = $("#schChoose .list-panel input[type='checkbox']:checked");
+		var chooseIdval = [];
+		var chooseNameval = [];
+		for(var k = 0; k < chooseLength.length; k++) {
+			chooseIdval.push($(chooseLength[k]).attr('data-id'));
+			chooseNameval.push($(chooseLength[k]).attr('data-name'));
+		}
+		$(oldDiv).find("input").val("").val(chooseIdval.join(','));
+		$(oldDiv).find("span.schoolName").html(chooseNameval.join(','));
+		$.ui.goBack();
+	}
+
+	function schChooseinit(obj) {
+		ajaxFuncs.get({
+			urlname: "/api/schools?pageSize=0&currentPage=0",
+			funcs: {
+				funcSuccessful: function(data) {
+					if(data.schools.length != 0) {
+						var html = '';
+						for(var i = 0; i < data.schools.length; i++) {
+							var ischeck = false;
+							html += '<div class="list-box">';
+							html += '<div class="list-defult-body box-h box-align">';
+							html += '<div class="box-flex">';
+							html += '<span class="title-other">' + data.schools[i].schoolName + '</span>';
+							html += '</div>';
+							html += '<div class="checkbox-box">';
+							html += '<label for="relEditcheckbox_' + data.schools[i].id + '">';
+							for(var j = 0; j < oldschChoose.length; j++) {
+								if(data.schools[i].id == oldschChoose[j]) {
+									html += '<input id="relEditcheckbox_' + data.schools[i].id + '" type="checkbox" name="school" data-name="' + data.schools[i].schoolName + '" data-id="' + data.schools[i].id + '"  checked="checked"  />';
+									ischeck = true;
+								}
+							}
+							if(!ischeck) {
+								html += '<input id="relEditcheckbox_' + data.schools[i].id + '" type="checkbox" name="school" data-name="' + data.schools[i].schoolName + '" data-id="' + data.schools[i].id + '"   />';
+							}
+							html += '<span class="checkbox-btu"></span>';
+							html += '</label>';
+							html += '</div>';
+							html += '</div>';
+							html += '</div>';
+						}
+						$("#schChoose .list-panel").empty().append(html);
+						$('#schChoose label').on('click', function() {
+							if($(this).find('input[type="checkbox"]').prop("checked")) {
+								$(this).find('input[type="checkbox"]').removeAttr('checked');
+							} else {
+								$(this).find('input[type="checkbox"]').attr('checked', 'checked');
+							}
+						});
+					} else {
+						common.handleDefaultPage({
+							type: 2
+						});
+					}
+				}
+			}
+		});
+
+	}
+</script>

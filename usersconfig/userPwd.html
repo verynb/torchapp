@@ -10,16 +10,16 @@
 		<div class="padding-top-1"></div>
 		<div class="row1">
 			<div class="rw1 ">
-				<input type="password" class="input-default icon-pwd boder-none" name="oldpwd" value="" required="required" placeholder="请输入旧密码" />
+				<input type="password" class="input-default icon-pwd boder-none" name="password" value="" required="required" placeholder="请输入旧密码" />
 			</div>
 		</div>
 		<div class="padding-top-1"></div>
 		<div class="row1">
 			<div class="rw1">
-				<input type="password" class="input-default icon-pwd" name="password" value="" required="required" data-check="^[0-9A-Za-z]{6,}$" data-warning="密码不能为空" data-warning-check="密码至少为6位" placeholder="请输入新密码" />
+				<input type="password" class="input-default icon-pwd" name="newPassword" value="" required="required" data-check="^[0-9A-Za-z]{6,}$" data-warning="密码不能为空" data-warning-check="密码至少为6位" placeholder="请输入新密码" />
 			</div>
 			<div class="rw2">
-				<input type="password" class="input-default icon-pwd" name="password" value="" required="required" data-check="^[0-9A-Za-z]{6,}$" data-warning="密码不能为空" data-warning-check="密码至少为6位" placeholder="请确认新密码" />
+				<input type="password" class="input-default icon-pwd" name="newPasswordTwo" value="" required="required" data-check="^[0-9A-Za-z]{6,}$" data-warning="密码不能为空" data-warning-check="密码至少为6位" placeholder="请确认新密码" />
 			</div>
 		</div>
 	</form>
@@ -42,17 +42,24 @@
 	}
 
 	function userPwdFooterFunc(obj) {
+		var params = common.serializeToJson("#userPwd .userPwdBody form");
 		if(!common.validate("#userPwd .userPwdBody form", obj)) {
 			return false;
 		} else {
-			var id =
-				ajaxFuncs.post({
-					urlname: "api/user/password/" + id,
-					params: params,
-					funcs: {
-						funcSuccessful: function(data) {}
+			if(params.newPassword != params.newPasswordTwo) {
+				common.toast("两次密码不一致");
+				$(obj).removeAttr("submited");
+				return false;
+			}
+			ajaxFuncs.put({
+				urlname: "/api/me/password",
+				params: params,
+				funcs: {
+					funcSuccessful: function(data) {
+						common.toast("修改成功");
 					}
-				});
+				}
+			});
 		}
 	}
 </script>

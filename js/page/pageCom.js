@@ -41,6 +41,25 @@
 					}
 				}
 			});
+		},
+		chooseSex: function() {
+			var title = "性别选择";
+			var buttons = [{
+				title: "男"
+			}, {
+				title: "女"
+			}];
+			plus.nativeUI.actionSheet({
+				title: title,
+				cancel: "取消",
+				buttons: buttons
+			}, function(selected) { /*actionSheet 按钮点击事件*/
+				var typeval = buttons[selected.index - 1].title;
+				var typeid = selected.index;
+				var container = "#" + $.ui.activeDiv.id;
+				$(container + " input[name='gender']").val(typeval);
+				$(container + " input[name='gender']").attr("readonly", "readonly");
+			});
 		}
 	};
 	window.pageCom = pageCom;

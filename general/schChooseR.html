@@ -1,0 +1,104 @@
+<div class="list-panel schChooseRData">
+	<!--start-->
+	<div class="list-box">
+		<div class="list-defult-body box-h box-align">
+			<div class="box-flex" data-dir="general" data-tkey="stuView" data-transition="slide" onclick="common.loadPage(this);">
+				<span class="title-other">林晓婷</span>
+				<span class="subtitle-make">90分</span>
+			</div>
+			<div class="radio-box">
+				<label for="schChooseRradio_0">
+					<input id="schChooseRradio_0" type="radio" name="voice" value="0"  />
+					<span class="radio-btu"></span>
+				</label>
+			</div>
+		</div>
+	</div>
+	<!--end-->
+</div>
+
+<script type="text/javascript">
+	var oldschChooseR = null;
+	var oldDivschChooseR = [];
+
+	function loadschChooseR(obj) {
+		oldDivschChooseR = obj;
+		schChooseRFooter();
+		schChooseRinit(obj);
+		oldschChooseR = $(obj).find("input[name='schoolId']").val();
+		console.log(oldschChooseR);
+	}
+
+	function schChooseRFooter() {
+		var btuHtml = '';
+		var jsondata = {};
+		btuHtml += '<div class="footerBtu bg-color-brown" onclick="schChooseRFooterFun(this)">';
+		btuHtml += '<a class="all schChooseR-save" href="javascript:void(0);">确定</a>';
+		btuHtml += '</div>';
+		jsondata.container = 'schChooseR';
+		jsondata.buttonHtml = btuHtml;
+		common.commonFooterBtu(jsondata);
+	}
+
+	function schChooseRFooterFun(obj) {
+		var chooseLength = $("#schChooseR .list-panel input[type='radio']:checked");
+		var chooseIdval = [];
+		var chooseNameval = [];
+		for(var k = 0; k < chooseLength.length; k++) {
+			chooseIdval.push($(chooseLength[k]).attr('data-id'));
+			chooseNameval.push($(chooseLength[k]).attr('data-name'));
+		}
+		$(oldDivschChooseR).find("input").val("").val(chooseIdval.join(','));
+		$(oldDivschChooseR).find("span.schoolName").html(chooseNameval.join(','));
+		$.ui.goBack();
+	}
+
+	function schChooseRinit(obj) {
+		ajaxFuncs.get({
+			urlname: "/api/schools?pageSize=0&currentPage=0",
+			funcs: {
+				funcSuccessful: function(data) {
+					if(data.schools.length != 0) {
+						var html = '';
+						for(var i = 0; i < data.schools.length; i++) {
+							var ischeck = false;
+							html += '<div class="list-box">';
+							html += '<div class="list-defult-body box-h box-align">';
+							html += '<div class="box-flex">';
+							html += '<span class="title-other">' + data.schools[i].schoolName + '</span>';
+							html += '</div>';
+							html += '<div class="radio-box">';
+							html += '<label for="schChooseRradio_' + data.schools[i].id + '">';
+
+							if(oldschChooseR != null && data.schools[i].id == oldschChooseR) {
+								html += '<input id="schChooseRradio_' + data.schools[i].id + '" type="radio" name="school" data-name="' + data.schools[i].schoolName + '" data-id="' + data.schools[i].id + '"  checked="checked"  />';
+								ischeck = true;
+							}
+							if(!ischeck) {
+								html += '<input id="schChooseRradio_' + data.schools[i].id + '" type="radio" name="school" data-name="' + data.schools[i].schoolName + '" data-id="' + data.schools[i].id + '"   />';
+							}
+							html += '<span class="radio-btu"></span>';
+							html += '</label>';
+							html += '</div>';
+							html += '</div>';
+							html += '</div>';
+						}
+						$("#schChooseR .list-panel").empty().append(html);
+						$('#schChooseR label').on('click', function() {
+							if($(this).find('input[type="radio"]').prop("checked")) {
+								$(this).find('input[type="radio"]').removeAttr('checked');
+							} else {
+								$(this).find('input[type="radio"]').attr('checked', 'checked');
+							}
+						});
+					} else {
+						common.handleDefaultPage({
+							type: 2
+						});
+					}
+				}
+			}
+		});
+
+	}
+</script>

@@ -69,12 +69,13 @@
 			</div>
 		</div>
 		<div class="list-box hidden isshool">
-			<div class="list-defult-body box-h boder-none">
+			<div class="list-defult-body box-h boder-none" data-tkey="schChoose" data-dir="general" data-transition="slide" onclick="common.loadPage(this)">
 				<div class="box-flex">
 					<span class="title dataRoleName">学校</span>
 				</div>
-				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="school" type="text" name="school" readonly="readonly" data-warning="请选择角色" placeholder="未填写 " value="" />
+				<div class="icon-text-box">
+					<span class="nav fromfield schoolName" data-fromfield="schoolName">选择学校</span>
+					<input class="editor-input fromfield" data-fromfield="schoolIds" type="hidden" name="schoolIds" readonly="readonly" data-warning="请选择角色" placeholder="未填写 " value="" />
 				</div>
 				<div class="icon-next">
 					<i class="icon-img icon-img-next"></i>
@@ -159,7 +160,7 @@
 					<span class="title">加入时间</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input fromfield " data-fromfield="joinTime" type="text" name="joinTime" readonly="readonly" placeholder="未加入" value="" />
+					<input class="editor-input fromfield " data-fromfield="joinTime" type="text" name="joinTime" readonly="readonly" onclick="common.pickDateYMD(this);" placeholder="未加入" value="" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
@@ -207,8 +208,21 @@
 						readOnly: false,
 						buttons: btuHtml,
 						barbutton: true,
-						callback: function() {}
+						callback: function(data) {}
 					});
+					if(data.roleId == 6) {
+						$("#volEdit .isshool").removeClass("hidden");
+						if(data.schools.length != 0) {
+							var schoolsid = [];
+							var schoolsname = [];
+							for(var i = 0; i < data.schools.length; i++) {
+								schoolsid.push(data.schools[i].id);
+								schoolsname.push(data.schools[i].schoolName);
+							}
+							$("#volEdit .schoolName").html(schoolsname.join(','));
+							$("#volEdit input[name='schoolIds']").val(schoolsid.join(','));
+						}
+					}
 				}
 			}
 		});
@@ -219,6 +233,8 @@
 		if(!common.validate("#volEdit form", obj)) {
 			return false;
 		} else {
+			var schoolIds = params.schoolIds;
+			params.schoolIds = schoolIds.split(',');
 			params.id = updateId;
 			ajaxFuncs.put({
 				clickobj: obj,

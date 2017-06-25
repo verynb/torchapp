@@ -67,7 +67,9 @@
 			"general/supList.html",
 			"general/schList.html",
 			"general/stuList.html",
-			"general/offVisList.html"
+			"general/offVisList.html",
+			"usersconfig/userCenter.html",
+			"img/icon/subscription.png"
 		]
 	}
 }
