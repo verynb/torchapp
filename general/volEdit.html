@@ -257,6 +257,8 @@
 		if(!common.validate("#volEdit form", obj)) {
 			return false;
 		} else {
+			var schoolIds = params.schoolIds;
+			params.schoolIds = schoolIds.split(',');
 			ajaxFuncs.post({
 				clickobj: obj,
 				urlname: "/api/user/volunteer",
