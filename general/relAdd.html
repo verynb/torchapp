@@ -1,0 +1,112 @@
+<div class="list-panel">
+	<!--start-->
+	<div class="list-box">
+		<div class="list-defult-body box-h box-align">
+			<div class="box-flex" data-dir="general" data-tkey="stuView" data-transition="slide" onclick="common.loadPage(this);">
+				<span class="title-other">林晓婷</span>
+				<span class="subtitle-make">90分</span>
+			</div>
+			<div class="checkbox-box">
+				<label for="relAddcheckbox_0">
+					<input id="relAddcheckbox_0" type="checkbox" name="voice" value="0"  />
+					<span class="checkbox-btu"></span>
+				</label>
+			</div>
+		</div>
+	</div>
+	<!--end-->
+	<div class="list-box">
+		<div class="list-defult-body box-h box-align">
+			<div class="box-flex" data-dir="general" data-tkey="stuView" data-transition="slide" onclick="common.loadPage(this);">
+				<span class="title-other">王菲</span>
+				<span class="subtitle-make">89分</span>
+			</div>
+			<div class="checkbox-box">
+				<label for="relAddcheckbox_1">
+					<input id="relAddcheckbox_1" type="checkbox" name="voice" value="0"  />
+					<span class="checkbox-btu"></span>
+				</label>
+			</div>
+		</div>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h box-align">
+			<div class="box-flex" data-dir="general" data-tkey="stuView" data-transition="slide" onclick="common.loadPage(this);">
+				<span class="title-other">欧阳娜娜</span>
+				<span class="subtitle-make">89分</span>
+			</div>
+			<div class="checkbox-box">
+				<label for="relAddcheckbox_1">
+					<input id="relAddcheckbox_1" type="checkbox" name="voice" value="0"  />
+					<span class="checkbox-btu"></span>
+				</label>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	function loadrelAdd(obj) {
+		initrelAdd();
+		relAddFooter();
+		$('#relAdd label').on('click', function() {
+			if($(this).find('input[type="checkbox"]').prop("checked")) {
+				$(this).find('input[type="checkbox"]').removeAttr('checked');
+			} else {
+				$(this).find('input[type="checkbox"]').attr('checked', 'checked');
+			}
+		});
+	}
+
+	function relAddFooter() {
+		var btuHtml = '';
+		var jsondata = {};
+		btuHtml += '<div class="footerBtu bg-color-brown" data-tkey="relMoney" data-dir="general" data-transition="slide" onclick="relAddFooterFunc(this)">';
+		btuHtml += '<a class="all relAdd-save" href="javascript:void(0);">确认信息</a>';
+		btuHtml += '</div>';
+		jsondata.container = 'relAdd';
+		jsondata.buttonHtml = btuHtml;
+		common.commonFooterBtu(jsondata);
+	}
+
+	function relAddFooterFunc(obj) {
+		common.loadPage($(obj));
+	}
+
+	function initrelAdd() {
+		ajaxFuncs.get({
+			urlname: "/api/students?pageSize=0&currentPage=0&province=" + relBatchData.province + "city&=" + relBatchData.city,
+			funcs: {
+				funcSuccessful: function(data) {
+					var html = "";
+					if(data.length != 0) {
+						for(var i = 0; i < data.length; i++) {
+							html = '<div class="list-box">';
+							html = '<div class="list-defult-body box-h box-align">';
+							html = '<div class="box-flex" data-id="' + data[i].id + '" data-dir="general" data-tkey="stuView" data-transition="slide" onclick="common.loadPage(this);">';
+							html = '<span class="title-other">' + data[i].name + '</span>';
+							//							html = '<span class="subtitle-make">89分</span>';
+							html = '</div>';
+							html = '<div class="checkbox-box">';
+							html = '<label for="relAddcheckbox_' + data[i].id + '">';
+							html = '<input id="relAddcheckbox_' + data[i].id + '" type="checkbox" name="stulist"  />';
+							html = '<span class="checkbox-btu"></span>';
+							html = '</label>';
+							html = '</div>';
+							html = '</div>';
+							html = '</div>';
+						}
+						$("#relAdd .list-panel").empty().append(html);
+					} else {
+						common.handleDefaultPage({
+							type: 2
+						});
+					}
+				}
+			}
+		})
+	}
+
+	function relAddHtml() {
+
+	}
+</script>

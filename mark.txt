@@ -1,0 +1,108 @@
+/**
+* 姓名
+*/
+private String name;
+
+/**
+* 性别
+*/
+private String gender;
+
+/**
+* 出生日期
+*/
+private String birthday;
+/**
+*区
+*/
+private Integer age;
+/**
+* 省份
+*/
+private String province;
+
+/**
+* 市
+*/
+private String city;
+/**
+*区
+*/
+private String area;
+/**
+* 详细地址
+*/
+private String address;
+//身份证
+private String identityCard;
+//学校ID
+private Long schoolId;
+//年级
+private String grade;
+//当前资助人
+private Long sponsorId;
+
+/**
+* 0.正常
+* 1.结案
+* 2.冻结
+* 3.预发布
+* 4.已发布
+* 5.预订
+* 6.已结队
+*/
+private Integer status;
+
+
+/* = -------------------------------- = */
+/**
+* 发布批次ID
+*/
+private Long batchId;
+/**
+* 学生ID
+*/
+private Long studentId;
+/**
+* 申请表图片
+*/
+private String  applicationForm;
+
+//学生本人
+private  String studentPhoto;
+
+//家庭成员
+private String familyPhoto;
+
+//家庭环境
+private String homePhoto;
+
+//互动照片
+private String InteractivePhoto;
+
+//家访内容
+private String visitInfo;
+
+/* = ----------------------------------- = */
+/**
+* 审核项ID
+*/
+private Long auditId;
+/**
+*选择项
+*/
+private String options;
+/**
+* 分数
+*/
+private double scores;
+
+/* = --------------------------------------------- = */
+/**
+* 发布批次状态
+* 0.创建
+* 1.初始
+* 2.发布
+* 3.认捐中
+* 4.认捐完成
+*/
