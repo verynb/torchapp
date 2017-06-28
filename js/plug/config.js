@@ -6,7 +6,7 @@ G_CHECKVERONSTART = false; //0打开应用即检测，1登录后检测
 G_BINDPUSH = false; /*是否在登录成功绑定webSocket */
 G_OSTYPE = 0; /*安装平台类型：1安卓，2iOS*/
 G_LOGINTYPE = 1; /* 登录类型  1手动登录，2自动登录 */
-G_LOCALDB = "1.21"; /*数据库版本，修改数据库后需要修改版本号*/
+G_LOCALDB = "1.23"; /*数据库版本，修改数据库后需要修改版本号*/
 G_APPDOWNURL = "https://itunes.apple.com/us/app/id1232989165?mt=8"; /*输入当前APP 在 appstore的下载地址的URL*/
 G_SERVERS = {
 	"1": {

@@ -60,7 +60,6 @@
 		<script type="text/javascript" src="./lib/ui/transitions/slideDown.js"></script>
 		<script type="text/javascript" src="./lib/ui/transitions/slideUp.js"></script>
 
-		<!--<script type="text/javascript"  src="./js/plug/socket.io.js"></script>-->
 		<script type="text/javascript" src="./js/plug/html5sql.js"></script>
 		<script type="text/javascript" src="./js/plug/compatible.js"></script>
 		<script type="text/javascript" src="./js/plug/iscroll-probe.js"></script>
@@ -71,9 +70,9 @@
 		<script type="text/javascript" src="./js/plug/fastclick.js"></script>
 		<script type="text/javascript" src="./lib/js/loaddata.js"></script>
 		<!--<script type="text/javascript"  src="./js/plug/pageRoute.js"></script>-->
-		<script type="text/javascript" src="./js/plug/localdb_localLife.js"></script>
+		<script type="text/javascript" src="./js/plug/localdb_stu.js"></script>
+		<script type="text/javascript" src="./js/plug/localdb_sta.js"></script>
 		<script type="text/javascript" src="./js/plug/refreshAndPage.js"></script>
-		<!--<script type="text/javascript"  src="./js/plug/push.js"></script>-->
 		<script type="text/javascript" src="./js/plug/reset_fontsize.js"></script>
 		<script type="text/javascript" src="./js/plug/msgCode.js"></script>
 		<script type="text/javascript" src="./js/plug/business.js"></script>
@@ -193,6 +192,9 @@
 				</div>
 				<div title='发布批次' id="relBatch" class="panel" data-footer="" data-nopushhistory="0">
 					<div id="relBatchContent"></div>
+				</div>
+				<div title='发布编辑' id="relAdd" class="panel" data-footer="" data-nopushhistory="0">
+					<div id="relAddContent"></div>
 				</div>
 				<div title='发布编辑' id="relEdit" class="panel" data-footer="" data-nopushhistory="0">
 					<div id="relEditContent"></div>
@@ -315,7 +317,7 @@
 				G_PLUSUIREADY++;
 
 				common.checkNetwork(); //初始化检测网络状态 xcl-2017/5/8
-				localLife.createDB();
+				localStu.createDB();
 				common.silenceLogin();
 				common.backOrExit();
 			}

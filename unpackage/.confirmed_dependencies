@@ -69,7 +69,10 @@
 			"general/stuList.html",
 			"general/offVisList.html",
 			"usersconfig/userCenter.html",
-			"img/icon/subscription.png"
+			"img/icon/subscription.png",
+			"general/relList.html",
+			"js/plug/localdb_stu.js",
+			"js/plug/localdb_sta.js"
 		]
 	}
 }

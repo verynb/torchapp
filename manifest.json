@@ -272,7 +272,10 @@
 					"general/stuList.html",
 					"general/offVisList.html",
 					"usersconfig/userCenter.html",
-					"img/icon/subscription.png"
+					"img/icon/subscription.png",
+					"general/relList.html",
+					"js/plug/localdb_stu.js",
+					"js/plug/localdb_sta.js"
 				],
 				"refer": [],
 				"priority": 0
@@ -326,7 +329,6 @@
 				"js/plug/pageRoute.js",
 				"js/plug/socket.io.js",
 				"img/no_order.png",
-				"general/relList.html",
 				"img/icon/record-sm.png",
 				"css/scss/from.scss",
 				"img/no_function.png",

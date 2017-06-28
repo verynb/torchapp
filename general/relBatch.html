@@ -1,59 +1,50 @@
-<div class="list-panel">
-	<div class="padding-top-1"></div>
-	<div class="list-box">
-		<div class="list-defult-body box-h ">
-			<div class="box-flex">
-				<span class="title">发布批次</span>
-			</div>
-			<div class="text-input-box">
-				<input class="editor-input" type="text" name="batch" required="required" placeholder="未填写 " value="" />
-			</div>
-			<div class="icon-next"></div>
-		</div>
-	</div>
-
-	<div class="list-box">
-		<div class="list-defult-body box-h ">
-			<div class="box-flex">
-				<span class="title">省市</span>
-			</div>
-			<div class="icon-text-box">
-				<span class="nav">四川省成都市</span>
-				<input hidden="hidden" name="province" readonly="readonly" />
-				<input hidden="hidden" name="city" readonly="readonly" />
-			</div>
-			<div class="icon-next">
-				<i class="icon-img icon-img-next"></i>
+<form>
+	<div class="list-panel">
+		<div class="padding-top-1"></div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">发布批次</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input" type="text" name="batchNo" required="required" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
 			</div>
 		</div>
-	</div>
 
-	<div class="list-box">
-		<div class="list-defult-body box-h ">
-			<div class="box-flex">
-				<span class="title">学校</span>
-			</div>
-			<div class="icon-text-box">
-				<span class="nav">成都实验中学</span>
-				<input hidden="hidden" name="province" readonly="readonly" />
-			</div>
-			<div class="icon-next">
-				<i class="icon-img icon-img-next"></i>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">省市</span>
+				</div>
+				<div class="icon-text-box">
+					<div class="icon-text-box " id="sel_city">
+						<span class="nav fromfield sel_city" data-unionchar=" " data-fromfield="province,city">未选择</span>
+						<input hidden="hidden" class="editor-input fromfield" required="required" data-warning="省市不能为空" data-fromfield="province" name="province" value="" />
+						<input hidden="hidden" class="editor-input fromfield" required="required" data-warning="省市不能为空" data-fromfield="city" name="city" value="" />
+					</div>
+				</div>
+				<div class="icon-next">
+					<i class="icon-img icon-img-next"></i>
+				</div>
 			</div>
 		</div>
 	</div>
-
-</div>
+</form>
 
 <script type="text/javascript">
+	var relBatchData = {};
+
 	function loadrelBatch(obj) {
 		relBatchFooter();
+		cityfunc.addTwo("sel_city");
 	}
 
 	function relBatchFooter() {
 		var btuHtml = '';
 		var jsondata = {};
-		btuHtml += '<div class="footerBtu bg-color-brown" data-tkey="relEdit" data-dir="general" data-transition="slide" onclick="relBatchFooterFunc(this)">';
+		btuHtml += '<div class="footerBtu bg-color-brown" data-tkey="relAdd" data-dir="general" data-transition="slide" onclick="relBatchFooterFunc(this)">';
 		btuHtml += '<a class="all relBatch-save" href="javascript:void(0);">保存并选择学生</a>';
 		btuHtml += '</div>';
 		jsondata.container = 'relBatch';
@@ -62,6 +53,26 @@
 	}
 
 	function relBatchFooterFunc(obj) {
-		common.loadPage($(obj));
+		debugger
+		var params = common.serializeToJson("#relBatch form");
+		if(!common.validate("#relBatch form", obj)) {
+			return false;
+		} else {
+			ajaxFuncs.post({
+				clickobj: obj,
+				urlname: "/api/release",
+				params: params,
+				funcs: {
+					funcSuccessful: function(data) {
+						relBatchData.id = data.id;
+						relBatchData.province = params.province;
+						relBatchData.city = params.city;
+						common.loadPage($(obj));
+
+					}
+				}
+			})
+		}
+
 	}
 </script>

@@ -46,6 +46,7 @@
 </div>
 <script type="text/javascript">
 	function loadrelEdit(obj) {
+		initrelEdit();
 		relEditFooter();
 		$('#relEdit label').on('click', function() {
 			if($(this).find('input[type="checkbox"]').prop("checked")) {
@@ -69,5 +70,43 @@
 
 	function relEditFooterFunc(obj) {
 		common.loadPage($(obj));
+	}
+
+	function initrelEdit() {
+		ajaxFuncs.get({
+			urlname: "/api/students?pageSize=0&currentPage=0&province=" + relBatchData.province + "city&=" + relBatchData.city,
+			funcs: {
+				funcSuccessful: function(data) {
+					var html = "";
+					if(data.length != 0) {
+						for(var i = 0; i < data.length; i++) {
+							html = '<div class="list-box">';
+							html = '<div class="list-defult-body box-h box-align">';
+							html = '<div class="box-flex" data-id="' + data[i].id + '" data-dir="general" data-tkey="stuView" data-transition="slide" onclick="common.loadPage(this);">';
+							html = '<span class="title-other">' + data[i].name + '</span>';
+							//							html = '<span class="subtitle-make">89分</span>';
+							html = '</div>';
+							html = '<div class="checkbox-box">';
+							html = '<label for="relEditcheckbox_' + data[i].id + '">';
+							html = '<input id="relEditcheckbox_' + data[i].id + '" type="checkbox" name="stulist"  />';
+							html = '<span class="checkbox-btu"></span>';
+							html = '</label>';
+							html = '</div>';
+							html = '</div>';
+							html = '</div>';
+						}
+						$("#relEdit .list-panel").empty().append(html);
+					} else {
+						common.handleDefaultPage({
+							type: 2
+						});
+					}
+				}
+			}
+		})
+	}
+
+	function relEditHtml() {
+
 	}
 </script>

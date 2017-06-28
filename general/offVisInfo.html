@@ -1,64 +1,71 @@
-<div class="row1">
-	<textarea class="visInfo" placeholder="请录入家访内容..."></textarea>
-	<div class="rw1 box-h">
-		<div class="r1">
+<form>
+	<div class="row1">
+		<textarea class="visInfo" placeholder="请录入家访内容..." name="visitInfo"></textarea>
+		<div class="rw1 box-h">
+			<div class="r1">
+				<img src="img/icon/camera.png" alt="照相" />
+				<input type="hidden" name="applicationForm" placeholder="申请表图片" />
+			</div>
+			<div class="r2 box-flex">
+				<span>（申请表含有姓名及照片）</span>
+			</div>
+		</div>
+	</div>
+	<div class="padding-top-1"></div>
+	<div class="row2 box-h">
+		<div class="rw1">
+			<img src="img/icon/camera.png" alt="照相" />
+			<input type="hidden" name="studentPhoto" placeholder="学生本人" />
+		</div>
+		<div class="rw2 box-flex">
+			<span>（受助学生本人照片）</span>
+		</div>
+	</div>
+	<div class="padding-top-1"></div>
+	<div class="row2 box-h">
+		<div class="rw1">
 			<img src="img/icon/camera.png" alt="照相" />
 		</div>
-		<div class="r2 box-flex">
-			<span>（申请表含有姓名及照片）</span>
+		<div class="rw2 box-flex">
+			<span>（家庭成员照片）</span>
+			<input type="hidden" name="familyPhoto" placeholder="家庭成员" />
 		</div>
 	</div>
-</div>
-<div class="padding-top-1"></div>
-<div class="row2 box-h">
-	<div class="rw1">
-		<img src="img/icon/camera.png" alt="照相" />
+	<div class="padding-top-1"></div>
+	<div class="row2 box-h">
+		<div class="rw1">
+			<img src="img/icon/camera.png" alt="照相" />
+			<input type="hidden" name="homePhoto" placeholder="家庭环境" />
+		</div>
+		<div class="rw2 box-flex">
+			<span>（家庭环境全景照片）</span>
+		</div>
 	</div>
-	<div class="rw2 box-flex">
-		<span>（受助学生本人照片）</span>
+	<div class="padding-top-1"></div>
+	<div class="row2 box-h">
+		<div class="rw1">
+			<img src="img/icon/camera.png" alt="照相" />
+			<input type="hidden" name="InteractivePhoto" placeholder="互动照片" />
+		</div>
+		<div class="rw2 box-flex">
+			<span>（家庭环境特写照片）</span>
+		</div>
 	</div>
-</div>
-<div class="padding-top-1"></div>
-<div class="row2 box-h">
-	<div class="rw1">
-		<img src="img/icon/camera.png" alt="照相" />
+	<div class="padding-top-1"></div>
+	<div class="row2 box-h">
+		<!--暂无-->
+		<div class="rw1">
+			<img src="img/icon/camera.png" alt="照相" />
+			<input type="hidden" name="InteractivePhoto" placeholder="互动照片" />
+		</div>
+		<div class="rw2 box-flex">
+			<span>（义工与学生家庭互动照片）</span>
+		</div>
 	</div>
-	<div class="rw2 box-flex">
-		<span>（家庭成员照片）</span>
-	</div>
-</div>
-<div class="padding-top-1"></div>
-<div class="row2 box-h">
-	<div class="rw1">
-		<img src="img/icon/camera.png" alt="照相" />
-	</div>
-	<div class="rw2 box-flex">
-		<span>（家庭环境全景照片）</span>
-	</div>
-</div>
-<div class="padding-top-1"></div>
-<div class="row2 box-h">
-	<div class="rw1">
-		<img src="img/icon/camera.png" alt="照相" />
-	</div>
-	<div class="rw2 box-flex">
-		<span>（家庭环境特写照片）</span>
-	</div>
-</div>
-<div class="padding-top-1"></div>
-<div class="row2 box-h">
-	<div class="rw1">
-		<img src="img/icon/camera.png" alt="照相" />
-	</div>
-	<div class="rw2 box-flex">
-		<span>（义工与学生家庭互动照片）</span>
-	</div>
-</div>
-<div class="padding-top-1"></div>
-<div class="test-info">
-	<div class="test-title">审核标准</div>
-	<div class="test-list">
-		<form>
+	<div class="padding-top-1"></div>
+	<div class="test-info">
+		<div class="test-title">审核标准</div>
+		<div class="test-list">
 			<div class="test-item">
 				<div class="test-item-title">
 					1. 申请、评审与发放程序 1、国家奖（助）学金评审 是一项政策性和导向性很强的工作，涉及到广大学生 的切身利益。国家奖（助）学金每学年评定一次，必 须坚持公开、公平、公正的原则。
@@ -155,11 +162,9 @@
 					</div>
 				</div>
 			</div>
-
-		</form>
+		</div>
 	</div>
-</div>
-
+</form>
 <script type="text/javascript">
 	function loadoffVisInfo(obj) {
 		offVisInfoFooter();

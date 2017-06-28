@@ -52,9 +52,9 @@
 				</div>
 				<div class="icon-text-box" id="sel_city">
 					<span class="nav fromfield set_city" data-unionchar=" " data-fromfield="province,city,area">未选择</span>
-					<input hidden="hidden" class="editor-input fromfield" data-fromfield="province" name="province" value="" />
-					<input hidden="hidden" class="editor-input fromfield" data-fromfield="city" name="city" value="" />
-					<input hidden="hidden" class="editor-input fromfield" data-fromfield="area" name="area" value="" />
+					<input hidden="hidden" class="editor-input fromfield" required="required" data-warning="省市区不能为空" data-fromfield="province" name="province" value="" />
+					<input hidden="hidden" class="editor-input fromfield" required="required" data-warning="省市区不能为空" data-fromfield="city" name="city" value="" />
+					<input hidden="hidden" class="editor-input fromfield" required="required" data-warning="省市区不能为空" data-fromfield="area" name="area" value="" />
 				</div>
 				<div class="icon-next">
 					<i class="icon-img icon-img-next"></i>
@@ -67,7 +67,7 @@
 					<span class="title">详细地址</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="address" type="text" name="address" data-warning="详细地址不能为空" placeholder="未填写" value="" />
+					<input class="editor-input fromfield" data-fromfield="address" type="text" name="address" required="required" data-warning="详细地址不能为空" placeholder="未填写" value="" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
