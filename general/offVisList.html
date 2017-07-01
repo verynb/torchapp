@@ -1,6 +1,6 @@
 <div class="list-panel">
 	<!--start-->
-	<div class="list-box">
+	<!--<div class="list-box">
 		<div class="list-defult-body box-h box-align">
 			<div class="box-flex" data-dir="general" data-tkey="offVisInfo" data-transition="slide" onclick="common.loadPage(this);">
 				<span class="title-other">林晓婷</span>
@@ -10,12 +10,15 @@
 				<i class="icon-img icon-img-next"></i>
 			</div>
 		</div>
-	</div>
+	</div>-->
 	<!--end-->
 </div>
 <script type="text/javascript">
+	var isAllowed = true;
+
 	function loadoffVisList(obj) {
 		offVisListFooter();
+		localStu.selectAll(initOffVisList);
 	}
 
 	function offVisListFooter() {
@@ -30,6 +33,55 @@
 	}
 
 	function offVisListFooterFunc(obj) {
-		common.toast("提交家访资料，如果没有审核完毕的在点击的时候提交已录入完成部分学生");
+		if(isAllowed) {
+			localStu.selectAllTwo(saveAllData);
+		} else {
+			common.toast("还有学生没有进行家访，暂时不能上传");
+		}
+	}
+
+	function saveAllData(data) {
+		if(data.status == '1') {
+			for(var i = 0; i < data.list.length; i++) {
+
+			}
+		} else {
+
+		}
+	}
+
+	function initOffVisList(data) {
+		console.log(JSON.stringify(data));
+		if(data.status == 1) {
+			if(data.list.length != 0) {
+				var html = '';
+				for(var i = 0; i < data.list.length; i++) {
+					html += '<div class="list-box">';
+					html += '<div class="list-defult-body box-h box-align">';
+					html += '<div class="box-flex" data-status="' + data.list[i].status + '" data-batchId="' + data.list[i].batchId + '" data-stuid="' + data.list[i].studentId + '" data-dir="general" data-tkey="offVisInfo" data-transition="slide" onclick="common.loadPage(this);">';
+					html += '<span class="title-other">' + data.list[i].name + '</span>';
+					if(data.list[i].status != "" && data.list[i].status != "0") {
+						html += '<span class="subtitle-make">录入完成</span>';
+					} else {
+						isAllowed = false;
+					}
+					html += '</div>';
+					html += '<div class="icon-next">';
+					html += '<i class="icon-img icon-img-next"></i>';
+					html += '</div>';
+					html += '</div>';
+					html += '</div>';
+				}
+				$("#offVisList .list-panel").empty().append(html);
+			} else {
+				common.handleDefaultPage({
+					type: 2
+				});
+			}
+		} else {
+			common.handleDefaultPage({
+				type: 2
+			});
+		}
 	}
 </script>

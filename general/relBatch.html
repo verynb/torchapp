@@ -53,18 +53,18 @@
 	}
 
 	function relBatchFooterFunc(obj) {
-		debugger
 		var params = common.serializeToJson("#relBatch form");
 		if(!common.validate("#relBatch form", obj)) {
 			return false;
 		} else {
 			ajaxFuncs.post({
-				clickobj: obj,
+				clickobj: $(obj),
 				urlname: "/api/release",
 				params: params,
 				funcs: {
 					funcSuccessful: function(data) {
-						relBatchData.id = data.id;
+						relBatchData.batchNo = params.batchNo;
+						relBatchData.batchId = data.id;
 						relBatchData.province = params.province;
 						relBatchData.city = params.city;
 						common.loadPage($(obj));

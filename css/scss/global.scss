@@ -80,6 +80,11 @@ ul {
     display: none !important;
 }
 
+.min-width {
+    min-width: 10rem;
+    text-align: right;
+}
+
 .box-h {
     display: -moz-box;
     display: -webkit-box;
@@ -170,7 +175,8 @@ ul {
 #stuEditHeader,
 #relMoneyHeader,
 #relRecStuViewHeader,
-#stuViewHeader {
+#stuViewHeader,
+#offVisInfoHeader {
     //header style
     h1 {
         top: 0;
@@ -588,6 +594,15 @@ ul {
             }
         }
     }
+    .table-box {
+        display: table;
+        height: 5.5rem;
+        .table-cell {
+            height: 5.5rem;
+            display: table-cell;
+            vertical-align: middle;
+        }
+    }
 }
 
 .tab-menu {
@@ -691,6 +706,12 @@ ul {
 }
 
 #offVisInfo {
+    span.subtitle {
+        display: block;
+        color: rgb(133, 135, 139);
+        height: 3rem;
+        line-height: 3rem;
+    }
     .row1 {
         background-color: #FFFFFF;
         padding: 1.6rem 2.2rem;
@@ -756,9 +777,11 @@ ul {
                 }
                 .test-item-an {
                     .test-item-an-info {
-                        .test-checkbox-box {
+                        .test-checkbox-box,
+                        .test-radio-box {
                             padding-right: 1rem;
-                            .test-checkbox {
+                            .test-checkbox,
+                            .test-radio {
                                 position: relative;
                                 display: inline-block;
                                 height: 3.5rem;
@@ -776,6 +799,7 @@ ul {
                                     z-index: 1;
                                     position: absolute;
                                     top: 0.6rem;
+                                    left: 0;
                                     display: inline-block;
                                     height: 2rem;
                                     width: 2rem;
@@ -854,5 +878,52 @@ ul {
         top: -40px;
         left: 0;
         width: 100%;
+    }
+}
+
+@mixin flex-box-vertical {
+    //compatible android 4.2.0
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -ms-box-orient: vertical;
+    box-orient: vertical;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-box-align: center;
+    box-align: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-box-pack: center;
+    box-pack: center;
+}
+
+#scanImgContent {
+    //fix one showing bug in ios which cannot seen the imageReader node
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+#imageReader {
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    position: relative;
+    bottom: 0rem;
+    background: #000;
+    .swiper-container {
+        height: 100%;
+        @include flex-box-vertical;
+        .swiper-slide {
+            overflow: hidden;
+            @include flex-box-vertical;
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
     }
 }

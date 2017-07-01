@@ -1,6 +1,6 @@
 <div class="list-panel">
 	<div class="padding-top-1"></div>
-	<div class="list-box">
+	<!--<div class="list-box">
 		<div class="list-defult-body box-h ">
 			<div class="box-flex">
 				<span class="title">林晓婷</span>
@@ -11,21 +11,13 @@
 			<div class="icon-next"></div>
 		</div>
 	</div>
-	<div class="list-box">
-		<div class="list-defult-body box-h ">
-			<div class="box-flex">
-				<span class="title">王菲</span>
-			</div>
-			<div class="text-input-box">
-				<input class="editor-input" type="text" name="name" required="required" placeholder="未填写 " value="" />元
-			</div>
-			<div class="icon-next"></div>
-		</div>
-	</div>
+	-->
 </div>
 <script type="text/javascript">
 	function loadrelMoney(obj) {
 		relMoneyFooter();
+		pageCom.gradeMoney();
+		initrelMoney();
 	}
 
 	function relMoneyFooter() {
@@ -41,5 +33,43 @@
 
 	function relMoneyFooterFunc(obj) {
 		common.toast('保存本批次成功，请通知老师审核');
+	}
+
+	function initrelMoney() {
+		ajaxFuncs.get({
+			urlname: "/api/release/" + relEditBatchNo,
+			funcs: {
+				funcSuccessful: function(data) {
+					var html = "";
+					data = data.releaseList;
+					if(data.length != 0) {
+						for(var i = 0; i < data.length; i++) {
+							html += '<div class="list-box">';
+							html += '<div class="list-defult-body box-h box-align">';
+							html += '<div class="box-flex" data-stuid="' + data[i].studentId + '" data-dir="general" data-tkey="stuView" data-transition="slide" onclick="common.loadPage(this);">';
+							html += '<span class="title-other">' + data[i].studentName + '</span>';
+							if(data[i].scores != 0) {
+								html += '<span class="subtitle-make">' + data[i].scores + '分</span>';
+							}
+							html += '</div>';
+							html += '<div class="text-input-box">';
+							if(data[i].hasOwnProperty("money") && data[i].money != '') {
+								html += '<input class="editor-input" type="text" name="name" required="required" placeholder="未填写 " value="' + data[i].money + '" />元';
+							} else {
+								html += '<input class="editor-input" type="text" name="name" required="required" placeholder="未填写 " value="' + pageCom.gradeMoneyChoose(data[i].grade) + '" />元';
+							}
+							html += '</div>';
+							html += '</div>';
+							html += '</div>';
+						}
+						$("#relMoney .list-panel").empty().append(html);
+					} else {
+						common.handleDefaultPage({
+							type: 2
+						});
+					}
+				}
+			}
+		})
 	}
 </script>

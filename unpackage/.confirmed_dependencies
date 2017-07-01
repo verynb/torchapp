@@ -72,7 +72,8 @@
 			"img/icon/subscription.png",
 			"general/relList.html",
 			"js/plug/localdb_stu.js",
-			"js/plug/localdb_sta.js"
+			"js/plug/localdb_sta.js",
+			"general/relRecSearch.html"
 		]
 	}
 }

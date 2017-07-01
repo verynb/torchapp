@@ -33,6 +33,8 @@ ul { list-style: none; }
 
 .hidden-important { display: none !important; }
 
+.min-width { min-width: 10rem; text-align: right; }
+
 .box-h { display: -moz-box; display: -webkit-box; display: box; -moz-box-orient: horizontal; -webkit-box-orient: horizontal; box-orient: horizontal; }
 
 .box-v { display: -moz-box; display: -webkit-box; display: box; -moz-box-orient: vertical; -webkit-box-orient: vertical; box-orient: vertical; }
@@ -64,14 +66,14 @@ ul { list-style: none; }
 .header-title { height: 4rem; padding-left: 1.2rem; }
 .header-title span.title { font-size: 1.3rem; line-height: 4rem; color: #85878b; }
 
-#homeHeader h1, #userPwdHeader h1, #stuEditHeader h1, #relMoneyHeader h1, #relRecStuViewHeader h1, #stuViewHeader h1 { top: 0; font-size: 1.9rem; }
-#homeHeader a, #userPwdHeader a, #stuEditHeader a, #relMoneyHeader a, #relRecStuViewHeader a, #stuViewHeader a { height: 100%; display: table; color: #262931; }
-#homeHeader a span, #userPwdHeader a span, #stuEditHeader a span, #relMoneyHeader a span, #relRecStuViewHeader a span, #stuViewHeader a span { display: table-cell; vertical-align: middle; }
-#homeHeader a:first-child, #userPwdHeader a:first-child, #stuEditHeader a:first-child, #relMoneyHeader a:first-child, #relRecStuViewHeader a:first-child, #stuViewHeader a:first-child { margin-left: 1.2rem; float: left; }
-#homeHeader a.right, #userPwdHeader a.right, #stuEditHeader a.right, #relMoneyHeader a.right, #relRecStuViewHeader a.right, #stuViewHeader a.right { float: right; margin-right: 1.2rem; color: #05B1B3; }
-#homeHeader a.usercenter, #userPwdHeader a.usercenter, #stuEditHeader a.usercenter, #relMoneyHeader a.usercenter, #relRecStuViewHeader a.usercenter, #stuViewHeader a.usercenter { background: url(../img/icon/icon-users.png) center center no-repeat; background-size: contain; width: 2.1rem; }
-#homeHeader a.goback, #userPwdHeader a.goback, #stuEditHeader a.goback, #relMoneyHeader a.goback, #relRecStuViewHeader a.goback, #stuViewHeader a.goback { background: url(../img/icon/icon-back.png) center center no-repeat; background-size: contain; width: 2.1rem; }
-#homeHeader a.btuMore, #userPwdHeader a.btuMore, #stuEditHeader a.btuMore, #relMoneyHeader a.btuMore, #relRecStuViewHeader a.btuMore, #stuViewHeader a.btuMore { background: url(../img/icon/icon-more.png) center center no-repeat; background-size: contain; width: 2.1rem; }
+#homeHeader h1, #userPwdHeader h1, #stuEditHeader h1, #relMoneyHeader h1, #relRecStuViewHeader h1, #stuViewHeader h1, #offVisInfoHeader h1 { top: 0; font-size: 1.9rem; }
+#homeHeader a, #userPwdHeader a, #stuEditHeader a, #relMoneyHeader a, #relRecStuViewHeader a, #stuViewHeader a, #offVisInfoHeader a { height: 100%; display: table; color: #262931; }
+#homeHeader a span, #userPwdHeader a span, #stuEditHeader a span, #relMoneyHeader a span, #relRecStuViewHeader a span, #stuViewHeader a span, #offVisInfoHeader a span { display: table-cell; vertical-align: middle; }
+#homeHeader a:first-child, #userPwdHeader a:first-child, #stuEditHeader a:first-child, #relMoneyHeader a:first-child, #relRecStuViewHeader a:first-child, #stuViewHeader a:first-child, #offVisInfoHeader a:first-child { margin-left: 1.2rem; float: left; }
+#homeHeader a.right, #userPwdHeader a.right, #stuEditHeader a.right, #relMoneyHeader a.right, #relRecStuViewHeader a.right, #stuViewHeader a.right, #offVisInfoHeader a.right { float: right; margin-right: 1.2rem; color: #05B1B3; }
+#homeHeader a.usercenter, #userPwdHeader a.usercenter, #stuEditHeader a.usercenter, #relMoneyHeader a.usercenter, #relRecStuViewHeader a.usercenter, #stuViewHeader a.usercenter, #offVisInfoHeader a.usercenter { background: url(../img/icon/icon-users.png) center center no-repeat; background-size: contain; width: 2.1rem; }
+#homeHeader a.goback, #userPwdHeader a.goback, #stuEditHeader a.goback, #relMoneyHeader a.goback, #relRecStuViewHeader a.goback, #stuViewHeader a.goback, #offVisInfoHeader a.goback { background: url(../img/icon/icon-back.png) center center no-repeat; background-size: contain; width: 2.1rem; }
+#homeHeader a.btuMore, #userPwdHeader a.btuMore, #stuEditHeader a.btuMore, #relMoneyHeader a.btuMore, #relRecStuViewHeader a.btuMore, #stuViewHeader a.btuMore, #offVisInfoHeader a.btuMore { background: url(../img/icon/icon-more.png) center center no-repeat; background-size: contain; width: 2.1rem; }
 
 .moreBox .moreMenu { position: fixed; top: 3.8rem; right: 1.2rem; min-height: 5.2rem; width: 12rem; z-index: 999; padding-top: 1rem; background: url(../img/icon/icon-bg.png) top right no-repeat; background-size: auto 1rem; display: none; }
 .moreBox .moreMenu ul { margin-top: -2px; min-height: 4.2rem; width: 12rem; border-radius: 0.5rem; padding: 0 0.8rem; background-color: #49494b; }
@@ -147,6 +149,8 @@ ul { list-style: none; }
 .list-panel .img-photo-box img.header-picture { width: 7.5rem; height: 7.5rem; border-radius: 7.5rem; vertical-align: middle; margin-right: 1rem; }
 .list-panel .img-photo-box .icon-next { height: 9.5rem !important; }
 .list-panel .img-photo-box .icon-next i { height: 9.5rem !important; }
+.list-panel .table-box { display: table; height: 5.5rem; }
+.list-panel .table-box .table-cell { height: 5.5rem; display: table-cell; vertical-align: middle; }
 
 .tab-menu { text-align: center; }
 .tab-menu div > div { height: 4.05rem; line-height: 4.05rem; text-align: center; background-color: #FFFFFF; }
@@ -171,6 +175,7 @@ ul { list-style: none; }
 .list-two-panle .list-box .row1 { text-align: left; }
 .list-two-panle .list-box .row2 { text-align: right; }
 
+#offVisInfo span.subtitle { display: block; color: #85878b; height: 3rem; line-height: 3rem; }
 #offVisInfo .row1 { background-color: #FFFFFF; padding: 1.6rem 2.2rem; }
 #offVisInfo .row1 .visInfo { width: 100%; height: 10rem; color: #85878b; border: none; outline: none; }
 #offVisInfo .row1 .rw1 .r1 img { width: 7.5rem; height: 7.5rem; }
@@ -184,14 +189,14 @@ ul { list-style: none; }
 #offVisInfo .test-info .test-list .test-item:first-child { padding-top: 0 !important; }
 #offVisInfo .test-info .test-list .test-item { padding: 1rem 1.2rem 1rem; background-color: #FFFFFF; }
 #offVisInfo .test-info .test-list .test-item .test-item-title { line-height: 1.2; color: #262931; }
-#offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box { padding-right: 1rem; }
-#offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box .test-checkbox { position: relative; display: inline-block; height: 3.5rem; width: 3rem; }
-#offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box .test-checkbox input[type="radio"], #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box .test-checkbox input[type="checkbox"] { height: 3rem; width: 3rem; z-index: 3; opacity: 0; }
-#offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box .test-checkbox span.checkbox-btu, #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box .test-checkbox span.radio-btu { z-index: 1; position: absolute; top: 0.6rem; display: inline-block; height: 2rem; width: 2rem; background-image: url(../img/icon/icon-check.png); background-repeat: no-repeat; background-position: center center; background-size: 1.9rem auto; pointer-events: none; }
-#offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box .test-checkbox .icon-checkbox-active, #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box .test-checkbox .icon-radio-active { background: url(../img/icon/icon-checked-1.png) center center no-repeat; background-size: 1.9rem auto; }
-#offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box .test-checkbox input[type="radio"]:checked + span.radio-btu, #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box .test-checkbox input[type="checkbox"]:checked + span.checkbox-btu { background-image: url(../img/icon/icon-checked-1.png); }
-#offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box div.box-flex { pointer-events: none; }
-#offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box div.box-flex label { line-height: 3.5rem; }
+#offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box, #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-radio-box { padding-right: 1rem; }
+#offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box .test-checkbox, #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box .test-radio, #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-radio-box .test-checkbox, #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-radio-box .test-radio { position: relative; display: inline-block; height: 3.5rem; width: 3rem; }
+#offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box .test-checkbox input[type="radio"], #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box .test-checkbox input[type="checkbox"], #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box .test-radio input[type="radio"], #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box .test-radio input[type="checkbox"], #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-radio-box .test-checkbox input[type="radio"], #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-radio-box .test-checkbox input[type="checkbox"], #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-radio-box .test-radio input[type="radio"], #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-radio-box .test-radio input[type="checkbox"] { height: 3rem; width: 3rem; z-index: 3; opacity: 0; }
+#offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box .test-checkbox span.checkbox-btu, #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box .test-checkbox span.radio-btu, #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box .test-radio span.checkbox-btu, #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box .test-radio span.radio-btu, #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-radio-box .test-checkbox span.checkbox-btu, #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-radio-box .test-checkbox span.radio-btu, #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-radio-box .test-radio span.checkbox-btu, #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-radio-box .test-radio span.radio-btu { z-index: 1; position: absolute; top: 0.6rem; left: 0; display: inline-block; height: 2rem; width: 2rem; background-image: url(../img/icon/icon-check.png); background-repeat: no-repeat; background-position: center center; background-size: 1.9rem auto; pointer-events: none; }
+#offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box .test-checkbox .icon-checkbox-active, #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box .test-checkbox .icon-radio-active, #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box .test-radio .icon-checkbox-active, #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box .test-radio .icon-radio-active, #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-radio-box .test-checkbox .icon-checkbox-active, #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-radio-box .test-checkbox .icon-radio-active, #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-radio-box .test-radio .icon-checkbox-active, #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-radio-box .test-radio .icon-radio-active { background: url(../img/icon/icon-checked-1.png) center center no-repeat; background-size: 1.9rem auto; }
+#offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box .test-checkbox input[type="radio"]:checked + span.radio-btu, #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box .test-checkbox input[type="checkbox"]:checked + span.checkbox-btu, #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box .test-radio input[type="radio"]:checked + span.radio-btu, #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box .test-radio input[type="checkbox"]:checked + span.checkbox-btu, #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-radio-box .test-checkbox input[type="radio"]:checked + span.radio-btu, #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-radio-box .test-checkbox input[type="checkbox"]:checked + span.checkbox-btu, #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-radio-box .test-radio input[type="radio"]:checked + span.radio-btu, #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-radio-box .test-radio input[type="checkbox"]:checked + span.checkbox-btu { background-image: url(../img/icon/icon-checked-1.png); }
+#offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box div.box-flex, #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-radio-box div.box-flex { pointer-events: none; }
+#offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-checkbox-box div.box-flex label, #offVisInfo .test-info .test-list .test-item .test-item-an .test-item-an-info .test-radio-box div.box-flex label { line-height: 3.5rem; }
 
 #subPayCheck input.color-paleRed { color: #de443c !important; }
 #subPayCheck textarea.leave-info { width: 100%; height: 10rem; color: #85878b; border: none; outline: none; padding: 1.2rem; }
@@ -201,5 +206,12 @@ ul { list-style: none; }
 #volList #volListContent, #volList .wrapper { height: 100%; position: absolute; z-index: 1; top: 0px; bottom: 0px; width: 100%; background: #f4f4f4; overflow: hidden; padding: 0; }
 #volList .pullDown, #volList .pullUp, #volList .pulldown-tips { height: 40px; line-height: 40px; text-align: center; }
 #volList .pulldown-tips { position: absolute; top: -40px; left: 0; width: 100%; }
+
+#scanImgContent { height: 100%; width: 100%; position: absolute; }
+
+#imageReader { width: 100%; height: 100%; z-index: 999; position: relative; bottom: 0rem; background: #000; }
+#imageReader .swiper-container { height: 100%; display: -webkit-box; display: -moz-box; display: -ms-flexbox; -webkit-box-orient: vertical; -moz-box-orient: vertical; -ms-box-orient: vertical; box-orient: vertical; -webkit-box-align: center; -moz-box-align: center; -ms-box-align: center; box-align: center; -webkit-box-pack: center; -moz-box-pack: center; -ms-box-pack: center; box-pack: center; }
+#imageReader .swiper-container .swiper-slide { overflow: hidden; display: -webkit-box; display: -moz-box; display: -ms-flexbox; -webkit-box-orient: vertical; -moz-box-orient: vertical; -ms-box-orient: vertical; box-orient: vertical; -webkit-box-align: center; -moz-box-align: center; -ms-box-align: center; box-align: center; -webkit-box-pack: center; -moz-box-pack: center; -ms-box-pack: center; box-pack: center; }
+#imageReader .swiper-container .swiper-slide img { width: 100%; height: auto; }
 
 /*# sourceMappingURL=global.css.map */

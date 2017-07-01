@@ -172,6 +172,9 @@
 				<div title='编辑学生' id="stuEdit" class="panel" data-header="stuEditHeader" refresh="true" data-footer="" data-nopushhistory="0">
 					<div id="stuEditContent"></div>
 				</div>
+				<div title='选择年级' id="stuGradeR" class="panel" data-header="" refresh="true" data-footer="" data-nopushhistory="0">
+					<div id="stuGradeRContent"></div>
+				</div>
 				<div title='选择学校' id="schChooseR" class="panel" data-footer="" refresh="true" data-nopushhistory="0">
 					<div id="schChooseRContent"></div>
 				</div>
@@ -193,11 +196,14 @@
 				<div title='发布批次' id="relBatch" class="panel" data-footer="" data-nopushhistory="0">
 					<div id="relBatchContent"></div>
 				</div>
-				<div title='发布编辑' id="relAdd" class="panel" data-footer="" data-nopushhistory="0">
+				<div title='选择学生' id="relAdd" class="panel" data-footer="" data-nopushhistory="0">
 					<div id="relAddContent"></div>
 				</div>
-				<div title='发布编辑' id="relEdit" class="panel" data-footer="" data-nopushhistory="0">
+				<div title='选择学生' id="relEdit" class="panel" data-footer="" data-nopushhistory="0">
 					<div id="relEditContent"></div>
+				</div>
+				<div title='确认信息' id="relConfirm" class="panel" data-footer="" data-nopushhistory="0">
+					<div id="relConfirmContent"></div>
 				</div>
 				<div title='确认信息' id="relMoney" class="panel" data-header="relMoneyHeader" data-footer="" data-nopushhistory="0">
 					<div id="relMoneyContent"></div>
@@ -214,8 +220,14 @@
 				<div title='离线家访' id="offVisList" class="panel" data-header="" data-footer="" data-nopushhistory="0">
 					<div id="offVisListContent"></div>
 				</div>
-				<div title='家访录入' id="offVisInfo" class="panel" data-header="" data-footer="" data-nopushhistory="0">
+				<div title='家访录入' id="offVisInfo" class="panel" data-header="offVisInfoHeader" data-footer="" data-nopushhistory="0">
 					<div id="offVisInfoContent"></div>
+				</div>
+				<div title='查看图片' id="scanImg" class="panel" data-footer="none" data-header="none" data-load="" data-unload="" data-nopushhistory="0">
+					<div id="scanImgContent"></div>
+				</div>
+				<div title='学生详情' id="offVisStuView" class="panel" data-header="" data-footer="" data-nopushhistory="0">
+					<div id="offVisStuViewContent"></div>
 				</div>
 				<div title='在线认捐' id="subList" class="panel" data-footer="" data-nopushhistory="0">
 					<div id="subListContent"></div>
@@ -260,7 +272,7 @@
 			<header id="relMoneyHeader">
 				<a href="javascript:void(0);" class="backButton" onclick="$.ui.goBack()"></a>
 				<h1>确认信息</h1>
-				<a href="javascript:void(0);" class="right" onclick="common.toast('下载资料')"><span>下载</span></a>
+				<a href="javascript:void(0);" class="right" onclick="pageCom.downloadStuAndQ();"><span>下载</span></a>
 			</header>
 			<header id="stuEditHeader" class="moreBox">
 				<a href="javascript:void(0);" class="backButton" onclick="$.ui.goBack()"></a>
@@ -300,6 +312,11 @@
 				<h1>学生信息</h1>
 				<a href="javascript:void(0);" class="right" onclick="adhide(this)">返回</a>
 			</header>
+			<header id="offVisInfoHeader">
+				<a href="javascript:void(0);" class="backButton" onclick="$.ui.goBack()"></a>
+				<h1>家访录入</h1>
+				<a href="javascript:void(0);" class="right usercenter stuinfo" data-tkey="offVisStuView" data-dir="general" data-transition="slide" onclick="common.loadPage(this,false)"></a>
+			</header>
 			<aside title="帮助">
 				<div class="y-scroll" style="overflow: auto; overflow-x: hidden; overflow-y: auto; border-top: 1px solid #ccc;">
 					<div></div>
@@ -307,6 +324,10 @@
 			</aside>
 		</div>
 		<script>
+			var mySwiper;
+			var myScroll = {
+				isInScroll: false
+			};
 			if(window.plus) {
 				plusReady();
 			} else {

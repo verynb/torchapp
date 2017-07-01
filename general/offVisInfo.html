@@ -1,173 +1,159 @@
-<form>
-	<div class="row1">
-		<textarea class="visInfo" placeholder="请录入家访内容..." name="visitInfo"></textarea>
-		<div class="rw1 box-h">
-			<div class="r1">
-				<img src="img/icon/camera.png" alt="照相" />
-				<input type="hidden" name="applicationForm" placeholder="申请表图片" />
-			</div>
-			<div class="r2 box-flex">
-				<span>（申请表含有姓名及照片）</span>
-			</div>
-		</div>
-	</div>
-	<div class="padding-top-1"></div>
-	<div class="row2 box-h">
-		<div class="rw1">
-			<img src="img/icon/camera.png" alt="照相" />
-			<input type="hidden" name="studentPhoto" placeholder="学生本人" />
-		</div>
-		<div class="rw2 box-flex">
-			<span>（受助学生本人照片）</span>
-		</div>
-	</div>
-	<div class="padding-top-1"></div>
-	<div class="row2 box-h">
-		<div class="rw1">
-			<img src="img/icon/camera.png" alt="照相" />
-		</div>
-		<div class="rw2 box-flex">
-			<span>（家庭成员照片）</span>
-			<input type="hidden" name="familyPhoto" placeholder="家庭成员" />
-		</div>
-	</div>
-	<div class="padding-top-1"></div>
-	<div class="row2 box-h">
-		<div class="rw1">
-			<img src="img/icon/camera.png" alt="照相" />
-			<input type="hidden" name="homePhoto" placeholder="家庭环境" />
-		</div>
-		<div class="rw2 box-flex">
-			<span>（家庭环境全景照片）</span>
-		</div>
-	</div>
-	<div class="padding-top-1"></div>
-	<div class="row2 box-h">
-		<div class="rw1">
-			<img src="img/icon/camera.png" alt="照相" />
-			<input type="hidden" name="InteractivePhoto" placeholder="互动照片" />
-		</div>
-		<div class="rw2 box-flex">
-			<span>（家庭环境特写照片）</span>
-		</div>
-	</div>
-	<div class="padding-top-1"></div>
-	<div class="row2 box-h">
-		<!--暂无-->
-		<div class="rw1">
-			<img src="img/icon/camera.png" alt="照相" />
-			<input type="hidden" name="InteractivePhoto" placeholder="互动照片" />
-		</div>
-		<div class="rw2 box-flex">
-			<span>（义工与学生家庭互动照片）</span>
-		</div>
-	</div>
-	<div class="padding-top-1"></div>
-	<div class="test-info">
-		<div class="test-title">审核标准</div>
-		<div class="test-list">
-			<div class="test-item">
-				<div class="test-item-title">
-					1. 申请、评审与发放程序 1、国家奖（助）学金评审 是一项政策性和导向性很强的工作，涉及到广大学生 的切身利益。国家奖（助）学金每学年评定一次，必 须坚持公开、公平、公正的原则。
-				</div>
-				<div class="test-item-an box-h">
-					<div class="box-flex width50">
-						<div class="test-item-an-info">
-							<div class="test-checkbox-box box-h">
-								<div class="test-checkbox">
-									<input id="offVisInfocheckbox_1" type="checkbox" name="voice" value="0" />
-									<span class="checkbox-btu"></span>
-								</div>
-								<div class="box-flex"><label for="offVisInfocheckbox_1">符合标准</label></div>
-							</div>
-						</div>
-						<div class="test-item-an-info">
-							<div class="test-checkbox-box box-h">
-								<div class="test-checkbox">
-									<input id="offVisInfocheckbox_3" type="checkbox" name="voice" value="0" />
-									<span class="checkbox-btu"></span>
-								</div>
-								<div class="box-flex"><label for="offVisInfocheckbox_3">符合标准</label></div>
-							</div>
-						</div>
+<div id="offVisInfoBody" class="">
+	<form>
+		<div class="row1">
+			<textarea class="visInfo" placeholder="请录入家访内容..." name="visitInfo"></textarea>
+			<div class="applicationForm">
+				<span class="subtitle">（申请表含有姓名及照片）</span>
+				<div class="rw1 box-h">
+					<div class="savebox">
+						<div class="box-h saveboxList"></div>
 					</div>
-					<div class="box-flex width50">
-						<div class="test-item-an-info">
-							<div class="test-checkbox-box box-h">
-								<div class="test-checkbox">
-									<input id="offVisInfocheckbox_2" type="checkbox" name="voice" value="0" />
-									<span class="checkbox-btu"></span>
-								</div>
-								<div class="box-flex"><label for="offVisInfocheckbox_2">符合标准</label></div>
-							</div>
-						</div>
-						<div class="test-item-an-info">
-							<div class="test-checkbox-box box-h">
-								<div class="test-checkbox">
-									<input id="offVisInfocheckbox_4" type="checkbox" name="voice" value="0" />
-									<span class="checkbox-btu"></span>
-								</div>
-								<div class="box-flex"><label for="offVisInfocheckbox_4">符合标准</label></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--end-->
-			<div class="padding-top-1"></div>
-			<div class="test-item">
-				<div class="test-item-title">
-					2. 各系按照申请条件和评定办法确定符合条件的初选 学生名单，并在系范围内予以公示5个工作日，经公示 无异议后将名单上报学生处。
-				</div>
-				<div class="test-item-an box-h">
-					<div class="box-flex width50">
-						<div class="test-item-an-info">
-							<div class="test-checkbox-box box-h">
-								<div class="test-checkbox">
-									<input id="offVisInfocheckbox_1" type="checkbox" name="voice" value="0" />
-									<span class="checkbox-btu"></span>
-								</div>
-								<div class="box-flex"><label for="offVisInfocheckbox_1">符合标准</label></div>
-							</div>
-						</div>
-						<div class="test-item-an-info">
-							<div class="test-checkbox-box box-h">
-								<div class="test-checkbox">
-									<input id="offVisInfocheckbox_3" type="checkbox" name="voice" value="0" />
-									<span class="checkbox-btu"></span>
-								</div>
-								<div class="box-flex"><label for="offVisInfocheckbox_3">符合标准</label></div>
-							</div>
-						</div>
-					</div>
-					<div class="box-flex width50">
-						<div class="test-item-an-info">
-							<div class="test-checkbox-box box-h">
-								<div class="test-checkbox">
-									<input id="offVisInfocheckbox_2" type="checkbox" name="voice" value="0" />
-									<span class="checkbox-btu"></span>
-								</div>
-								<div class="box-flex"><label for="offVisInfocheckbox_2">符合标准</label></div>
-							</div>
-						</div>
-						<div class="test-item-an-info">
-							<div class="test-checkbox-box box-h">
-								<div class="test-checkbox">
-									<input id="offVisInfocheckbox_4" type="checkbox" name="voice" value="0" />
-									<span class="checkbox-btu"></span>
-								</div>
-								<div class="box-flex"><label for="offVisInfocheckbox_4">符合标准</label></div>
-							</div>
-						</div>
+					<div class="r1 box-flex upphoto">
+						<img class="" src="img/icon/camera.png" alt="照相" onclick="common.pickImgLoca(this);" />
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</form>
+		<div class="padding-top-1"></div>
+		<div class="row2 studentPhoto">
+			<span class="subtitle">（受助学生本人照片）</span>
+			<div class="rw1 box-h">
+				<div class="savebox">
+					<div class="box-h saveboxList"></div>
+				</div>
+				<div class="r1 box-flex upphoto">
+					<img class="" src="img/icon/camera.png" alt="照相" onclick="common.pickImgLoca(this);" />
+				</div>
+			</div>
+		</div>
+		<div class="padding-top-1"></div>
+		<div class="row2 familyPhoto">
+			<span class="subtitle">（家庭成员照片）</span>
+			<div class="rw1 box-h">
+				<div class="savebox">
+					<div class="box-h saveboxList"></div>
+				</div>
+				<div class="r1 box-flex upphoto">
+					<img class="" src="img/icon/camera.png" alt="照相" onclick="common.pickImgLoca(this);" />
+				</div>
+			</div>
+		</div>
+		<div class="padding-top-1"></div>
+		<div class="row2 homePhoto">
+			<span class="subtitle">（家庭环境全景照片）</span>
+			<div class="rw1 box-h">
+				<div class="savebox">
+					<div class="box-h saveboxList"></div>
+				</div>
+				<div class="r1 box-flex upphoto">
+					<img class="" src="img/icon/camera.png" alt="照相" onclick="common.pickImgLoca(this);" />
+				</div>
+			</div>
+		</div>
+		<div class="padding-top-1"></div>
+		<div class="row2 InteractivePhoto">
+			<span class="subtitle">（家庭环境特写照片）</span>
+			<div class="rw1 box-h">
+				<div class="savebox">
+					<div class="box-h saveboxList"></div>
+				</div>
+				<div class="r1 box-flex upphoto">
+					<img class="" src="img/icon/camera.png" alt="照相" onclick="common.pickImgLoca(this);" />
+				</div>
+			</div>
+		</div>
+		<div class="padding-top-1"></div>
+		<!--<div class="row2 InteractivePhoto">
+			<span class="subtitle">（义工与学生家庭互动照片）</span>
+			<div class="rw1 box-h">
+				<div class="savebox">
+					<div class="box-h saveboxList"></div>
+				</div>
+				<div class="r1 box-flex upphoto">
+					<img class="InteractivePhoto" src="img/icon/camera.png" alt="照相" onclick="common.pickImgLoca(this);" />
+				</div>
+			</div>
+		</div>-->
+
+		<div class="padding-top-1"></div>
+		<div class="test-info criterion">
+			<div class="test-title">审核标准</div>
+			<div class="test-list">
+				<!--<div class="test-item">
+					<div class="test-item-title">
+						1. 申请、评审与发放程序 1、国家奖（助）学金评审 是一项政策性和导向性很强的工作，涉及到广大学生 的切身利益。国家奖（助）学金每学年评定一次，必 须坚持公开、公平、公正的原则。
+					</div>
+					<div class="test-item-an">
+						<div class="box-h">
+							<div class="box-flex test-item-an-info">
+								<div class="test-checkbox-box box-h">
+									<div class="test-checkbox">
+										<input id="offVisInfocheckbox_1" type="checkbox" name="voice" value="0" />
+										<span class="checkbox-btu"></span>
+									</div>
+									<div class="box-flex"><label for="offVisInfocheckbox_1">符合标准</label></div>
+								</div>
+							</div>
+						</div>
+						<div class="box-h">
+							<div class="box-flex test-item-an-info">
+								<div class="test-checkbox-box box-h">
+									<div class="test-checkbox">
+										<input id="offVisInfocheckbox_1" type="checkbox" name="voice" value="0" />
+										<span class="checkbox-btu"></span>
+									</div>
+									<div class="box-flex"><label for="offVisInfocheckbox_1">符合标准</label></div>
+								</div>
+							</div>
+						</div>
+						<div class="box-h">
+							<div class="box-flex test-item-an-info">
+								<div class="test-checkbox-box box-h">
+									<div class="test-checkbox">
+										<input id="offVisInfocheckbox_1" type="checkbox" name="voice" value="0" />
+										<span class="checkbox-btu"></span>
+									</div>
+									<div class="box-flex"><label for="offVisInfocheckbox_1">符合标准</label></div>
+								</div>
+							</div>
+						</div>
+						<div class="box-h">
+							<div class="box-flex test-item-an-info">
+								<div class="test-checkbox-box box-h">
+									<div class="test-checkbox">
+										<input id="offVisInfocheckbox_1" type="checkbox" name="voice" value="0" />
+										<span class="checkbox-btu"></span>
+									</div>
+									<div class="box-flex"><label for="offVisInfocheckbox_1">符合标准</label></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>-->
+				<div class="padding-top-1"></div>
+			</div>
+		</div>
+
+	</form>
+</div>
+
 <script type="text/javascript">
+	var offVisInfostuid, criterionLength = 0;
+
 	function loadoffVisInfo(obj) {
 		offVisInfoFooter();
+		offVisInfostuid = $(obj).attr("data-stuid");
+		var batchId = $(obj).attr("data-batchId");
+		var status = $(obj).attr("data-status");
+		$("#offVisInfoHeader a.stuinfo").attr('data-stuid', offVisInfostuid);
+		$("#offVisInfoHeader a.stuinfo").attr('data-batchId', batchId);
+		localSta.selectAll(initCriterion);
+		if(status == '1') {
+			var arrupdate = [];
+			arrupdate.push(offVisInfostuid);
+			arrupdate.push(batchId);
+			localStu.selectStuByIdAndBatId(arrupdate, initoffVisInfo);
+		}
 	}
 
 	function offVisInfoFooter() {
@@ -182,8 +168,207 @@
 	}
 
 	function offVisInfoFooterFunc(obj) {
-		$.ui.goBack();
-		common.toast("保存成功");
+		var params = common.serializeToJson("#offVisInfo form");
+		var arrdata = [];
+		var applicationForm = [],
+			studentPhoto = [],
+			familyPhoto = [],
+			homePhoto = [],
+			InteractivePhoto = [];
+		var el_applicationForm_photo = $("#offVisInfo .applicationForm .saveboxList .saveboxListItem"),
+			el_studentPhoto_photo = $("#offVisInfo .studentPhoto .saveboxList .saveboxListItem"),
+			el_familyPhoto_photo = $("#offVisInfo .familyPhoto .saveboxList .saveboxListItem"),
+			el_homePhoto_photo = $("#offVisInfo .homePhoto .saveboxList .saveboxListItem"),
+			el_InteractivePhoto_photo = $("#offVisInfo .InteractivePhoto .saveboxList .saveboxListItem");
+		for(var i = 0; i < el_applicationForm_photo.length; i++) {
+			applicationForm.push($(el_applicationForm_photo[i]).find("input").val());
+		}
+		for(var i = 0; i < el_studentPhoto_photo.length; i++) {
+			studentPhoto.push($(el_studentPhoto_photo[i]).find("input").val());
+		}
+		for(var i = 0; i < el_familyPhoto_photo.length; i++) {
+			familyPhoto.push($(el_familyPhoto_photo[i]).find("input").val());
+		}
+		for(var i = 0; i < el_homePhoto_photo.length; i++) {
+			homePhoto.push($(el_homePhoto_photo[i]).find("input").val());
+		}
+		for(var i = 0; i < el_InteractivePhoto_photo.length; i++) {
+			InteractivePhoto.push($(el_InteractivePhoto_photo[i]).find("input").val());
+		}
 
+		arrdata.push(applicationForm.join(','));
+		arrdata.push(studentPhoto.join(','));
+		arrdata.push(familyPhoto.join(','));
+		arrdata.push(homePhoto.join(','));
+		arrdata.push(InteractivePhoto.join(','));
+		arrdata.push(params.visitInfo);
+		var el_ridiocheck = $("#offVisInfo input[type='radio']:checked");
+		var ridiocheckarr = [];
+		for(var i = 0; i < el_ridiocheck.length; i++) {
+			var objval = {};
+			objval.qa = $(el_ridiocheck[i]).attr("data-auditid");
+			objval.ans = $(el_ridiocheck[i]).attr("data-ansid");
+			ridiocheckarr.push(JSON.stringify(objval));
+		}
+		arrdata.push(ridiocheckarr.join('*'));
+		arrdata.push('1');
+		arrdata.push($("#offVisInfoHeader a.stuinfo").attr('data-stuid'));
+		arrdata.push($("#offVisInfoHeader a.stuinfo").attr('data-batchId'));
+
+		if(applicationForm.length != 0 && studentPhoto.length != 0 && familyPhoto.length != 0 && homePhoto.length != 0 && InteractivePhoto.length != 0 && params.visitInfo != '' && ridiocheckarr.length == criterionLength) {
+			localStu.saveStuByIdAndBatId(arrdata);
+			$.ui.goBack();
+		} else {
+			common.toast("还有选项未填写，请填写后再保存");
+		}
+	}
+
+	function initCriterion(data) {
+		console.log('initCriterion======' + JSON.stringify(data));
+		if(data.status == '1') {
+			var html = '';
+			for(var i = 0; i < data.list.length; i++) {
+				criterionLength = data.list.length;
+				var ans = (JSON.parse(data.list[i].staJsonStrData)).auditItemList;
+				html += '<div class="test-item">';
+				html += '<div class="test-item-title">' + (i + 1) + '、' + data.list[i].title + '</div>';
+				html += '<div class="test-item-an">';
+				for(var j = 0; j < ans.length; j++) {
+					html += '<div class="box-h">';
+					html += '<div class="box-flex test-item-an-info">';
+					html += '<div class="test-radio-box box-h">';
+					html += '<div class="test-radio">';
+					html += '<input id="offVisInforadio_' + data.list[i].id + ans[j].auditItemId + '" data-auditid="' + data.list[i].id + '" data-ansid="' + ans[j].auditItemId + '"  type="radio" name="ans' + (i + 1) + '" value="0" />';
+					html += '<span class="radio-btu"></span>';
+					html += '</div>';
+					html += '<div class="box-flex"><label for="offVisInforadio_' + data.list[i].id + ans[j].auditItemId + '">' + ans[j].options + '</label></div>';
+					html += '</div>';
+					html += '</div>';
+					html += '</div>';
+				}
+				html += '</div>';
+				html += '</div>';
+				html += '<div class="padding-top-1"></div>';
+			}
+			$("#offVisInfo .criterion .test-list").empty().append(html);
+		} else {
+			localSta.selectAll(initCriterion);
+		}
+	}
+
+	function initoffVisInfo(data) {
+		console.log('initoffVisInfo======' + JSON.stringify(data));
+		if(data.status == 1) {
+			$("#offVisInfo textarea[name='visitInfo']").val(data.info.visitInfo);
+			var applicationForm = (data.info.applicationForm).split(','),
+				studentPhoto = (data.info.studentPhoto).split(','),
+				familyPhoto = (data.info.familyPhoto).split(','),
+				homePhoto = (data.info.homePhoto).split(','),
+				InteractivePhoto = (data.info.InteractivePhoto).split(',');
+			var el_applicationForm_photo = $("#offVisInfo .applicationForm .saveboxList"),
+				el_studentPhoto_photo = $("#offVisInfo .studentPhoto .saveboxList"),
+				el_familyPhoto_photo = $("#offVisInfo .familyPhoto .saveboxList"),
+				el_homePhoto_photo = $("#offVisInfo .homePhoto .saveboxList"),
+				el_InteractivePhoto_photo = $("#offVisInfo .InteractivePhoto .saveboxList");
+			/*--------*/
+			var html = '';
+			for(var i = 0; i < applicationForm.length; i++) {
+				html += '<div class="r1 padding-right-12 box-flex saveboxListItem" >';
+				html += '<img src="' + applicationForm[i] + '" alt="照相" />';
+				html += '<input type="hidden"  placeholder="申请表图片" value="' + applicationForm[i] + '" />';
+				html += '</div>';
+			}
+			if(applicationForm.length < 4) {
+				$("#offVisInfo .applicationForm .upphoto").show();
+			} else {
+				$("#offVisInfo .applicationForm .upphoto").hide();
+			}
+			$(el_applicationForm_photo).append(html);
+			/*--------*/
+			html = '';
+			for(var i = 0; i < studentPhoto.length; i++) {
+				html += '<div class="r1 padding-right-12 box-flex saveboxListItem" >';
+				html += '<img src="' + studentPhoto[i] + '" alt="照相" />';
+				html += '<input type="hidden"  placeholder="申请表图片" value="' + studentPhoto[i] + '" />';
+				html += '</div>';
+			}
+			if(studentPhoto.length < 4) {
+				$("#offVisInfo .studentPhoto .upphoto").show();
+			} else {
+				$("#offVisInfo .studentPhoto .upphoto").hide();
+			}
+			$(el_studentPhoto_photo).append(html);
+			/*--------*/
+			html = '';
+			for(var i = 0; i < familyPhoto.length; i++) {
+				html += '<div class="r1 padding-right-12 box-flex saveboxListItem" >';
+				html += '<img src="' + familyPhoto[i] + '" alt="照相" />';
+				html += '<input type="hidden"  placeholder="申请表图片" value="' + familyPhoto[i] + '" />';
+				html += '</div>';
+			}
+			if(familyPhoto.length < 4) {
+				$("#offVisInfo .familyPhoto .upphoto").show();
+			} else {
+				$("#offVisInfo .familyPhoto .upphoto").hide();
+			}
+			$(el_familyPhoto_photo).append(html);
+			/*--------*/
+			html = '';
+			for(var i = 0; i < homePhoto.length; i++) {
+				html += '<div class="r1 padding-right-12 box-flex saveboxListItem">';
+				html += '<img src="' + homePhoto[i] + '" alt="照相"  />';
+				html += '<input type="hidden"  placeholder="申请表图片" value="' + homePhoto[i] + '" />';
+				html += '</div>';
+			}
+			if(homePhoto.length < 4) {
+				$("#offVisInfo .homePhoto .upphoto").show();
+			} else {
+				$("#offVisInfo .homePhoto .upphoto").hide();
+			}
+			$(el_homePhoto_photo).append(html);
+			/*--------*/
+			html = '';
+			for(var i = 0; i < InteractivePhoto.length; i++) {
+				html += '<div class="r1 padding-right-12 box-flex saveboxListItem" >';
+				html += '<img src="' + InteractivePhoto[i] + '" alt="照相" />';
+				html += '<input type="hidden"  placeholder="申请表图片" value="' + InteractivePhoto[i] + '" />';
+				html += '</div>';
+			}
+			if(InteractivePhoto.length < 4) {
+				$("#offVisInfo .InteractivePhoto .upphoto").show();
+			} else {
+				$("#offVisInfo .InteractivePhoto .upphoto").hide();
+			}
+			$(el_InteractivePhoto_photo).append(html);
+			/*--------*/
+
+			$('.saveboxListItem').unbind("longTap");
+			$('.saveboxListItem').bind("longTap", function() {
+				var that = this;
+				$.ui.popup({
+					title: "删除确认",
+					message: "您确定要删除这张照片吗？",
+					cancelText: "取消",
+					cancelOnly: false,
+					doneText: "确定",
+					doneCallback: function() {
+						$(that).parents('.rw1').find('.upphoto').show();
+						$(that).remove();
+					}
+				});
+			});
+			$('.saveboxListItem img').unbind("tap");
+			$('.saveboxListItem img').bind("tap", function(event) {
+				event.stopPropagation();
+				showImg(this);
+			});
+			var arrans = (data.info.auditItemIds).split('*');
+			for(var i = 0; i < arrans.length; i++) {
+				var sponse = JSON.parse(arrans[i]);
+				$("#offVisInforadio_" + sponse.qa + sponse.ans).attr('checked', 'checked');
+			}
+		} else {
+			common.toast("暂无详情");
+		}
 	}
 </script>

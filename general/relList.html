@@ -1,6 +1,6 @@
 <div class="list-panel">
 	<!--start-->
-	<div class="list-box" data-dir="general" data-tkey="relEdit" data-transition="slide" onclick="common.loadPage(this);">
+	<!--<div class="list-box" data-dir="general" data-tkey="relEdit" data-transition="slide" onclick="common.loadPage(this);">
 		<div class="list-defult-body box-h box-align">
 			<div class="box-flex">
 				<span class="title">发布批次号（存在多条）</span>
@@ -9,12 +9,13 @@
 				<i class="icon-img icon-img-next"></i>
 			</div>
 		</div>
-	</div>
+	</div>-->
 	<!--end-->
 </div>
 <script type="text/javascript">
 	function loadrelList(obj) {
 		relListFooter();
+		relListInit();
 	}
 
 	function relListFooter() {
@@ -33,6 +34,28 @@
 	}
 
 	function relListInit() {
-
+		ajaxFuncs.get({
+			urlname: "/api/release",
+			funcs: {
+				funcSuccessful: function(data) {
+					if(data.releases.length != 0) {
+						var html = '';
+						for(var i = 0; i < data.releases.length; i++) {
+							html += '<div class="list-box" data-batchId="' + data.releases[i].id + '" data-batchNo="' + data.releases[i].batchNo + '" data-dir="general" data-tkey="relEdit" data-transition="slide" onclick="common.loadPage(this);">';
+							html += '<div class="list-defult-body box-h box-align">';
+							html += '<div class="box-flex">';
+							html += '<span class="title">' + data.releases[i].batchNo + '</span>';
+							html += '</div>';
+							html += '<div class="icon-next">';
+							html += '<i class="icon-img icon-img-next"></i>';
+							html += '</div>';
+							html += '</div>';
+							html += '</div>';
+						}
+						$("#relList .list-panel").empty().append(html);
+					}
+				}
+			}
+		});
 	}
 </script>

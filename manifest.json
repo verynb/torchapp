@@ -275,7 +275,8 @@
 					"img/icon/subscription.png",
 					"general/relList.html",
 					"js/plug/localdb_stu.js",
-					"js/plug/localdb_sta.js"
+					"js/plug/localdb_sta.js",
+					"general/relRecSearch.html"
 				],
 				"refer": [],
 				"priority": 0
@@ -322,7 +323,6 @@
 				"general/subPayStyle.html",
 				"updatelog.txt",
 				"general/relRecStuView.html",
-				"general/relRecSearch.html",
 				"css/scss/global.scss",
 				"js/plug/push.js",
 				"img/icon/icon-checked-2.png",
