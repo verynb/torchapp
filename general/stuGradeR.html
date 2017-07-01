@@ -1,0 +1,105 @@
+<div class="list-panel stuGradeRData">
+	<!--start-->
+	<div class="list-box">
+		<div class="list-defult-body box-h box-align">
+			<div class="box-flex" data-dir="general" data-tkey="stuView" data-transition="slide" onclick="common.loadPage(this);">
+				<span class="title-other">林晓婷</span>
+				<span class="subtitle-make">90分</span>
+			</div>
+			<div class="radio-box">
+				<label for="stuGradeRradio_0">
+					<input id="stuGradeRradio_0" type="radio" name="voice" value="0"  />
+					<span class="radio-btu"></span>
+				</label>
+			</div>
+		</div>
+	</div>
+	<!--end-->
+</div>
+
+<script type="text/javascript">
+	var oldstuGradeR = null;
+	var oldDivstuGradeR = [];
+
+	function loadstuGradeR(obj) {
+		oldDivstuGradeR = obj;
+		stuGradeRFooter();
+		stuGradeRinit(obj);
+		oldstuGradeR = $(obj).find("input[name='gradeId']").val();
+		console.log(oldstuGradeR);
+	}
+
+	function stuGradeRFooter() {
+		var btuHtml = '';
+		var jsondata = {};
+		btuHtml += '<div class="footerBtu bg-color-brown" onclick="stuGradeRFooterFun(this)">';
+		btuHtml += '<a class="all stuGradeR-save" href="javascript:void(0);">确定</a>';
+		btuHtml += '</div>';
+		jsondata.container = 'stuGradeR';
+		jsondata.buttonHtml = btuHtml;
+		common.commonFooterBtu(jsondata);
+	}
+
+	function stuGradeRFooterFun(obj) {
+		var chooseLength = $("#stuGradeR .list-panel input[type='radio']:checked");
+		var chooseIdval = [];
+		var chooseNameval = [];
+		for(var k = 0; k < chooseLength.length; k++) {
+			chooseIdval.push($(chooseLength[k]).attr('data-id'));
+			chooseNameval.push($(chooseLength[k]).attr('data-name'));
+		}
+		$(oldDivstuGradeR).find("input[name='grade']").val("").val(chooseIdval.join(','));
+		$(oldDivstuGradeR).find("input[name='gradeId']").val("").val(chooseIdval.join(','));
+		$(oldDivstuGradeR).find("span.grade").html(chooseNameval.join(','));
+		$.ui.goBack();
+	}
+
+	function stuGradeRinit(obj) {
+		ajaxFuncs.get({
+			urlname: "/api/gradeMoney",
+			funcs: {
+				funcSuccessful: function(data) {
+					if(data.gradeMoneyList.length != 0) {
+						var html = '';
+						for(var i = 0; i < data.gradeMoneyList.length; i++) {
+							var ischeck = false;
+							html += '<div class="list-box">';
+							html += '<div class="list-defult-body box-h box-align">';
+							html += '<div class="box-flex">';
+							html += '<span class="title-other">' + data.gradeMoneyList[i].gradeName + '</span>';
+							html += '</div>';
+							html += '<div class="radio-box">';
+							html += '<label for="stuGradeRradio_' + data.gradeMoneyList[i].id + '">';
+
+							if(oldstuGradeR != null && data.gradeMoneyList[i].id == oldstuGradeR) {
+								html += '<input id="stuGradeRradio_' + data.gradeMoneyList[i].id + '" type="radio" name="grade" data-name="' + data.gradeMoneyList[i].gradeName + '" data-id="' + data.gradeMoneyList[i].id + '"  checked="checked"  />';
+								ischeck = true;
+							}
+							if(!ischeck) {
+								html += '<input id="stuGradeRradio_' + data.gradeMoneyList[i].id + '" type="radio" name="grade" data-name="' + data.gradeMoneyList[i].gradeName + '" data-id="' + data.gradeMoneyList[i].id + '"   />';
+							}
+							html += '<span class="radio-btu"></span>';
+							html += '</label>';
+							html += '</div>';
+							html += '</div>';
+							html += '</div>';
+						}
+						$("#stuGradeR .list-panel").empty().append(html);
+						$('#stuGradeR label').on('click', function() {
+							if($(this).find('input[type="radio"]').prop("checked")) {
+								$(this).find('input[type="radio"]').removeAttr('checked');
+							} else {
+								$(this).find('input[type="radio"]').attr('checked', 'checked');
+							}
+						});
+					} else {
+						common.handleDefaultPage({
+							type: 2
+						});
+					}
+				}
+			}
+		});
+
+	}
+</script>

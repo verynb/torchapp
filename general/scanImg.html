@@ -1,0 +1,38 @@
+<div id="imageReader">
+	<div class="swiper-container">
+		<div class="swiper-wrapper" id="imageReaderContainer">
+		</div>
+		<div class="swiper-pagination"></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	function loadscanImg(obj) {
+		var aSrc = [];
+		var beginIndex = $(obj).attr("data-index");
+		var iSrc = $(obj).attr("src");
+		var arr = $(obj).attr("data-img").split(",");
+		var html = [];
+
+		for(var i = 0; i < arr.length; i++) {
+			html.push("<div class='swiper-slide'><img src='" + arr[i] + "' onclick='$.ui.goBack()' /></div>");
+		}
+		$.ui.removeFooterMenu();
+		if(mySwiper) {
+			mySwiper.destroy();
+		}
+		mySwiper = new Swiper('#imageReader .swiper-container', {
+			pagination: '.swiper-pagination',
+			spaceBetween: 30
+		});
+
+		mySwiper.removeAllSlides(true);
+		mySwiper.appendSlide(html);
+
+		if(html.length != 1) {
+			mySwiper.slideTo(beginIndex, 0);
+		} else {
+			$("#imageReader .swiper-pagination").hide();
+		}
+	}
+</script>

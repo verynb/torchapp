@@ -1,0 +1,63 @@
+<div class="padding-top-1"></div>
+<div class="list-panel">
+	<!--	<div class="list-box">
+		<div class="list-defult-body box-h ">
+			<div class="box-flex">
+				<span class="title">林晓婷</span>
+			</div>
+			<div class="icon-next"></div>
+		</div>
+	</div>
+-->
+</div>
+<script type="text/javascript">
+	function loadrelConfirm(obj) {
+		var batchNo = $(obj).attr("data-batchNo");
+		initrelConfirm(batchNo);
+		//		relConfirmFooter();
+	}
+
+	function relConfirmFooter() {
+		var btuHtml = '';
+		var jsondata = {};
+		btuHtml += '<div class="footerBtu bg-color-brown"  onclick="relConfirmFooterFunc(this)">';
+		btuHtml += '<a class="all relConfirm-save" href="javascript:void(0);">保存</a>';
+		btuHtml += '</div>';
+		jsondata.container = 'relConfirm';
+		jsondata.buttonHtml = btuHtml;
+		common.commonFooterBtu(jsondata);
+	}
+
+	function relConfirmFooterFunc(obj) {
+		common.toast('保存本批次成功，请通知老师审核');
+	}
+
+	function　 initrelConfirm(batchNo) {
+		ajaxFuncs.get({
+			urlname: "/api/release/" + batchNo,
+			funcs: {
+				funcSuccessful: function(data) {
+					data = data.releaseList;
+					var html = "";
+					if(data.length != 0) {
+						for(var i = 0; i < data.length; i++) {
+							html += '<div class="list-box">';
+							html += '<div class="list-defult-body box-h">';
+							html += '<div class="box-flex" data-stuid="' + data[i].studentId + '" data-dir="general" data-tkey="stuView" data-transition="slide" onclick="common.loadPage(this);">';
+							html += '<span class="title">' + data[i].studentName + '</span>';
+							html += '</div>';
+							html += '<div class="icon-next"></div>';
+							html += '</div>';
+							html += '</div>';
+						}
+						$("#relConfirm .list-panel").empty().append(html);
+					} else {
+						common.handleDefaultPage({
+							type: 2
+						});
+					}
+				}
+			}
+		})
+	}
+</script>
