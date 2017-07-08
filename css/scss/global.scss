@@ -176,6 +176,7 @@ ul {
 #relMoneyHeader,
 #relRecStuViewHeader,
 #stuViewHeader,
+#relEditHeader,
 #offVisInfoHeader {
     //header style
     h1 {
@@ -658,10 +659,10 @@ ul {
         color: rgb(38, 41, 49);
         line-height: 1.2;
         text-align: justify;
-        text-indent: 3rem;
         p {
             margin: 2rem 0;
             padding: 0;
+            text-indent: 3rem;
         }
         img {
             max-width: 100%;
@@ -847,14 +848,13 @@ ul {
     }
 }
 
-#volList {
+.scrollPanel-box {
     .afScrollPanel {
         height: 100%;
     }
     .afScrollbar {
         width: 0 !important;
     }
-    #volListContent,
     .wrapper {
         height: 100%;
         position: absolute;

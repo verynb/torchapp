@@ -25,7 +25,7 @@
 		oldDivstuGradeR = obj;
 		stuGradeRFooter();
 		stuGradeRinit(obj);
-		oldstuGradeR = $(obj).find("input[name='gradeId']").val();
+		oldstuGradeR = $(obj).find("input[name='gradeCode']").val();
 		console.log(oldstuGradeR);
 	}
 
@@ -48,8 +48,8 @@
 			chooseIdval.push($(chooseLength[k]).attr('data-id'));
 			chooseNameval.push($(chooseLength[k]).attr('data-name'));
 		}
-		$(oldDivstuGradeR).find("input[name='grade']").val("").val(chooseIdval.join(','));
-		$(oldDivstuGradeR).find("input[name='gradeId']").val("").val(chooseIdval.join(','));
+		$(oldDivstuGradeR).find("input[name='grade']").val("").val(chooseNameval.join(','));
+		$(oldDivstuGradeR).find("input[name='gradeCode']").val("").val(chooseIdval.join(','));
 		$(oldDivstuGradeR).find("span.grade").html(chooseNameval.join(','));
 		$.ui.goBack();
 	}
@@ -71,12 +71,12 @@
 							html += '<div class="radio-box">';
 							html += '<label for="stuGradeRradio_' + data.gradeMoneyList[i].id + '">';
 
-							if(oldstuGradeR != null && data.gradeMoneyList[i].id == oldstuGradeR) {
-								html += '<input id="stuGradeRradio_' + data.gradeMoneyList[i].id + '" type="radio" name="grade" data-name="' + data.gradeMoneyList[i].gradeName + '" data-id="' + data.gradeMoneyList[i].id + '"  checked="checked"  />';
+							if(oldstuGradeR != null && data.gradeMoneyList[i].gradeCode == oldstuGradeR) {
+								html += '<input id="stuGradeRradio_' + data.gradeMoneyList[i].id + '" type="radio" name="grade" data-name="' + data.gradeMoneyList[i].gradeName + '" data-id="' + data.gradeMoneyList[i].gradeCode + '"  checked="checked"  />';
 								ischeck = true;
 							}
 							if(!ischeck) {
-								html += '<input id="stuGradeRradio_' + data.gradeMoneyList[i].id + '" type="radio" name="grade" data-name="' + data.gradeMoneyList[i].gradeName + '" data-id="' + data.gradeMoneyList[i].id + '"   />';
+								html += '<input id="stuGradeRradio_' + data.gradeMoneyList[i].id + '" type="radio" name="grade" data-name="' + data.gradeMoneyList[i].gradeName + '" data-id="' + data.gradeMoneyList[i].gradeCode + '"   />';
 							}
 							html += '<span class="radio-btu"></span>';
 							html += '</label>';

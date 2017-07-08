@@ -73,7 +73,7 @@
 							html += '</div>';
 						}
 						$("#volList .list-panel").empty().append(html);
-						if(data.resultDtos.length == 15) {
+						if(data.resultDtos.length > 0) {
 							if(isBindS) {
 								var jsondata = {};
 								jsondata.content = "volList";

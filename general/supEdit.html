@@ -131,7 +131,7 @@
 				<div class="box-flex">
 					<span class="title">省市区</span>
 				</div>
-				<div class="icon-text-box " id="sel_city">
+				<div class="icon-text-box " id="sel_city5">
 					<span class="nav fromfield set_city" data-unionchar=" " data-fromfield="province,city,area">未选择</span>
 					<input hidden="hidden" class="editor-input fromfield" data-fromfield="province" name="province" value="" />
 					<input hidden="hidden" class="editor-input fromfield" data-fromfield="city" name="city" value="" />
@@ -172,7 +172,7 @@
 	function loadsupEdit(obj) {
 		pageScrollToTop();
 		supupdateId = $(obj).attr("data-id");
-		cityfunc.add("sel_city");
+		cityfunc.add("sel_city5");
 		if(supupdateId != 0) {
 			iniSupEditInfo();
 		} else {

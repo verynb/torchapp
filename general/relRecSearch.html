@@ -1,59 +1,57 @@
-<div class="list-panel">
-	<div class="padding-top-1"></div>
-	<div class="list-box">
-		<div class="list-defult-body box-h ">
-			<div class="box-flex">
-				<span class="title">发布批次</span>
-			</div>
-			<div class="text-input-box">
-				<input class="editor-input" type="text" name="batch" required="required" placeholder="未填写 " value="" />
-			</div>
-			<div class="icon-next"></div>
-		</div>
-	</div>
-
-	<div class="list-box">
-		<div class="list-defult-body box-h ">
-			<div class="box-flex">
-				<span class="title">省市</span>
-			</div>
-			<div class="icon-text-box">
-				<span class="nav">四川省成都市</span>
-				<input hidden="hidden" name="province" readonly="readonly" />
-				<input hidden="hidden" name="city" readonly="readonly" />
-			</div>
-			<div class="icon-next">
-				<i class="icon-img icon-img-next"></i>
+<form>
+	<div class="list-panel">
+		<div class="padding-top-1"></div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">开始时间</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input" type="text" name="startTime" required="required" readonly="readonly" data-warning="开始时间不能为空" onclick="common.pickDateYMD(this);" placeholder="点击选择时间" />
+				</div>
+				<div class="icon-next"></div>
 			</div>
 		</div>
-	</div>
-
-	<div class="list-box">
-		<div class="list-defult-body box-h ">
-			<div class="box-flex">
-				<span class="title">学校</span>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">结束时间</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input" type="text" name="endTime" required="required" readonly="readonly" data-warning="结束时间不能为空" onclick="common.pickDateYMD(this);" placeholder="点击选择时间" />
+				</div>
+				<div class="icon-next"></div>
 			</div>
-			<div class="icon-text-box">
-				<span class="nav">成都实验中学</span>
-				<input hidden="hidden" name="province" readonly="readonly" />
-			</div>
-			<div class="icon-next">
-				<i class="icon-img icon-img-next"></i>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">省市</span>
+				</div>
+				<div class="icon-text-box " id="sel_city2">
+					<span class="nav sel_city">未选择</span>
+					<input hidden="hidden" class="editor-input" required="required" data-warning="省市不能为空" name="province" value="" />
+					<input hidden="hidden" class="editor-input" required="required" data-warning="省市不能为空" name="city" value="" />
+				</div>
+				<div class="icon-next">
+					<i class="icon-img icon-img-next"></i>
+				</div>
 			</div>
 		</div>
 	</div>
-
-</div>
-
+</form>
 <script type="text/javascript">
+	var relRecSearchVal;
+
 	function loadrelRecSearch(obj) {
 		relRecSearchFooter();
+		cityfunc.addTwo("sel_city2");
 	}
 
 	function relRecSearchFooter() {
 		var btuHtml = '';
 		var jsondata = {};
-		btuHtml += '<div class="footerBtu bg-color-brown" data-tkey="relRecStuList" data-dir="general" data-transition="slide" onclick="relRecSearchFooterFunc(this)">';
+		btuHtml += '<div class="footerBtu bg-color-brown" data-tkey="relRecList" data-dir="general" data-transition="slide" onclick="relRecSearchFooterFunc(this)">';
 		btuHtml += '<a class="all relRecSearch-save" href="javascript:void(0);">查询</a>';
 		btuHtml += '</div>';
 		jsondata.container = 'relRecSearch';
@@ -62,6 +60,26 @@
 	}
 
 	function relRecSearchFooterFunc(obj) {
-		common.loadPage($(obj));
+		var params = common.serializeToJson("#relRecSearch form");
+		if(!common.validate("#relRecSearch form", obj)) {
+			return false;
+		} else {
+			params.startTime = (new Date(params.startTime)).getTime();
+			params.endTime = (new Date(params.endTime)).getTime();
+			ajaxFuncs.post({
+				urlname: "/api/releases",
+				params: params,
+				funcs: {
+					funcSuccessful: function(data) {
+						relRecSearchVal = data.releaseList;
+						if(relRecSearchVal.length != 0) {
+							common.loadPage($(obj));
+						} else {
+							common.toast("没有查询到相关批次");
+						}
+					}
+				}
+			});
+		}
 	}
 </script>

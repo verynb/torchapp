@@ -1,42 +1,55 @@
 <div class="padding-top-1"></div>
-<div class="info-panel-default">
-	<p>批次号：000154</p>
-	<p>学 校：成都实验中学</p>
-	<p>地址：四川省成都市成华区广福路1号</p>
-	<p>发布时间：2016-12-15 14:45:30</p>
-</div>
-
-<div class="list-panel">
-	<div class="padding-top-1"></div>
-	<!--start-->
-	<div class="list-box" data-dir="general" data-tkey="relRecStuView" data-transition="slide" onclick="common.loadPage(this);">
-		<div class="list-defult-body box-h box-align">
-			<div class="box-flex width50">
-				<span class="title">姓名：林晓丽</span>
-			</div>
-			<div class="box-flex width50">
-				<span class="title">年级：初二</span>
-			</div>
-			<div class="icon-next">
-				<i class="icon-img icon-img-next"></i>
-			</div>
-		</div>
-	</div>
-	<!--end-->
-	<div class="list-box" data-dir="general" data-tkey="relRecStuView" data-transition="slide" onclick="common.loadPage(this);">
-		<div class="list-defult-body box-h box-align">
-			<div class="box-flex width50">
-				<span class="title ">姓名：林晓丽</span>
-			</div>
-			<div class="box-flex width50">
-				<span class="title">年级：初二</span>
-			</div>
-			<div class="icon-next">
-				<i class="icon-img icon-img-next"></i>
-			</div>
-		</div>
-	</div>
-</div>
+<div id="relRecStuListBody"></div>
 <script type="text/javascript">
-	function loadrelRecStuList(obj) {}
+	var relRecStuListBatchId;
+
+	function loadrelRecStuList(obj) {
+		relRecStuListBatchId = $(obj).attr("data-batchId");
+		ajaxFuncs.get({
+			urlname: "/api/release/id?id=" + relRecStuListBatchId,
+			funcs: {
+				funcSuccessful: function(data) {
+					if(data.releaseList.length != 0) {
+						var html = '';
+						html += '<div class="info-panel-default">';
+						html += '<p>批次号：' + data.releaseList[0].batchNo + '</p>';
+						html += '<p>地址：' + data.releaseList[0].province + data.releaseList[0].city + '</p>';
+						html += '<p>发布时间：' + common.formatTime((data.releaseList[0].createTime) / 1000, 6) + '</p>';
+						html += '</div>';
+						html += '<div class="list-panel">';
+						html += '<div class="padding-top-1"></div>';
+						for(var i = 0; i < data.releaseList.length; i++) {
+							html += '<div class="list-box" data-dir="general" data-tkey="relRecStuView" data-transition="slide" data-stuid="' + data.releaseList[i].studentId + '" onclick="common.loadPage(this);">';
+							html += '<div class="list-defult-body box-h box-align">';
+
+							html += '<div class="box-flex width50">';
+							html += '<span class="title">姓名：' + data.releaseList[i].studentName + '</span>';
+							html += '</div>';
+
+							html += '<div class="box-flex width50">';
+							html += '<span class="title">年级：' + data.releaseList[i].grade + '</span>';
+							html += '</div>';
+
+							html += '<div class="icon-next">';
+							html += '<i class="icon-img icon-img-next"></i>';
+							html += '</div>';
+
+							html += '</div>';
+							html += '</div>';
+						}
+						html += '</div>';
+						$("#relRecStuListBody").empty().append(html);
+					} else {
+						common.handleDefaultPage({
+							type: 2
+						});
+					}
+				}
+			}
+		})
+	}
+
+	function initrelRecStuList() {
+
+	}
 </script>

@@ -47,8 +47,13 @@
 	}
 
 	function stuListPullDownAction(obj, callback) {
-		ajaxFuncs.get({
-			urlname: "/api/students?pageSize=15&currentPage=0",
+		var params = {
+			"currentPage": "0",
+			"pageSize": "15"
+		}
+		ajaxFuncs.post({
+			urlname: "/api/students/filter",
+			params: params,
 			funcs: {
 				funcSuccessful: function(data) {
 					stuListPage = 0;
@@ -73,7 +78,7 @@
 						}
 						$("#stuList .list-panel").empty().append(html);
 
-						if(data.studentLists.length == 15) {
+						if(data.studentLists.length > 0) {
 							if(stuisBindS) {
 								var jsondata = {};
 								jsondata.content = "stuList";
@@ -107,8 +112,13 @@
 	function stuListPullUpAction(obj, callback) {
 		if(stuisAddPage == true) {
 			stuListPage = stuListPage + 1;
-			ajaxFuncs.get({
-				urlname: "/api/students?pageSize=15&currentPage=" + stuListPage,
+			var params = {
+				"currentPage": stuListPage,
+				"pageSize": "15"
+			}
+			ajaxFuncs.post({
+				urlname: "/api/students/filter",
+				params: params,
 				funcs: {
 					funcSuccessful: function(data) {
 						if(data.studentLists.length < 15) {

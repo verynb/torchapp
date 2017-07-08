@@ -29,7 +29,7 @@
 					<span class="title">出生日期</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="birthday" type="text" name="birthday" required="required" data-warning="出生日期不能为空" onclick="common.pickDateYMD(this);" placeholder="点此选择您的生日" />
+					<input class="editor-input fromfield" data-fromfield="birthday" type="text" name="birthday" required="required" readonly="readonly" data-minDate="1970-01-01" data-warning="出生日期不能为空" onclick="common.pickDateYMD(this, stuEditpickDateYMD);" placeholder="点此选择您的生日" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
@@ -39,8 +39,9 @@
 				<div class="box-flex">
 					<span class="title">年龄</span>
 				</div>
-				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="age" type="text" name="age" required="required" data-warning="年龄不能为空" placeholder="未填写" value="" />
+				<div class="icon-text-box">
+					<span class="nav fromfield data-age" data-fromfield="age">0</span>
+					<input class="editor-input fromfield" data-fromfield="age" type="hidden" name="age" required="required" readonly="readonly" data-warning="年龄不能为空" placeholder="未填写" value="" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
@@ -50,7 +51,7 @@
 				<div class="box-flex">
 					<span class="title">省市区</span>
 				</div>
-				<div class="icon-text-box" id="sel_city">
+				<div class="icon-text-box" id="sel_city4">
 					<span class="nav fromfield set_city" data-unionchar=" " data-fromfield="province,city,area">未选择</span>
 					<input hidden="hidden" class="editor-input fromfield" required="required" data-warning="省市区不能为空" data-fromfield="province" name="province" value="" />
 					<input hidden="hidden" class="editor-input fromfield" required="required" data-warning="省市区不能为空" data-fromfield="city" name="city" value="" />
@@ -108,7 +109,7 @@
 				<div class="icon-text-box min-width">
 					<span class="nav fromfield grade" data-fromfield="grade">选择年级</span>
 					<input class="editor-input fromfield" data-fromfield="grade" type="hidden" name="grade" placeholder="未填写" value="" />
-					<input class="editor-input fromfield" data-fromfield="gradeId" type="hidden" name="gradeId" placeholder="未填写" value="" />
+					<input class="editor-input fromfield" data-fromfield="gradeCode" type="hidden" name="gradeCode" placeholder="未填写" value="" />
 				</div>
 				<div class="icon-next">
 					<i class="icon-img icon-img-next"></i>
@@ -132,26 +133,35 @@
 				<div class="box-flex">
 					<span class="title">学生状态</span>
 				</div>
-				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="status" type="text" name="status" readonly="readonly" placeholder="未填写" value="" />
+				<div class="icon-text-box">
+					<span class="nav data-statusName"></span>
+					<input class="editor-input fromfield" data-fromfield="status" type="hidden" name="status" readonly="readonly" placeholder="未填写" value="" />
 				</div>
 			</div>
 		</div>
 	</div>
 </form>
 <script type="text/javascript">
-	var stuupdateId = null;
+	var stuupdateId = null,
+		stuViewStuId;
 
 	function loadstuEdit(obj) {
 		pageScrollToTop();
 		stuupdateId = $(obj).attr("data-id");
-		cityfunc.add("sel_city");
-
+		stuViewStuId = stuupdateId;
+		cityfunc.add("sel_city4");
 		if(stuupdateId != 0) {
 			iniSupEditInfo();
 		} else {
 			stuEditFooter();
 		}
+
+	}
+
+	function stuEditpickDateYMD(birth) {
+		var age = common.timeDifference(birth);
+		$("#stuEdit input[name='age']").val(age);
+		$("#stuEdit span.data-age").text(age);
 	}
 
 	function stuEditFooter() {
@@ -180,7 +190,9 @@
 						readOnly: false,
 						buttons: btuHtml,
 						barbutton: true,
-						callback: function() {}
+						callback: function() {
+							$("#stuEdit .data-statusName").text(pageCom.stuStatusName(data.status));
+						}
 					});
 				}
 			}

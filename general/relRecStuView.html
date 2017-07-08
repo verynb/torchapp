@@ -1,9 +1,9 @@
-<div class="list-panel">
+<div class="list-panel datasource" id="relRecStuViewBody" data-datasource="">
 	<!--start-->
 	<div class="list-box">
 		<div class="list-defult-body box-h box-align">
 			<div class="box-flex">
-				<span class="title">姓  名：林晓婷</span>
+				<span class="title">姓  名：<span class="fromfield" data-fromfield="name"></span></span>
 			</div>
 		</div>
 	</div>
@@ -11,42 +11,43 @@
 	<div class="list-box">
 		<div class="list-defult-body box-h box-align">
 			<div class="box-flex">
-				<span class="title">年  龄：14岁</span>
+				<span class="title">性  别：<span class="fromfield" data-fromfield="gender"></span></span>
 			</div>
 		</div>
 	</div>
 	<div class="list-box">
 		<div class="list-defult-body box-h box-align">
 			<div class="box-flex">
-				<span class="title">身份证：513421200107141540</span>
+				<span class="title">年  龄：<span class="fromfield" data-fromfield="age"></span>岁</span>
 			</div>
 		</div>
 	</div>
 	<div class="list-box">
 		<div class="list-defult-body box-h box-align">
 			<div class="box-flex">
-				<span class="title">学  校：成都实验中学</span>
+				<span class="title">身份证：<span class="fromfield" data-fromfield="identityCard"></span></span>
 			</div>
 		</div>
 	</div>
 	<div class="list-box">
 		<div class="list-defult-body box-h box-align">
 			<div class="box-flex">
-				<span class="title">年  级：初二</span>
+				<span class="title">学  校：<span class="fromfield" data-fromfield="schoolName"></span></span>
 			</div>
 		</div>
 	</div>
 	<div class="list-box">
 		<div class="list-defult-body box-h box-align">
 			<div class="box-flex">
-				<span class="title">地  址：四川省成都市武侯区金刚路1号</span>
+				<span class="title">年  级：<span class="fromfield" data-fromfield="grade"></span></span>
 			</div>
 		</div>
 	</div>
 	<div class="list-box">
 		<div class="list-defult-body box-h box-align">
+			<div><span class="title">地  址：</span></div>
 			<div class="box-flex">
-				<span class="title">金  额：4000元</span>
+				<div class="table-cell fromfield" data-fromfield="province,city,area,address" data-unionchar=' '><span></span></div>
 			</div>
 		</div>
 	</div>
@@ -54,18 +55,38 @@
 	<div class="list-box">
 		<div class="list-defult-body box-h box-align">
 			<div class="box-flex">
-				<span class="title">认捐人：李富贵</span>
+				<span class="title">认捐人：<span class="color-paleRed fromfield" data-fromfield="sponsorName"></span></span>
 			</div>
 		</div>
 	</div>
 	<div class="list-box">
 		<div class="list-defult-body box-h box-align">
 			<div class="box-flex">
-				<span class="title">认捐状态：<span class="color-paleRed">已支付</span></span>
+				<span class="title">认捐状态：<span class="color-paleRed fromfield" data-fromfield="sponsorName"></span></span>
 			</div>
 		</div>
 	</div>
 </div>
 <script type="text/javascript">
-	function loadrelRecStuView(obj) {}
+	var stuViewStuId;
+
+	function loadrelRecStuView(obj) {
+		var stuId = $(obj).attr('data-stuid');
+		ajaxFuncs.get({
+			urlname: "/api/student/" + stuId,
+			funcs: {
+				funcSuccessful: function(data) {
+					loadData.load({
+						data: data,
+						container: "relRecStuView",
+						readOnly: true,
+						barbutton: true,
+						callback: function() {
+							stuViewStuId = data.id;
+						}
+					});
+				}
+			}
+		});
+	}
 </script>

@@ -122,6 +122,8 @@
 				doneText: "继续",
 				doneCallback: function() {
 					createtime = common.formatTime(G_SERVERTIME, 6);
+					localStu.deleteStuAll();
+					localSta.deleteStaAll();
 					getStuInfo();
 				},
 				cancelCallback: function() {
@@ -158,6 +160,8 @@
 								arr.push('');
 								arr.push('0');
 								arr.push('0');
+								arr.push(window.localStorage.getItem(G_COMKEY + ".userId"));
+								arr.push(window.localStorage.getItem(G_COMKEY + ".userName"));
 								arr.push(createtime);
 								arr.push(createtime);
 								localStu.insertStu(arr);
@@ -194,6 +198,43 @@
 					}
 				});
 			}
+		},
+		stuStatusName: function(status) {
+			/**
+			 * 0.正常
+			 * 1.结案
+			 * 2.冻结
+			 * 3.预发布
+			 * 4.已发布
+			 * 5.预订
+			 * 6.已结队
+			 */
+			switch(status) {
+				case 0:
+					return "正常";
+					break;
+				case 1:
+					return "结案";
+					break;
+				case 2:
+					return "冻结";
+					break;
+				case 3:
+					return "预发布";
+					break;
+				case 4:
+					return "已发布";
+					break;
+				case 5:
+					return "预订";
+					break;
+				case 6:
+					return "已结队";
+					break;
+				default:
+					break;
+			}
+
 		}
 	};
 	window.pageCom = pageCom;

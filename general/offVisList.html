@@ -17,8 +17,13 @@
 	var isAllowed = true;
 
 	function loadoffVisList(obj) {
-		offVisListFooter();
+		window.localStorage.setItem(G_COMKEY + ".token", "xxxxx-admin");
 		localStu.selectAll(initOffVisList);
+		if(window.localStorage.getItem(G_COMKEY + ".isAllowed") != undefined && window.localStorage.getItem(G_COMKEY + ".isAllowed") == "true") {
+			localStu.selectAllstatus(saveAllData);
+		} else {
+			offVisListFooter();
+		}
 	}
 
 	function offVisListFooter() {
@@ -34,41 +39,136 @@
 
 	function offVisListFooterFunc(obj) {
 		if(isAllowed) {
-			localStu.selectAllTwo(saveAllData);
+			window.localStorage.setItem(G_COMKEY + ".isAllowed", "true");
+			localStu.selectAllstatus(saveAllData);
 		} else {
 			common.toast("还有学生没有进行家访，暂时不能上传");
 		}
 	}
 
 	function saveAllData(data) {
+		console.log(JSON.stringify(data));
 		if(data.status == '1') {
-			for(var i = 0; i < data.list.length; i++) {
+			var jsondata = {};
+			if(data.list[0].status == '1') {
+				jsondata.batchId = data.list[0].batchId;
+				jsondata.studentId = data.list[0].studentId;
+				jsondata.visitInfo = data.list[0].visitInfo;
+				jsondata.homeVistorId = data.list[0].volId;
+				jsondata.homeVistor = data.list[0].volIdName;
+				jsondata.homeVisitTime = data.list[0].updatetime;
+				jsondata.auditItemIds = (data.list[0].auditItemIds).split("*");
+				var auditItemIds = [];
+				for(var j = 0; j < jsondata.auditItemIds.length; j++) {
+					var auditItemIds_val = JSON.parse(jsondata.auditItemIds[j]);
+					auditItemIds.push(auditItemIds_val.ans);
+				}
+				jsondata.applicationForms = (data.list[0].applicationForm).split(",");
+				jsondata.familyPhotos = (data.list[0].familyPhoto).split(",");
+				jsondata.homeFeaturePhotos = (data.list[0].homeFeaturePhotos).split(",");
+				jsondata.homePhotos = (data.list[0].homePhoto).split(",");
+				jsondata.interactivePhotos = (data.list[0].InteractivePhoto).split(",");
+				jsondata.studentPhotos = (data.list[0].studentPhoto).split(",");
+				var applicationForms = [],
+					familyPhotos = [],
+					homeFeaturePhotos = [],
+					homePhotos = [],
+					interactivePhotos = [],
+					studentPhotos = [];
+				for(var j = 0; j < jsondata.applicationForms.length; j++) {
+					common.uploadSelectedPictureServers(jsondata.applicationForms[j], function(base64) {
+						applicationForms.push(base64);
+					});
+				}
+				for(var j = 0; j < jsondata.familyPhotos.length; j++) {
+					common.uploadSelectedPictureServers(jsondata.familyPhotos[j], function(base64) {
+						familyPhotos.push(base64);
+					});
+				}
+				for(var j = 0; j < jsondata.homeFeaturePhotos.length; j++) {
+					common.uploadSelectedPictureServers(jsondata.homeFeaturePhotos[j], function(base64) {
+						homeFeaturePhotos.push(base64);
+					});
+				}
+				for(var j = 0; j < jsondata.homePhotos.length; j++) {
+					common.uploadSelectedPictureServers(jsondata.homePhotos[j], function(base64) {
+						homePhotos.push(base64);
+					});
+				}
+				for(var j = 0; j < jsondata.interactivePhotos.length; j++) {
+					common.uploadSelectedPictureServers(jsondata.interactivePhotos[j], function(base64) {
+						interactivePhotos.push(base64);
+					});
+				}
+				for(var j = 0; j < jsondata.studentPhotos.length; j++) {
+					common.uploadSelectedPictureServers(jsondata.studentPhotos[j], function(base64) {
+						studentPhotos.push(base64);
+					});
+				}
+				jsondata.auditItemIds = auditItemIds;
+				jsondata.applicationForms = applicationForms;
+				jsondata.familyPhotos = familyPhotos;
+				jsondata.homeFeaturePhotos = homeFeaturePhotos;
+				jsondata.homePhotos = homePhotos;
+				jsondata.interactivePhotos = interactivePhotos;
+				jsondata.studentPhotos = studentPhotos;
 
+				setTimeout(function() {
+					saveStu(jsondata);
+				}, 3000);
 			}
 		} else {
-
+			common.toast("已经全部上传成功");
+			window.localStorage.setItem(G_COMKEY + ".isAllowed", "false");
 		}
 	}
 
+	function saveStu(data) {
+		ajaxFuncs.post({
+			urlname: "/api/homeVisit",
+			params: data,
+			funcs: {
+				funcSuccessful: function(data) {
+					localStu.updatestatus((data.id).toString(), function() {
+						localStu.selectAllstatus(saveAllData);
+					});
+				}
+			}
+		})
+	}
+
 	function initOffVisList(data) {
-		console.log(JSON.stringify(data));
-		if(data.status == 1) {
+		if(data.status == '1') {
 			if(data.list.length != 0) {
 				var html = '';
 				for(var i = 0; i < data.list.length; i++) {
 					html += '<div class="list-box">';
 					html += '<div class="list-defult-body box-h box-align">';
-					html += '<div class="box-flex" data-status="' + data.list[i].status + '" data-batchId="' + data.list[i].batchId + '" data-stuid="' + data.list[i].studentId + '" data-dir="general" data-tkey="offVisInfo" data-transition="slide" onclick="common.loadPage(this);">';
-					html += '<span class="title-other">' + data.list[i].name + '</span>';
-					if(data.list[i].status != "" && data.list[i].status != "0") {
+					if(data.list[i].status == "1") {
+						html += '<div class="box-flex" data-status="' + data.list[i].status + '" data-batchId="' + data.list[i].batchId + '" data-stuid="' + data.list[i].studentId + '" data-dir="general" data-tkey="offVisInfo" data-transition="slide" onclick="common.loadPage(this);">';
+						html += '<span class="title-other">' + data.list[i].name + '</span>';
 						html += '<span class="subtitle-make">录入完成</span>';
+						html += '</div>';
+						html += '<div class="icon-next">';
+						html += '<i class="icon-img icon-img-next"></i>';
+						html += '</div>';
+					} else if(data.list[i].status == "2") {
+						html += '<div class="box-flex" data-status="' + data.list[i].status + '" data-batchId="' + data.list[i].batchId + '" data-stuid="' + data.list[i].studentId + '" data-dir="general" data-tkey="offVisInfo" data-transition="slide">';
+						html += '<span class="title-other">' + data.list[i].name + '</span>';
+						html += '<span class="subtitle-make">上传完成</span>';
+						html += '</div>';
+						html += '<div class="icon-next">';
+						html += '</div>';
 					} else {
+						html += '<div class="box-flex" data-status="' + data.list[i].status + '" data-batchId="' + data.list[i].batchId + '" data-stuid="' + data.list[i].studentId + '" data-dir="general" data-tkey="offVisInfo" data-transition="slide" onclick="common.loadPage(this);">';
+						html += '<span class="title-other">' + data.list[i].name + '</span>';
+						html += '</div>';
+						html += '<div class="icon-next">';
+						html += '<i class="icon-img icon-img-next"></i>';
+						html += '</div>';
 						isAllowed = false;
 					}
-					html += '</div>';
-					html += '<div class="icon-next">';
-					html += '<i class="icon-img icon-img-next"></i>';
-					html += '</div>';
+
 					html += '</div>';
 					html += '</div>';
 				}

@@ -7,8 +7,8 @@
 				<span class="subtitle-make">90分</span>
 			</div>
 			<div class="checkbox-box">
-				<label for="relAddcheckbox_0">
-					<input id="relAddcheckbox_0" type="checkbox" name="voice" value="0"  />
+				<label for="relAddTwocheckbox_0">
+					<input id="relAddTwocheckbox_0" type="checkbox" name="voice" value="0"  />
 					<span class="checkbox-btu"></span>
 				</label>
 			</div>
@@ -17,10 +17,10 @@
 	<!--end-->
 </div>
 <script type="text/javascript">
-	function loadrelAdd(obj) {
-		initrelAdd();
-		relAddFooter();
-		$('#relAdd label').on('click', function() {
+	function loadrelAddTwo(obj) {
+		initrelAddTwo();
+		relAddTwoFooter();
+		$('#relAddTwo label').on('click', function() {
 			if($(this).find('input[type="checkbox"]').prop("checked")) {
 				$(this).find('input[type="checkbox"]').removeAttr('checked');
 			} else {
@@ -29,24 +29,24 @@
 		});
 	}
 
-	function relAddFooter() {
+	function relAddTwoFooter() {
 		var btuHtml = '';
 		var jsondata = {};
-		btuHtml += '<div class="footerBtu bg-color-brown relAdd-save-box" data-tkey="relEdit" data-dir="general" data-transition="slide" onclick="relAddFooterFunc(this)">';
-		btuHtml += '<a class="all relAdd-save" href="javascript:void(0);">发布至家访</a>';
+		btuHtml += '<div class="footerBtu bg-color-brown relAddTwo-save-box"  onclick="relAddTwoFooterFunc(this)">';
+		btuHtml += '<a class="all relAddTwo-save" href="javascript:void(0);">保存</a>';
 		btuHtml += '</div>';
-		jsondata.container = 'relAdd';
+		jsondata.container = 'relAddTwo';
 		jsondata.buttonHtml = btuHtml;
 		common.commonFooterBtu(jsondata);
 	}
 
-	function relAddFooterFunc(obj) {
+	function relAddTwoFooterFunc(obj) {
 		/*{
 		    "batchId": 0,
 		    "studentId": 0,
 		    "needMoney": 0
 		  }*/
-		var el_checkbox = $("#relAdd .list-panel").find('input[type="checkbox"]:checked');
+		var el_checkbox = $("#relAddTwo .list-panel").find('input[type="checkbox"]:checked');
 		var params = [];
 		for(var i = 0; i < el_checkbox.length; i++) {
 			var item = {};
@@ -62,13 +62,12 @@
 				params: params,
 				funcs: {
 					funcSuccessful: function(data) {
-						common.toast("发布至家访成功");
-						$(".relAdd-save-box").attr("data-batchId", relBatchData.batchId);
-						$(".relAdd-save-box").attr("data-batchNo", relBatchData.batchNo);
-						$(".relAdd-save-box").attr("data-batchProvince", relBatchData.province);
-						$(".relAdd-save-box").attr("data-batchCity", relBatchData.city);
-						//						common.loadPage($(obj));
-						$.ui.goBack(2);
+						common.toast("选择成功");
+						$(".relAddTwo-save-box").attr("data-batchId", relBatchData.batchId);
+						$(".relAddTwo-save-box").attr("data-batchNo", relBatchData.batchNo);
+						$(".relAddTwo-save-box").attr("data-batchProvince", relBatchData.province);
+						$(".relAddTwo-save-box").attr("data-batchCity", relBatchData.city);
+						$.ui.goBack();
 					}
 				}
 			});
@@ -77,7 +76,7 @@
 		}
 	}
 
-	function initrelAdd() {
+	function initrelAddTwo() {
 		ajaxFuncs.get({
 			urlname: "/api/students?province=" + relBatchData.province + "&city=" + relBatchData.city,
 			funcs: {
@@ -93,18 +92,19 @@
 							//html+='<span class="subtitle-make">89分</span>';
 							html += '</div>';
 							html += '<div class="checkbox-box">';
-							html += '<label for="relAddcheckbox_' + data[i].id + '">';
-							html += '<input id="relAddcheckbox_' + data[i].id + '" data-stuid="' + data[i].id + '"  type="checkbox" name="stulist"  />';
+							html += '<label for="relAddTwocheckbox_' + data[i].id + '">';
+							html += '<input id="relAddTwocheckbox_' + data[i].id + '" data-stuid="' + data[i].id + '"  type="checkbox" name="stulist"  />';
 							html += '<span class="checkbox-btu"></span>';
 							html += '</label>';
 							html += '</div>';
 							html += '</div>';
 							html += '</div>';
 						}
-						$("#relAdd .list-panel").empty().append(html);
+						$("#relAddTwo .list-panel").empty().append(html);
 					} else {
 						common.handleDefaultPage({
-							type: 2
+							type: 2,
+							objDiv: "#relAddTwo .list-panel"
 						});
 					}
 				}
@@ -112,7 +112,7 @@
 		})
 	}
 
-	function relAddHtml() {
+	function relAddTwoHtml() {
 
 	}
 </script>

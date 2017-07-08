@@ -13,11 +13,13 @@ G_SERVERS = {
 		web: "http://owner.api.60living.com/",
 		push: "ws://owner.api.60living.com/socket",
 		img: "http://",
+		imgall: "http://",
 		name: ""
 	},
 	"0": {
 		web: "http://116.62.208.39:8080",
 		push: "ws://192.168.89.45:2080/socket",
+		imgall: "http://116.62.208.39",
 		img: "http://",
 		name: "-0号"
 	}
@@ -31,6 +33,7 @@ G_ROOTURLONE = (G_ISBROWSE ? G_ROOTDIR : (G_SERVERS[G_ENV].webone) ? G_SERVERS[G
 G_MOCKUPSVR = G_ROOTDIR + "mockupsvr/";
 G_PUSHSVR = G_SERVERS[G_ENV].push;
 G_IMGPREFIX = G_SERVERS[G_ENV].img;
+G_IMGPREFIXALL = G_SERVERS[G_ENV].imgall;
 G_SPLITCHAR = " • ";
 G_SERVERTIME = 0;
 G_PLUSUIREADY = 0;

@@ -1,0 +1,26 @@
+<div class="padding-top-1"></div>
+<div class="list-panel"></div>
+<script type="text/javascript">
+	function loadrelRecList(obj) {
+		initrelRecList();
+	}
+
+	function initrelRecList() {
+		if(relRecSearchVal != 0) {
+			var html = '';
+			for(var i = 0; i < relRecSearchVal.length; i++) {
+				html += '<div class="list-box" data-batchId="' + relRecSearchVal[i].releaseId + '" data-batchNo="' + relRecSearchVal[i].batchNo + '" data-batchProvince="' + relRecSearchVal[i].province + '" data-batchCity="' + relRecSearchVal[i].city + '" data-dir="general" data-tkey="relRecStuList" data-transition="slide" onclick="common.loadPage(this);">';
+				html += '<div class="list-defult-body box-h box-align">';
+				html += '<div class="box-flex">';
+				html += '<span class="title">' + relRecSearchVal[i].batchNo + '</span>';
+				html += '</div>';
+				html += '<div class="icon-next">';
+				html += '<i class="icon-img icon-img-next"></i>';
+				html += '</div>';
+				html += '</div>';
+				html += '</div>';
+			}
+			$("#relRecList .list-panel").empty().append(html);
+		}
+	}
+</script>

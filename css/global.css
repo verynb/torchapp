@@ -66,14 +66,14 @@ ul { list-style: none; }
 .header-title { height: 4rem; padding-left: 1.2rem; }
 .header-title span.title { font-size: 1.3rem; line-height: 4rem; color: #85878b; }
 
-#homeHeader h1, #userPwdHeader h1, #stuEditHeader h1, #relMoneyHeader h1, #relRecStuViewHeader h1, #stuViewHeader h1, #offVisInfoHeader h1 { top: 0; font-size: 1.9rem; }
-#homeHeader a, #userPwdHeader a, #stuEditHeader a, #relMoneyHeader a, #relRecStuViewHeader a, #stuViewHeader a, #offVisInfoHeader a { height: 100%; display: table; color: #262931; }
-#homeHeader a span, #userPwdHeader a span, #stuEditHeader a span, #relMoneyHeader a span, #relRecStuViewHeader a span, #stuViewHeader a span, #offVisInfoHeader a span { display: table-cell; vertical-align: middle; }
-#homeHeader a:first-child, #userPwdHeader a:first-child, #stuEditHeader a:first-child, #relMoneyHeader a:first-child, #relRecStuViewHeader a:first-child, #stuViewHeader a:first-child, #offVisInfoHeader a:first-child { margin-left: 1.2rem; float: left; }
-#homeHeader a.right, #userPwdHeader a.right, #stuEditHeader a.right, #relMoneyHeader a.right, #relRecStuViewHeader a.right, #stuViewHeader a.right, #offVisInfoHeader a.right { float: right; margin-right: 1.2rem; color: #05B1B3; }
-#homeHeader a.usercenter, #userPwdHeader a.usercenter, #stuEditHeader a.usercenter, #relMoneyHeader a.usercenter, #relRecStuViewHeader a.usercenter, #stuViewHeader a.usercenter, #offVisInfoHeader a.usercenter { background: url(../img/icon/icon-users.png) center center no-repeat; background-size: contain; width: 2.1rem; }
-#homeHeader a.goback, #userPwdHeader a.goback, #stuEditHeader a.goback, #relMoneyHeader a.goback, #relRecStuViewHeader a.goback, #stuViewHeader a.goback, #offVisInfoHeader a.goback { background: url(../img/icon/icon-back.png) center center no-repeat; background-size: contain; width: 2.1rem; }
-#homeHeader a.btuMore, #userPwdHeader a.btuMore, #stuEditHeader a.btuMore, #relMoneyHeader a.btuMore, #relRecStuViewHeader a.btuMore, #stuViewHeader a.btuMore, #offVisInfoHeader a.btuMore { background: url(../img/icon/icon-more.png) center center no-repeat; background-size: contain; width: 2.1rem; }
+#homeHeader h1, #userPwdHeader h1, #stuEditHeader h1, #relMoneyHeader h1, #relRecStuViewHeader h1, #stuViewHeader h1, #relEditHeader h1, #offVisInfoHeader h1 { top: 0; font-size: 1.9rem; }
+#homeHeader a, #userPwdHeader a, #stuEditHeader a, #relMoneyHeader a, #relRecStuViewHeader a, #stuViewHeader a, #relEditHeader a, #offVisInfoHeader a { height: 100%; display: table; color: #262931; }
+#homeHeader a span, #userPwdHeader a span, #stuEditHeader a span, #relMoneyHeader a span, #relRecStuViewHeader a span, #stuViewHeader a span, #relEditHeader a span, #offVisInfoHeader a span { display: table-cell; vertical-align: middle; }
+#homeHeader a:first-child, #userPwdHeader a:first-child, #stuEditHeader a:first-child, #relMoneyHeader a:first-child, #relRecStuViewHeader a:first-child, #stuViewHeader a:first-child, #relEditHeader a:first-child, #offVisInfoHeader a:first-child { margin-left: 1.2rem; float: left; }
+#homeHeader a.right, #userPwdHeader a.right, #stuEditHeader a.right, #relMoneyHeader a.right, #relRecStuViewHeader a.right, #stuViewHeader a.right, #relEditHeader a.right, #offVisInfoHeader a.right { float: right; margin-right: 1.2rem; color: #05B1B3; }
+#homeHeader a.usercenter, #userPwdHeader a.usercenter, #stuEditHeader a.usercenter, #relMoneyHeader a.usercenter, #relRecStuViewHeader a.usercenter, #stuViewHeader a.usercenter, #relEditHeader a.usercenter, #offVisInfoHeader a.usercenter { background: url(../img/icon/icon-users.png) center center no-repeat; background-size: contain; width: 2.1rem; }
+#homeHeader a.goback, #userPwdHeader a.goback, #stuEditHeader a.goback, #relMoneyHeader a.goback, #relRecStuViewHeader a.goback, #stuViewHeader a.goback, #relEditHeader a.goback, #offVisInfoHeader a.goback { background: url(../img/icon/icon-back.png) center center no-repeat; background-size: contain; width: 2.1rem; }
+#homeHeader a.btuMore, #userPwdHeader a.btuMore, #stuEditHeader a.btuMore, #relMoneyHeader a.btuMore, #relRecStuViewHeader a.btuMore, #stuViewHeader a.btuMore, #relEditHeader a.btuMore, #offVisInfoHeader a.btuMore { background: url(../img/icon/icon-more.png) center center no-repeat; background-size: contain; width: 2.1rem; }
 
 .moreBox .moreMenu { position: fixed; top: 3.8rem; right: 1.2rem; min-height: 5.2rem; width: 12rem; z-index: 999; padding-top: 1rem; background: url(../img/icon/icon-bg.png) top right no-repeat; background-size: auto 1rem; display: none; }
 .moreBox .moreMenu ul { margin-top: -2px; min-height: 4.2rem; width: 12rem; border-radius: 0.5rem; padding: 0 0.8rem; background-color: #49494b; }
@@ -162,8 +162,8 @@ ul { list-style: none; }
 .info-panel .title-box .row1 { width: 100%; height: 100%; text-align: center; line-height: 2.8rem; color: #FFFFFF; border-radius: 1.75rem; border: 1px dashed #101012; }
 .info-panel .title-box .row1 .rw1 { width: 7.7rem; border-right: 1px dashed #FFFFFF; }
 .info-panel .title-box .row1 .rw2 { width: 12.45rem; }
-.info-panel .info-body { color: #262931; line-height: 1.2; text-align: justify; text-indent: 3rem; }
-.info-panel .info-body p { margin: 2rem 0; padding: 0; }
+.info-panel .info-body { color: #262931; line-height: 1.2; text-align: justify; }
+.info-panel .info-body p { margin: 2rem 0; padding: 0; text-indent: 3rem; }
 .info-panel .info-body img { max-width: 100%; }
 
 .info-panel-default { background-color: #FFFFFF; padding: 1.2rem 1.2rem; }
@@ -201,11 +201,11 @@ ul { list-style: none; }
 #subPayCheck input.color-paleRed { color: #de443c !important; }
 #subPayCheck textarea.leave-info { width: 100%; height: 10rem; color: #85878b; border: none; outline: none; padding: 1.2rem; }
 
-#volList .afScrollPanel { height: 100%; }
-#volList .afScrollbar { width: 0 !important; }
-#volList #volListContent, #volList .wrapper { height: 100%; position: absolute; z-index: 1; top: 0px; bottom: 0px; width: 100%; background: #f4f4f4; overflow: hidden; padding: 0; }
-#volList .pullDown, #volList .pullUp, #volList .pulldown-tips { height: 40px; line-height: 40px; text-align: center; }
-#volList .pulldown-tips { position: absolute; top: -40px; left: 0; width: 100%; }
+.scrollPanel-box .afScrollPanel { height: 100%; }
+.scrollPanel-box .afScrollbar { width: 0 !important; }
+.scrollPanel-box .wrapper { height: 100%; position: absolute; z-index: 1; top: 0px; bottom: 0px; width: 100%; background: #f4f4f4; overflow: hidden; padding: 0; }
+.scrollPanel-box .pullDown, .scrollPanel-box .pullUp, .scrollPanel-box .pulldown-tips { height: 40px; line-height: 40px; text-align: center; }
+.scrollPanel-box .pulldown-tips { position: absolute; top: -40px; left: 0; width: 100%; }
 
 #scanImgContent { height: 100%; width: 100%; position: absolute; }
 

@@ -51,7 +51,7 @@
 			</div>
 		</div>
 		<div class="padding-top-1"></div>
-		<div class="row2 InteractivePhoto">
+		<div class="row2 homeFeaturePhotos">
 			<span class="subtitle">（家庭环境特写照片）</span>
 			<div class="rw1 box-h">
 				<div class="savebox">
@@ -63,17 +63,17 @@
 			</div>
 		</div>
 		<div class="padding-top-1"></div>
-		<!--<div class="row2 InteractivePhoto">
+		<div class="row2 InteractivePhoto">
 			<span class="subtitle">（义工与学生家庭互动照片）</span>
 			<div class="rw1 box-h">
 				<div class="savebox">
 					<div class="box-h saveboxList"></div>
 				</div>
 				<div class="r1 box-flex upphoto">
-					<img class="InteractivePhoto" src="img/icon/camera.png" alt="照相" onclick="common.pickImgLoca(this);" />
+					<img class="" src="img/icon/camera.png" alt="照相" onclick="common.pickImgLoca(this);" />
 				</div>
 			</div>
-		</div>-->
+		</div>
 
 		<div class="padding-top-1"></div>
 		<div class="test-info criterion">
@@ -174,11 +174,13 @@
 			studentPhoto = [],
 			familyPhoto = [],
 			homePhoto = [],
+			homeFeaturePhotos = [],
 			InteractivePhoto = [];
 		var el_applicationForm_photo = $("#offVisInfo .applicationForm .saveboxList .saveboxListItem"),
 			el_studentPhoto_photo = $("#offVisInfo .studentPhoto .saveboxList .saveboxListItem"),
 			el_familyPhoto_photo = $("#offVisInfo .familyPhoto .saveboxList .saveboxListItem"),
 			el_homePhoto_photo = $("#offVisInfo .homePhoto .saveboxList .saveboxListItem"),
+			el_homeFeaturePhotos_photo = $("#offVisInfo .homeFeaturePhotos .saveboxList .saveboxListItem"),
 			el_InteractivePhoto_photo = $("#offVisInfo .InteractivePhoto .saveboxList .saveboxListItem");
 		for(var i = 0; i < el_applicationForm_photo.length; i++) {
 			applicationForm.push($(el_applicationForm_photo[i]).find("input").val());
@@ -192,6 +194,9 @@
 		for(var i = 0; i < el_homePhoto_photo.length; i++) {
 			homePhoto.push($(el_homePhoto_photo[i]).find("input").val());
 		}
+		for(var i = 0; i < el_homeFeaturePhotos_photo.length; i++) {
+			homeFeaturePhotos.push($(el_homeFeaturePhotos_photo[i]).find("input").val());
+		}
 		for(var i = 0; i < el_InteractivePhoto_photo.length; i++) {
 			InteractivePhoto.push($(el_InteractivePhoto_photo[i]).find("input").val());
 		}
@@ -200,6 +205,7 @@
 		arrdata.push(studentPhoto.join(','));
 		arrdata.push(familyPhoto.join(','));
 		arrdata.push(homePhoto.join(','));
+		arrdata.push(homeFeaturePhotos.join(','));
 		arrdata.push(InteractivePhoto.join(','));
 		arrdata.push(params.visitInfo);
 		var el_ridiocheck = $("#offVisInfo input[type='radio']:checked");
@@ -212,10 +218,11 @@
 		}
 		arrdata.push(ridiocheckarr.join('*'));
 		arrdata.push('1');
+		arrdata.push(common.formatTime(G_SERVERTIME, 3));
 		arrdata.push($("#offVisInfoHeader a.stuinfo").attr('data-stuid'));
 		arrdata.push($("#offVisInfoHeader a.stuinfo").attr('data-batchId'));
 
-		if(applicationForm.length != 0 && studentPhoto.length != 0 && familyPhoto.length != 0 && homePhoto.length != 0 && InteractivePhoto.length != 0 && params.visitInfo != '' && ridiocheckarr.length == criterionLength) {
+		if(applicationForm.length != 0 && studentPhoto.length != 0 && familyPhoto.length != 0 && homePhoto.length != 0 && homeFeaturePhotos.length != 0 && InteractivePhoto.length != 0 && params.visitInfo != '' && ridiocheckarr.length == criterionLength) {
 			localStu.saveStuByIdAndBatId(arrdata);
 			$.ui.goBack();
 		} else {
@@ -264,11 +271,13 @@
 				studentPhoto = (data.info.studentPhoto).split(','),
 				familyPhoto = (data.info.familyPhoto).split(','),
 				homePhoto = (data.info.homePhoto).split(','),
+				homeFeaturePhotos = (data.info.homeFeaturePhotos).split(','),
 				InteractivePhoto = (data.info.InteractivePhoto).split(',');
 			var el_applicationForm_photo = $("#offVisInfo .applicationForm .saveboxList"),
 				el_studentPhoto_photo = $("#offVisInfo .studentPhoto .saveboxList"),
 				el_familyPhoto_photo = $("#offVisInfo .familyPhoto .saveboxList"),
 				el_homePhoto_photo = $("#offVisInfo .homePhoto .saveboxList"),
+				el_homeFeaturePhotos_photo = $("#offVisInfo .homeFeaturePhotos .saveboxList"),
 				el_InteractivePhoto_photo = $("#offVisInfo .InteractivePhoto .saveboxList");
 			/*--------*/
 			var html = '';
@@ -326,6 +335,20 @@
 				$("#offVisInfo .homePhoto .upphoto").hide();
 			}
 			$(el_homePhoto_photo).append(html);
+			/*--------*/
+			html = '';
+			for(var i = 0; i < homeFeaturePhotos.length; i++) {
+				html += '<div class="r1 padding-right-12 box-flex saveboxListItem">';
+				html += '<img src="' + homeFeaturePhotos[i] + '" alt="照相"  />';
+				html += '<input type="hidden"  placeholder="申请表图片" value="' + homeFeaturePhotos[i] + '" />';
+				html += '</div>';
+			}
+			if(homeFeaturePhotos.length < 4) {
+				$("#offVisInfo .homeFeaturePhotos .upphoto").show();
+			} else {
+				$("#offVisInfo .homeFeaturePhotos .upphoto").hide();
+			}
+			$(el_homeFeaturePhotos_photo).append(html);
 			/*--------*/
 			html = '';
 			for(var i = 0; i < InteractivePhoto.length; i++) {

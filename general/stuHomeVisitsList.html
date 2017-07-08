@@ -16,5 +16,45 @@
 	<!--end-->
 </div>
 <script type="text/javascript">
-	function loadstuHomeVisitsList(obj) {}
+	function loadstuHomeVisitsList(obj) {
+		//		var studentId = $(obj).attr('data-studentId');
+		initstuHomeVisitsList(stuViewStuId);
+	}
+
+	function initstuHomeVisitsList(studentId) {
+		ajaxFuncs.get({
+			urlname: "/api/homeVisits/" + studentId,
+			funcs: {
+				funcSuccessful: function(data) {
+					if(data.homeVisitListDtos.length != 0) {
+						$("#stuHomeVisitsList .list-panel").append(stuHomeVisitsListHtml(data.homeVisitListDtos));
+					} else {
+						common.handleDefaultPage({
+							type: 2
+						});
+					}
+				}
+			}
+		});
+	}
+
+	function stuHomeVisitsListHtml(data) {
+		var html = '';
+		for(var i = 0; i < data.length; i++) {
+			html += '<div class="list-box" data-homeVisitId="' + data[i].homeVisitId + '" data-dir="general" data-tkey="stuHomeVisitsInfo" data-transition="slide" onclick="common.loadPage(this);">';
+			html += '<div class="list-defult-body box-h box-align">';
+			html += '<div class="box-flex">';
+			html += '<span class="title">家访时间：' + data[i].homeVisitTime + '</span>';
+			html += '</div>';
+			html += '<div class="icon-text-box">';
+			html += '<span class="nav">' + data[i].homeVisitor + '</span>';
+			html += '</div>';
+			html += '<div class="icon-next">';
+			html += '<i class="icon-img icon-img-next"></i>';
+			html += '</div>';
+			html += '</div>';
+			html += '</div>';
+		}
+		return html;
+	}
 </script>

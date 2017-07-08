@@ -18,30 +18,35 @@
 
 </div>
 <script type="text/javascript">
-	var relEditBatchNo, relEditBatchProvince, relEditBatchCity;
+	var relEditBatchNo, relEditBatchId, relEditBatchProvince, relEditBatchCity, relBatchData = {},
+		isrelBatchgo = false;
 
 	function loadrelEdit(obj) {
 		relEditBatchNo = $(obj).attr("data-batchNo");
+		relEditBatchId = $(obj).attr("data-batchId");
 		if($(obj).attr("data-batchProvince") != undefined) {
 			relEditBatchProvince = $(obj).attr("data-batchProvince");
 			relEditBatchCity = $(obj).attr("data-batchCity");
+
+			relBatchData.batchId = relEditBatchId;
+			relBatchData.batchNo = relEditBatchNo;
+			relBatchData.province = relEditBatchProvince;
+			relBatchData.city = relEditBatchCity;
 		}
 		initrelEditChoose();
 		relEditFooter();
-		$('#relEdit label').on('click', function() {
-			if($(this).find('input[type="checkbox"]').prop("checked")) {
-				$(this).find('input[type="checkbox"]').removeAttr('checked');
-			} else {
-				$(this).find('input[type="checkbox"]').attr('checked', 'checked');
-			}
-		});
+
+	}
+
+	function reloadrelEdit() {
+		initrelEditChoose();
 	}
 
 	function relEditFooter() {
 		var btuHtml = '';
 		var jsondata = {};
 		btuHtml += '<div class="footerBtu bg-color-brown" data-tkey="relMoney" data-dir="general" data-transition="slide" onclick="relEditFooterFunc(this)">';
-		btuHtml += '<a class="all relEdit-save" href="javascript:void(0);">确认信息</a>';
+		btuHtml += '<a class="all relEdit-save" href="javascript:void(0);">填写金额</a>';
 		btuHtml += '</div>';
 		jsondata.container = 'relEdit';
 		jsondata.buttonHtml = btuHtml;
@@ -49,7 +54,24 @@
 	}
 
 	function relEditFooterFunc(obj) {
-		common.loadPage($(obj));
+		if(isrelBatchgo) {
+			common.loadPage($(obj));
+		} else {
+			common.toast('暂未选择学生或者所选学生还有没有家访');
+		}
+	}
+
+	function relEditDel(obj) {
+		///api/release/student/{id}
+		var releaseStudentId = $(obj).attr("data-releaseStudentId");
+		ajaxFuncs.delete({
+			urlname: "/api/release/student/" + releaseStudentId,
+			funcs: {
+				funcSuccessful: function(data) {
+					initrelEditChoose();
+				}
+			}
+		})
 	}
 
 	function initrelEditChoose() {
@@ -61,6 +83,7 @@
 					var html = "";
 					data = data.releaseList;
 					if(data.length != 0) {
+						isrelBatchgo = true;
 						for(var i = 0; i < data.length; i++) {
 							relEditChooseId.push(data[i].studentId);
 							html += '<div class="list-box">';
@@ -69,10 +92,12 @@
 							html += '<span class="title-other">' + data[i].studentName + '</span>';
 							if(data[i].scores != 0) {
 								html += '<span class="subtitle-make">' + data[i].scores + '分</span>';
+							} else {
+								isrelBatchgo = false;
 							}
 							html += '</div>';
 							html += '<div class="checkbox-box">';
-							html += '<label for="relEditcheckbox_' + data[i].studentId + '">';
+							html += '<label for="relEditcheckbox_' + data[i].studentId + '"  data-stuid="' + data[i].studentId + '"  data-releaseStudentId="' + data[i].releaseStudentId + '">';
 							html += '<input id="relEditcheckbox_' + data[i].studentId + '" type="checkbox" name="relEdit"  checked="checked" />';
 							html += '<span class="checkbox-btu"></span>';
 							html += '</label>';
@@ -81,61 +106,17 @@
 							html += '</div>';
 						}
 						$("#relEdit .list-panel").empty().append(html);
-						//						initrelEditStuAll(relEditChooseId);
+						$('#relEdit label').on('click', function() {
+							relEditDel(this);
+						});
 					} else {
 						common.handleDefaultPage({
-							type: 2
+							type: 2,
+							objdiv: "#relEdit .list-panel"
 						});
 					}
 				}
 			}
 		})
-	}
-
-	function initrelEditStuAll(relEditChooseId) {
-		ajaxFuncs.get({
-			urlname: "/api/students?province=" + relEditBatchProvince + "&city=" + relEditBatchCity,
-			funcs: {
-				funcSuccessful: function(data) {
-					data = data.studentLists;
-					var html = "";
-					if(data.length != 0) {
-						for(var i = 0; i < data.length; i++) {
-							var ischeck = false;
-							for(var j = 0; j < relEditChooseId.length; j++) {
-								if(data[i].id == relEditChooseId[j]) {
-									ischeck = true;
-								}
-							}
-							if(!ischeck) {
-								html += '<div class="list-box">';
-								html += '<div class="list-defult-body box-h box-align">';
-								html += '<div class="box-flex" data-stuid="' + data[i].id + '" data-dir="general" data-tkey="stuView" data-transition="slide" onclick="common.loadPage(this);">';
-								html += '<span class="title-other">' + data[i].name + '</span>';
-								//							html+='<span class="subtitle-make">89分</span>';
-								html += '</div>';
-								html += '<div class="checkbox-box">';
-								html += '<label for="relAddcheckbox_' + data[i].id + '">';
-								html += '<input id="relAddcheckbox_' + data[i].id + '" data-stuid="' + data[i].id + '"  type="checkbox" name="stulist"  />';
-								html += '<span class="checkbox-btu"></span>';
-								html += '</label>';
-								html += '</div>';
-								html += '</div>';
-								html += '</div>';
-							}
-						}
-						$("#relAdd .list-panel").append(html);
-					} else {
-						common.handleDefaultPage({
-							type: 2
-						});
-					}
-				}
-			}
-		})
-	}
-
-	function relEditHtml() {
-
 	}
 </script>

@@ -66,9 +66,11 @@
 	</div>-->
 </div>
 <script type="text/javascript">
+	var stuViewStuId;
+
 	function loadstuView(obj) {
-		var stuId = $(obj).attr('data-stuid');
-		initstuView(stuId);
+		stuViewStuId = $(obj).attr('data-stuid');
+		initstuView(stuViewStuId);
 	}
 
 	function initstuView(stuId) {

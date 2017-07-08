@@ -1,6 +1,7 @@
-<div class="list-panel">
-	<div class="padding-top-1"></div>
-	<!--<div class="list-box">
+<form>
+	<div class="list-panel">
+		<div class="padding-top-1"></div>
+		<!--<div class="list-box">
 		<div class="list-defult-body box-h ">
 			<div class="box-flex">
 				<span class="title">林晓婷</span>
@@ -12,7 +13,8 @@
 		</div>
 	</div>
 	-->
-</div>
+	</div>
+</form>
 <script type="text/javascript">
 	function loadrelMoney(obj) {
 		relMoneyFooter();
@@ -24,7 +26,7 @@
 		var btuHtml = '';
 		var jsondata = {};
 		btuHtml += '<div class="footerBtu bg-color-brown"  onclick="relMoneyFooterFunc(this)">';
-		btuHtml += '<a class="all relMoney-save" href="javascript:void(0);">保存</a>';
+		btuHtml += '<a class="all relMoney-save" href="javascript:void(0);">保存并发布</a>';
 		btuHtml += '</div>';
 		jsondata.container = 'relMoney';
 		jsondata.buttonHtml = btuHtml;
@@ -32,7 +34,32 @@
 	}
 
 	function relMoneyFooterFunc(obj) {
-		common.toast('保存本批次成功，请通知老师审核');
+		//		common.toast('保存本批次成功，请通知老师审核');
+		//		PUT /api/release/{batchId}
+
+		if(!common.validate("#relMoney form", obj)) {
+			return false;
+		} else {
+			var el_inputneedMoney = $("#relMoney input[name='needMoney']");
+			var params = [];
+			for(var i = 0; i < el_inputneedMoney.length; i++) {
+				var itemVal = {};
+				itemVal.needMoney = $(el_inputneedMoney[i]).val().trim();
+				itemVal.releaseStudentId = $(el_inputneedMoney[i]).attr("data-stuid");
+				params.push(itemVal);
+			}
+			ajaxFuncs.put({
+				urlname: "/api/release/" + relBatchData.batchId,
+				params: params,
+				funcs: {
+					funcSuccessful: function(data) {
+						common.toast('发布成功');
+						$.ui.goBack(2);
+					}
+				}
+			});
+		}
+
 	}
 
 	function initrelMoney() {
@@ -49,14 +76,14 @@
 							html += '<div class="box-flex" data-stuid="' + data[i].studentId + '" data-dir="general" data-tkey="stuView" data-transition="slide" onclick="common.loadPage(this);">';
 							html += '<span class="title-other">' + data[i].studentName + '</span>';
 							if(data[i].scores != 0) {
-								html += '<span class="subtitle-make">' + data[i].scores + '分</span>';
+								//	html += '<span class="subtitle-make">' + data[i].scores + '分</span>';
 							}
 							html += '</div>';
 							html += '<div class="text-input-box">';
 							if(data[i].hasOwnProperty("money") && data[i].money != '') {
-								html += '<input class="editor-input" type="text" name="name" required="required" placeholder="未填写 " value="' + data[i].money + '" />元';
+								html += '<input class="editor-input" type="text" data-stuid="' + data[i].studentId + '" name="needMoney" required="required" placeholder="未填写 " value="' + data[i].money + '"  data-warning="请填写所需金额"/>元';
 							} else {
-								html += '<input class="editor-input" type="text" name="name" required="required" placeholder="未填写 " value="' + pageCom.gradeMoneyChoose(data[i].grade) + '" />元';
+								html += '<input class="editor-input" type="text" data-stuid="' + data[i].studentId + '" name="needMoney" required="required" placeholder="未填写 " value="' + pageCom.gradeMoneyChoose(data[i].grade) + '" data-warning="请填写所需金额" />元';
 							}
 							html += '</div>';
 							html += '</div>';
