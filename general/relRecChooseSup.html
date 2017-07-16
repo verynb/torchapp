@@ -1,0 +1,99 @@
+<div class="list-panel">
+	<!--start-->
+	<!--<div class="list-box">
+		<div class="list-defult-body box-h box-align">
+			<div class="box-flex">
+				<span class="title-other">林晓婷</span>
+			</div>
+			<div class="radio-box">
+				<label for="relRecChooseSupradio_0">
+					<input id="relRecChooseSupradio_0" type="radio" name="voice" value="0"  />
+					<span class="radio-btu"></span>
+				</label>
+			</div>
+		</div>
+	</div>-->
+	<!--end-->
+</div>
+<script type="text/javascript">
+	var oldDivrelRecChooseSup;
+
+	function loadrelRecChooseSup(obj) {
+		oldDivrelRecChooseSup = obj;
+		relRecChooseSupinit(obj);
+		relRecChooseSupFooter();
+	}
+
+	function relRecChooseSupFooter() {
+		var btuHtml = '';
+		var jsondata = {};
+		btuHtml += '<div class="footerBtu bg-color-brown" onclick="relRecChooseSupFooterFuncAdd(this)">';
+		btuHtml += '<a class="all relRecChooseSup-save" href="javascript:void(0);">保存</a>';
+		btuHtml += '</div>';
+		jsondata.container = 'relRecChooseSup';
+		jsondata.buttonHtml = btuHtml;
+		common.commonFooterBtu(jsondata);
+	}
+
+	function relRecChooseSupinit(obj) {
+		ajaxFuncs.get({
+			urlname: "/api/user/sponsors?pageSize=0&currentPage=0",
+			funcs: {
+				funcSuccessful: function(data) {
+					if(data.resultDtos.length != 0) {
+						var html = '';
+						for(var i = 0; i < data.resultDtos.length; i++) {
+							var ischeck = false;
+							html += '<div class="list-box">';
+							html += '<div class="list-defult-body box-h box-align">';
+							html += '<div class="box-flex">';
+							html += '<span class="title-other">' + data.resultDtos[i].name + '</span>';
+							html += '</div>';
+							html += '<div class="radio-box">';
+							html += '<label for="relRecChooseSupradio_' + data.resultDtos[i].id + '">';
+
+							if(oldDivrelRecChooseSup != null && data.resultDtos[i].id == oldDivrelRecChooseSup) {
+								html += '<input id="relRecChooseSupradio_' + data.resultDtos[i].id + '" type="radio" name="school" data-name="' + data.resultDtos[i].name + '" data-id="' + data.resultDtos[i].id + '"  checked="checked"  />';
+								ischeck = true;
+							}
+							if(!ischeck) {
+								html += '<input id="relRecChooseSupradio_' + data.resultDtos[i].id + '" type="radio" name="school" data-name="' + data.resultDtos[i].name + '" data-id="' + data.resultDtos[i].id + '"   />';
+							}
+							html += '<span class="radio-btu"></span>';
+							html += '</label>';
+							html += '</div>';
+							html += '</div>';
+							html += '</div>';
+						}
+						$("#relRecChooseSup .list-panel").empty().append(html);
+						$('#relRecChooseSup label').on('click', function() {
+							if($(this).find('input[type="radio"]').prop("checked")) {
+								$(this).find('input[type="radio"]').removeAttr('checked');
+							} else {
+								$(this).find('input[type="radio"]').attr('checked', 'checked');
+							}
+						});
+					} else {
+						common.handleDefaultPage({
+							type: 2
+						});
+					}
+				}
+			}
+		});
+
+	}
+
+	function relRecChooseSupFooterFuncAdd(obj) {
+		var chooseLength = $("#relRecChooseSup .list-panel input[type='radio']:checked");
+		var chooseIdval = [];
+		var chooseNameval = [];
+		for(var k = 0; k < chooseLength.length; k++) {
+			chooseIdval.push($(chooseLength[k]).attr('data-id'));
+			chooseNameval.push($(chooseLength[k]).attr('data-name'));
+		}
+		$(oldDivrelRecChooseSup).find("input").val("").val(chooseIdval.join(','));
+		$(oldDivrelRecChooseSup).find("span.sponsorname-data").html(chooseNameval.join(','));
+		$.ui.goBack();
+	}
+</script>

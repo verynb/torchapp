@@ -69,6 +69,7 @@
 			ajaxFuncs.post({
 				urlname: "/api/releases",
 				params: params,
+				clickobj: obj,
 				funcs: {
 					funcSuccessful: function(data) {
 						relRecSearchVal = data.releaseList;

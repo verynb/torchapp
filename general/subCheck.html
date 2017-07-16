@@ -1,22 +1,44 @@
 <div class="padding-top-1"></div>
-<div class="info-panel-default">
-	<p>姓名：陈灿</p>
-	<p>年龄：17岁</p>
-	<p>学 校：成都实验中学</p>
-	<p>地址：四川省成都市成华区广福路1号</p>
-	<p class="color-paleRed">金额：￥4000</p>
-</div>
-<div class="padding-top-1"></div>
-<div class="info-panel-default">
-	<p>姓名：陈灿</p>
-	<p>年龄：17岁</p>
-	<p>学 校：成都实验中学</p>
-	<p>地址：四川省成都市成华区广福路1号</p>
-	<p class="color-paleRed">金额：￥4000</p>
+<div id="subCheckBody">
+	<!--<div class="info-panel-default">
+		<p>姓名：陈灿</p>
+		<p>年龄：17岁</p>
+		<p>学 校：成都实验中学</p>
+		<p>地址：四川省成都市成华区广福路1号</p>
+		<p class="color-paleRed">金额：￥4000</p>
+	</div>
+	<div class="padding-top-1"></div>
+	<div class="info-panel-default">
+		<p>姓名：陈灿</p>
+		<p>年龄：17岁</p>
+		<p>学 校：成都实验中学</p>
+		<p>地址：四川省成都市成华区广福路1号</p>
+		<p class="color-paleRed">金额：￥4000</p>
+	</div>-->
 </div>
 <script type="text/javascript">
 	function loadsubCheck(obj) {
 		subCheckFooter();
+		console.log(JSON.stringify(subStuListChecked));
+		initsubCheck();
+	}
+
+	function initsubCheck() {
+		var html = '';
+		for(var i = 0; i < subStuListChecked.length; i++) {
+			var subStuListCheckedItem = JSON.parse(subStuListChecked[i]);
+			html += '<div class="padding-top-1"></div>';
+			html += '<div class="info-panel-default">';
+			html += '<p>姓名：' + subStuListCheckedItem.studentName + '</p>';
+			html += '<p>年龄：' + subStuListCheckedItem.age + '岁</p>';
+			html += '<p>学 校：' + subStuListCheckedItem.schoolName + '</p>';
+			html += '<p>地址：' + subStuListCheckedItem.province + subStuListCheckedItem.city + subStuListCheckedItem.area + subStuListCheckedItem.address + '</p>';
+			html += '<p class="color-paleRed">金额：￥' + subStuListCheckedItem.needMoney + '</p>';
+			html += '<input hidden="hidden" name="releaseStudentId" value="' + subStuListCheckedItem.releaseStudentId + '" />';
+			html += '<input hidden="hidden" name="releaseId" value="' + subStuListCheckedItem.releaseId + '"/>';
+			html += '</div>';
+		}
+		$("#subCheckBody").empty().append(html);
 	}
 
 	function subCheckFooter() {
@@ -31,6 +53,27 @@
 	}
 
 	function subCheckFooterFunc(obj) {
-		common.loadPage($(obj));
+		var el_subCheckcheck = $('#subCheck .info-panel-default');
+		var jsondata = {};
+		jsondata.batchId = $(el_subCheckcheck[0]).find("input[name='releaseId']").val();
+		var studentIds = [];
+		for(var i = 0; i < el_subCheckcheck.length; i++) {
+			studentIds.push($(el_subCheckcheck[i]).find("input[name='releaseStudentId']").val());
+		}
+		jsondata.studentIds = studentIds;
+		//		PUT /api/subscribe
+
+		console.log(JSON.stringify(jsondata));
+		ajaxFuncs.put({
+			clickobj: obj,
+			urlname: "/api/subscribe",
+			params: jsondata,
+			funcs: {
+				funcSuccessful: function(data) {
+					common.toast("认捐成功");
+					common.loadPage($(obj));
+				}
+			}
+		})
 	}
 </script>

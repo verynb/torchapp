@@ -1,101 +1,42 @@
-<div class="info-panel-default">
-	<p>批次号：000154</p>
-	<p>学 校：成都实验中学</p>
-	<p>地址：四川省成都市成华区广福路1号</p>
-	<p>发布时间：2016-12-15 14:45:30</p>
-</div>
 <div class="padding-top-1"></div>
 <div class="list-panel">
 	<!--start-->
-	<div class="list-box">
-		<div class="list-defult-body box-h box-align">
-			<div class="box-flex" data-dir="general" data-tkey="stuView" data-transition="slide" onclick="common.loadPage(this);">
-				<span class="title-other">林晓婷</span>
-			</div>
-			<div class="checkbox-box">
-				<label for="">
-					<input id="" type="checkbox" name="voice" value="0"  />
-					<span class="checkbox-btu"></span>
-				</label>
-			</div>
-		</div>
-	</div>
+
 	<!--end-->
-	<div class="list-box">
-		<div class="list-defult-body box-h box-align">
-			<div class="box-flex" data-dir="general" data-tkey="stuView" data-transition="slide" onclick="common.loadPage(this);">
-				<span class="title-other">林晓婷</span>
-			</div>
-			<div class="checkbox-box">
-				<label for="">
-					<input id="" type="checkbox" name="voice" value="0"  />
-					<span class="checkbox-btu"></span>
-				</label>
-			</div>
-		</div>
-	</div>
-	<div class="list-box">
-		<div class="list-defult-body box-h box-align">
-			<div class="box-flex" data-dir="general" data-tkey="stuView" data-transition="slide" onclick="common.loadPage(this);">
-				<span class="title-other">林晓婷</span>
-			</div>
-			<div class="checkbox-box">
-				<label for="">
-					<input id="" type="checkbox" name="voice" value="0"  />
-					<span class="checkbox-btu"></span>
-				</label>
-			</div>
-		</div>
-	</div>
-	<div class="list-box">
-		<div class="list-defult-body box-h box-align">
-			<div class="box-flex" data-dir="general" data-tkey="stuView" data-transition="slide" onclick="common.loadPage(this);">
-				<span class="title-other">林晓婷</span>
-			</div>
-			<div class="checkbox-box">
-				<label for="">
-					<input id="" type="checkbox" name="voice" value="0"  />
-					<span class="checkbox-btu"></span>
-				</label>
-			</div>
-		</div>
-	</div>
-	<div class="list-box">
-		<div class="list-defult-body box-h box-align">
-			<div class="box-flex" data-dir="general" data-tkey="stuView" data-transition="slide" onclick="common.loadPage(this);">
-				<span class="title-other">林晓婷</span>
-			</div>
-			<div class="checkbox-box">
-				<label for="">
-					<input id="" type="checkbox" name="voice" value="0"  />
-					<span class="checkbox-btu"></span>
-				</label>
-			</div>
-		</div>
-	</div>
 </div>
 
 <script type="text/javascript">
 	function loadsubList(obj) {
-		subListFooter();
-	}
-
-	function subListFooter() {
-		var btuHtml = '';
-		var jsondata = {};
-		btuHtml += '<div class="footerBtu bg-color-brown" data-tkey="subCheck" data-dir="general" data-transition="slide" onclick="subListFooterFunc(this)">';
-		btuHtml += '<a class="all subList-save" href="javascript:void(0);">提交</a>';
-		btuHtml += '</div>';
-		jsondata.container = 'subList';
-		jsondata.buttonHtml = btuHtml;
-		common.commonFooterBtu(jsondata);
-	}
-
-	function subListFooterFunc(obj) {
-		common.loadPage($(obj));
+		initsubList();
 	}
 
 	function initsubList() {
-
+		ajaxFuncs.get({
+			urlname: "/api/release/released",
+			funcs: {
+				funcSuccessful: function(data) {
+					if(data.releases.length != 0) {
+						var html = '';
+						for(var i = 0; i < data.releases.length; i++) {
+							html += '<div class="list-box" data-batchId="' + data.releases[i].id + '" data-batchNo="' + data.releases[i].batchNo + '" data-batchProvince="' + data.releases[i].province + '" data-batchCity="' + data.releases[i].city + '" data-dir="general" data-tkey="subStuList" data-transition="slide" onclick="common.loadPage(this);">';
+							html += '<div class="list-defult-body box-h box-align">';
+							html += '<div class="box-flex">';
+							html += '<span class="title">' + data.releases[i].batchNo + '</span>';
+							html += '</div>';
+							html += '<div class="icon-next">';
+							html += '<i class="icon-img icon-img-next"></i>';
+							html += '</div>';
+							html += '</div>';
+							html += '</div>';
+						}
+						$("#subList .list-panel").empty().append(html);
+					} else {
+						common.handleDefaultPage({
+							type: 2
+						});
+					}
+				}
+			}
+		});
 	}
 </script>

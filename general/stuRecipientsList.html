@@ -1,7 +1,7 @@
+<div class="padding-top-1"></div>
 <div class="list-two-panle ">
-	<div class="padding-top-1"></div>
 	<!--start-->
-	<div class="list-box box-h">
+	<!--<div class="list-box box-h">
 		<div class="row1 box-flex">
 			<div class="rw1 color-black">博爱工会资助</div>
 			<div class="rw2">第1次资助</div>
@@ -10,9 +10,47 @@
 			<div class="rw1 color-paleRed">￥4000元</div>
 			<div class="rw2">2017-04-24</div>
 		</div>
-	</div>
+	</div>-->
 	<!--end-->
 </div>
 <script type="text/javascript">
-	function loadstuRecipientsList(obj) {}
+	function loadstuRecipientsList(obj) {
+		if(stuupdateId != null) {
+			initstuRecipientsList(stuupdateId);
+		} else {
+			common.toast("暂无数据");
+		}
+
+	}
+
+	function initstuRecipientsList(stuupdateId) {
+		ajaxFuncs.get({
+			urlname: "/api/students/credits/" + stuupdateId,
+			funcs: {
+				funcSuccessful: function(data) {
+					if(data.recordDtos.length != 0) {
+						var html = '';
+						for(var i = 0; i < data.recordDtos.length; i++) {
+							var spones = data.recordDtos[i];
+							for(var j = 0; j < spones.recordList.length; j++) {
+								html += '<div class="list-box box-h">';
+								html += '<div class="row1 box-flex">';
+								html += '<div class="rw1 color-black">' + spones.sponsorName + '</div>';
+								html += '<div class="rw2">第' + (j + 1) + '次资助</div>';
+								html += '</div>';
+								html += '<div class="row2">';
+								html += '<div class="rw1 color-paleRed">￥' + spones.recordList[j].money + '元</div>';
+								html += '<div class="rw2">' + spones.recordList[j].creditTime + '</div>';
+								html += '</div>';
+								html += '</div>';
+							}
+						}
+						$("#stuRecipientsList .list-two-panle").empty().append(html);
+					} else {
+						common.toast('暂无数据');
+					}
+				}
+			}
+		});
+	}
 </script>

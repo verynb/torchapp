@@ -13,7 +13,7 @@
 				}
 			})();
 		</script>
-		<title>昵窝</title>
+		<title>友友公益</title>
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=0">
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -153,7 +153,6 @@
 				<div title='选择学校' id="schChoose" class="panel" data-footer="" refresh="true" data-nopushhistory="0">
 					<div id="schChooseContent"></div>
 				</div>
-
 				<div title='资助人维护' id="supList" class="panel scrollPanel-box" data-footer="" data-back="supreload" data-nopushhistory="0">
 					<div id="supListContent"></div>
 				</div>
@@ -208,7 +207,7 @@
 				<div title='确认信息1' id="relConfirm" class="panel" data-footer="" data-nopushhistory="0">
 					<div id="relConfirmContent"></div>
 				</div>
-				<div title='确认信息1' id="relMoney" class="panel" data-header="" refresh="true" data-footer="" data-nopushhistory="0">
+				<div title='填写金额' id="relMoney" class="panel" data-header="" refresh="true" data-footer="" data-nopushhistory="0">
 					<div id="relMoneyContent"></div>
 				</div>
 				<div title='发布记录' id="relRecSearch" class="panel" data-footer="" data-nopushhistory="0">
@@ -226,8 +225,14 @@
 				<div title='放款列表' id="relRecMoneyList" class="panel scrollPanel-box" data-footer="" data-nopushhistory="0">
 					<div id="relRecMoneyListContent"></div>
 				</div>
+				<div title='汇款录入' id="relRecMoneyRemitAdd" class="panel" data-footer="" data-nopushhistory="0">
+					<div id="relRecMoneyRemitAddContent"></div>
+				</div>
 				<div title='放款录入' id="relRecMoneyAdd" class="panel" data-footer="" data-nopushhistory="0">
 					<div id="relRecMoneyAddContent"></div>
+				</div>
+				<div title='选择资助人' id="relRecChooseSup" class="panel" data-footer="" data-nopushhistory="0">
+					<div id="relRecChooseSupContent"></div>
 				</div>
 				<div title='回访列表' id="relRecStuVisitsList" class="panel scrollPanel-box" data-footer="" data-nopushhistory="0">
 					<div id="relRecStuVisitsListContent"></div>
@@ -250,6 +255,9 @@
 				<div title='在线认捐' id="subList" class="panel scrollPanel-box" data-footer="" data-nopushhistory="0">
 					<div id="subListContent"></div>
 				</div>
+				<div title='批次详情' id="subStuList" class="panel scrollPanel-box" data-footer="" data-nopushhistory="0">
+					<div id="subStuListContent"></div>
+				</div>
 				<div title='确认' id="subCheck" class="panel" data-footer="" data-nopushhistory="0">
 					<div id="subCheckContent"></div>
 				</div>
@@ -258,6 +266,9 @@
 				</div>
 				<div title='学生信息' id="subStuView" class="panel" data-footer="" data-nopushhistory="0">
 					<div id="subStuViewContent"></div>
+				</div>
+				<div title='学生信息' id="subStuInfo" class="panel" data-header="stuViewHeader" data-footer="" data-nopushhistory="0">
+					<div id="subStuInfoContent"></div>
 				</div>
 				<div title='支付方式' id="subPayStyle" class="panel" data-footer="" data-nopushhistory="0">
 					<div id="subPayStyleContent"></div>
@@ -319,7 +330,8 @@
 					<ul>
 						<li data-tkey="stuHomeVisitsList" data-dir="general" data-transition="slide" onclick="common.toast('合并下载 原有的打印资料和打印资助合同 并发送到当前账号个人资料的邮箱')">下载资料</li>
 						<!--合并下载 原有的打印资料和打印资助合同 并发送到当前账号个人资料的邮箱-->
-						<li data-tkey="relRecMoneyList" data-dir="general" data-transition="slide" onclick="common.moreMenuLi(this)">放款录入</li>
+						<li data-tkey="relRecMoneyRemitAdd" data-dir="general" data-transition="slide" onclick="common.moreMenuLi(this)">汇款录入</li>
+						<li data-tkey="relRecMoneyAdd" data-dir="general" data-transition="slide" onclick="common.moreMenuLi(this)">放款录入</li>
 						<li data-tkey="stuHomeVisitsList" data-dir="general" data-transition="slide" onclick="common.moreMenuLi(this)">家访记录</li>
 						<li data-tkey="relRecStuVisitsList" data-dir="general" data-transition="slide" onclick="common.moreMenuLi(this)">回访记录</li>
 					</ul>

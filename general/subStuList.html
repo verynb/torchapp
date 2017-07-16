@@ -1,0 +1,86 @@
+<div id="subStuListBody"></div>
+
+<script type="text/javascript">
+	var subStuListBatchId, subStuListChecked = [];
+
+	function loadsubStuList(obj) {
+		subStuListFooter();
+		initsubStuList(obj);
+	}
+
+	function subStuListFooter() {
+		var btuHtml = '';
+		var jsondata = {};
+		btuHtml += '<div class="footerBtu bg-color-brown" data-tkey="subCheck" data-dir="general" data-transition="slide" onclick="subStuListFooterFunc(this)">';
+		btuHtml += '<a class="all subStuList-save" href="javascript:void(0);">提交</a>';
+		btuHtml += '</div>';
+		jsondata.container = 'subStuList';
+		jsondata.buttonHtml = btuHtml;
+		common.commonFooterBtu(jsondata);
+	}
+
+	function subStuListFooterFunc(obj) {
+		subStuListChecked = [];
+		var el_subStuListChecked = $('#subStuList input[type="checkbox"]:checked');
+		if(el_subStuListChecked.length != 0) {
+			for(var i = 0; i < el_subStuListChecked.length; i++) {
+				var subStuListjsonstr = $(el_subStuListChecked[i]).parents('.list-box').find("input[name='subStuListjsonstr']").val();
+				subStuListChecked.push(subStuListjsonstr);
+			}
+			common.loadPage($(obj));
+		} else {
+			common.toast("暂未选择学生");
+		}
+	}
+
+	function initsubStuList(obj) {
+		subStuListBatchId = $(obj).attr("data-batchId");
+		ajaxFuncs.get({
+			urlname: "/api/release/id?id=" + subStuListBatchId,
+			funcs: {
+				funcSuccessful: function(data) {
+					if(data.releaseList.length != 0) {
+						var html = '';
+						html += '<div class="info-panel-default">';
+						html += '<p>批次号：' + data.releaseList[0].batchNo + '</p>';
+						html += '<p>地址：' + data.releaseList[0].province + data.releaseList[0].city + '</p>';
+						html += '<p>发布时间：' + common.formatTime((data.releaseList[0].createTime) / 1000, 6) + '</p>';
+						html += '</div>';
+						html += '<div class="list-panel">';
+						html += '<div class="padding-top-1"></div>';
+						for(var i = 0; i < data.releaseList.length; i++) {
+							html += '<div class="list-box">';
+							html += '<div class="list-defult-body box-h box-align">';
+							html += '<div class="box-flex" data-stuid="' + data.releaseList[i].studentId + '" data-needMoney="' + data.releaseList[i].needMoney + '" data-dir="general" data-tkey="subStuInfo" data-transition="slide" onclick="common.loadPage(this);">';
+							html += '<span class="title-other">' + data.releaseList[i].studentName + '</span>';
+							html += '</div>';
+							html += '<div class="checkbox-box">';
+							html += '<label for="subStuListcheckbox_' + i + '">';
+							html += '<input id="subStuListcheckbox_' + i + '" type="checkbox" name="subStuList" value="0"  />';
+							html += '<span class="checkbox-btu"></span>';
+							html += '</label>';
+							html += "<input type='hidden' name='subStuListjsonstr' value='" + JSON.stringify(data.releaseList[i]) + "'  />";
+							html += '</div>';
+							html += '</div>';
+							html += '</div>';
+						}
+						html += '</div>';
+						$("#subStuListBody").empty().append(html);
+
+						$('#subStuListBody label').on('click', function() {
+							if($(this).find('input[type="checkbox"]').prop("checked")) {
+								$(this).find('input[type="checkbox"]').removeAttr('checked');
+							} else {
+								$(this).find('input[type="checkbox"]').attr('checked', 'checked');
+							}
+						});
+					} else {
+						common.handleDefaultPage({
+							type: 2
+						});
+					}
+				}
+			}
+		})
+	}
+</script>

@@ -367,6 +367,24 @@ ul {
     a.all:active {
         opacity: 0.8;
     }
+    a.all-2 {
+        width: 66%;
+        display: inline-block;
+        height: 4.9rem;
+        font-size: 1.6rem;
+        line-height: 4.9rem;
+        text-align: center;
+        color: #000;
+    }
+    a.all-1 {
+        width: 34%;
+        display: inline-block;
+        height: 4.9rem;
+        font-size: 1.6rem;
+        line-height: 4.9rem;
+        text-align: center;
+        color: #FFFFFF;
+    }
 }
 
 .list-panel {
@@ -699,9 +717,11 @@ ul {
         }
         .row1 {
             text-align: left;
+            border-bottom: 1px solid #EFEFEF;
         }
         .row2 {
             text-align: right;
+            border-bottom: 1px solid #EFEFEF;
         }
     }
 }
@@ -925,5 +945,16 @@ ul {
                 height: auto;
             }
         }
+    }
+}
+
+#relRecMoneyRemitAdd {
+    textarea.leave-info {
+        width: 100%;
+        height: 10rem;
+        color: #85878b;
+        border: none;
+        outline: none;
+        padding: 1.2rem;
     }
 }

@@ -1,6 +1,6 @@
 <form>
+	<div class="padding-top-1"></div>
 	<div class="list-panel">
-		<div class="padding-top-1"></div>
 		<!--<div class="list-box">
 		<div class="list-defult-body box-h ">
 			<div class="box-flex">
@@ -51,6 +51,7 @@
 			ajaxFuncs.put({
 				urlname: "/api/release/" + relBatchData.batchId,
 				params: params,
+				clickobj: obj,
 				funcs: {
 					funcSuccessful: function(data) {
 						common.toast('发布成功');

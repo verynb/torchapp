@@ -105,6 +105,8 @@ ul { list-style: none; }
 .footerBtu { width: 100%; height: 4.9rem; }
 .footerBtu a.all { display: block; height: 4.9rem; width: 100%; font-size: 1.6rem; line-height: 4.9rem; text-align: center; color: #FFFFFF; }
 .footerBtu a.all:active { opacity: 0.8; }
+.footerBtu a.all-2 { width: 66%; display: inline-block; height: 4.9rem; font-size: 1.6rem; line-height: 4.9rem; text-align: center; color: #000; }
+.footerBtu a.all-1 { width: 34%; display: inline-block; height: 4.9rem; font-size: 1.6rem; line-height: 4.9rem; text-align: center; color: #FFFFFF; }
 
 .list-panel .list-box-active:active { background-color: #FAFAFA; }
 .list-panel .choose-active { background-color: rgba(5, 177, 179, 0.16) !important; }
@@ -172,8 +174,8 @@ ul { list-style: none; }
 .list-two-panle .list-box { background-color: #FFFFFF; height: 7.5rem; padding: 0 1.2rem; }
 .list-two-panle .list-box .rw1 { padding-top: 1.2rem; height: 2.7rem; line-height: 2; }
 .list-two-panle .list-box .rw2 { padding-top: 1.2rem; height: 1.7rem; font-size: 1.3rem; line-height: 1.2; color: #85878b; }
-.list-two-panle .list-box .row1 { text-align: left; }
-.list-two-panle .list-box .row2 { text-align: right; }
+.list-two-panle .list-box .row1 { text-align: left; border-bottom: 1px solid #EFEFEF; }
+.list-two-panle .list-box .row2 { text-align: right; border-bottom: 1px solid #EFEFEF; }
 
 #offVisInfo span.subtitle { display: block; color: #85878b; height: 3rem; line-height: 3rem; }
 #offVisInfo .row1 { background-color: #FFFFFF; padding: 1.6rem 2.2rem; }
@@ -213,5 +215,7 @@ ul { list-style: none; }
 #imageReader .swiper-container { height: 100%; display: -webkit-box; display: -moz-box; display: -ms-flexbox; -webkit-box-orient: vertical; -moz-box-orient: vertical; -ms-box-orient: vertical; box-orient: vertical; -webkit-box-align: center; -moz-box-align: center; -ms-box-align: center; box-align: center; -webkit-box-pack: center; -moz-box-pack: center; -ms-box-pack: center; box-pack: center; }
 #imageReader .swiper-container .swiper-slide { overflow: hidden; display: -webkit-box; display: -moz-box; display: -ms-flexbox; -webkit-box-orient: vertical; -moz-box-orient: vertical; -ms-box-orient: vertical; box-orient: vertical; -webkit-box-align: center; -moz-box-align: center; -ms-box-align: center; box-align: center; -webkit-box-pack: center; -moz-box-pack: center; -ms-box-pack: center; box-pack: center; }
 #imageReader .swiper-container .swiper-slide img { width: 100%; height: auto; }
+
+#relRecMoneyRemitAdd textarea.leave-info { width: 100%; height: 10rem; color: #85878b; border: none; outline: none; padding: 1.2rem; }
 
 /*# sourceMappingURL=global.css.map */

@@ -1,4 +1,4 @@
-<div class="list-panel datasource" id="relRecStuViewBody" data-datasource="">
+<div class="list-panel datasource" id="subStuInfoBody" data-datasource="">
 	<!--start-->
 	<div class="list-box">
 		<div class="list-defult-body box-h box-align">
@@ -22,13 +22,13 @@
 			</div>
 		</div>
 	</div>
-	<div class="list-box">
+	<!--	<div class="list-box">
 		<div class="list-defult-body box-h box-align">
 			<div class="box-flex">
 				<span class="title">身份证：<span class="fromfield" data-fromfield="identityCard"></span></span>
 			</div>
 		</div>
-	</div>
+	</div>-->
 	<div class="list-box">
 		<div class="list-defult-body box-h box-align">
 			<div class="box-flex">
@@ -45,46 +45,47 @@
 	</div>
 	<div class="list-box">
 		<div class="list-defult-body box-h box-align">
-			<div><span class="title">地  址：</span></div>
 			<div class="box-flex">
-				<div class="table-cell fromfield" data-fromfield="province,city,area,address" data-unionchar=' '><span></span></div>
+				<div class="box-h">
+					<div><span class="title">地  址：</span></div>
+					<div class="box-flex">
+						<div class="table-box">
+							<div class="table-cell fromfield" data-fromfield="province,city,area,address" data-unionchar=' '><span></span></div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="padding-top-1"></div>
 	<div class="list-box">
 		<div class="list-defult-body box-h box-align">
 			<div class="box-flex">
-				<span class="title">认捐人：<span class="color-paleRed fromfield" data-fromfield="sponsorName"></span></span>
-			</div>
-		</div>
-	</div>
-	<div class="list-box">
-		<div class="list-defult-body box-h box-align">
-			<div class="box-flex">
-				<span class="title">认捐状态：<span class="color-paleRed fromfield data-status-rel" data-fromfield="sponsorName"></span></span>
+				<span class="title">金  额：<span class="data-needMoney"></span>元</span>
 			</div>
 		</div>
 	</div>
 </div>
 <script type="text/javascript">
-	var stuViewStuId;
+	var subStuInfoStuId, stuViewStuId;
 
-	function loadrelRecStuView(obj) {
-		var stuId = $(obj).attr('data-stuid');
+	function loadsubStuInfo(obj) {
+		subStuInfoStuId = $(obj).attr('data-stuid');
+		stuViewStuId = $(obj).attr('data-stuid');
+		$("#subStuInfo .data-needMoney").text($(obj).attr('data-needmoney'));
+		initsubStuInfo(subStuInfoStuId);
+	}
+
+	function initsubStuInfo(stuId) {
 		ajaxFuncs.get({
 			urlname: "/api/student/" + stuId,
 			funcs: {
 				funcSuccessful: function(data) {
 					loadData.load({
 						data: data,
-						container: "relRecStuView",
+						container: "subStuInfo",
 						readOnly: true,
 						barbutton: true,
-						callback: function() {
-							stuViewStuId = data.id;
-							$("#relRecStuView .data-status-rel").text(pageCom.stuStatusName(data.status));
-						}
+						callback: function() {}
 					});
 				}
 			}

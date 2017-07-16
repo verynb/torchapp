@@ -1,82 +1,98 @@
-<div class="padding-top-1"></div>
-<div class="info-panel-default">
-	<p>姓名：陈灿</p>
-	<p>年龄：17岁</p>
-	<p>学 校：成都实验中学</p>
-	<p>地址：四川省成都市成华区广福路1号</p>
-</div>
-<div class="padding-top-1"></div>
-<div class="info-panel-default">
-	<p>发布时间：2017-05-06</p>
-	<p class="color-paleRed">金额：￥4000</p>
-</div>
-<div class="vis-info">
-	<div class="header-title">
-		<span class="title">家访记录</span>
-	</div>
-	<div class="list-panel vis-infonav">
-		<div class="list-box" data-dir="general" data-tkey="stuHomeVisitsInfo" data-transition="slide" onclick="common.loadPage(this);">
-			<div class="list-defult-body box-h box-align">
-				<div class="box-flex">
-					<span class="title">家访时间：2017-03-26</span>
-				</div>
-				<div class="icon-text-box">
-					<span class="nav">凌之轩</span>
-				</div>
-				<div class="icon-next">
-					<i class="icon-img icon-img-next"></i>
-				</div>
-			</div>
-		</div>
-		<div class="list-box" data-dir="general" data-tkey="stuHomeVisitsInfo" data-transition="slide" onclick="common.loadPage(this);">
-			<div class="list-defult-body box-h box-align">
-				<div class="box-flex">
-					<span class="title">家访时间：2017-03-26</span>
-				</div>
-				<div class="icon-text-box">
-					<span class="nav">凌之轩</span>
-				</div>
-				<div class="icon-next">
-					<i class="icon-img icon-img-next"></i>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="money-info">
-	<div class="header-title">
-		<span class="title">汇款记录</span>
-	</div>
-	<div class="list-panel money-infonav">
-		<div class="list-box">
-			<div class="list-defult-body box-h box-align">
-				<div class="box-flex">
-					<span class="title">家访时间：2017-03-26</span>
-				</div>
-				<div class="icon-text-box">
-					<span class="nav">￥4000</span>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+<div id="subStuViewBody"></div>
 <script type="text/javascript">
 	function loadsubStuView(obj) {
 		subStuViewFooter();
+		var subscribeId = $(obj).attr('data-subscribeId');
+		initsubStuView(subscribeId);
 	}
 
 	function subStuViewFooter() {
 		var btuHtml = '';
 		var jsondata = {};
-		btuHtml += '<div class="footerBtu bg-color-brown" data-tkey="subPayStyle" data-dir="general" data-transition="slide" onclick="subStuViewFooterFunc(this)">';
-		btuHtml += '<a class="all subStuView-save" href="javascript:void(0);">提交</a>';
+		btuHtml += '<div class="footerBtu">';
+		btuHtml += '<a class="all-2 subStuView-save" href="javascript:void(0);" onclick="subStuViewFooterOneFunc(this)">取消汇款</a>';
+		btuHtml += '<a class="all-1 subStuView-save bg-color-brown" href="javascript:void(0);" data-tkey="subPayStyle" data-dir="general" data-transition="slide" onclick="subStuViewFooterTwoFunc(this)">汇款</a>';
 		btuHtml += '</div>';
 		jsondata.container = 'subStuView';
 		jsondata.buttonHtml = btuHtml;
 		common.commonFooterBtu(jsondata);
 	}
 
-	function subStuViewFooterFunc(obj) {
+	function subStuViewFooterOneFunc(obj) {
+
+	}
+
+	function subStuViewFooterTwoFunc(obj) {
 		common.loadPage($(obj));
+	}
+
+	function initsubStuView(subscribeId) {
+		ajaxFuncs.get({
+			urlname: "/api/subscribe/" + subscribeId,
+			funcs: {
+				funcSuccessful: function(data) {
+					var html = '';
+					html += '<div class="padding-top-1"></div>';
+					html += '<div class="info-panel-default">';
+					html += '<p>姓名：' + data.studentName + '</p>';
+					html += '<p>年龄：' + data.studentAge + '岁</p>';
+					html += '<p>学 校：' + data.schoolName + '</p>';
+					html += '<p>地址：' + data.studentAdree + '</p>';
+					html += '</div>';
+					html += '<div class="padding-top-1"></div>';
+					html += '<div class="info-panel-default">';
+					html += '<p>认捐时间：' + data.releaseTime + '</p>';
+					html += '<p class="color-paleRed">金额：￥' + data.needMoney + '</p>';
+					html += '</div>';
+					html += '<!---->';
+					html += '<div class="vis-info">';
+					html += '<div class="header-title">';
+					html += '<span class="title">家访记录</span>';
+					html += '</div>';
+					html += '<div class="list-panel vis-infonav">';
+
+					for(var i = 0; i < data.homeVisitDtos.length; i++) {
+						html += '<div class="list-box" data-homeVisitId="' + data.homeVisitDtos[i].homeVisitId + '" data-dir="general" data-tkey="stuHomeVisitsInfo" data-transition="slide" onclick="common.loadPage(this);">';
+						html += '<div class="list-defult-body box-h box-align">';
+						html += '<div class="box-flex">';
+						html += '<span class="title">家访时间：' + data.homeVisitDtos[i].homeVisitTime + '</span>';
+						html += '</div>';
+						html += '<div class="icon-text-box">';
+						html += '<span class="nav">' + data.homeVisitDtos[i].homeVistor + '</span>';
+						html += '</div>';
+						html += '<div class="icon-next">';
+						html += '<i class="icon-img icon-img-next"></i>';
+						html += '</div>';
+						html += '</div>';
+						html += '</div>';
+					}
+
+					html += '</div>';
+					html += '</div>';
+
+					html += '<!---->';
+					html += '<div class="money-info">';
+					html += '<div class="header-title">';
+					html += '<span class="title">汇款记录</span>';
+					html += '</div>';
+					html += '<div class="list-panel money-infonav">';
+					for(var j = 0; j < data.remittances.length; j++) {
+						html += '<div class="list-box">';
+						html += '<div class="list-defult-body box-h box-align">';
+						html += '<div class="box-flex">';
+						html += '<span class="title">汇款时间：' + data.remittances[i].remittanceTime + '</span>';
+						html += '</div>';
+						html += '<div class="icon-text-box">';
+						html += '<span class="nav">￥' + data.remittances[i].remittanceMoney + '</span>';
+						html += '</div>';
+						html += '</div>';
+						html += '</div>';
+					}
+					html += '</div>';
+					html += '</div>';
+					$("#subStuViewBody").empty().append(html);
+				}
+			}
+		})
 	}
 </script>

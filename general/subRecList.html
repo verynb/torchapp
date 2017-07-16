@@ -1,7 +1,7 @@
 <div class="padding-top-1"></div>
 <div class="list-panel">
 	<!--start-->
-	<div class="list-box">
+	<!--<div class="list-box">
 		<div class="list-defult-body box-h box-align" data-dir="general" data-tkey="subStuView" data-transition="slide" onclick="common.loadPage(this);">
 			<div class="box-flex">
 				<span class="title-other">林晓婷</span>
@@ -13,10 +13,41 @@
 				<i class="icon-img icon-img-next"></i>
 			</div>
 		</div>
-	</div>
+	</div>-->
 	<!--end-->
 
 </div>
 <script type="text/javascript">
-	function loadsubRecList(obj) {}
+	function loadsubRecList(obj) {
+		initsubRecList();
+	}
+
+	function initsubRecList() {
+		ajaxFuncs.get({
+			urlname: "/api/subscribes",
+			funcs: {
+				funcSuccessful: function(data) {
+					if(data.subscribeDtos.length != 0) {
+						var html = '';
+						for(var i = 0; i < data.subscribeDtos.length; i++) {
+							html += '	<div class="list-box">';
+							html += '<div class="list-defult-body box-h box-align" data-subscribeId="' + data.subscribeDtos[i].subscribeId + '" data-dir="general" data-tkey="subStuView" data-transition="slide" onclick="common.loadPage(this);">';
+							html += '<div class="box-flex">';
+							html += '<span class="title-other">' + data.subscribeDtos[i].studentName + '</span>';
+							html += '</div>';
+							html += '<div class="icon-text-box">';
+							html += '<span class="nav">' + data.subscribeDtos[i].subscribeTime + '</span>';
+							html += '</div>';
+							html += '<div class="icon-next">';
+							html += '<i class="icon-img icon-img-next"></i>';
+							html += '</div>';
+							html += '</div>';
+							html += '</div>';
+						}
+						$("#subRecList .list-panel").empty().append(html);
+					}
+				}
+			}
+		})
+	}
 </script>

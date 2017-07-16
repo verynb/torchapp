@@ -1,0 +1,81 @@
+<form>
+	<div class="padding-top-1"></div>
+	<div class="list-panel">
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">放款金额</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="name" type="text" name="money" required="required" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">资助人</span>
+				</div>
+				<div class="icon-text-box min-width" data-tkey="relRecChooseSup" data-dir="general" data-transition="slide" onclick="common.loadPage(this)">
+					<span class="nav sponsorname-data">选择资助人</span>
+					<input class="editor-input fromfield" type="hidden" name="sponsorId" required="required" data-warning="请选择资助人" value="" />
+				</div>
+				<div class="icon-next">
+					<i class="icon-img icon-img-next"></i>
+				</div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">放款时间</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input " type="text" name="creditTime" readonly="readonly" required="required" data-warning="请选择放款时间" onclick="common.pickDateYMD(this);" placeholder="请选择" value="" />
+				</div>
+				<div class="icon-next">
+					<i class="icon-img icon-img-next"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+<script type="text/javascript">
+	function loadrelRecMoneyAdd(obj) {
+		relRecMoneyAddFooter();
+	}
+
+	function relRecMoneyAddFooter() {
+		var btuHtml = '';
+		var jsondata = {};
+		btuHtml += '<div class="footerBtu bg-color-brown" onclick="relRecMoneyAddFooterFuncAdd(this)">';
+		btuHtml += '<a class="all relRecMoneyAdd-save" href="javascript:void(0);">保存</a>';
+		btuHtml += '</div>';
+		jsondata.container = 'relRecMoneyAdd';
+		jsondata.buttonHtml = btuHtml;
+		common.commonFooterBtu(jsondata);
+	}
+
+	function relRecMoneyAddFooterFuncAdd(obj) {
+		var params = common.serializeToJson("#relRecMoneyAdd form");
+		if(!common.validate("#relRecMoneyAdd form", obj)) {
+			return false;
+		} else {
+			params.studentId = stuViewStuId;
+			//			params.creditTime = (new Date(params.creditTime)).getTime();
+			ajaxFuncs.post({
+				clickobj: obj,
+				urlname: "/api/release/credit",
+				params: params,
+				funcs: {
+					funcSuccessful: function(data) {
+						common.toast("保存成功");
+						$.ui.goBack();
+					}
+				}
+			})
+		}
+	}
+</script>
