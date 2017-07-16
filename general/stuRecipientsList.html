@@ -18,7 +18,10 @@
 		if(stuupdateId != null) {
 			initstuRecipientsList(stuupdateId);
 		} else {
-			common.toast("暂无数据");
+			common.handleDefaultPage({
+				type: 2,
+				objdiv: "#stuRecipientsList .list-two-panle"
+			});
 		}
 
 	}
@@ -47,7 +50,10 @@
 						}
 						$("#stuRecipientsList .list-two-panle").empty().append(html);
 					} else {
-						common.toast('暂无数据');
+						common.handleDefaultPage({
+							type: 2,
+							objdiv: "#stuRecipientsList .list-two-panle"
+						});
 					}
 				}
 			}

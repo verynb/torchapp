@@ -45,7 +45,7 @@
 			for(var i = 0; i < el_inputneedMoney.length; i++) {
 				var itemVal = {};
 				itemVal.needMoney = $(el_inputneedMoney[i]).val().trim();
-				itemVal.releaseStudentId = $(el_inputneedMoney[i]).attr("data-stuid");
+				itemVal.releaseStudentId = $(el_inputneedMoney[i]).attr("data-releaseStudentId");
 				params.push(itemVal);
 			}
 			ajaxFuncs.put({
@@ -74,7 +74,7 @@
 						for(var i = 0; i < data.length; i++) {
 							html += '<div class="list-box">';
 							html += '<div class="list-defult-body box-h box-align">';
-							html += '<div class="box-flex" data-stuid="' + data[i].studentId + '" data-dir="general" data-tkey="stuView" data-transition="slide" onclick="common.loadPage(this);">';
+							html += '<div class="box-flex" data-stuid="' + data[i].studentId + '" data-releaseStudentId="' + data[i].releaseStudentId + '" data-dir="general" data-tkey="stuView" data-transition="slide" onclick="common.loadPage(this);">';
 							html += '<span class="title-other">' + data[i].studentName + '</span>';
 							if(data[i].scores != 0) {
 								//	html += '<span class="subtitle-make">' + data[i].scores + '分</span>';
@@ -82,9 +82,9 @@
 							html += '</div>';
 							html += '<div class="text-input-box">';
 							if(data[i].hasOwnProperty("money") && data[i].money != '') {
-								html += '<input class="editor-input" type="text" data-stuid="' + data[i].studentId + '" name="needMoney" required="required" placeholder="未填写 " value="' + data[i].money + '"  data-warning="请填写所需金额"/>元';
+								html += '<input class="editor-input" type="text" data-stuid="' + data[i].studentId + '"  data-releaseStudentId="' + data[i].releaseStudentId + '" name="needMoney" required="required" placeholder="未填写 " value="' + data[i].money + '"  data-warning="请填写所需金额"/>元';
 							} else {
-								html += '<input class="editor-input" type="text" data-stuid="' + data[i].studentId + '" name="needMoney" required="required" placeholder="未填写 " value="' + pageCom.gradeMoneyChoose(data[i].grade) + '" data-warning="请填写所需金额" />元';
+								html += '<input class="editor-input" type="text" data-stuid="' + data[i].studentId + '"  data-releaseStudentId="' + data[i].releaseStudentId + '" name="needMoney" required="required" placeholder="未填写 " value="' + pageCom.gradeMoneyChoose(data[i].grade) + '" data-warning="请填写所需金额" />元';
 							}
 							html += '</div>';
 							html += '</div>';
@@ -93,7 +93,8 @@
 						$("#relMoney .list-panel").empty().append(html);
 					} else {
 						common.handleDefaultPage({
-							type: 2
+							type: 2,
+							objdiv: "#relMoney .list-panel"
 						});
 					}
 				}

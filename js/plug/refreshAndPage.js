@@ -27,7 +27,7 @@
 			pullDown.hide();
 			pullUp.hide();
 
-			myScroll = new IScroll("." + jsondata.containerScroll, {
+			myScroll = new IScroll("#" + jsondata.content + " ." + jsondata.containerScroll, {
 				scrollbars: true,
 				mouseWheel: false,
 				interactiveScrollbars: true,
@@ -37,6 +37,10 @@
 				probeType: 2,
 				bindToWrapper: true
 			});
+
+			if(jsondata.funcObjScroll != undefined) {
+				jsondata.funcObjScroll(myScroll);
+			}
 			myScroll.on("scroll", function() {
 				if(loadingStep == 0 && !pullDown.attr("class").match('refresh|loading') && !pullUp.attr("class").match('refresh')) {
 					if(this.y > 40) { //下拉刷新操作  

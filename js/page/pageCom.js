@@ -2,7 +2,7 @@
 (function() {
 	var pageCom = {
 		volunteerRoles: function() {
-			var title = "角色选择";
+			var titleName = "角色选择";
 			ajaxFuncs.get({
 				urlname: "/api/volunteerRoles",
 				funcs: {
@@ -14,11 +14,12 @@
 							buttons.push(titVal);
 						}
 						plus.nativeUI.actionSheet({
-							title: title,
+							title: titleName,
 							cancel: "取消",
 							buttons: buttons
 						}, function(selected) { /*actionSheet 按钮点击事件*/
-							var typeval = buttons[selected.index - 1].title;
+							var buttonsobj = buttons[selected.index - 1];
+							var typeval = buttonsobj.title;
 							var typeid = selected.index;
 							var container = "#" + $.ui.activeDiv.id;
 							$(container + " span.roleName").text(typeval);
@@ -43,18 +44,19 @@
 			});
 		},
 		chooseSex: function() {
-			var title = "性别选择";
+			var titleName = "性别选择";
 			var buttons = [{
-				title: "男"
+				'title': "男"
 			}, {
-				title: "女"
+				'title': "女"
 			}];
 			plus.nativeUI.actionSheet({
-				title: title,
+				title: titleName,
 				cancel: "取消",
 				buttons: buttons
 			}, function(selected) { /*actionSheet 按钮点击事件*/
-				var typeval = buttons[selected.index - 1].title;
+				var buttonsobj = buttons[selected.index - 1];
+				var typeval = buttonsobj.title;
 				var typeid = selected.index;
 				var container = "#" + $.ui.activeDiv.id;
 				$(container + " input[name='gender']").val(typeval);
@@ -62,7 +64,7 @@
 			});
 		},
 		chooseGrade: function() {
-			var title = "年级选择";
+			var titleName = "年级选择";
 			ajaxFuncs.get({
 				urlname: "/api/gradeMoney",
 				funcs: {
@@ -74,11 +76,12 @@
 							buttons.push(titVal);
 						}
 						plus.nativeUI.actionSheet({
-							title: title,
+							title: titleName,
 							cancel: "取消",
 							buttons: buttons
 						}, function(selected) { /*actionSheet 按钮点击事件*/
-							var typeval = buttons[selected.index - 1].title;
+							var buttonsobj = buttons[selected.index - 1];
+							var typeval = buttonsobj.title;
 							var typeid = selected.index;
 							var container = "#" + $.ui.activeDiv.id;
 							$(container + " span.grade").text(typeval);

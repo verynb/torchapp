@@ -57,7 +57,7 @@
 					"title": "学生维护",
 					"dir": "general",
 					"tkey": "stuList"
-				}, {
+				},{
 					"icon": "icon-record",
 					"title": "发布记录",
 					"dir": "general",

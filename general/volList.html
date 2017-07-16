@@ -20,7 +20,8 @@
 <script type="text/javascript">
 	var volListPage = 0,
 		isAddPage = true,
-		isBindS = true;
+		isBindS = true,
+		volListNowObjScroll = null;
 
 	function loadvolList(obj) {
 		volListPage = 0;
@@ -73,6 +74,9 @@
 							html += '</div>';
 						}
 						$("#volList .list-panel").empty().append(html);
+						if(volListNowObjScroll != null) {
+							volListNowObjScroll.refresh();
+						}
 						if(data.resultDtos.length > 0) {
 							if(isBindS) {
 								var jsondata = {};
@@ -81,13 +85,17 @@
 								jsondata.containerScroll = "wrapper";
 								jsondata.funcPullDown = volListPullDownAction;
 								jsondata.funcpullUp = volListPullUpAction;
+								jsondata.funcObjScroll = function(objScroll) {
+									volListNowObjScroll = objScroll;
+								};
 								refreshAndPage.add(jsondata);
 							}
 							isBindS = false;
 						}
 					} else {
 						common.handleDefaultPage({
-							type: 2
+							type: 2,
+							objdiv: "#volList .list-panel"
 						});
 					}
 					if(callback != undefined) {

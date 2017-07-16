@@ -10,8 +10,8 @@
 		var btuHtml = '';
 		var jsondata = {};
 		btuHtml += '<div class="footerBtu">';
-		btuHtml += '<a class="all-2 subStuView-save" href="javascript:void(0);" onclick="subStuViewFooterOneFunc(this)">取消汇款</a>';
-		btuHtml += '<a class="all-1 subStuView-save bg-color-brown" href="javascript:void(0);" data-tkey="subPayStyle" data-dir="general" data-transition="slide" onclick="subStuViewFooterTwoFunc(this)">汇款</a>';
+		btuHtml += '<a class="all subStuView-save  bg-color-brown" href="javascript:void(0);" onclick="subStuViewFooterOneFunc(this)">取消汇款</a>';
+		//		btuHtml += '<a class="all-1 subStuView-save bg-color-brown" href="javascript:void(0);" data-tkey="subPayStyle" data-dir="general" data-transition="slide" onclick="subStuViewFooterTwoFunc(this)">汇款</a>';
 		btuHtml += '</div>';
 		jsondata.container = 'subStuView';
 		jsondata.buttonHtml = btuHtml;
@@ -59,6 +59,30 @@
 						html += '</div>';
 						html += '<div class="icon-text-box">';
 						html += '<span class="nav">' + data.homeVisitDtos[i].homeVistor + '</span>';
+						html += '</div>';
+						html += '<div class="icon-next">';
+						html += '<i class="icon-img icon-img-next"></i>';
+						html += '</div>';
+						html += '</div>';
+						html += '</div>';
+					}
+
+					html += '</div>';
+					html += '</div>';
+					html += '<!---->';
+					html += '<div class="vis-info">';
+					html += '<div class="header-title">';
+					html += '<span class="title">回访记录</span>';
+					html += '</div>';
+					html += '<div class="list-panel vis-infonav">';
+					for(var i = 0; i < data.returnVisitDtos.length; i++) {
+						html += '<div class="list-box" data-returnVisitId="' + data.returnVisitDtos[i].returnVisitId + '" data-studentName="' + data.studentName + '" data-dir="general" data-tkey="stuReturnVisitsInfo" data-transition="slide" onclick="common.loadPage(this);">';
+						html += '<div class="list-defult-body box-h box-align">';
+						html += '<div class="box-flex">';
+						html += '<span class="title">回访时间：' + data.returnVisitDtos[i].returnVisitTime + '</span>';
+						html += '</div>';
+						html += '<div class="icon-text-box">';
+						html += '<span class="nav">' + data.returnVisitDtos[i].returnVistor + '</span>';
 						html += '</div>';
 						html += '<div class="icon-next">';
 						html += '<i class="icon-img icon-img-next"></i>';

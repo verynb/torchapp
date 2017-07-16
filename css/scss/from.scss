@@ -13,21 +13,25 @@
         height: 3rem;
         width: 3rem;
         //      display: none;
-        opacity: 0;
+        opacity: 1;
         position: absolute;
         right: -0.5rem;
         top: 1.2rem;
+        z-index: 0;
     }
     label {
         position: relative;
         display: inline-block;
         height: 5.5rem;
-        width: 4rem;
+        width: 8rem;
         cursor: pointer;
+        z-index: 99;
+        border: 1px solid #000000;
     }
     span.checkbox-btu,
     span.radio-btu {
         position: absolute;
+        z-index: 10;
         right: 0;
         top: 1.8rem;
         display: inline-block;

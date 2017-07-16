@@ -170,6 +170,10 @@ ul {
     }
 }
 
+.heightAll {
+    height: 100% !important;
+}
+
 #homeHeader,
 #userPwdHeader,
 #stuEditHeader,
@@ -220,9 +224,11 @@ ul {
 }
 
 .moreBox {
+    position: relative;
+    z-index: 999;
     .moreMenu {
         position: fixed;
-        top: 3.8rem;
+        top: 2.8rem;
         right: 1.2rem;
         min-height: 5.2rem;
         width: 12rem;
@@ -513,7 +519,7 @@ ul {
             height: 5.3rem;
             padding: 0.1rem 1rem 0;
             input.editor-input {
-                height: 5.3rem;
+                height: 5.25rem;
                 font-size: 1.5rem;
                 color: #85878b;
                 border: none;
@@ -521,7 +527,7 @@ ul {
                 text-align: right;
             }
             .editor-select {
-                height: 5.3rem;
+                height: 5.25rem;
                 font-size: 1.5rem;
                 min-width: 3rem;
                 color: #85878b;
@@ -726,7 +732,8 @@ ul {
     }
 }
 
-#offVisInfo {
+#offVisInfo,
+#stuReturnVisitsAdd {
     span.subtitle {
         display: block;
         color: rgb(133, 135, 139);

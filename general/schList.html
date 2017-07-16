@@ -19,7 +19,8 @@
 <script type="text/javascript">
 	var schListPage = 0,
 		schisAddPage = true,
-		schisBindS = true;
+		schisBindS = true,
+		schListNowObjScroll = null;
 
 	function loadschList(obj) {
 		schListPage = 0;
@@ -28,8 +29,7 @@
 		schListPullDownAction(obj, undefined);
 	}
 
-	function schreload() {
-		//刷新界面  
+	function schreload() { //刷新界面  
 		pageScrollToTop();
 		loadschList($("#home"));
 		console.log("刷新");
@@ -73,6 +73,9 @@
 						}
 						$("#schList .list-panel").empty().append(html);
 
+						if(schListNowObjScroll != null) {
+							schListNowObjScroll.refresh();
+						}
 						if(data.schools.length > 0) {
 							if(schisBindS) {
 								var jsondata = {};
@@ -81,13 +84,17 @@
 								jsondata.containerScroll = "wrapper";
 								jsondata.funcPullDown = schListPullDownAction;
 								jsondata.funcpullUp = schListPullUpAction;
+								jsondata.funcObjScroll = function(objScroll) {
+									schListNowObjScroll = objScroll;
+								};
 								refreshAndPage.add(jsondata);
 							}
 							schisBindS = false;
 						}
 					} else {
 						common.handleDefaultPage({
-							type: 2
+							type: 2,
+							objdiv: "#schList .list-panel"
 						});
 					}
 					if(callback != undefined) {

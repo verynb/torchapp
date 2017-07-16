@@ -20,13 +20,6 @@
 	function loadrelAddTwo(obj) {
 		initrelAddTwo();
 		relAddTwoFooter();
-		$('#relAddTwo label').on('click', function() {
-			if($(this).find('input[type="checkbox"]').prop("checked")) {
-				$(this).find('input[type="checkbox"]').removeAttr('checked');
-			} else {
-				$(this).find('input[type="checkbox"]').attr('checked', 'checked');
-			}
-		});
 	}
 
 	function relAddTwoFooter() {

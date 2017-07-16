@@ -19,7 +19,8 @@
 <script type="text/javascript">
 	var stuListPage = 0,
 		stuisAddPage = true,
-		stuisBindS = true;
+		stuisBindS = true,
+		stuListNowObjScroll = null;
 
 	function loadstuList(obj) {
 		stuListPage = 0;
@@ -77,7 +78,9 @@
 							html += '</div>';
 						}
 						$("#stuList .list-panel").empty().append(html);
-
+						if(stuListNowObjScroll != null) {
+							stuListNowObjScroll.refresh();
+						}
 						if(data.studentLists.length > 0) {
 							if(stuisBindS) {
 								var jsondata = {};
@@ -86,13 +89,17 @@
 								jsondata.containerScroll = "wrapper";
 								jsondata.funcPullDown = stuListPullDownAction;
 								jsondata.funcpullUp = stuListPullUpAction;
+								jsondata.funcObjScroll = function(objScroll) {
+									stuListNowObjScroll = objScroll;
+								};
 								refreshAndPage.add(jsondata);
 							}
 							stuisBindS = false;
 						}
 					} else {
 						common.handleDefaultPage({
-							type: 2
+							type: 2,
+							objdiv: "#stuList .list-panel"
 						});
 					}
 					if(callback != undefined) {

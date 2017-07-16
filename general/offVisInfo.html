@@ -141,6 +141,7 @@
 	var offVisInfostuid, criterionLength = 0;
 
 	function loadoffVisInfo(obj) {
+		window.localStorage.setItem(G_COMKEY + ".isAllowed", false);
 		offVisInfoFooter();
 		offVisInfostuid = $(obj).attr("data-stuid");
 		var batchId = $(obj).attr("data-batchId");

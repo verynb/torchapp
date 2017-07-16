@@ -58,6 +58,11 @@
 							html += '</div>';
 						}
 						$("#relList .list-panel").empty().append(html);
+					} else {
+						common.handleDefaultPage({
+							type: 2,
+							objdiv: "#relList .list-panel"
+						});
 					}
 				}
 			}

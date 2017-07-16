@@ -19,7 +19,8 @@
 <script type="text/javascript">
 	var supListPage = 0,
 		supisAddPage = true,
-		supisBindS = true;
+		supisBindS = true,
+		supListNowObjScroll = null;
 
 	function loadsupList(obj) {
 		supListPage = 0;
@@ -72,7 +73,9 @@
 							html += '</div>';
 						}
 						$("#supList .list-panel").empty().append(html);
-
+						if(supListNowObjScroll != null) {
+							supListNowObjScroll.refresh();
+						}
 						if(data.resultDtos.length > 0) {
 							if(supisBindS) {
 								var jsondata = {};
@@ -81,13 +84,17 @@
 								jsondata.containerScroll = "wrapper";
 								jsondata.funcPullDown = supListPullDownAction;
 								jsondata.funcpullUp = supListPullUpAction;
+								jsondata.funcObjScroll = function(objScroll) {
+									supListNowObjScroll = objScroll;
+								};
 								refreshAndPage.add(jsondata);
 							}
 							supisBindS = false;
 						}
 					} else {
 						common.handleDefaultPage({
-							type: 2
+							type: 2,
+							objdiv: "#supList .list-panel"
 						});
 					}
 					if(callback != undefined) {

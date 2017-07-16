@@ -145,7 +145,7 @@
 				</div>
 				<!-----------------------------------------------------general 分类------------------------------------>
 				<div title='义工维护' id="volList" class="panel scrollPanel-box" data-footer="" data-back="reload" data-nopushhistory="0">
-					<div id="volListContent"></div>
+					<div id="volListContent" class="heightAll"></div>
 				</div>
 				<div title='编辑义工' id="volEdit" class="panel" data-footer="" refresh="true" data-nopushhistory="0">
 					<div id="volEditContent"></div>
@@ -154,19 +154,19 @@
 					<div id="schChooseContent"></div>
 				</div>
 				<div title='资助人维护' id="supList" class="panel scrollPanel-box" data-footer="" data-back="supreload" data-nopushhistory="0">
-					<div id="supListContent"></div>
+					<div id="supListContent" class="heightAll"></div>
 				</div>
 				<div title='编辑资助人' id="supEdit" class="panel" data-footer="" refresh="true" data-nopushhistory="0">
 					<div id="supEditContent"></div>
 				</div>
 				<div title='学校维护' id="schList" class="panel scrollPanel-box" data-footer="" data-back="schreload" data-nopushhistory="0">
-					<div id="schListContent"></div>
+					<div id="schListContent" class="heightAll"></div>
 				</div>
 				<div title='编辑学校' id="schEdit" class="panel" data-footer="" refresh="true" data-nopushhistory="0">
 					<div id="schEditContent"></div>
 				</div>
 				<div title='学生维护' id="stuList" class="panel scrollPanel-box" data-footer="" data-back="stureload" data-nopushhistory="0">
-					<div id="stuListContent"></div>
+					<div id="stuListContent" class="heightAll"></div>
 				</div>
 				<div title='编辑学生' id="stuEdit" class="panel" data-header="stuEditHeader" refresh="true" data-footer="" data-nopushhistory="0">
 					<div id="stuEditContent"></div>
@@ -181,16 +181,16 @@
 					<div id="stuViewContent"></div>
 				</div>
 				<div title='家访记录' id="stuHomeVisitsList" class="panel" data-footer="" data-nopushhistory="0">
-					<div id="stuHomeVisitsListContent"></div>
+					<div id="stuHomeVisitsListContent" class="heightAll"></div>
 				</div>
 				<div title='家访详情' id="stuHomeVisitsInfo" class="panel" data-footer="" data-nopushhistory="0">
 					<div id="stuHomeVisitsInfoContent"></div>
 				</div>
 				<div title='受助记录' id="stuRecipientsList" class="panel" data-footer="" data-nopushhistory="0">
-					<div id="stuRecipientsListContent"></div>
+					<div id="stuRecipientsListContent" class="heightAll"></div>
 				</div>
 				<div title='发布资助' id="relList" class="panel scrollPanel-box" data-back="relListreload" data-footer="" data-nopushhistory="0">
-					<div id="relListContent"></div>
+					<div id="relListContent" class="heightAll"></div>
 				</div>
 				<div title='发布批次' id="relBatch" class="panel" data-footer="" data-nopushhistory="0">
 					<div id="relBatchContent"></div>
@@ -214,10 +214,10 @@
 					<div id="relRecSearchContent"></div>
 				</div>
 				<div title='批次列表' id="relRecList" class="panel scrollPanel-box" data-footer="" data-nopushhistory="0">
-					<div id="relRecListContent"></div>
+					<div id="relRecListContent" class="heightAll"></div>
 				</div>
 				<div title='学生列表' id="relRecStuList" class="panel scrollPanel-box" data-footer="" data-nopushhistory="0">
-					<div id="relRecStuListContent"></div>
+					<div id="relRecStuListContent" class="heightAll"></div>
 				</div>
 				<div title='学生信息' id="relRecStuView" class="panel" data-header="relRecStuViewHeader" data-footer="" data-nopushhistory="0">
 					<div id="relRecStuViewContent"></div>
@@ -234,16 +234,19 @@
 				<div title='选择资助人' id="relRecChooseSup" class="panel" data-footer="" data-nopushhistory="0">
 					<div id="relRecChooseSupContent"></div>
 				</div>
-				<div title='回访列表' id="relRecStuVisitsList" class="panel scrollPanel-box" data-footer="" data-nopushhistory="0">
-					<div id="relRecStuVisitsListContent"></div>
+				<div title='回访列表' id="stuReturnVisitsList" class="panel scrollPanel-box" data-footer="" data-back="reloadstuReturnVisitsList" data-nopushhistory="0">
+					<div id="stuReturnVisitsListContent" class="heightAll"></div>
 				</div>
-				<div title='回访录入' id="relRecStuVisitsAdd" class="panel" data-footer="" data-nopushhistory="0">
-					<div id="relRecStuVisitsAddContent"></div>
+				<div title='回访录入' id="stuReturnVisitsAdd" class="panel" data-footer="" refresh="true" data-nopushhistory="0">
+					<div id="stuReturnVisitsAddContent"></div>
 				</div>
-				<div title='离线家访' id="offVisList" class="panel scrollPanel-box" data-header="" data-footer="" data-nopushhistory="0">
-					<div id="offVisListContent"></div>
+				<div title='回访详情' id="stuReturnVisitsInfo" class="panel" data-footer="" data-nopushhistory="0">
+					<div id="stuReturnVisitsInfoContent"></div>
 				</div>
-				<div title='家访录入' id="offVisInfo" class="panel" data-header="offVisInfoHeader" data-footer="" data-nopushhistory="0">
+				<div title='离线家访' id="offVisList" class="panel scrollPanel-box" data-header="" data-back="offVisListreload" data-footer="" data-nopushhistory="0">
+					<div id="offVisListContent" class="heightAll"></div>
+				</div>
+				<div title='家访录入' id="offVisInfo" class="panel" data-header="offVisInfoHeader" data-footer="" refresh="true" data-nopushhistory="0">
 					<div id="offVisInfoContent"></div>
 				</div>
 				<div title='查看图片' id="scanImg" class="panel" data-footer="none" data-header="none" data-load="" data-unload="" data-nopushhistory="0">
@@ -253,16 +256,16 @@
 					<div id="offVisStuViewContent"></div>
 				</div>
 				<div title='在线认捐' id="subList" class="panel scrollPanel-box" data-footer="" data-nopushhistory="0">
-					<div id="subListContent"></div>
+					<div id="subListContent" class="heightAll"></div>
 				</div>
 				<div title='批次详情' id="subStuList" class="panel scrollPanel-box" data-footer="" data-nopushhistory="0">
-					<div id="subStuListContent"></div>
+					<div id="subStuListContent" class="heightAll"></div>
 				</div>
 				<div title='确认' id="subCheck" class="panel" data-footer="" data-nopushhistory="0">
 					<div id="subCheckContent"></div>
 				</div>
-				<div title='认捐记录' id="subRecList" class="panel scrollPanel-box" data-footer="" data-nopushhistory="0">
-					<div id="subRecListContent"></div>
+				<div title='认捐记录' id="subRecList" class="panel scrollPanel-box " data-footer="" data-nopushhistory="0">
+					<div id="subRecListContent" class="heightAll"></div>
 				</div>
 				<div title='学生信息' id="subStuView" class="panel" data-footer="" data-nopushhistory="0">
 					<div id="subStuViewContent"></div>
@@ -318,6 +321,7 @@
 				<div class="moreMenu">
 					<ul>
 						<li data-tkey="stuHomeVisitsList" data-dir="general" data-transition="slide" onclick="common.moreMenuLi(this)">家访记录</li>
+						<li data-tkey="stuReturnVisitsList" data-dir="general" data-transition="slide" onclick="common.moreMenuLi(this)">回访记录</li>
 						<li data-tkey="stuRecipientsList" data-dir="general" data-transition="slide" onclick="common.moreMenuLi(this)">受助记录</li>
 					</ul>
 				</div>
@@ -333,7 +337,7 @@
 						<li data-tkey="relRecMoneyRemitAdd" data-dir="general" data-transition="slide" onclick="common.moreMenuLi(this)">汇款录入</li>
 						<li data-tkey="relRecMoneyAdd" data-dir="general" data-transition="slide" onclick="common.moreMenuLi(this)">放款录入</li>
 						<li data-tkey="stuHomeVisitsList" data-dir="general" data-transition="slide" onclick="common.moreMenuLi(this)">家访记录</li>
-						<li data-tkey="relRecStuVisitsList" data-dir="general" data-transition="slide" onclick="common.moreMenuLi(this)">回访记录</li>
+						<li data-tkey="stuReturnVisitsList" data-dir="general" data-transition="slide" onclick="common.moreMenuLi(this)">回访记录</li>
 					</ul>
 				</div>
 			</header>

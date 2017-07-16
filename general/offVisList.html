@@ -26,6 +26,16 @@
 		}
 	}
 
+	function offVisListreload() {
+		isAllowed = true;
+		localStu.selectAll(initOffVisList);
+		if(window.localStorage.getItem(G_COMKEY + ".isAllowed") != undefined && window.localStorage.getItem(G_COMKEY + ".isAllowed") == "true") {
+			localStu.selectAllstatus(saveAllData);
+		} else {
+			offVisListFooter();
+		}
+	}
+
 	function offVisListFooter() {
 		var btuHtml = '';
 		var jsondata = {};
@@ -175,12 +185,14 @@
 				$("#offVisList .list-panel").empty().append(html);
 			} else {
 				common.handleDefaultPage({
-					type: 2
+					type: 2,
+					objdiv: "#offVisList .list-panel"
 				});
 			}
 		} else {
 			common.handleDefaultPage({
-				type: 2
+				type: 2,
+				objdiv: "#offVisList .list-panel"
 			});
 		}
 	}

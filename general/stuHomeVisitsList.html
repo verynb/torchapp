@@ -30,7 +30,8 @@
 						$("#stuHomeVisitsList .list-panel").append(stuHomeVisitsListHtml(data.homeVisitListDtos));
 					} else {
 						common.handleDefaultPage({
-							type: 2
+							type: 2,
+							objdiv: "#stuHomeVisitsList .list-panel"
 						});
 					}
 				}

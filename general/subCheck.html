@@ -1,4 +1,3 @@
-<div class="padding-top-1"></div>
 <div id="subCheckBody">
 	<!--<div class="info-panel-default">
 		<p>姓名：陈灿</p>
@@ -35,6 +34,7 @@
 			html += '<p>地址：' + subStuListCheckedItem.province + subStuListCheckedItem.city + subStuListCheckedItem.area + subStuListCheckedItem.address + '</p>';
 			html += '<p class="color-paleRed">金额：￥' + subStuListCheckedItem.needMoney + '</p>';
 			html += '<input hidden="hidden" name="releaseStudentId" value="' + subStuListCheckedItem.releaseStudentId + '" />';
+			html += '<input hidden="hidden" name="studentId" value="' + subStuListCheckedItem.studentId + '" />';
 			html += '<input hidden="hidden" name="releaseId" value="' + subStuListCheckedItem.releaseId + '"/>';
 			html += '</div>';
 		}
@@ -58,7 +58,7 @@
 		jsondata.batchId = $(el_subCheckcheck[0]).find("input[name='releaseId']").val();
 		var studentIds = [];
 		for(var i = 0; i < el_subCheckcheck.length; i++) {
-			studentIds.push($(el_subCheckcheck[i]).find("input[name='releaseStudentId']").val());
+			studentIds.push($(el_subCheckcheck[i]).find("input[name='studentId']").val());
 		}
 		jsondata.studentIds = studentIds;
 		//		PUT /api/subscribe
