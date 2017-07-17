@@ -72,7 +72,7 @@
 				clickobj: obj,
 				funcs: {
 					funcSuccessful: function(data) {
-						relRecSearchVal = data.releaseList;
+						relRecSearchVal = data.releases;
 						if(relRecSearchVal.length != 0) {
 							common.loadPage($(obj));
 						} else {

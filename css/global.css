@@ -68,6 +68,8 @@ ul { list-style: none; }
 
 .heightAll { height: 100% !important; }
 
+#afui .header { overflow: initial !important; }
+
 #homeHeader h1, #userPwdHeader h1, #stuEditHeader h1, #relMoneyHeader h1, #relRecStuViewHeader h1, #stuViewHeader h1, #relEditHeader h1, #offVisInfoHeader h1 { top: 0; font-size: 1.9rem; }
 #homeHeader a, #userPwdHeader a, #stuEditHeader a, #relMoneyHeader a, #relRecStuViewHeader a, #stuViewHeader a, #relEditHeader a, #offVisInfoHeader a { height: 100%; display: table; color: #262931; }
 #homeHeader a span, #userPwdHeader a span, #stuEditHeader a span, #relMoneyHeader a span, #relRecStuViewHeader a span, #stuViewHeader a span, #relEditHeader a span, #offVisInfoHeader a span { display: table-cell; vertical-align: middle; }
@@ -78,7 +80,7 @@ ul { list-style: none; }
 #homeHeader a.btuMore, #userPwdHeader a.btuMore, #stuEditHeader a.btuMore, #relMoneyHeader a.btuMore, #relRecStuViewHeader a.btuMore, #stuViewHeader a.btuMore, #relEditHeader a.btuMore, #offVisInfoHeader a.btuMore { background: url(../img/icon/icon-more.png) center center no-repeat; background-size: contain; width: 2.1rem; }
 
 .moreBox { position: relative; z-index: 999; }
-.moreBox .moreMenu { position: fixed; top: 2.8rem; right: 1.2rem; min-height: 5.2rem; width: 12rem; z-index: 999; padding-top: 1rem; background: url(../img/icon/icon-bg.png) top right no-repeat; background-size: auto 1rem; display: none; }
+.moreBox .moreMenu { position: absolute; top: 2.8rem; right: 1.2rem; min-height: 5.2rem; width: 12rem; z-index: 999; padding-top: 1rem; background: url(../img/icon/icon-bg.png) top right no-repeat; background-size: auto 1rem; display: none; }
 .moreBox .moreMenu ul { margin-top: -2px; min-height: 4.2rem; width: 12rem; border-radius: 0.5rem; padding: 0 0.8rem; background-color: #49494b; }
 .moreBox .moreMenu ul li { color: #FFFFFF; text-align: center; height: 4.1rem; line-height: 4.1rem; border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
 .moreBox .moreMenu ul li:last-child { border-bottom: none; }
