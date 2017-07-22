@@ -1,0 +1,73 @@
+<div id="stuReturnVisitsAddBody" class="">
+	<form>
+		<div class="row1">
+			<textarea class="visInfo" placeholder="请录入回访内容..." name="returnInfo"></textarea>
+			<div class="returnVisitsPhoto">
+				<span class="subtitle">（申请表含有姓名及照片）</span>
+				<div class="rw1 box-h">
+					<div class="savebox">
+						<div class="box-h saveboxList"></div>
+					</div>
+					<div class="r1 box-flex upphoto">
+						<img class="" src="img/icon/camera.png" alt="照相" onclick="common.pickImgLoca(this);" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+<script type="text/javascript">
+	//	stuViewStuId
+	function loadstuReturnVisitsAdd(obj) {
+		stuReturnVisitsAddFooter();
+	}
+
+	function stuReturnVisitsAddFooter() {
+		var btuHtml = '';
+		var jsondata = {};
+		btuHtml += '<div class="footerBtu bg-color-brown"  onclick="stuReturnVisitsAddFooterFunc(this)">';
+		btuHtml += '<a class="all stuReturnVisitsAdd-save" href="javascript:void(0);">保存</a>';
+		btuHtml += '</div>';
+		jsondata.container = 'stuReturnVisitsAdd';
+		jsondata.buttonHtml = btuHtml;
+		common.commonFooterBtu(jsondata);
+	}
+
+	function stuReturnVisitsAddFooterFunc(obj) {
+		$.ui.showMask('保存中...');
+		var returnInfo_val = $('#stuReturnVisitsAdd .visInfo').val().trim();
+		var returnPhoto_val = [];
+		var jsondata = {};
+		var el_upphoto = $("#stuReturnVisitsAdd .returnVisitsPhoto .saveboxListItem");
+		for(var i = 0; i < el_upphoto.length; i++) {
+			common.uploadSelectedPictureServers($(el_upphoto[i]).find("input").val(),
+				function(base64) {
+					returnPhoto_val.push(base64);
+				});
+		}
+		if(returnInfo_val != '') {
+			setTimeout(function() {
+				jsondata.studentId = stuViewStuId;
+				jsondata.returnInfo = returnInfo_val;
+				jsondata.returnPhotos = returnPhoto_val;
+				stuReturnVisitsAddSavefuc(jsondata);
+			}, 3000);
+		} else {
+			$.ui.hideMask();
+			common.toast('回访信息必填')
+		}
+	}
+
+	function stuReturnVisitsAddSavefuc(jsondata) {
+		ajaxFuncs.post({
+			urlname: "/api/returnVisit",
+			params: jsondata,
+			funcs: {
+				funcSuccessful: function(data) {
+					$.ui.hideMask();
+					$.ui.goBack();
+				}
+			}
+		})
+	}
+</script>

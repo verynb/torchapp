@@ -66,7 +66,7 @@ ul { list-style: none; }
 .header-title { height: 4rem; padding-left: 1.2rem; }
 .header-title span.title { font-size: 1.3rem; line-height: 4rem; color: #85878b; }
 
-.heightAll { height: 100% !important; }
+.heightAll { height: 100%; }
 
 #afui .header { overflow: initial !important; }
 
@@ -88,13 +88,13 @@ ul { list-style: none; }
 
 .list-nodata { width: 100%; height: 7rem; line-height: 7rem; text-align: center; color: #C9C9C9; }
 
-#login .row1, #userPwd .row1 { width: 100%; height: auto; background-color: #FFFFFF; }
-#login .row1 .rw1, #login .row1 .rw2, #userPwd .row1 .rw1, #userPwd .row1 .rw2 { padding: 0 3rem; height: 5.5rem; }
-#login .row1 .rw1 input, #login .row1 .rw2 input, #userPwd .row1 .rw1 input, #userPwd .row1 .rw2 input { background-position: center left; background-size: 2.0rem; }
-#login .row1 .rw1 input, #userPwd .row1 .rw1 input { border-bottom: 1px solid #EFEFEF; }
-#login .row2 .rw1, #login .row2 .rw2, #userPwd .row2 .rw1, #userPwd .row2 .rw2 { height: 4.5rem; padding: 0 3rem; }
-#login .row2 .rw1 a, #login .row2 .rw2 a, #userPwd .row2 .rw1 a, #userPwd .row2 .rw2 a { display: block; width: 100%; height: 100%; font-size: 1.6rem; line-height: 4.5rem; text-align: center; color: #FFFFFF; border-radius: 2.35rem; }
-#login .row2 .rw1 a:active, #login .row2 .rw2 a:active, #userPwd .row2 .rw1 a:active, #userPwd .row2 .rw2 a:active { opacity: 0.6; }
+#login .row1, #userPwd .row1, #restPwd .row1 { width: 100%; height: auto; background-color: #FFFFFF; }
+#login .row1 .rw1, #login .row1 .rw2, #userPwd .row1 .rw1, #userPwd .row1 .rw2, #restPwd .row1 .rw1, #restPwd .row1 .rw2 { padding: 0 3rem; height: 5.4rem; }
+#login .row1 .rw1 input, #login .row1 .rw2 input, #userPwd .row1 .rw1 input, #userPwd .row1 .rw2 input, #restPwd .row1 .rw1 input, #restPwd .row1 .rw2 input { background-position: center left; background-size: 2.0rem; }
+#login .row1 .rw1 input, #userPwd .row1 .rw1 input, #restPwd .row1 .rw1 input { border-bottom: 1px solid #EFEFEF; }
+#login .row2 .rw1, #login .row2 .rw2, #userPwd .row2 .rw1, #userPwd .row2 .rw2, #restPwd .row2 .rw1, #restPwd .row2 .rw2 { height: 4.5rem; padding: 0 3rem; }
+#login .row2 .rw1 a, #login .row2 .rw2 a, #userPwd .row2 .rw1 a, #userPwd .row2 .rw2 a, #restPwd .row2 .rw1 a, #restPwd .row2 .rw2 a { display: block; width: 100%; height: 100%; font-size: 1.6rem; line-height: 4.5rem; text-align: center; color: #FFFFFF; border-radius: 2.35rem; }
+#login .row2 .rw1 a:active, #login .row2 .rw2 a:active, #userPwd .row2 .rw1 a:active, #userPwd .row2 .rw2 a:active, #restPwd .row2 .rw1 a:active, #restPwd .row2 .rw2 a:active { opacity: 0.6; }
 
 #home .swiper-container img.widthall { width: 100%; height: auto; }
 #home .swiper-container .swiper-pagination-bullet-active { background: #FFFFFF; }

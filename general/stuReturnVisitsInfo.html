@@ -1,0 +1,56 @@
+<div class="list-panel">
+	<div class="padding-top-1"></div>
+	<!--start-->
+	<div class="list-box">
+		<div class="list-defult-body box-h box-align">
+			<div class="icon-box">
+				<i class="icon-img icon-img-time"></i>
+			</div>
+			<div class="box-flex">
+				<span class="title">回访时间</span>
+			</div>
+			<div class="icon-text-box">
+				<span class="nav data-returnTime"></span>
+			</div>
+		</div>
+	</div>
+	<!--end-->
+	<div class="padding-top-1"></div>
+</div>
+<div class="info-panel">
+	<div class="title-box">
+		<div class="row1 box-h">
+			<div class="rw1 data-stuname"></div>
+			<div class="rw2">回访内容</div>
+		</div>
+	</div>
+	<div class="info-body">
+		<p class="data-returnInfo"></p>
+		<div class="data-photo"></div>
+	</div>
+</div>
+<script type="text/javascript">
+	function loadstuReturnVisitsInfo(obj) {
+		var returnVisitId = $(obj).attr("data-returnVisitId");
+		var studentName = $(obj).attr("data-studentName");
+		initstuReturnVisitsInfo(returnVisitId, studentName);
+	}
+
+	function initstuReturnVisitsInfo(returnVisitId, studentName) {
+		ajaxFuncs.get({
+			urlname: "/api/returnVisit/" + returnVisitId,
+			funcs: {
+				funcSuccessful: function(data) {
+					$("#stuReturnVisitsInfo .data-returnTime").html(data.returnTime);
+					$("#stuReturnVisitsInfo .data-stuname").html(studentName);
+					$("#stuReturnVisitsInfo .data-returnInfo").html(data.returnInfo);
+					var html = '';
+					for(var i = 0; i < data.returnPhotos.length; i++) {
+						html += '<img src="' + G_IMGPREFIX + data.returnPhotos[i] + '" alt="data" />';
+					}
+					$("#stuReturnVisitsInfo .data-photo").append(html);
+				}
+			}
+		});
+	}
+</script>

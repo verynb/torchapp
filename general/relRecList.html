@@ -6,13 +6,35 @@
 	}
 
 	function initrelRecList() {
-		if(relRecSearchVal != 0) {
+		relRecSearchVal.startTime = (new Date(relRecSearchVal.startTime)).getTime();
+		relRecSearchVal.endTime = (new Date(relRecSearchVal.endTime)).getTime();
+		relRecSearchVal.currentPage = '0';
+		relRecSearchVal.pageSize = '50';
+
+		ajaxFuncs.post({
+			urlname: "/api/releases",
+			params: relRecSearchVal,
+			funcs: {
+				funcSuccessful: function(data) {
+					releasesData = data.releases;
+					if(releasesData.length != 0) {
+						initrelRecListHtml(releasesData);
+					} else {
+						common.toast("没有查询到相关批次");
+					}
+				}
+			}
+		});
+	}
+
+	function initrelRecListHtml(releasesData) {
+		if(releasesData != 0) {
 			var html = '';
-			for(var i = 0; i < relRecSearchVal.length; i++) {
-				html += '<div class="list-box" data-batchId="' + relRecSearchVal[i].id + '" data-batchNo="' + relRecSearchVal[i].batchNo + '" data-batchProvince="' + relRecSearchVal[i].province + '" data-batchCity="' + relRecSearchVal[i].city + '" data-dir="general" data-tkey="relRecStuList" data-transition="slide" onclick="common.loadPage(this);">';
+			for(var i = 0; i < releasesData.length; i++) {
+				html += '<div class="list-box" data-batchId="' + releasesData[i].id + '" data-batchNo="' + releasesData[i].batchNo + '" data-batchProvince="' + releasesData[i].province + '" data-batchCity="' + releasesData[i].city + '" data-dir="general" data-tkey="relRecStuList" data-transition="slide" onclick="common.loadPage(this);">';
 				html += '<div class="list-defult-body box-h box-align">';
 				html += '<div class="box-flex">';
-				html += '<span class="title">' + relRecSearchVal[i].batchNo + '</span>';
+				html += '<span class="title">' + releasesData[i].batchNo + '</span>';
 				html += '</div>';
 				html += '<div class="icon-next">';
 				html += '<i class="icon-img icon-img-next"></i>';

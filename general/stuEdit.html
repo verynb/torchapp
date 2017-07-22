@@ -47,6 +47,35 @@
 			</div>
 		</div>
 		<div class="list-box">
+			<div class="list-defult-body box-h" data-tkey="schChooseR" data-dir="general" data-transition="slide" onclick="common.loadPage(this)">
+				<div class="box-flex">
+					<span class="title">学校</span>
+				</div>
+				<div class="icon-text-box min-width">
+					<span class="nav fromfield schoolName" data-fromfield="schoolName">选择学校</span>
+					<input class="editor-input fromfield" data-fromfield="schoolId" type="hidden" name="schoolId" readonly="readonly" required="required" data-warning="请选择学校" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next">
+					<i class="icon-img icon-img-next"></i>
+				</div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h" data-tkey="stuGradeR" data-dir="general" data-transition="slide" onclick="common.loadPage(this)">
+				<div class="box-flex">
+					<span class="title">年级</span>
+				</div>
+				<div class="icon-text-box min-width">
+					<span class="nav fromfield grade" data-fromfield="grade">选择年级</span>
+					<input class="editor-input fromfield" data-fromfield="grade" type="hidden" name="grade" required="required" data-warning="请选择年级" placeholder="未填写" value="" />
+					<input class="editor-input fromfield" data-fromfield="gradeCode" type="hidden" name="gradeCode" placeholder="未填写" value="" />
+				</div>
+				<div class="icon-next">
+					<i class="icon-img icon-img-next"></i>
+				</div>
+			</div>
+		</div>
+		<div class="list-box">
 			<div class="list-defult-body box-h">
 				<div class="box-flex">
 					<span class="title">省市区</span>
@@ -85,35 +114,6 @@
 					<input class="editor-input fromfield" data-fromfield="identityCard" type="text" name="identityCard" placeholder="未填写" data-check="^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$" data-warning-check="身份证格式不正确" value="" />
 				</div>
 				<div class="icon-next"></div>
-			</div>
-		</div>
-		<div class="list-box">
-			<div class="list-defult-body box-h" data-tkey="schChooseR" data-dir="general" data-transition="slide" onclick="common.loadPage(this)">
-				<div class="box-flex">
-					<span class="title">学校</span>
-				</div>
-				<div class="icon-text-box min-width">
-					<span class="nav fromfield schoolName" data-fromfield="schoolName">选择学校</span>
-					<input class="editor-input fromfield" data-fromfield="schoolId" type="hidden" name="schoolId" readonly="readonly" data-warning="请选择学校" placeholder="未填写 " value="" />
-				</div>
-				<div class="icon-next">
-					<i class="icon-img icon-img-next"></i>
-				</div>
-			</div>
-		</div>
-		<div class="list-box">
-			<div class="list-defult-body box-h" data-tkey="stuGradeR" data-dir="general" data-transition="slide" onclick="common.loadPage(this)">
-				<div class="box-flex">
-					<span class="title">年级</span>
-				</div>
-				<div class="icon-text-box min-width">
-					<span class="nav fromfield grade" data-fromfield="grade">选择年级</span>
-					<input class="editor-input fromfield" data-fromfield="grade" type="hidden" name="grade" placeholder="未填写" value="" />
-					<input class="editor-input fromfield" data-fromfield="gradeCode" type="hidden" name="gradeCode" placeholder="未填写" value="" />
-				</div>
-				<div class="icon-next">
-					<i class="icon-img icon-img-next"></i>
-				</div>
 			</div>
 		</div>
 		<div class="list-box">

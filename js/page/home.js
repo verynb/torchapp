@@ -53,15 +53,20 @@
 
 			var teacher = {
 				"list": [{
-					"icon": "icon-stus",
-					"title": "学生维护",
+					"icon": "icon-release",
+					"title": "发布审核",
 					"dir": "general",
-					"tkey": "stuList"
-				},{
+					"tkey": "relList"
+				}, {
 					"icon": "icon-record",
 					"title": "发布记录",
 					"dir": "general",
 					"tkey": "relRecSearch"
+				}, {
+					"icon": "icon-stus",
+					"title": "学生维护",
+					"dir": "general",
+					"tkey": "stuList"
 				}]
 			};
 			var sponsor = {
@@ -111,7 +116,7 @@
 						html += '<div class="row2">' + data[j].title + '</div>';
 						html += '</div>';
 					} else {
-						oneListHtml += '<div class="sixty-box-flex item"></div>';
+						html += '<div class="sixty-box-flex item"></div>';
 					}
 				}
 				html += '</div>';

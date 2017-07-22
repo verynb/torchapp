@@ -1,0 +1,61 @@
+<div class="restPwdBody">
+	<form>
+		<div class="padding-top-1"></div>
+		<div class="row1">
+			<div class="rw1">
+				<input type="password" class="input-default icon-pwd" name="newPassword" value="" required="required" data-check="^[0-9A-Za-z]{6,}$" data-warning="密码不能为空" data-warning-check="密码至少为6位" placeholder="请输入新密码" />
+			</div>
+			<div class="rw2">
+				<input type="password" class="input-default icon-pwd" name="newPasswordTwo" value="" required="required" data-check="^[0-9A-Za-z]{6,}$" data-warning="密码不能为空" data-warning-check="密码至少为6位" placeholder="请确认新密码" />
+			</div>
+		</div>
+	</form>
+</div>
+
+<script type="text/javascript">
+	var restPwdUserId = null;
+
+	function loadrestPwd(obj) {
+		restPwdFooter();
+		if(common.getPageHistoryName() == 'volEdit') {
+			restPwdUserId == updateId;
+		} else if(common.getPageHistoryName() == 'supEdit') {
+			restPwdUserId = supupdateId;
+		}
+	}
+
+	function restPwdFooter() {
+		var btuHtml = '';
+		var jsondata = {};
+		btuHtml += '<div class="footerBtu bg-color-brown" onclick="restPwdFooterFunc(this)">';
+		btuHtml += '<a class="all restPwd-save" href="javascript:void(0);">保存</a>';
+		btuHtml += '</div>';
+		jsondata.container = 'restPwd';
+		jsondata.buttonHtml = btuHtml;
+		common.commonFooterBtu(jsondata);
+	}
+
+	function restPwdFooterFunc(obj) {
+		var params = common.serializeToJson("#restPwd .restPwdBody form");
+		if(!common.validate("#restPwdBody .restPwdBody form", obj)) {
+			return false;
+		} else {
+			if(params.newPassword != params.newPasswordTwo) {
+				common.toast("两次密码不一致");
+				$(obj).removeAttr("submited");
+				return false;
+			}
+			ajaxFuncs.put({
+				urlname: "/api/user/password/" + restPwdUserId + "?password=" + params.newPassword,
+				params: params,
+				clickobj: obj,
+				funcs: {
+					funcSuccessful: function(data) {
+						common.toast("修改成功");
+						$.ui.goBack();
+					}
+				}
+			});
+		}
+	}
+</script>

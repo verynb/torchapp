@@ -36,7 +36,7 @@
 	function initsubStuList(obj) {
 		subStuListBatchId = $(obj).attr("data-batchId");
 		ajaxFuncs.get({
-			urlname: "/api/release/id?id=" + subStuListBatchId,
+			urlname: "/api/ableReleases/id?id=" + subStuListBatchId,
 			funcs: {
 				funcSuccessful: function(data) {
 					if(data.releaseList.length != 0) {

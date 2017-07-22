@@ -171,7 +171,7 @@ ul {
 }
 
 .heightAll {
-    height: 100% !important;
+    height: 100%;
 }
 
 #afui .header {
@@ -275,7 +275,8 @@ ul {
 
 //login
 #login,
-#userPwd {
+#userPwd,
+#restPwd {
     .row1 {
         width: 100%;
         height: auto;
@@ -283,7 +284,7 @@ ul {
         .rw1,
         .rw2 {
             padding: 0 3rem;
-            height: 5.5rem;
+            height: 5.4rem;
             input {
                 background-position: center left;
                 background-size: 2.0rem;

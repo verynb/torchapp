@@ -11,14 +11,18 @@ G_APPDOWNURL = "https://itunes.apple.com/us/app/id1232989165?mt=8"; /*输入当�
 G_SERVERS = {
 	"1": {
 		web: "http://owner.api.60living.com/",
-		push: "ws://owner.api.60living.com/socket",
 		img: "http://",
 		imgall: "http://",
 		name: ""
 	},
 	"0": {
 		web: "http://116.62.208.39:8080",
-		push: "ws://192.168.89.45:2080/socket",
+		imgall: "http://116.62.208.39",
+		img: "http://",
+		name: "-0号"
+	},
+	"yj": {
+		web: "http://192.168.1.245:8080",
 		imgall: "http://116.62.208.39",
 		img: "http://",
 		name: "-0号"

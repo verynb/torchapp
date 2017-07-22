@@ -14,7 +14,13 @@
 </div>
 <script type="text/javascript">
 	function loadrelList(obj) {
-		relListFooter();
+		var role = window.localStorage.getItem(G_COMKEY + ".role");
+		var userType = window.localStorage.getItem(G_COMKEY + ".userType");
+		role = JSON.parse(role);
+
+		if(userType == 0 && role.roleCode != "teacher") {
+			relListFooter();
+		}
 		relListInit();
 	}
 

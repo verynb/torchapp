@@ -1,0 +1,82 @@
+<div class="list-panel">
+	<!--start-->
+	<!--	<div class="list-box" data-dir="general" data-tkey="stuHomeVisitsInfo" data-transition="slide" onclick="common.loadPage(this);">
+		<div class="list-defult-body box-h box-align">
+			<div class="box-flex">
+				<span class="title">家访时间：2017-03-26</span>
+			</div>
+			<div class="icon-text-box">
+				<span class="nav">凌之轩</span>
+			</div>
+			<div class="icon-next">
+				<i class="icon-img icon-img-next"></i>
+			</div>
+		</div>
+	</div>-->
+	<!--end-->
+</div>
+<script type="text/javascript">
+	function loadstuReturnVisitsList(obj) {
+		//		var studentId = $(obj).attr('data-studentId');
+		initstuReturnVisitsList(stuViewStuId);
+		stuReturnVisitsListFooter();
+	}
+
+	function reloadstuReturnVisitsList() {
+		initstuReturnVisitsList(stuViewStuId);
+	}
+
+	function stuReturnVisitsListFooter() {
+		var btuHtml = '';
+		var jsondata = {};
+		btuHtml += '<div class="footerBtu bg-color-brown"  data-tkey="stuReturnVisitsAdd" data-dir="general" data-transition="slide" onclick="common.loadPage(this)">';
+		btuHtml += '<a class="all stuReturnVisitsList-save" href="javascript:void(0);">添加回访</a>';
+		btuHtml += '</div>';
+		jsondata.container = 'stuReturnVisitsList';
+		jsondata.buttonHtml = btuHtml;
+		common.commonFooterBtu(jsondata);
+	}
+
+	function stuReturnVisitsListFooterFunc(obj) {
+
+	}
+
+	function initstuReturnVisitsList(studentId) {
+		//		GET /api/returnVisits/{studentId}
+		ajaxFuncs.get({
+			urlname: "/api/returnVisits/" + studentId,
+			funcs: {
+				funcSuccessful: function(data) {
+					if(data.returnVisitListDtoList.length != 0) {
+						$("#stuReturnVisitsList .list-panel").empty().append(stuReturnVisitsListHtml(data.returnVisitListDtoList));
+					} else {
+						common.handleDefaultPage({
+							type: 2,
+							objdiv: "#stuReturnVisitsList .list-panel"
+						});
+					}
+				}
+			}
+		});
+	}
+
+	function stuReturnVisitsListHtml(data) {
+		var html = '';
+		for(var i = 0; i < data.length; i++) {
+			html += '<div class="list-box" data-returnVisitId="' + data[i].returnVisitId + '" data-studentName="' + data[i].studentName + '" data-dir="general" data-tkey="stuReturnVisitsInfo" data-transition="slide" onclick="common.loadPage(this);">';
+			html += '<div class="list-defult-body box-h box-align">';
+			html += '<div class="box-flex">';
+			html += '<span class="title">回访时间：' + data[i].returnVisitTime + '</span>';
+			html += '</div>';
+			html += '<div class="icon-text-box">';
+			html += '<span class="nav">' + data[i].returnVisitor + '</span>';
+			html += '</div>';
+			html += '<div class="icon-next">';
+			html += '<i class="icon-img icon-img-next"></i>';
+			html += '</div>';
+			html += '</div>';
+			html += '</div>';
+		}
+		return html;
+	}
+</script>

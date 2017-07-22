@@ -4,10 +4,21 @@
 		<div class="list-box">
 			<div class="list-defult-body box-h ">
 				<div class="box-flex">
+					<span class="title">发布批次编号</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input" type="text" name="batchNo" placeholder="选填" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
 					<span class="title">开始时间</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input" type="text" name="startTime" required="required" readonly="readonly" data-warning="开始时间不能为空" onclick="common.pickDateYMD(this);" placeholder="点击选择时间" />
+					<input class="editor-input" type="text" name="startTime" readonly="readonly" data-warning="开始时间不能为空" onclick="common.pickDateYMD(this);" placeholder="选填" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
@@ -18,7 +29,7 @@
 					<span class="title">结束时间</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input" type="text" name="endTime" required="required" readonly="readonly" data-warning="结束时间不能为空" onclick="common.pickDateYMD(this);" placeholder="点击选择时间" />
+					<input class="editor-input" type="text" name="endTime" readonly="readonly" data-warning="结束时间不能为空" onclick="common.pickDateYMD(this);" placeholder="选填" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
@@ -29,9 +40,9 @@
 					<span class="title">省市</span>
 				</div>
 				<div class="icon-text-box " id="sel_city2">
-					<span class="nav sel_city">未选择</span>
-					<input hidden="hidden" class="editor-input" required="required" data-warning="省市不能为空" name="province" value="" />
-					<input hidden="hidden" class="editor-input" required="required" data-warning="省市不能为空" name="city" value="" />
+					<span class="nav sel_city">选填</span>
+					<input hidden="hidden" class="editor-input" data-warning="省市不能为空" name="province" value="" />
+					<input hidden="hidden" class="editor-input" data-warning="省市不能为空" name="city" value="" />
 				</div>
 				<div class="icon-next">
 					<i class="icon-img icon-img-next"></i>
@@ -40,6 +51,16 @@
 		</div>
 	</div>
 </form>
+<!--{
+  "currentPage": 0,
+  "pageSize": 0,
+  "startTime": 0,
+  "endTime": 0,
+  "province": "string",
+  "city": "string",
+  "batchNo": "string"
+}-->
+
 <script type="text/javascript">
 	var relRecSearchVal;
 
@@ -60,27 +81,7 @@
 	}
 
 	function relRecSearchFooterFunc(obj) {
-		var params = common.serializeToJson("#relRecSearch form");
-		if(!common.validate("#relRecSearch form", obj)) {
-			return false;
-		} else {
-			params.startTime = (new Date(params.startTime)).getTime();
-			params.endTime = (new Date(params.endTime)).getTime();
-			ajaxFuncs.post({
-				urlname: "/api/releases",
-				params: params,
-				clickobj: obj,
-				funcs: {
-					funcSuccessful: function(data) {
-						relRecSearchVal = data.releases;
-						if(relRecSearchVal.length != 0) {
-							common.loadPage($(obj));
-						} else {
-							common.toast("没有查询到相关批次");
-						}
-					}
-				}
-			});
-		}
+		relRecSearchVal = common.serializeToJson("#relRecSearch form");
+		common.loadPage($(obj));
 	}
 </script>

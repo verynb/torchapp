@@ -19,9 +19,9 @@
 				</div>
 				<div class="icon-text-box " id="sel_city3">
 					<span class="nav fromfield set_city" data-unionchar=" " data-fromfield="province,city,area">未选择</span>
-					<input hidden="hidden" class="editor-input fromfield" data-fromfield="province" name="province" value="" />
-					<input hidden="hidden" class="editor-input fromfield" data-fromfield="city" name="city" value="" />
-					<input hidden="hidden" class="editor-input fromfield" data-fromfield="area" name="area" value="" />
+					<input hidden="hidden" class="editor-input fromfield" data-fromfield="province" required="required" data-warning="省市区不能为空" name="province" value="" />
+					<input hidden="hidden" class="editor-input fromfield" data-fromfield="city" required="required" data-warning="省市区不能为空" name="city" value="" />
+					<input hidden="hidden" class="editor-input fromfield" data-fromfield="area" required="required" data-warning="省市区不能为空" name="area" value="" />
 				</div>
 				<div class="icon-next">
 					<i class="icon-img icon-img-next"></i>
@@ -56,6 +56,17 @@
 		<div class="list-box">
 			<div class="list-defult-body box-h ">
 				<div class="box-flex">
+					<span class="title">电话</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="mobile" type="text" name="mobile" required="required" data-warning="联系电话不能为空" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
 					<span class="title">邮箱</span>
 				</div>
 				<div class="text-input-box">
@@ -75,17 +86,7 @@
 				<div class="icon-next"></div>
 			</div>
 		</div>
-		<div class="list-box">
-			<div class="list-defult-body box-h ">
-				<div class="box-flex">
-					<span class="title">电话</span>
-				</div>
-				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="mobile" type="text" name="mobile" required="required" data-warning="联系电话不能为空" placeholder="未填写 " value="" />
-				</div>
-				<div class="icon-next"></div>
-			</div>
-		</div>
+
 		<div class="list-box">
 			<div class="list-defult-body box-h boder-none">
 				<div class="box-flex">

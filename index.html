@@ -144,6 +144,9 @@
 					<div id="userPwdContent"></div>
 				</div>
 				<!-----------------------------------------------------general 分类------------------------------------>
+				<div title='重置密码' id="restPwd" class="panel" data-footer="" data-nopushhistory="1">
+					<div id="restPwdContent"></div>
+				</div>
 				<div title='义工维护' id="volList" class="panel scrollPanel-box" data-footer="" data-back="reload" data-nopushhistory="0">
 					<div id="volListContent" class="heightAll"></div>
 				</div>
@@ -332,7 +335,7 @@
 				<a href="javascript:void(0);" class="right btuMore" onclick="common.moreMenu(this)"></a>
 				<div class="moreMenu">
 					<ul>
-						<li data-tkey="stuHomeVisitsList" data-dir="general" data-transition="slide" onclick="common.toast('合并下载 原有的打印资料和打印资助合同 并发送到当前账号个人资料的邮箱')">下载资料</li>
+						<!--<li data-tkey="stuHomeVisitsList" data-dir="general" data-transition="slide" onclick="common.toast('合并下载 原有的打印资料和打印资助合同 并发送到当前账号个人资料的邮箱')">下载资料</li>-->
 						<!--合并下载 原有的打印资料和打印资助合同 并发送到当前账号个人资料的邮箱-->
 						<li data-tkey="relRecMoneyRemitAdd" data-dir="general" data-transition="slide" onclick="common.moreMenuLi(this)">汇款录入</li>
 						<li data-tkey="relRecMoneyAdd" data-dir="general" data-transition="slide" onclick="common.moreMenuLi(this)">放款录入</li>
@@ -369,9 +372,6 @@
 		</div>
 		<script>
 			var mySwiper;
-			var myScroll = {
-				isInScroll: false
-			};
 			if(window.plus) {
 				plusReady();
 			} else {
@@ -414,6 +414,21 @@
 			 * app切换为当前应用时触发
 			 */
 			document.addEventListener("resume", function() {}, false);
+			/**
+			 * 兼容ios系统的iscoll滑动
+			 */
+			document.getElementById("volList").addEventListener('touchmove', function(e) {
+				e.preventDefault();
+			}, false);
+			document.getElementById("supList").addEventListener('touchmove', function(e) {
+				e.preventDefault();
+			}, false);
+			document.getElementById("schList").addEventListener('touchmove', function(e) {
+				e.preventDefault();
+			}, false);
+			document.getElementById("stuList").addEventListener('touchmove', function(e) {
+				e.preventDefault();
+			}, false);
 		</script>
 	</body>
 

@@ -25,7 +25,7 @@
 					<span class="title">姓名</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="name" type="text" name="name" required="required" placeholder="未填写 " value="" />
+					<input class="editor-input fromfield" data-fromfield="name" type="text" name="name" required="required" data-warning="请填写姓名" placeholder="未填写 " value="" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
@@ -48,7 +48,7 @@
 				</div>
 				<div class="text-input-box">
 					<!--<input class="editor-input fromfield" type="text" name="birthday" data-minDate="1970-01-01" readonly="readonly" onclick="common.pickDateYMD(this);" placeholder="未填写" value="" />-->
-					<input class="editor-input fromfield" data-fromfield="age" type="number" name="age" placeholder="未填写 " value="" />
+					<input class="editor-input fromfield" data-fromfield="age" type="number" name="age" required="required" data-warning="请填写年龄" placeholder="未填写 " value="" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
@@ -75,7 +75,7 @@
 				</div>
 				<div class="icon-text-box">
 					<span class="nav fromfield schoolName" data-fromfield="schoolName">选择学校</span>
-					<input class="editor-input fromfield" data-fromfield="schoolIds" type="hidden" name="schoolIds" readonly="readonly" data-warning="请选择角色" placeholder="未填写 " value="" />
+					<input class="editor-input fromfield" data-fromfield="schoolIds" type="hidden" name="schoolIds" readonly="readonly" data-warning="请选择学校" placeholder="未填写 " value="" />
 				</div>
 				<div class="icon-next">
 					<i class="icon-img icon-img-next"></i>
@@ -86,13 +86,24 @@
 		<div class="list-box">
 			<div class="list-defult-body box-h ">
 				<div class="box-flex">
+					<span class="title">电话</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="mobile" type="text" name="mobile" required="required" data-warning="请填写电话" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box pwdbox">
+			<!--<div class="list-defult-body box-h ">
+				<div class="box-flex">
 					<span class="title">密码</span>
 				</div>
 				<div class="text-input-box">
 					<input class="editor-input fromfield" data-fromfield="password" type="text" name="password" data-check="^[0-9A-Za-z]{6,}$" data-warning="密码不能为空" placeholder="未填写" data-warning-check="密码至少为6位" />
 				</div>
 				<div class="icon-next"></div>
-			</div>
+			</div>-->
 		</div>
 		<div class="list-box">
 			<div class="list-defult-body box-h ">
@@ -112,17 +123,6 @@
 				</div>
 				<div class="text-input-box">
 					<input class="editor-input fromfield" data-fromfield="qq" type="text" name="qq" data-check="^[0-9]*$" data-warning-check="qq账号格式不正确" placeholder="未填写 " value="" />
-				</div>
-				<div class="icon-next"></div>
-			</div>
-		</div>
-		<div class="list-box">
-			<div class="list-defult-body box-h ">
-				<div class="box-flex">
-					<span class="title">电话</span>
-				</div>
-				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="mobile" type="text" name="mobile" required="required" data-warning="请选择" placeholder="未填写 " value="" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
@@ -160,7 +160,7 @@
 					<span class="title">加入时间</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input fromfield " data-fromfield="joinTime" type="text" name="joinTime" readonly="readonly" onclick="common.pickDateYMD(this);" placeholder="未加入" value="" />
+					<input class="editor-input fromfield " data-fromfield="joinTime" type="text" name="joinTime" readonly="readonly" data-minDate="1970-01-01" onclick="common.pickDateYMD(this);" placeholder="未加入" value="" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
@@ -177,7 +177,9 @@
 		cityfunc.add("sel_city6");
 		if(updateId != 0) {
 			initVolEditInfo();
+			volEditPwdHtml("edit");
 		} else {
+			volEditPwdHtml("add");
 			volEditFooter();
 		}
 	}
@@ -272,5 +274,28 @@
 				}
 			})
 		}
+	}
+
+	function volEditPwdHtml(type) {
+		var html = '';
+		if(type == 'add') {
+			html += '<div class="list-defult-body box-h ">';
+			html += '<div class="box-flex">';
+			html += '<span class="title">密码</span>';
+			html += '</div>';
+			html += '<div class="text-input-box">';
+			html += '<input class="editor-input fromfield" data-fromfield="password" type="text" name="password" data-check="^[0-9A-Za-z]{6,}$" data-warning="密码不能为空" placeholder="未填写" data-warning-check="密码至少为6位" />';
+			html += '</div>';
+			html += '<div class="icon-next"></div>';
+			html += '</div>';
+		} else {
+			html += '<div class="list-defult-body box-h" data-tkey="restPwd" data-dir="general" data-transition="slide" onclick="common.loadPage(this)">';
+			html += '<div class="box-flex">';
+			html += '<span class="title">修改密码</span>';
+			html += '</div>';
+			html += '<div class="icon-next"><i class="icon-img icon-img-next"></i></div>';
+			html += '</div>';
+		}
+		$("#volEdit .pwdbox").empty().append(html);
 	}
 </script>

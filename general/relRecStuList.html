@@ -6,6 +6,7 @@
 	function loadrelRecStuList(obj) {
 		relRecStuListBatchId = $(obj).attr("data-batchId");
 		ajaxFuncs.get({
+			//			urlname: "/api/ableReleases/id?id=" + relRecStuListBatchId,
 			urlname: "/api/release/id?id=" + relRecStuListBatchId,
 			funcs: {
 				funcSuccessful: function(data) {
