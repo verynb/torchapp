@@ -21,7 +21,7 @@
 
 	function subStuListFooterFunc(obj) {
 		subStuListChecked = [];
-		var el_subStuListChecked = $('#subStuList input[type="checkbox"]:checked');
+		var el_subStuListChecked = $('#subStuList .checkbox-btu-active');
 		if(el_subStuListChecked.length != 0) {
 			for(var i = 0; i < el_subStuListChecked.length; i++) {
 				var subStuListjsonstr = $(el_subStuListChecked[i]).parents('.list-box').find("input[name='subStuListjsonstr']").val();
@@ -56,7 +56,7 @@
 							html += '</div>';
 							html += '<div class="checkbox-box">';
 							html += '<label for="subStuListcheckbox_' + i + '">';
-							html += '<input id="subStuListcheckbox_' + i + '" type="checkbox" name="subStuList" value="0"  />';
+							html += '<input id="subStuListcheckbox_' + i + '" type="checkbox" name="subStuList" value="0" />';
 							html += '<span class="checkbox-btu"></span>';
 							html += '</label>';
 							html += "<input type='hidden' name='subStuListjsonstr' value='" + JSON.stringify(data.releaseList[i]) + "'  />";
@@ -66,14 +66,15 @@
 						}
 						html += '</div>';
 						$("#subStuListBody").empty().append(html);
-
-						$('#subStuListBody label').on('click', function() {
-							if($(this).find('input[type="checkbox"]').prop("checked")) {
-								$(this).find('input[type="checkbox"]').removeAttr('checked');
+						$("#subStuListBody").find('label').unbind('tap');
+						$("#subStuListBody").find('label').on('tap', function() {
+							if($(this).find('.checkbox-btu').hasClass("checkbox-btu-active")) {
+								$(this).find('.checkbox-btu').removeClass("checkbox-btu-active");
 							} else {
-								$(this).find('input[type="checkbox"]').attr('checked', 'checked');
+								$(this).find('.checkbox-btu').addClass("checkbox-btu-active");
 							}
 						});
+
 					} else {
 						common.handleDefaultPage({
 							type: 2,

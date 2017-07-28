@@ -11,6 +11,8 @@ var localStu = (function() {
 	var sql_selectAllTwo = 'SELECT * FROM local_stu';
 	var sql_selectAllstatus = 'SELECT * FROM local_stu WHERE status=?';
 	var sql_updatestatus = 'UPDATE local_stu set status=?  WHERE studentId=?';
+	var sql_stuAllcount = 'select count from local_stu';
+	var sql_stuUpdcount = 'select count from local_stu where status=1';
 	var createDB;
 	var num = 0; //递归次数
 	return {
@@ -191,6 +193,36 @@ var localStu = (function() {
 				callback();
 			}, function(error) {
 				console.log("查询标准失败");
+			});
+		},
+		stuAllcount: function(callback) {
+			var sqls = [];
+			var countAll = 0;
+			sqls.push({
+				"sql": sql_stuAllcount,
+			})
+			html5sql.process(sqls, function(tx, results) {
+				console.log('results.rows======' + results.rows);
+				countAll = results.rows.item(0).count;
+				localStu.stuUpdcount(countAll, callback);
+			}, function(error) {
+				console.log("查询标准失败");
+				localStu.stuUpdcount(countAll, callback);
+			});
+		},
+		stuUpdcount: function(countAll, callback) {
+			var sqls = [];
+			var countS1 = 0;
+			sqls.push({
+				"sql": sql_stuUpdcount,
+			})
+			html5sql.process(sqls, function(tx, results) {
+				console.log('results.rows======' + results.rows);
+				countS1 = results.rows.item(0).count;
+				callback(countAll, countS1);
+			}, function(error) {
+				console.log("查询标准失败");
+				callback(countAll, countS1);
 			});
 		}
 

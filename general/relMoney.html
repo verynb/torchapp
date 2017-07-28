@@ -13,6 +13,7 @@
 		</div>
 	</div>
 	-->
+		<!--<input type="text" onfocus="common.inputGetFocus(this)" />-->
 	</div>
 </form>
 <script type="text/javascript">
@@ -36,6 +37,7 @@
 	function relMoneyFooterFunc(obj) {
 		//		common.toast('保存本批次成功，请通知老师审核');
 		//		PUT /api/release/{batchId}
+
 
 		if(!common.validate("#relMoney form", obj)) {
 			return false;
@@ -82,9 +84,9 @@
 							html += '</div>';
 							html += '<div class="text-input-box">';
 							if(data[i].hasOwnProperty("money") && data[i].money != '') {
-								html += '<input class="editor-input" type="text" data-stuid="' + data[i].studentId + '"  data-releaseStudentId="' + data[i].releaseStudentId + '" name="needMoney" required="required" placeholder="未填写 " value="' + data[i].money + '"  data-warning="请填写所需金额"/>元';
+								html += '<input class="editor-input" type="text" data-stuid="' + data[i].studentId + '"  data-releaseStudentId="' + data[i].releaseStudentId + '" name="needMoney" required="required" placeholder="未填写 " value="' + data[i].money + '"  data-warning="请填写所需金额" onfocus="common.inputGetFocus(this)"/>元';
 							} else {
-								html += '<input class="editor-input" type="text" data-stuid="' + data[i].studentId + '"  data-releaseStudentId="' + data[i].releaseStudentId + '" name="needMoney" required="required" placeholder="未填写 " value="' + pageCom.gradeMoneyChoose(data[i].grade) + '" data-warning="请填写所需金额" />元';
+								html += '<input class="editor-input" type="text" data-stuid="' + data[i].studentId + '"  data-releaseStudentId="' + data[i].releaseStudentId + '" name="needMoney" required="required" placeholder="未填写 " value="' + pageCom.gradeMoneyChoose(data[i].grade) + '" data-warning="请填写所需金额" onfocus="common.inputGetFocus(this)"/>元';
 							}
 							html += '</div>';
 							html += '</div>';

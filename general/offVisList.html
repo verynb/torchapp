@@ -14,26 +14,30 @@
 	<!--end-->
 </div>
 <script type="text/javascript">
-	var isAllowed = true;
+	var isAllowed = true,
+		stuAllLengths = 0,
+		stuUpdLengths = 0;
 
 	function loadoffVisList(obj) {
 		window.localStorage.setItem(G_COMKEY + ".token", "xxxxx-admin");
 		localStu.selectAll(initOffVisList);
-		if(window.localStorage.getItem(G_COMKEY + ".isAllowed") != undefined && window.localStorage.getItem(G_COMKEY + ".isAllowed") == "true") {
-			localStu.selectAllstatus(saveAllData);
-		} else {
-			offVisListFooter();
-		}
+		//		if(window.localStorage.getItem(G_COMKEY + ".isAllowed") != undefined && window.localStorage.getItem(G_COMKEY + ".isAllowed") == "true") {
+		//			//			localStu.selectAllstatus(saveAllData);
+		//		} else {
+		//			offVisListFooter();
+		//		}
+
+		offVisListFooter();
 	}
 
 	function offVisListreload() {
 		isAllowed = true;
 		localStu.selectAll(initOffVisList);
-		if(window.localStorage.getItem(G_COMKEY + ".isAllowed") != undefined && window.localStorage.getItem(G_COMKEY + ".isAllowed") == "true") {
-			localStu.selectAllstatus(saveAllData);
-		} else {
-			offVisListFooter();
-		}
+		//		if(window.localStorage.getItem(G_COMKEY + ".isAllowed") != undefined && window.localStorage.getItem(G_COMKEY + ".isAllowed") == "true") {
+		//			localStu.selectAllstatus(saveAllData);
+		//		} else {
+		//			offVisListFooter();
+		//		}
 	}
 
 	function offVisListFooter() {
@@ -60,6 +64,8 @@
 		console.log(JSON.stringify(data));
 		if(data.status == '1') {
 			var jsondata = {};
+			$.ui.blockUI(.1); /* 弹出mask(toast)时让ui失去焦点：*/
+			$.ui.showMask("上传进度：" + (stuUpdLengths / stuAllLengths) * 100 + '%');
 			if(data.list[0].status == '1') {
 				jsondata.batchId = data.list[0].batchId;
 				jsondata.studentId = data.list[0].studentId;
@@ -129,6 +135,7 @@
 			}
 		} else {
 			common.toast("已经全部上传成功");
+			$.unblockUI();
 			window.localStorage.setItem(G_COMKEY + ".isAllowed", "false");
 		}
 	}
@@ -140,6 +147,7 @@
 			funcs: {
 				funcSuccessful: function(data) {
 					localStu.updatestatus((data.id).toString(), function() {
+						localStu.selectAll(initOffVisList);
 						localStu.selectAllstatus(saveAllData);
 					});
 				}
@@ -150,6 +158,8 @@
 	function initOffVisList(data) {
 		if(data.status == '1') {
 			if(data.list.length != 0) {
+				stuAllLengths = data.list.length;
+				stuUpdLengths = 0;
 				var html = '';
 				for(var i = 0; i < data.list.length; i++) {
 					html += '<div class="list-box">';
@@ -163,6 +173,7 @@
 						html += '<i class="icon-img icon-img-next"></i>';
 						html += '</div>';
 					} else if(data.list[i].status == "2") {
+						stuUpdLengths++;
 						html += '<div class="box-flex" data-status="' + data.list[i].status + '" data-batchId="' + data.list[i].batchId + '" data-stuid="' + data.list[i].studentId + '" data-dir="general" data-tkey="offVisInfo" data-transition="slide">';
 						html += '<span class="title-other">' + data.list[i].name + '</span>';
 						html += '<span class="subtitle-make">上传完成</span>';

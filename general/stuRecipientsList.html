@@ -28,22 +28,34 @@
 
 	function initstuRecipientsList(stuupdateId) {
 		ajaxFuncs.get({
-			urlname: "/api/students/credits/" + stuupdateId,
+			//			urlname: "/api/students/credits/" + stuupdateId,
+			urlname: "/api/students/creditAndReman/" + stuupdateId,
 			funcs: {
 				funcSuccessful: function(data) {
 					if(data.recordDtos.length != 0) {
 						var html = '';
-						for(var i = 0; i < data.recordDtos.length; i++) {
-							var spones = data.recordDtos[i];
-							for(var j = 0; j < spones.recordList.length; j++) {
+						var spones = data.recordDtos;
+						for(var j = 0; j < spones.length; j++) {
+							if(spones[j].isCredit) {
 								html += '<div class="list-box box-h">';
 								html += '<div class="row1 box-flex">';
-								html += '<div class="rw1 color-black">' + spones.sponsorName + '</div>';
-								html += '<div class="rw2">第' + (j + 1) + '次资助</div>';
+								html += '<div class="rw1 color-black">' + spones[j].sponsorName + '</div>';
+								html += '<div class="rw2">放款</div>';
 								html += '</div>';
 								html += '<div class="row2">';
-								html += '<div class="rw1 color-paleRed">￥' + spones.recordList[j].money + '元</div>';
-								html += '<div class="rw2">' + spones.recordList[j].creditTime + '</div>';
+								html += '<div class="rw1 color-paleRed">￥' + spones[j].money + '元</div>';
+								html += '<div class="rw2">' + spones[j].formatedTime + '</div>';
+								html += '</div>';
+								html += '</div>';
+							} else {
+								html += '<div class="list-box box-h">';
+								html += '<div class="row1 box-flex">';
+								html += '<div class="rw1 color-black">' + spones[j].sponsorName + '</div>';
+								html += '<div class="rw2">汇款</div>';
+								html += '</div>';
+								html += '<div class="row2">';
+								html += '<div class="rw1 color-gray">￥' + spones[j].money + '元</div>';
+								html += '<div class="rw2">' + spones[j].formatedTime + '</div>';
 								html += '</div>';
 								html += '</div>';
 							}

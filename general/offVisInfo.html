@@ -209,7 +209,7 @@
 		arrdata.push(homeFeaturePhotos.join(','));
 		arrdata.push(InteractivePhoto.join(','));
 		arrdata.push(params.visitInfo);
-		var el_ridiocheck = $("#offVisInfo input[type='radio']:checked");
+		var el_ridiocheck = $("#offVisInfo .icon-radio-active");
 		var ridiocheckarr = [];
 		for(var i = 0; i < el_ridiocheck.length; i++) {
 			var objval = {};
@@ -246,8 +246,8 @@
 					html += '<div class="box-flex test-item-an-info">';
 					html += '<div class="test-radio-box box-h">';
 					html += '<div class="test-radio">';
-					html += '<input id="offVisInforadio_' + data.list[i].id + ans[j].auditItemId + '" data-auditid="' + data.list[i].id + '" data-ansid="' + ans[j].auditItemId + '"  type="radio" name="ans' + (i + 1) + '" value="0" />';
-					html += '<span class="radio-btu"></span>';
+					//					html += '<input id="offVisInforadio_' + data.list[i].id + ans[j].auditItemId + '" data-auditid="' + data.list[i].id + '" data-ansid="' + ans[j].auditItemId + '"  type="radio" name="ans' + (i + 1) + '" value="0" />';
+					html += '<span id="offVisInforadio_' + data.list[i].id + ans[j].auditItemId + '" class="radio-btu" data-auditid="' + data.list[i].id + '" data-ansid="' + ans[j].auditItemId + '"></span>';
 					html += '</div>';
 					html += '<div class="box-flex"><label for="offVisInforadio_' + data.list[i].id + ans[j].auditItemId + '">' + ans[j].options + '</label></div>';
 					html += '</div>';
@@ -259,6 +259,12 @@
 				html += '<div class="padding-top-1"></div>';
 			}
 			$("#offVisInfo .criterion .test-list").empty().append(html);
+
+			$('#offVisInfo .test-radio-box').on('tap', function() {
+				$(this).parents('.test-item-an').find('.radio-btu').removeClass('icon-radio-active')
+				$(this).find('.radio-btu').addClass('icon-radio-active');
+			});
+
 		} else {
 			localSta.selectAll(initCriterion);
 		}
@@ -389,7 +395,7 @@
 			var arrans = (data.info.auditItemIds).split('*');
 			for(var i = 0; i < arrans.length; i++) {
 				var sponse = JSON.parse(arrans[i]);
-				$("#offVisInforadio_" + sponse.qa + sponse.ans).attr('checked', 'checked');
+				$("#offVisInforadio_" + sponse.qa + sponse.ans).addClass('icon-radio-active');
 			}
 		} else {
 			common.toast("暂无详情");

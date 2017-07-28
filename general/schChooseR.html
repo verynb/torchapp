@@ -40,7 +40,7 @@
 	}
 
 	function schChooseRFooterFun(obj) {
-		var chooseLength = $("#schChooseR .list-panel input[type='radio']:checked");
+		var chooseLength = $("#schChooseR .list-panel .radio-btu-active");
 		var chooseIdval = [];
 		var chooseNameval = [];
 		for(var k = 0; k < chooseLength.length; k++) {
@@ -70,24 +70,22 @@
 							html += '<label for="schChooseRradio_' + data.schools[i].id + '">';
 
 							if(oldschChooseR != null && data.schools[i].id == oldschChooseR) {
-								html += '<input id="schChooseRradio_' + data.schools[i].id + '" type="radio" name="school" data-name="' + data.schools[i].schoolName + '" data-id="' + data.schools[i].id + '"  checked="checked"  />';
 								ischeck = true;
+								html += '<span class="radio-btu radio-btu-active" data-name="' + data.schools[i].schoolName + '" data-id="' + data.schools[i].id + '"></span>';
 							}
 							if(!ischeck) {
-								html += '<input id="schChooseRradio_' + data.schools[i].id + '" type="radio" name="school" data-name="' + data.schools[i].schoolName + '" data-id="' + data.schools[i].id + '"   />';
+								html += '<span class="radio-btu" data-name="' + data.schools[i].schoolName + '" data-id="' + data.schools[i].id + '" ></span>';
 							}
-							html += '<span class="radio-btu"></span>';
 							html += '</label>';
 							html += '</div>';
 							html += '</div>';
 							html += '</div>';
 						}
 						$("#schChooseR .list-panel").empty().append(html);
-						$('#schChooseR label').on('click', function() {
-							if($(this).find('input[type="radio"]').prop("checked")) {
-								$(this).find('input[type="radio"]').removeAttr('checked');
-							} else {
-								$(this).find('input[type="radio"]').attr('checked', 'checked');
+						$("#schChooseR").find('label').on('tap', function() {
+							$("#schChooseR .radio-btu").removeClass("radio-btu-active");
+							if($(this).find('.radio-btu').hasClass("radio-btu-active")) {} else {
+								$(this).find('.radio-btu').addClass("radio-btu-active");
 							}
 						});
 					} else {

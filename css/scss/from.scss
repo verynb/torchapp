@@ -2,7 +2,7 @@
     width: 100%;
     height: 100%;
     text-indent: 4rem;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
 }
 
 .checkbox-box,
@@ -13,7 +13,7 @@
         height: 3rem;
         width: 3rem;
         //      display: none;
-        opacity: 1;
+        opacity: 0;
         position: absolute;
         right: -0.5rem;
         top: 1.2rem;
@@ -26,7 +26,6 @@
         width: 8rem;
         cursor: pointer;
         z-index: 99;
-        border: 1px solid #000000;
     }
     span.checkbox-btu,
     span.radio-btu {
@@ -51,6 +50,10 @@
     }
     input[type="radio"]:checked+span.radio-btu,
     input[type="checkbox"]:checked+span.checkbox-btu {
+        background-image: url(../img/icon/icon-checked-1.png);
+    }
+    span.radio-btu-active,
+    span.checkbox-btu-active {
         background-image: url(../img/icon/icon-checked-1.png);
     }
 }

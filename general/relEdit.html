@@ -98,8 +98,8 @@
 							html += '</div>';
 							html += '<div class="checkbox-box">';
 							html += '<label for="relEditcheckbox_' + data[i].studentId + '"  data-stuid="' + data[i].studentId + '"  data-releaseStudentId="' + data[i].releaseStudentId + '">';
-							html += '<input id="relEditcheckbox_' + data[i].studentId + '" type="checkbox" name="relEdit"  checked="checked" />';
-							html += '<span class="checkbox-btu"></span>';
+							//							html += '<input id="relEditcheckbox_' + data[i].studentId + '" type="checkbox" name="relEdit"  checked="checked" />';
+							html += '<span class="checkbox-btu checkbox-btu-active"></span>';
 							html += '</label>';
 							html += '</div>';
 							html += '</div>';
@@ -107,7 +107,20 @@
 						}
 						$("#relEdit .list-panel").empty().append(html);
 						$('#relEdit label').on('click', function() {
-							relEditDel(this);
+							var that = this;
+							$.ui.popup({
+								title: "删除提示",
+								message: "你确定要删除该学生吗？",
+								cancelText: "取消",
+								cancelOnly: false,
+								doneText: "确定",
+								doneCallback: function() {
+									relEditDel(that);
+								},
+								cancelCallback: function() {
+
+								}
+							});
 						});
 					} else {
 						common.handleDefaultPage({

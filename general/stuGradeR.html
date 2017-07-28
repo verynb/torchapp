@@ -41,7 +41,7 @@
 	}
 
 	function stuGradeRFooterFun(obj) {
-		var chooseLength = $("#stuGradeR .list-panel input[type='radio']:checked");
+		var chooseLength = $("#stuGradeR .list-panel .radio-btu-active");
 		var chooseIdval = [];
 		var chooseNameval = [];
 		for(var k = 0; k < chooseLength.length; k++) {
@@ -70,26 +70,24 @@
 							html += '</div>';
 							html += '<div class="radio-box">';
 							html += '<label for="stuGradeRradio_' + data.gradeMoneyList[i].id + '">';
-
 							if(oldstuGradeR != null && data.gradeMoneyList[i].gradeCode == oldstuGradeR) {
-								html += '<input id="stuGradeRradio_' + data.gradeMoneyList[i].id + '" type="radio" name="grade" data-name="' + data.gradeMoneyList[i].gradeName + '" data-id="' + data.gradeMoneyList[i].gradeCode + '"  checked="checked"  />';
 								ischeck = true;
+								html += '<span class="radio-btu radio-btu-active" data-name="' + data.gradeMoneyList[i].gradeName + '" data-id="' + data.gradeMoneyList[i].gradeCode + '"></span>';
 							}
 							if(!ischeck) {
-								html += '<input id="stuGradeRradio_' + data.gradeMoneyList[i].id + '" type="radio" name="grade" data-name="' + data.gradeMoneyList[i].gradeName + '" data-id="' + data.gradeMoneyList[i].gradeCode + '"   />';
+								html += '<span class="radio-btu" data-name="' + data.gradeMoneyList[i].gradeName + '" data-id="' + data.gradeMoneyList[i].gradeCode + '"></span>';
 							}
-							html += '<span class="radio-btu"></span>';
 							html += '</label>';
 							html += '</div>';
 							html += '</div>';
 							html += '</div>';
 						}
 						$("#stuGradeR .list-panel").empty().append(html);
-						$('#stuGradeR label').on('click', function() {
-							if($(this).find('input[type="radio"]').prop("checked")) {
-								$(this).find('input[type="radio"]').removeAttr('checked');
-							} else {
-								$(this).find('input[type="radio"]').attr('checked', 'checked');
+
+						$("#stuGradeR").find('label').on('tap', function() {
+							$("#stuGradeR .radio-btu").removeClass("radio-btu-active");
+							if($(this).find('.radio-btu').hasClass("radio-btu-active")) {} else {
+								$(this).find('.radio-btu').addClass("radio-btu-active");
 							}
 						});
 					} else {

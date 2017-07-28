@@ -51,26 +51,23 @@
 							html += '</div>';
 							html += '<div class="radio-box">';
 							html += '<label for="relRecChooseSupradio_' + data.resultDtos[i].id + '">';
-
 							if(oldDivrelRecChooseSup != null && data.resultDtos[i].id == oldDivrelRecChooseSup) {
-								html += '<input id="relRecChooseSupradio_' + data.resultDtos[i].id + '" type="radio" name="school" data-name="' + data.resultDtos[i].name + '" data-id="' + data.resultDtos[i].id + '"  checked="checked"  />';
 								ischeck = true;
+								html += '<span class="radio-btu radio-btu-active" data-name="' + data.resultDtos[i].name + '" data-id="' + data.resultDtos[i].id + '"></span>';
 							}
 							if(!ischeck) {
-								html += '<input id="relRecChooseSupradio_' + data.resultDtos[i].id + '" type="radio" name="school" data-name="' + data.resultDtos[i].name + '" data-id="' + data.resultDtos[i].id + '"   />';
+								html += '<span class="radio-btu" data-name="' + data.resultDtos[i].name + '" data-id="' + data.resultDtos[i].id + '"></span>';
 							}
-							html += '<span class="radio-btu"></span>';
 							html += '</label>';
 							html += '</div>';
 							html += '</div>';
 							html += '</div>';
 						}
 						$("#relRecChooseSup .list-panel").empty().append(html);
-						$('#relRecChooseSup label').on('click', function() {
-							if($(this).find('input[type="radio"]').prop("checked")) {
-								$(this).find('input[type="radio"]').removeAttr('checked');
-							} else {
-								$(this).find('input[type="radio"]').attr('checked', 'checked');
+						$("#relRecChooseSup").find('label').on('tap', function() {
+							$("#relRecChooseSup .radio-btu").removeClass("radio-btu-active");
+							if($(this).find('.radio-btu').hasClass("radio-btu-active")) {} else {
+								$(this).find('.radio-btu').addClass("radio-btu-active");
 							}
 						});
 					} else {
@@ -86,7 +83,7 @@
 	}
 
 	function relRecChooseSupFooterFuncAdd(obj) {
-		var chooseLength = $("#relRecChooseSup .list-panel input[type='radio']:checked");
+		var chooseLength = $("#relRecChooseSup .list-panel .radio-btu-active");
 		var chooseIdval = [];
 		var chooseNameval = [];
 		for(var k = 0; k < chooseLength.length; k++) {

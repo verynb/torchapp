@@ -198,6 +198,9 @@
 				<div title='发布批次' id="relBatch" class="panel" data-footer="" data-nopushhistory="0">
 					<div id="relBatchContent"></div>
 				</div>
+				<div title='编辑批次' id="relBatchEdit" class="panel" data-footer="" data-nopushhistory="0">
+					<div id="relBatchEditContent"></div>
+				</div>
 				<div title='选择学生' id="relAdd" class="panel" refresh="true" data-footer="" data-nopushhistory="0">
 					<div id="relAddContent"></div>
 				</div>
@@ -312,6 +315,7 @@
 				<a href="javascript:void(0);" class="right btuMore" onclick="common.moreMenu(this)"></a>
 				<div class="moreMenu">
 					<ul>
+						<li data-tkey="relBatchEdit" data-dir="general" data-transition="slide" onclick="common.moreMenuLi(this)">编辑批次</li>
 						<li data-tkey="relAddTwo" data-dir="general" data-transition="slide" onclick="common.moreMenuLi(this)">添加学生</li>
 						<li onclick="pageCom.downloadStuAndQ()">下载信息</li>
 					</ul>

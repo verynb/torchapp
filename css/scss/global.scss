@@ -148,6 +148,10 @@ ul {
     color: rgb(222, 68, 60);
 }
 
+.color-gray {
+    color: #6e6f71;
+}
+
 .bg-color-brown {
     background-color: rgb(222, 68, 60);
 }
@@ -473,7 +477,7 @@ ul {
             font-size: 1.5rem;
             height: 5.5rem;
             line-height: 5.5rem;
-            width: 8rem;
+            min-width: 8rem;
             display: inline-block;
         }
         span.subtitle {
@@ -844,8 +848,8 @@ ul {
                                 }
                                 .icon-checkbox-active,
                                 .icon-radio-active {
-                                    background: url(../img/icon/icon-checked-1.png) center center no-repeat;
-                                    background-size: 1.9rem auto;
+                                    background: url(../img/icon/icon-checked-1.png) center center no-repeat !important;
+                                    background-size: 1.9rem auto !important;
                                 }
                                 input[type="radio"]:checked+span.radio-btu,
                                 input[type="checkbox"]:checked+span.checkbox-btu {

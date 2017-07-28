@@ -46,7 +46,7 @@
 	}
 
 	function schChooseFooterFun(obj) {
-		var chooseLength = $("#schChoose .list-panel input[type='checkbox']:checked");
+		var chooseLength = $("#schChoose .list-panel .checkbox-btu-active");
 		var chooseIdval = [];
 		var chooseNameval = [];
 		for(var k = 0; k < chooseLength.length; k++) {
@@ -76,25 +76,28 @@
 							html += '<label for="relEditcheckbox_' + data.schools[i].id + '">';
 							for(var j = 0; j < oldschChoose.length; j++) {
 								if(data.schools[i].id == oldschChoose[j]) {
-									html += '<input id="relEditcheckbox_' + data.schools[i].id + '" type="checkbox" name="school" data-name="' + data.schools[i].schoolName + '" data-id="' + data.schools[i].id + '"  checked="checked"  />';
+									//									html += '<input id="relEditcheckbox_' + data.schools[i].id + '" type="checkbox" name="school" data-name="' + data.schools[i].schoolName + '" data-id="' + data.schools[i].id + '"  checked="checked"  />';
+									html += '<span class="checkbox-btu checkbox-btu-active" data-name="' + data.schools[i].schoolName + '" data-id="' + data.schools[i].id + '"></span>';
 									ischeck = true;
 								}
 							}
 							if(!ischeck) {
-								html += '<input id="relEditcheckbox_' + data.schools[i].id + '" type="checkbox" name="school" data-name="' + data.schools[i].schoolName + '" data-id="' + data.schools[i].id + '"   />';
+								html += '<span class="checkbox-btu" data-name="' + data.schools[i].schoolName + '" data-id="' + data.schools[i].id + '" ></span>';
+								//								html += '<input id="relEditcheckbox_' + data.schools[i].id + '" type="checkbox" name="school" data-name="' + data.schools[i].schoolName + '" data-id="' + data.schools[i].id + '"   />';
 							}
-							html += '<span class="checkbox-btu"></span>';
+
 							html += '</label>';
 							html += '</div>';
 							html += '</div>';
 							html += '</div>';
 						}
 						$("#schChoose .list-panel").empty().append(html);
-						$('#schChoose label').on('click', function() {
-							if($(this).find('input[type="checkbox"]').prop("checked")) {
-								$(this).find('input[type="checkbox"]').removeAttr('checked');
+						$("#schChoose").find('label').unbind('tap');
+						$("#schChoose").find('label').on('tap', function() {
+							if($(this).find('.checkbox-btu').hasClass("checkbox-btu-active")) {
+								$(this).find('.checkbox-btu').removeClass("checkbox-btu-active");
 							} else {
-								$(this).find('input[type="checkbox"]').attr('checked', 'checked');
+								$(this).find('.checkbox-btu').addClass("checkbox-btu-active");
 							}
 						});
 					} else {

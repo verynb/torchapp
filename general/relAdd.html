@@ -20,13 +20,6 @@
 	function loadrelAdd(obj) {
 		initrelAdd();
 		relAddFooter();
-		$('#relAdd label').on('click', function() {
-			if($(this).find('input[type="checkbox"]').prop("checked")) {
-				$(this).find('input[type="checkbox"]').removeAttr('checked');
-			} else {
-				$(this).find('input[type="checkbox"]').attr('checked', 'checked');
-			}
-		});
 	}
 
 	function relAddFooter() {
@@ -46,7 +39,7 @@
 		    "studentId": 0,
 		    "needMoney": 0
 		  }*/
-		var el_checkbox = $("#relAdd .list-panel").find('input[type="checkbox"]:checked');
+		var el_checkbox = $("#relAdd .list-panel").find('.checkbox-btu-active');
 		var params = [];
 		for(var i = 0; i < el_checkbox.length; i++) {
 			var item = {};
@@ -95,13 +88,21 @@
 							html += '<div class="checkbox-box">';
 							html += '<label for="relAddcheckbox_' + data[i].id + '">';
 							html += '<input id="relAddcheckbox_' + data[i].id + '" data-stuid="' + data[i].id + '"  type="checkbox" name="stulist"  />';
-							html += '<span class="checkbox-btu"></span>';
+							html += '<span class="checkbox-btu" data-stuid="' + data[i].id + '" ></span>';
 							html += '</label>';
 							html += '</div>';
 							html += '</div>';
 							html += '</div>';
 						}
 						$("#relAdd .list-panel").empty().append(html);
+						$("#relAdd").find('label').unbind('tap');
+						$("#relAdd").find('label').on('tap', function() {
+							if($(this).find('.checkbox-btu').hasClass("checkbox-btu-active")) {
+								$(this).find('.checkbox-btu').removeClass("checkbox-btu-active");
+							} else {
+								$(this).find('.checkbox-btu').addClass("checkbox-btu-active");
+							}
+						});
 					} else {
 						common.handleDefaultPage({
 							type: 2
