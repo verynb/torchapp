@@ -456,3 +456,30 @@ function showImg(obj) {
 	$(li).attr("data-index", beginIndex);
 	common.loadPage(li);
 }
+//点击浏览图片
+function showImgNow(obj) {
+	event.stopPropagation();
+	var aSrc = [];
+	var beginIndex = 0;
+	var iSrc = $(obj).attr("src");
+	var html = '';
+	var li = document.createElement("li");
+	$(li).attr("data-tkey", "scanImg");
+	$(li).attr("data-dir", "general");
+	$(li).attr("data-transition", "fade");
+	$.each($(obj).parent().find("img"), function(index, val) {
+		aSrc.push($(val).attr("src"));
+		if($(val).attr("src") == iSrc) {
+			beginIndex = index;
+		}
+	});
+	for(var i = 0; i < aSrc.length; i++) {
+		if(i != 0) {
+			html += ",";
+		}
+		html += aSrc[i];
+	}
+	$(li).attr("data-img", html);
+	$(li).attr("data-index", beginIndex);
+	common.loadPage(li);
+}

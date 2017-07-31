@@ -1,0 +1,84 @@
+<form>
+	<div class="list-panel">
+		<div class="padding-top-1"></div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">发布批次</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input" type="text" name="batchNo" required="required" placeholder="未填写 " value="" />
+					<input class="editor-input" type="hidden" name="batchId" value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">省市</span>
+				</div>
+				<div class="icon-text-box">
+					<div class="icon-text-box " id="sel_city11">
+						<span class="nav fromfield sel_city" data-unionchar=" " data-fromfield="province,city">未选择</span>
+						<input hidden="hidden" class="editor-input fromfield" required="required" data-warning="省市不能为空" data-fromfield="province" name="province" value="" />
+						<input hidden="hidden" class="editor-input fromfield" required="required" data-warning="省市不能为空" data-fromfield="city" name="city" value="" />
+					</div>
+				</div>
+				<div class="icon-next">
+					<i class="icon-img icon-img-next"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+<script type="text/javascript">
+	var relBatchEditData = {};
+
+	function loadrelBatchEdit(obj) {
+		relBatchEditFooter();
+		cityfunc.addTwo("sel_city11");
+
+		$("#relBatchEdit input[name='batchNo']").val(relBatchData.batchNo);
+		$("#relBatchEdit input[name='batchId']").val(relBatchData.batchId);
+		$("#relBatchEdit input[name='province']").val(relBatchData.province);
+		$("#relBatchEdit input[name='city']").val(relBatchData.city);
+		$("#relBatchEdit .sel_city").text(relBatchData.province + ' ' + relBatchData.city);
+	}
+
+	function relBatchEditFooter() {
+		var btuHtml = '';
+		var jsondata = {};
+		btuHtml += '<div class="footerBtu bg-color-brown" onclick="relBatchEditFooterFunc(this)">';
+		btuHtml += '<a class="all relBatchEdit-save" href="javascript:void(0);">保存</a>';
+		btuHtml += '</div>';
+		jsondata.container = 'relBatchEdit';
+		jsondata.buttonHtml = btuHtml;
+		common.commonFooterBtu(jsondata);
+	}
+
+	function relBatchEditFooterFunc(obj) {
+		var params = common.serializeToJson("#relBatchEdit form");
+		if(!common.validate("#relBatchEdit form", obj)) {
+			return false;
+		} else {
+			ajaxFuncs.put({
+				clickobj: $(obj),
+				urlname: "/api/release",
+				params: params,
+				funcs: {
+					funcSuccessful: function(data) {
+						relBatchEditData.batchNo = params.batchNo;
+						relBatchEditData.batchId = params.batchId;
+						relBatchEditData.province = params.province;
+						relBatchEditData.city = params.city;
+						$.ui.goBack();
+					}
+				}
+			})
+		}
+
+	}
+</script>
