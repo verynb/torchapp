@@ -65,7 +65,7 @@
 		var homeVisitId = $(obj).attr("data-homeVisitId");
 		initstuHomeVisitsInfo(homeVisitId);
 	}
-
+	/*--- 2017-08-11 修改*/
 	function initstuHomeVisitsInfo(homeVisitId) {
 		ajaxFuncs.get({
 			urlname: "/api/homeVisit/" + homeVisitId,
@@ -76,23 +76,51 @@
 					$("#stuHomeVisitsInfo .data-stuname").html(data.studentName);
 					$("#stuHomeVisitsInfo .data-visitInfo").html(data.visitInfo);
 					var html = '';
+					var role = window.localStorage.getItem(G_COMKEY + ".role");
+					var userType = window.localStorage.getItem(G_COMKEY + ".userType");
+					role = JSON.parse(role);
 					for(var i = 0; i < data.applicationForms.length; i++) {
-						html += '<img src="' + G_IMGPREFIX + data.applicationForms[i] + '" alt="data" />';
+						if(role != null && role.hasOwnProperty('roleCode') && role.roleCode != "teacher") {
+							html += '<img src="' + G_IMGPREFIX + data.applicationForms[i] + '" alt="data" data-tkey="stuPhotoExportInfo" data-dir="general" data-transition="slide" onclick="common.loadPage(this)"/>';
+						} else {
+							html += '<img src="' + G_IMGPREFIX + data.applicationForms[i] + '" alt="data" />';
+						}
 					}
 					for(var i = 0; i < data.studentPhotos.length; i++) {
-						html += '<img src="' + G_IMGPREFIX + data.studentPhotos[i] + '" alt="data" />';
+						if(role != null&&role.hasOwnProperty('roleCode') && role.roleCode != "teacher") {
+							html += '<img src="' + G_IMGPREFIX + data.studentPhotos[i] + '" alt="data" data-tkey="stuPhotoExportInfo" data-dir="general" data-transition="slide" onclick="common.loadPage(this)"/>';
+						} else {
+							html += '<img src="' + G_IMGPREFIX + data.studentPhotos[i] + '" alt="data" />';
+						}
 					}
 					for(var i = 0; i < data.familyPhotos.length; i++) {
-						html += '<img src="' + G_IMGPREFIX + data.familyPhotos[i] + '" alt="data" />';
+						if(role != null&&role.hasOwnProperty('roleCode') && role.roleCode != "teacher") {
+							html += '<img src="' + G_IMGPREFIX + data.familyPhotos[i] + '" alt="data" data-tkey="stuPhotoExportInfo" data-dir="general" data-transition="slide" onclick="common.loadPage(this)"/>';
+						} else {
+							html += '<img src="' + G_IMGPREFIX + data.familyPhotos[i] + '" alt="data" />';
+						}
 					}
 					for(var i = 0; i < data.homePhotos.length; i++) {
-						html += '<img src="' + G_IMGPREFIX + data.homePhotos[i] + '" alt="data" />';
+						if(role != null&&role.hasOwnProperty('roleCode') && role.roleCode != "teacher") {
+							html += '<img src="' + G_IMGPREFIX + data.homePhotos[i] + '" alt="data" data-tkey="stuPhotoExportInfo" data-dir="general" data-transition="slide" onclick="common.loadPage(this)"/>';
+						} else {
+							html += '<img src="' + G_IMGPREFIX + data.homePhotos[i] + '" alt="data" />';
+						}
 					}
+
 					for(var i = 0; i < data.homeFeaturePhoto.length; i++) {
-						html += '<img src="' + G_IMGPREFIX + data.homeFeaturePhoto[i] + '" alt="data" />';
+						if(role != null&&role.hasOwnProperty('roleCode') && role.roleCode != "teacher") {
+							html += '<img src="' + G_IMGPREFIX + data.homeFeaturePhoto[i] + '" alt="data" data-tkey="stuPhotoExportInfo" data-dir="general" data-transition="slide" onclick="common.loadPage(this)"/>';
+						} else {
+							html += '<img src="' + G_IMGPREFIX + data.homeFeaturePhoto[i] + '" alt="data" />';
+						}
 					}
 					for(var i = 0; i < data.interactivePhotos.length; i++) {
-						html += '<img src="' + G_IMGPREFIX + data.interactivePhotos[i] + '" alt="data" />';
+						if(role != null&&role.hasOwnProperty('roleCode') && role.roleCode != "teacher") {
+							html += '<img src="' + G_IMGPREFIX + data.interactivePhotos[i] + '" alt="data" data-tkey="stuPhotoExportInfo" data-dir="general" data-transition="slide" onclick="common.loadPage(this)"/>';
+						} else {
+							html += '<img src="' + G_IMGPREFIX + data.interactivePhotos[i] + '" alt="data" />';
+						}
 					}
 					$("#stuHomeVisitsInfo .data-photo").append(html);
 				}

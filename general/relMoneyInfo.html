@@ -1,0 +1,64 @@
+<form>
+	<div class="padding-top-1"></div>
+	<div class="list-panel">
+		<div class="list-box">
+			<div class="list-defult-body box-h boder-none">
+				<div class="box-flex">
+					<span class="title">金额</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="money" type="text" name="money" required="required" data-warning="金额不能为空" placeholder="未填写" value="" onfocus="common.inputGetFocus(this)" />元
+				</div>
+				<!--<div class="icon-next"></div>-->
+			</div>
+		</div>
+		<div class="list-box moneyInfo-box">
+			<textarea class="remark moneyInfo" placeholder="请录入备注内容..." name="remark"></textarea>
+		</div>
+	</div>
+	</div>
+</form>
+<script type="text/javascript">
+	var stuViewMoneyStuId;
+
+	function loadrelMoneyInfo(obj) {
+		stuViewMoneyStuId = $(obj).attr('data-stuid');
+		relMoneyInfoFooter();
+		$("#relMoneyInfo input[name='money']").val($(obj).find('input[name="needMoney"]').val());
+		$("#relMoneyInfo textarea.remark").val($(obj).find('input[name="remark"]').val());
+		//		pageCom.gradeMoney();
+	}
+
+	function relMoneyInfoFooter() {
+		var btuHtml = '';
+		var jsondata = {};
+		btuHtml += '<div class="footerBtu bg-color-brown"  onclick="relMoneyInfoFooterFunc(this)">';
+		btuHtml += '<a class="all relMoneyInfo-save" href="javascript:void(0);">确认</a>';
+		btuHtml += '</div>';
+		jsondata.container = 'relMoneyInfo';
+		jsondata.buttonHtml = btuHtml;
+		common.commonFooterBtu(jsondata);
+	}
+
+	function relMoneyInfoFooterFunc(obj) {
+		var el_relMoney = $("#relMoney #money" + stuViewMoneyStuId);
+		var money_val = $("#relMoneyInfo input[name='money']").val();
+		var moneyInfo_val = $("#relMoneyInfo textarea.remark").val();
+
+		if(money_val == '') {
+			common.toast('金额不能为空');
+			return false;
+		}
+		if(moneyInfo_val == '') {
+			common.toast('发布备注不能为空');
+			return false;
+		}
+
+		if(money_val != '' && moneyInfo_val != '') {
+			el_relMoney.find("input[name='needMoney']").val(money_val);
+			el_relMoney.find("input[name='remark']").val(moneyInfo_val);
+			el_relMoney.find("span.isremark").text("有备注");
+			$.ui.goBack();
+		}
+	}
+</script>

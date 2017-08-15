@@ -20,7 +20,7 @@
 						html += '<div class="list-panel">';
 						html += '<div class="padding-top-1"></div>';
 						for(var i = 0; i < data.releaseList.length; i++) {
-							html += '<div class="list-box" data-dir="general" data-tkey="relRecStuView" data-transition="slide" data-stuid="' + data.releaseList[i].studentId + '" onclick="common.loadPage(this);">';
+							html += '<div class="list-box" data-dir="general" data-tkey="relRecStuView" data-transition="slide" data-stuid="' + data.releaseList[i].studentId + '" data-needmoney="' + data.releaseList[i].needMoney + '" onclick="common.loadPage(this);">';
 							html += '<div class="list-defult-body box-h box-align">';
 
 							html += '<div class="box-flex width50">';

@@ -417,7 +417,7 @@ body {
 }
 
 #afui #menu .list>li>a:after, #afui #aside_menu .list>li>a:after {
-	margin-top: - 0.8rem;
+	margin-top: -0.8rem;
 }
 
 
@@ -541,8 +541,8 @@ body {
 	display: block;
 	opacity: .9;
 	margin: 0 auto;
-	width: 1.75rem;
-	height: 1.75rem;
+	width: 3rem;
+	height: 3rem;
 	background-color: transparent;
 }
 
@@ -564,10 +564,10 @@ body {
 
 .ui-icon-loading {
 	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjBAMAAADs965qAAAAA3NCSVQICAjb4U/gAAAAMFBMVEX////x8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHvvEhiAAAAEHRSTlMAESIzRFVmd4iZqrvM3e7/dpUBFQAAAAlwSFlzAAAK6wAACusBgosNWgAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAEaSURBVCiRY2AgATCapaUqoIiIzN5z5syZJiQRltW7gUJ3705C6OraDRG6GwATkli1evdusNBTuKJVq3c4MjBX3733DqqMfdWqFWDbau+9ewIRspy5KgHMYL737g1EX+fMaVAjbN+9KwDLzZxZAHPMu3cXwEbNnAl397p3YDslOmD6GBjs/v8AURodzXAh3v+/QZRHRyNciPP/f4hQA1yIHVMICtzLC9CFzMuL0IXEy0vQhdjK0+BsRqgv0tIMYEKCggJgmbS0QJgiQUEIwy0tVQCmCCokmhYaCFMElWMKDQ01BIkoKcKEGFRDQ1yMlISUgEIwe5iAQi7GxkpKSjBFwMh2cXEGCSkiOVcFLIQswsAgZGxshCpCBgAA0FNYp5zwDegAAAAASUVORK5CYII=);
-	width: 2rem;
-	height: 2rem;
+	width: 3rem;
+	height: 3rem;
 	border-radius: 1rem;
-	background-size: 1.75rem 1.75rem;
+	background-size: 3rem 3rem;
 }
 
 #afui .ui-corner-all {

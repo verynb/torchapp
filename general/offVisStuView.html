@@ -1,5 +1,18 @@
 <div class="list-panel datasource" id="offVisStuViewBody" data-datasource="">
 	<!--start-->
+	<div class="padding-top-1"></div>
+	<div class="list-box img-photo-box">
+		<div class="list-defult-body box-h boder-none">
+			<div class="box-flex">
+				<span class="title">头像</span>
+			</div>
+			<div class="">
+				<img class="header-picture fromfield" src="img/icon/defult-photo.png" alt="默认头像" onclick="showImgNow(this)" />
+			</div>
+			<div class="icon-next"></div>
+		</div>
+	</div>
+	<div class="padding-top-1"></div>
 	<div class="list-box">
 		<div class="list-defult-body box-h box-align">
 			<div class="box-flex">
@@ -47,10 +60,24 @@
 		<div class="list-defult-body box-h box-align">
 			<div class="box-flex">
 				<div class="box-h">
-					<div><span class="title">地  址：</span></div>
+					<div><span class="title">家庭地址：</span></div>
 					<div class="box-flex">
 						<div class="table-box">
 							<div class="table-cell fromfield" data-fromfield="province,city,area,address" data-unionchar=' '><span></span></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h box-align">
+			<div class="box-flex">
+				<div class="box-h">
+					<div><span class="title">其 他：</span></div>
+					<div class="box-flex">
+						<div class="table-box">
+							<div class="table-cell fromfield" data-fromfield="other"><span></span></div>
 						</div>
 					</div>
 				</div>
@@ -78,6 +105,7 @@
 	function initoffVisStuView(data) {
 		console.log(JSON.stringify(data));
 		if(data.status == 1) {
+			$("#offVisStuView .header-picture").attr('src',data.info.relativePath);
 			loadData.load({
 				data: JSON.parse(data.info.stuJsonStrData),
 				container: "offVisStuView",

@@ -59,6 +59,13 @@ ul {
     color: #05b1b3;
 }
 
+.noMoreData {
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #CACECE;
+}
+
 //common css
 .boder-none {
     border: none !important;
@@ -164,6 +171,10 @@ ul {
     width: 50%;
 }
 
+.width-7 {
+    width: 7rem;
+}
+
 .header-title {
     height: 4rem;
     padding-left: 1.2rem;
@@ -178,6 +189,11 @@ ul {
     height: 100%;
 }
 
+.heightAuto {
+    min-height: 5.5rem !important;
+    height: auto !important;
+}
+
 #afui .header {
     overflow: initial !important;
 }
@@ -189,6 +205,8 @@ ul {
 #relRecStuViewHeader,
 #stuViewHeader,
 #relEditHeader,
+#relMoneyInfoHeader,
+#subStuViewHeader,
 #offVisInfoHeader {
     //header style
     h1 {
@@ -255,8 +273,9 @@ ul {
             li {
                 color: #FFFFFF;
                 text-align: center;
-                height: 4.1rem;
-                line-height: 4.1rem;
+                height: 4rem;
+                line-height: 4rem;
+                font-size: 1.2rem;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.3);
             }
             li:last-child {
@@ -973,4 +992,72 @@ ul {
         outline: none;
         padding: 1.2rem;
     }
+}
+
+#relMoneyInfo {
+    .moneyInfo-box {
+        height: 21rem;
+    }
+    .moneyInfo {
+        width: 100%;
+        height: 20rem;
+        font-size: 1.5rem;
+        padding: 1rem;
+        border: 1px solid #EFEFEF;
+    }
+}
+
+#agreement {
+    background-color: #FFFFFF !important;
+    #agreementBody {
+        padding: 1.2rem;
+        font-size: 1.5rem;
+    }
+    p.our,
+    p.subour,
+    p.date {
+        font-size: 1.2rem;
+        line-height: 2rem;
+        text-align: right;
+    }
+    p.title {
+        text-align: center;
+        padding: 1rem 0 1.5rem 0;
+        font-size: 1.6rem;
+        font-weight: 700;
+    }
+    p.who {
+        font-size: 1.5rem;
+    }
+    .nav {
+        text-align: justify;
+        padding: 1.5rem 0;
+        p {
+            padding: 0.5rem 0;
+        }
+        p.c-wight {
+            font-weight: 700;
+        }
+        span.color-red {
+            color: #f00;
+        }
+        .navbig {
+            font-size: 1.5rem;
+            p {
+                text-indent: 3rem;
+                line-height: 2rem;
+            }
+        }
+        .navsub {
+            font-size: 1.3rem;
+            p {
+                line-height: 2rem;
+            }
+        }
+    }
+}
+
+.markP {
+    text-align: justify;
+    padding: 0.5rem 0rem 1rem;
 }

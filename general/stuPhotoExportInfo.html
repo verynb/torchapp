@@ -1,0 +1,55 @@
+<form>
+	<div class="list-panel">
+		<div class="padding-top-1"></div>
+		<div class="list-box">
+			<div class="list-defult-body box-h">
+				<div class="box-flex">
+					<span class="title">邮箱</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input" name="email" type="text" required="required" value="" data-check="^\w+([-+.]\w+)*@\w+([-.]\\w+)*\.\w+([-.]\w+)*$" data-warning-check="邮箱格式不正确" data-warning="邮箱不能为空" placeholder="必填" />
+					<input type="hidden" name="url" value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+	</div>
+</form>
+
+<script type="text/javascript">
+	function loadstuPhotoExportInfo(obj) {
+		$("#stuPhotoExportInfo input[name='url']").val($(obj).attr('src'));
+		stuPhotoExportInfoFooter();
+	}
+
+	/*--- 2017-08-11 修改*/
+
+	function stuPhotoExportInfoFooter() {
+		var btuHtml = '';
+		var jsondata = {};
+		btuHtml += '<div class="footerBtu bg-color-brown" onclick="stuPhotoExportInfoFooterFuncAdd(this)">';
+		btuHtml += '<a class="all stuPhotoExportInfo-save" href="javascript:void(0);">保存</a>';
+		btuHtml += '</div>';
+		jsondata.container = 'stuPhotoExportInfo';
+		jsondata.buttonHtml = btuHtml;
+		common.commonFooterBtu(jsondata);
+	}
+
+	function stuPhotoExportInfoFooterFuncAdd(obj) {
+		var params = common.serializeToJson("#stuPhotoExportInfo form");
+		if(!common.validate("#stuPhotoExportInfo form", obj)) {
+			return false;
+		} else {
+			ajaxFuncs.get({
+				clickobj: obj,
+				urlname: "/api/studentPhoto/export/" + stuViewStuId + "?email=" + params.email + '&url=' + params.url,
+				funcs: {
+					funcSuccessful: function(data) {
+						common.toast("发送成功");
+						$.ui.goBack();
+					}
+				}
+			})
+		}
+	}
+</script>

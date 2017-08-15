@@ -119,11 +119,6 @@
 				urlname: "/api/user/volunteers?pageSize=15&currentPage=" + volListPage,
 				funcs: {
 					funcSuccessful: function(data) {
-						if(data.resultDtos.length < 15) {
-							isAddPage = false;
-						} else {
-							isAddPage = true;
-						}
 						if(data.resultDtos.length != 0) {
 							var html = '';
 							for(var i = 0; i < data.resultDtos.length; i++) {
@@ -141,6 +136,16 @@
 							$("#volList .list-panel").append(html);
 						} else {
 							common.toast("没有了");
+						}
+						if(data.resultDtos.length < 15) {
+							isAddPage = false;
+							if($("#volList .noMoreData").length == 0) {
+								var htmlNo = '';
+								htmlNo += '<p class="noMoreData">没有更多了</p>';
+								$("#volList .list-panel").append(htmlNo);
+							}
+						} else {
+							isAddPage = true;
 						}
 						if(callback != undefined) {
 							callback(0);

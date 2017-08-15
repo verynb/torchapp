@@ -1,5 +1,26 @@
 <div class="list-panel datasource" id="stuViewBody" data-datasource="">
 	<!--start-->
+	<div class="padding-top-1"></div>
+	<div class="list-box img-photo-box">
+		<div class="list-defult-body box-h boder-none">
+			<div class="box-flex">
+				<span class="title">头  像:</span>
+			</div>
+			<div class="">
+				<img class="header-picture fromfield" data-fromfield="headPhoto" src="img/icon/defult-photo.png" alt="默认头像"onclick="showImgNow(this)" />
+			</div>          
+			<div class="icon-next">
+			</div>
+		</div>
+	</div>
+	<div class="padding-top-1"></div>
+	<div class="list-box">
+		<div class="list-defult-body box-h box-align">
+			<div class="box-flex">
+				<span class="title">编  号：<span class="fromfield" data-fromfield="sNo"></span></span>
+			</div>
+		</div>
+	</div>
 	<div class="list-box">
 		<div class="list-defult-body box-h box-align">
 			<div class="box-flex">
@@ -18,7 +39,35 @@
 	<div class="list-box">
 		<div class="list-defult-body box-h box-align">
 			<div class="box-flex">
+				<span class="title">民  族：<span class="fromfield" data-fromfield="nation"></span></span>
+			</div>
+		</div>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h box-align">
+			<div class="box-flex">
+				<span class="title">出生日期：<span class="fromfield" data-fromfield="birthday"></span></span>
+			</div>
+		</div>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h box-align">
+			<div class="box-flex">
 				<span class="title">年  龄：<span class="fromfield" data-fromfield="age"></span>岁</span>
+			</div>
+		</div>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h box-align">
+			<div class="box-flex">
+				<span class="title">身  高：<span class="fromfield" data-fromfield="height"></span>CM</span>
+			</div>
+		</div>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h box-align">
+			<div class="box-flex">
+				<span class="title">体  重：<span class="fromfield" data-fromfield="weight"></span>KG</span>
 			</div>
 		</div>
 	</div>
@@ -46,11 +95,39 @@
 	<div class="list-box">
 		<div class="list-defult-body box-h box-align">
 			<div class="box-flex">
+				<span class="title">班  级：<span class="fromfield" data-fromfield="clbum"></span></span>
+			</div>
+		</div>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h box-align">
+			<div class="box-flex">
+				<span class="title">班主任：<span class="fromfield" data-fromfield="classTeacher"></span></span>
+			</div>
+		</div>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h box-align">
+			<div class="box-flex">
 				<div class="box-h">
-					<div><span class="title">地  址：</span></div>
+					<div><span class="title">家庭地址：</span></div>
 					<div class="box-flex">
 						<div class="table-box">
 							<div class="table-cell fromfield" data-fromfield="province,city,area,address" data-unionchar=' '><span></span></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h box-align">
+			<div class="box-flex">
+				<div class="box-h">
+					<div><span class="title">其  他：</span></div>
+					<div class="box-flex">
+						<div class="table-box">
+							<div class="table-cell fromfield" data-fromfield="other"><span></span></div>
 						</div>
 					</div>
 				</div>
@@ -69,7 +146,11 @@
 	var stuViewStuId;
 
 	function loadstuView(obj) {
-		stuViewStuId = $(obj).attr('data-stuid');
+		if($(obj).attr('data-stuid') != undefined) {
+			stuViewStuId = $(obj).attr('data-stuid');
+		} else {
+			stuViewStuId = stuViewMoneyStuId;
+		}
 		initstuView(stuViewStuId);
 	}
 

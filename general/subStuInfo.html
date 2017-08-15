@@ -1,4 +1,19 @@
 <div class="list-panel datasource" id="subStuInfoBody" data-datasource="">
+	<div class="padding-top-1"></div>
+	<div class="list-box img-photo-box">
+		<div class="list-defult-body box-h boder-none">
+			<div class="box-flex">
+				<span class="title">头  像:</span>
+			</div>
+			<div class="">
+				<img class="header-picture fromfield" data-fromfield="headPhoto" src="img/icon/defult-photo.png" alt="默认头像" onclick="showImgNow(this)" />
+			</div>
+			<div class="icon-next">
+			</div>
+		</div>
+	</div>
+	<div class="padding-top-1"></div>
+
 	<!--start-->
 	<div class="list-box">
 		<div class="list-defult-body box-h box-align">
@@ -12,6 +27,13 @@
 		<div class="list-defult-body box-h box-align">
 			<div class="box-flex">
 				<span class="title">性  别：<span class="fromfield" data-fromfield="gender"></span></span>
+			</div>
+		</div>
+	</div>
+	<div class="list-box">
+		<div class="list-defult-body box-h box-align">
+			<div class="box-flex">
+				<span class="title">出生年月：<span class="fromfield" data-fromfield="birthday"></span></span>
 			</div>
 		</div>
 	</div>
@@ -57,11 +79,19 @@
 			</div>
 		</div>
 	</div>
-	<div class="list-box">
+	<div class="list-box hidden-important">
 		<div class="list-defult-body box-h box-align">
 			<div class="box-flex">
-				<span class="title">金  额：<span class="data-needMoney"></span>元</span>
+				<span class="title">资助金额：<span class="data-needMoney"></span>元</span>
 			</div>
+		</div>
+	</div>
+	<div class="list-box heightAuto hidden-important">
+		<div class="list-defult-body box-h box-align heightAuto">
+			<div class="">
+				<span class="title">发布备注：</span>
+			</div>
+			<div class="box-flex markP fromfield" data-fromfield="remark"></div>
 		</div>
 	</div>
 </div>
@@ -69,8 +99,14 @@
 	var subStuInfoStuId, stuViewStuId;
 
 	function loadsubStuInfo(obj) {
-		subStuInfoStuId = $(obj).attr('data-stuid');
-		stuViewStuId = $(obj).attr('data-stuid');
+		if($(obj).attr('data-stuid') != undefined) {
+			subStuInfoStuId = $(obj).attr('data-stuid');
+			stuViewStuId = $(obj).attr('data-stuid');
+		} else {
+			if($("#subStuViewBody").length != 0) {
+				subStuInfoStuId = $("#subStuViewBody").attr('data-stuid');
+			}
+		}
 		$("#subStuInfo .data-needMoney").text($(obj).attr('data-needmoney'));
 		initsubStuInfo(subStuInfoStuId);
 	}

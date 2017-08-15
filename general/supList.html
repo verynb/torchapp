@@ -118,11 +118,6 @@
 				urlname: "/api/user/sponsors?pageSize=15&currentPage=" + supListPage,
 				funcs: {
 					funcSuccessful: function(data) {
-						if(data.resultDtos.length < 15) {
-							supisAddPage = false;
-						} else {
-							supisAddPage = true;
-						}
 						if(data.resultDtos.length != 0) {
 							var html = '';
 							for(var i = 0; i < data.resultDtos.length; i++) {
@@ -140,6 +135,16 @@
 							$("#supList .list-panel").append(html);
 						} else {
 							common.toast("没有了");
+						}
+						if(data.resultDtos.length < 15) {
+							supisAddPage = false;
+							if($("#supList .noMoreData").length == 0) {
+								var htmlNo = '';
+								htmlNo += '<p class="noMoreData">没有更多了</p>';
+								$("#supList .list-panel").append(htmlNo);
+							}
+						} else {
+							supisAddPage = true;
 						}
 						if(callback != undefined) {
 							callback(0);

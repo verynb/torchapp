@@ -7,7 +7,7 @@
 					<span class="title">发布批次</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input" type="text" name="batchNo" required="required" placeholder="未填写 " value="" />
+					<input class="editor-input" type="text" name="batchNo" required="required" readonly="readonly" placeholder="未填写 " value="" />
 					<input class="editor-input" type="hidden" name="batchId" value="" />
 				</div>
 				<div class="icon-next"></div>
@@ -35,7 +35,7 @@
 </form>
 
 <script type="text/javascript">
-	var relBatchEditData = {};
+//	var relBatchEditData = {};
 
 	function loadrelBatchEdit(obj) {
 		relBatchEditFooter();
@@ -52,7 +52,7 @@
 		var btuHtml = '';
 		var jsondata = {};
 		btuHtml += '<div class="footerBtu bg-color-brown" onclick="relBatchEditFooterFunc(this)">';
-		btuHtml += '<a class="all relBatchEdit-save" href="javascript:void(0);">保存</a>';
+		btuHtml += '<a class="all relBatchEdit-save" href="javascript:void(0);">确认修改</a>';
 		btuHtml += '</div>';
 		jsondata.container = 'relBatchEdit';
 		jsondata.buttonHtml = btuHtml;
@@ -64,17 +64,19 @@
 		if(!common.validate("#relBatchEdit form", obj)) {
 			return false;
 		} else {
+			params.id = params.batchId;
 			ajaxFuncs.put({
 				clickobj: $(obj),
 				urlname: "/api/release",
 				params: params,
 				funcs: {
 					funcSuccessful: function(data) {
-						relBatchEditData.batchNo = params.batchNo;
-						relBatchEditData.batchId = params.batchId;
-						relBatchEditData.province = params.province;
-						relBatchEditData.city = params.city;
+						relBatchData.batchNo = params.batchNo;
+						relBatchData.batchId = params.batchId;
+						relBatchData.province = params.province;
+						relBatchData.city = params.city;
 						$.ui.goBack();
+						relListInit();
 					}
 				}
 			})

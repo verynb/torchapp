@@ -3,6 +3,7 @@
 	function loadsubStuView(obj) {
 		subStuViewFooter();
 		var subscribeId = $(obj).attr('data-subscribeId');
+
 		initsubStuView(subscribeId);
 	}
 
@@ -19,7 +20,42 @@
 	}
 
 	function subStuViewFooterOneFunc(obj) {
+		/*取消认捐  2017-08-11*/
+		$.ui.popup({
+			title: "提示",
+			message: "你确定要取消对该学生的资助吗？",
+			cancelText: "取消",
+			cancelOnly: false,
+			doneText: "确定",
+			doneCallback: function() {
+				subStuViewCancel();
+			},
+			cancelCallback: function() {
 
+			}
+		});
+
+	}
+
+	function subStuViewCancel() {
+		/*取消认捐  2017-08-11*/
+		ajaxFuncs.put({
+			urlname: "/api/cancelSubscribe",
+			params: {
+				"studentId": $("#subStuViewBody").attr('data-stuid')
+			},
+			funcs: {
+				funcSuccessful: function(data) {
+					loadData.load({
+						data: data,
+						container: "subStuInfo",
+						readOnly: true,
+						barbutton: true,
+						callback: function() {}
+					});
+				}
+			}
+		});
 	}
 
 	function subStuViewFooterTwoFunc(obj) {
@@ -32,6 +68,7 @@
 			funcs: {
 				funcSuccessful: function(data) {
 					var html = '';
+					$("#subStuViewBody").attr('data-stuid', data.studentId); /*取消认捐  2017-08-11*/
 					html += '<div class="padding-top-1"></div>';
 					html += '<div class="info-panel-default">';
 					html += '<p>姓名：' + data.studentName + '</p>';
@@ -43,6 +80,7 @@
 					html += '<div class="info-panel-default">';
 					html += '<p>认捐时间：' + data.releaseTime + '</p>';
 					html += '<p class="color-paleRed">金额：￥' + data.needMoney + '</p>';
+					html += '<p class="color-paleRed">备注：' + data.remark + '</p>';
 					html += '</div>';
 					html += '<!---->';
 					html += '<div class="vis-info">';
@@ -104,10 +142,10 @@
 						html += '<div class="list-box">';
 						html += '<div class="list-defult-body box-h box-align">';
 						html += '<div class="box-flex">';
-						html += '<span class="title">汇款时间：' + data.remittances[i].remittanceTime + '</span>';
+						html += '<span class="title">汇款时间：' + data.remittances[j].remittanceTime + '</span>';
 						html += '</div>';
 						html += '<div class="icon-text-box">';
-						html += '<span class="nav">￥' + data.remittances[i].remittanceMoney + '</span>';
+						html += '<span class="nav">￥' + data.remittances[j].remittanceMoney + '</span>';
 						html += '</div>';
 						html += '</div>';
 						html += '</div>';

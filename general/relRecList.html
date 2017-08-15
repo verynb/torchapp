@@ -1,15 +1,38 @@
-<div class="padding-top-1"></div>
-<div class="list-panel"></div>
+<div id="relRecListBody" class="wrapper">
+	<div class="scrollerBody">
+		<div class="list-panel list">
+			<!--start-->
+			<!--<div class="list-box" data-dir="general" data-tkey="volEdit" data-transition="slide" onclick="common.loadPage(this);">
+				<div class="list-defult-body box-h box-align">
+					<div class="box-flex">
+						<span class="title">义工名字</span>
+					</div>
+					<div class="icon-next">
+						<i class="icon-img icon-img-next"></i>
+					</div>
+				</div>
+			</div>-->
+			<!--end-->
+		</div>
+	</div>
+</div>
 <script type="text/javascript">
+	var relRecListPage = 0,
+		isAddPage = true,
+		isBindS = true,
+		relRecListNowObjScroll = null;
+
 	function loadrelRecList(obj) {
-		initrelRecList();
+		relRecListPage = 0;
+		isAddPage = true;
+		relRecListPullDownAction(obj, undefined);
 	}
 
-	function initrelRecList() {
+	function relRecListPullDownAction(obj, callback) {
 		relRecSearchVal.startTime = (new Date(relRecSearchVal.startTime)).getTime();
 		relRecSearchVal.endTime = (new Date(relRecSearchVal.endTime)).getTime();
 		relRecSearchVal.currentPage = '0';
-		relRecSearchVal.pageSize = '50';
+		relRecSearchVal.pageSize = '15';
 
 		ajaxFuncs.post({
 			urlname: "/api/releases",
@@ -17,32 +40,115 @@
 			funcs: {
 				funcSuccessful: function(data) {
 					releasesData = data.releases;
+					relRecListPage = 0;
+					if(releasesData.length < 15) {
+						isAddPage = false;
+					} else {
+						isAddPage = true;
+					}
 					if(releasesData.length != 0) {
-						initrelRecListHtml(releasesData);
+						var html = '';
+						for(var i = 0; i < releasesData.length; i++) {
+							html += '<div class="list-box" data-batchId="' + releasesData[i].id + '" data-batchNo="' + releasesData[i].batchNo + '" data-batchProvince="' + releasesData[i].province + '" data-batchCity="' + releasesData[i].city + '" data-dir="general" data-tkey="relRecStuList" data-transition="slide" onclick="common.loadPage(this);">';
+							html += '<div class="list-defult-body box-h box-align">';
+							html += '<div class="box-flex">';
+							html += '<span class="title">' + releasesData[i].batchNo + '</span>';
+							html += '</div>';
+							html += '<div class="icon-next">';
+							html += '<i class="icon-img icon-img-next"></i>';
+							html += '</div>';
+							html += '</div>';
+							html += '</div>';
+						}
+						$("#relRecList .list-panel").empty().append(html);
+						if(relRecListNowObjScroll != null) {
+							relRecListNowObjScroll.refresh();
+						}
+						if(releasesData.length > 0) {
+							if(isBindS) {
+								var jsondata = {};
+								jsondata.content = "relRecList";
+								jsondata.container = "list";
+								jsondata.containerScroll = "wrapper";
+								jsondata.funcPullDown = relRecListPullDownAction;
+								jsondata.funcpullUp = relRecListPullUpAction;
+								jsondata.funcObjScroll = function(objScroll) {
+									relRecListNowObjScroll = objScroll;
+								};
+								refreshAndPage.add(jsondata);
+							}
+							isBindS = false;
+						}
 					} else {
 						common.toast("没有查询到相关批次");
+						common.handleDefaultPage({
+							type: 2,
+							objdiv: "#relRecList .list-panel"
+						});
 					}
+					if(callback != undefined) {
+						callback(0);
+					}
+
 				}
 			}
 		});
 	}
 
-	function initrelRecListHtml(releasesData) {
-		if(releasesData != 0) {
-			var html = '';
-			for(var i = 0; i < releasesData.length; i++) {
-				html += '<div class="list-box" data-batchId="' + releasesData[i].id + '" data-batchNo="' + releasesData[i].batchNo + '" data-batchProvince="' + releasesData[i].province + '" data-batchCity="' + releasesData[i].city + '" data-dir="general" data-tkey="relRecStuList" data-transition="slide" onclick="common.loadPage(this);">';
-				html += '<div class="list-defult-body box-h box-align">';
-				html += '<div class="box-flex">';
-				html += '<span class="title">' + releasesData[i].batchNo + '</span>';
-				html += '</div>';
-				html += '<div class="icon-next">';
-				html += '<i class="icon-img icon-img-next"></i>';
-				html += '</div>';
-				html += '</div>';
-				html += '</div>';
+	function relRecListPullUpAction(obj, callback) {
+
+		if(isAddPage == true) {
+			relRecListPage = relRecListPage + 1;
+			relRecSearchVal.startTime = (new Date(relRecSearchVal.startTime)).getTime();
+			relRecSearchVal.endTime = (new Date(relRecSearchVal.endTime)).getTime();
+			relRecSearchVal.currentPage = relRecListPage;
+			relRecSearchVal.pageSize = '15';
+			ajaxFuncs.post({
+				urlname: "/api/releases",
+				params: relRecSearchVal,
+				funcs: {
+					funcSuccessful: function(data) {
+						var releasesData = data.releases;
+
+						if(releasesData.length != 0) {
+							var html = '';
+							for(var i = 0; i < releasesData.length; i++) {
+								html += '<div class="list-box" data-batchId="' + releasesData[i].id + '" data-batchNo="' + releasesData[i].batchNo + '" data-batchProvince="' + releasesData[i].province + '" data-batchCity="' + releasesData[i].city + '" data-dir="general" data-tkey="relRecStuList" data-transition="slide" onclick="common.loadPage(this);">';
+								html += '<div class="list-defult-body box-h box-align">';
+								html += '<div class="box-flex">';
+								html += '<span class="title">' + releasesData[i].batchNo + '</span>';
+								html += '</div>';
+								html += '<div class="icon-next">';
+								html += '<i class="icon-img icon-img-next"></i>';
+								html += '</div>';
+								html += '</div>';
+								html += '</div>';
+							}
+							$("#relRecList .list-panel").empty().append(html);
+						} else {
+							common.toast("没有了");
+						}
+						if(releasesData.length < 15) {
+							isAddPage = false;
+							if($("#relRecList .noMoreData").length == 0) {
+								var htmlNo = '';
+								htmlNo += '<p class="noMoreData">没有更多了</p>';
+								$("#relRecList .list-panel").append(htmlNo);
+							}
+						} else {
+							isAddPage = true;
+						}
+
+						if(callback != undefined) {
+							callback(0);
+						}
+					}
+				}
+			});
+		} else {
+			if(callback != undefined) {
+				callback(0);
 			}
-			$("#relRecList .list-panel").empty().append(html);
 		}
 	}
 </script>

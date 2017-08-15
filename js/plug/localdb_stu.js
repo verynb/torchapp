@@ -1,9 +1,9 @@
 "use strict"; /*本地存储*/
 var localStu = (function() {
 	var newestVersion = G_LOCALDB; //定义需要发布的最新版本1.2
-	var sql_stutable = 'CREATE TABLE IF NOT EXISTS local_stu(id INTEGER PRIMARY KEY,batchId VARCHAR,studentId VARCHAR,name VARCHAR,stuJsonStrData VARCHAR,applicationForm VARCHAR,studentPhoto VARCHAR,familyPhoto VARCHAR,homePhoto VARCHAR,homeFeaturePhotos VARCHAR,InteractivePhoto VARCHAR,visitInfo VARCHAR,auditItemIds VARCHAR,status VARCHAR,upstatus VARCHAR,volId VARCHAR,volIdName VARCHAR,createtime VARCHAR,updatetime VARCHAR)';
+	var sql_stutable = 'CREATE TABLE IF NOT EXISTS local_stu(id INTEGER PRIMARY KEY,batchId VARCHAR,studentId VARCHAR,name VARCHAR,stuJsonStrData VARCHAR,applicationForm VARCHAR,studentPhoto VARCHAR,familyPhoto VARCHAR,homePhoto VARCHAR,homeFeaturePhotos VARCHAR,InteractivePhoto VARCHAR,visitInfo VARCHAR,auditItemIds VARCHAR,status VARCHAR,upstatus VARCHAR,volId VARCHAR,volIdName VARCHAR,createtime VARCHAR,updatetime VARCHAR,relativePath VARCHAR)';
 	var sql_standardtable = 'CREATE TABLE IF NOT EXISTS local_standard(id INTEGER PRIMARY KEY,staid VARCHAR,title VARCHAR,staJsonStrData VARCHAR,createtime VARCHAR)';
-	var sql_insertStu = 'INSERT INTO local_stu(batchId,studentId,name,stuJsonStrData,applicationForm,studentPhoto,familyPhoto,homePhoto,homeFeaturePhotos,InteractivePhoto,visitInfo,auditItemIds,status,upstatus,volId,volIdName,createtime,updatetime) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+	var sql_insertStu = 'INSERT INTO local_stu(batchId,studentId,name,stuJsonStrData,applicationForm,studentPhoto,familyPhoto,homePhoto,homeFeaturePhotos,InteractivePhoto,visitInfo,auditItemIds,status,upstatus,volId,volIdName,createtime,updatetime,relativePath) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
 	var sql_deleteStu = 'DELETE FROM local_stu';
 	var sql_selectAll = 'SELECT * FROM local_stu';
 	var sql_selectStuByIdAndBatId = 'SELECT * FROM local_stu WHERE studentId=? AND batchId=?';

@@ -1,0 +1,46 @@
+<div id="agreementBody">
+
+</div>
+
+<script>
+	function loadagreement(obj) {
+		$.ajax({
+			type: "post",
+			url: "./help/protocol/support.json",
+			async: true,
+			data: {},
+			success: function(data) {
+				data = JSON.parse(data);
+				agreementDetail(data);
+			}
+		});
+		agreementFooter();
+	}
+
+	function agreementFooter() {
+		var btuHtml = '';
+		var jsondata = {};
+		btuHtml += '<div class="footerBtu bg-color-brown" data-tkey="subCheck" data-dir="general" data-transition="slide" onclick="common.loadPage(this);">';
+		btuHtml += '<a class="all agreement-save" href="javascript:void(0);">同意认捐</a>';
+		btuHtml += '</div>';
+		jsondata.container = 'agreement';
+		jsondata.buttonHtml = btuHtml;
+		common.commonFooterBtu(jsondata);
+	}
+
+	function agreementDetail(data) {
+		var html = "";
+		html += '<p class="title">' + data.title + '</p>';
+		html += '<p class="who">' + data.who + '</p>';
+		html += '<div class="nav">';
+		for(var i = 0; i < data.content.length; i++) {
+			html += '<div class="navbig">' + data.content[i].big + '</div>';
+			html += '<div class="navsub">' + data.content[i].sub + '</div>';
+		}
+		html += '</div>';
+		html += '<p class="our">' + data.our + '</p>';
+		html += '<p class="subour">' + data.subour + '</p>';
+		html += '<p class="date">' + data.date + '</p>';
+		$("#agreementBody").empty().append(html);
+	}
+</script>

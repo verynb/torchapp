@@ -7,13 +7,13 @@
 				<span class="title">林晓婷</span>
 			</div>
 			<div class="text-input-box">
-				<input class="editor-input" type="text" name="name" required="required" placeholder="未填写 " value="4000" />元
+				<input class="editor-input" type="text" name="name" required="required" placeholder="未填写 " value="4000" re />元
 			</div>
 			<div class="icon-next"></div>
 		</div>
 	</div>
 	-->
-		<!--<input type="text" onfocus="common.inputGetFocus(this)" />-->
+		<!--<input type="hidden" onfocus="common.inputGetFocus(this)" />-->
 	</div>
 </form>
 <script type="text/javascript">
@@ -38,16 +38,16 @@
 		//		common.toast('保存本批次成功，请通知老师审核');
 		//		PUT /api/release/{batchId}
 
-
 		if(!common.validate("#relMoney form", obj)) {
 			return false;
 		} else {
-			var el_inputneedMoney = $("#relMoney input[name='needMoney']");
+			var el_needMoneyInfo = $("#relMoney .needMoneyInfo");
 			var params = [];
-			for(var i = 0; i < el_inputneedMoney.length; i++) {
+			for(var i = 0; i < el_needMoneyInfo.length; i++) {
 				var itemVal = {};
-				itemVal.needMoney = $(el_inputneedMoney[i]).val().trim();
-				itemVal.releaseStudentId = $(el_inputneedMoney[i]).attr("data-releaseStudentId");
+				itemVal.needMoney = $(el_needMoneyInfo[i]).find("input[name='needMoney']").val().trim();
+				itemVal.remark = $(el_needMoneyInfo[i]).find("input[name='remark']").val().trim();
+				itemVal.releaseStudentId = $(el_needMoneyInfo[i]).attr("data-releaseStudentId");
 				params.push(itemVal);
 			}
 			ajaxFuncs.put({
@@ -74,21 +74,28 @@
 					data = data.releaseList;
 					if(data.length != 0) {
 						for(var i = 0; i < data.length; i++) {
-							html += '<div class="list-box">';
-							html += '<div class="list-defult-body box-h box-align">';
-							html += '<div class="box-flex" data-stuid="' + data[i].studentId + '" data-releaseStudentId="' + data[i].releaseStudentId + '" data-dir="general" data-tkey="stuView" data-transition="slide" onclick="common.loadPage(this);">';
+							html += '<div class="list-box" id="money' + data[i].studentId + '">';
+							html += '<div class="list-defult-body box-h box-align" data-stuid="' + data[i].studentId + '" data-releaseStudentId="' + data[i].releaseStudentId + '" data-dir="general" data-tkey="relMoneyInfo" data-transition="slide" onclick="common.loadPage(this);">';
+							html += '<div class="box-flex" >';
 							html += '<span class="title-other">' + data[i].studentName + '</span>';
 							if(data[i].scores != 0) {
 								//	html += '<span class="subtitle-make">' + data[i].scores + '分</span>';
 							}
 							html += '</div>';
-							html += '<div class="text-input-box">';
+							html += '<div class="text-input-box needMoneyInfo" data-releaseStudentId="' + data[i].releaseStudentId + '">';
 							if(data[i].hasOwnProperty("money") && data[i].money != '') {
-								html += '<input class="editor-input" type="text" data-stuid="' + data[i].studentId + '"  data-releaseStudentId="' + data[i].releaseStudentId + '" name="needMoney" required="required" placeholder="未填写 " value="' + data[i].money + '"  data-warning="请填写所需金额" onfocus="common.inputGetFocus(this)"/>元';
+								html += '<input class="editor-input width-7" type="text" data-stuid="' + data[i].studentId + '"  data-releaseStudentId="' + data[i].releaseStudentId + '" name="needMoney" required="required" placeholder="未填写 " readonly="readonly" value="' + data[i].money + '"  data-warning="请填写所需金额" onfocus="common.inputGetFocus(this)"/>元';
 							} else {
-								html += '<input class="editor-input" type="text" data-stuid="' + data[i].studentId + '"  data-releaseStudentId="' + data[i].releaseStudentId + '" name="needMoney" required="required" placeholder="未填写 " value="' + pageCom.gradeMoneyChoose(data[i].grade) + '" data-warning="请填写所需金额" onfocus="common.inputGetFocus(this)"/>元';
+								html += '<input class="editor-input width-7" type="text" data-stuid="' + data[i].studentId + '"  data-releaseStudentId="' + data[i].releaseStudentId + '" name="needMoney" required="required" placeholder="未填写 " readonly="readonly" value="' + pageCom.gradeMoneyChoose(data[i].grade) + '" data-warning="请填写所需金额" onfocus="common.inputGetFocus(this)"/>元';
 							}
+							if(data[i].hasOwnProperty("remark") && data[i].remark != '') {
+								html += '<span class="isremark">有备注</span>';
+							} else {
+								html += '<span class="isremark">无备注</span>';
+							}
+							html += '<input class="editor-input" type="hidden" name="remark" required="required" placeholder="未填写 " value=""/>';
 							html += '</div>';
+							html += '<div class="icon-next"><i class="icon-img icon-img-next"></i></div>'
 							html += '</div>';
 							html += '</div>';
 						}

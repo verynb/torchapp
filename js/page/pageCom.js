@@ -143,31 +143,45 @@
 						funcSuccessful: function(data) {
 							data = data.releaseList;
 							var arr = [];
+							var relativePath = null;
 							for(var i = 0; i < data.length; i++) {
-								progress = Math.floor(((i + 1) / data.length) * 100);
-								$.ui.hideMask();
-								$.ui.showMask('当前下载学生信息进度：' + progress + '%');
-								arr = [];
-								//batchId,studentId, name,stuJsonStrData,applicationForm,studentPhoto,familyPhoto,homePhoto,InteractivePhoto,visitInfo,createtime,updatetime
-								arr.push((data[i].releaseId).toString());
-								arr.push((data[i].studentId).toString());
-								arr.push(data[i].studentName);
-								arr.push(JSON.stringify(data[i]));
-								arr.push('');
-								arr.push('');
-								arr.push('');
-								arr.push('');
-								arr.push('');
-								arr.push('');
-								arr.push('');
-								arr.push('');
-								arr.push('0');
-								arr.push('0');
-								arr.push(window.localStorage.getItem(G_COMKEY + ".userId"));
-								arr.push(window.localStorage.getItem(G_COMKEY + ".userName"));
-								arr.push(createtime);
-								arr.push(createtime);
-								localStu.insertStu(arr);
+								(function(i) {
+									progress = Math.floor(((i + 1) / data.length) * 100);
+									$.ui.hideMask();
+									$.ui.showMask('当前下载学生信息进度：' + progress + '%');
+									setTimeout(function() {
+										pageCom.downloadPhoto(G_IMGPREFIX + data[i].headPhoto, function(photourl) {
+											relativePath = photourl;
+											console.log('relativePath1==' + relativePath);
+
+											arr = [];
+											//batchId,studentId, name,stuJsonStrData,applicationForm,studentPhoto,familyPhoto,homePhoto,InteractivePhoto,visitInfo,createtime,updatetime
+											arr.push((data[i].releaseId).toString());
+											arr.push((data[i].studentId).toString());
+											arr.push(data[i].studentName);
+											arr.push(JSON.stringify(data[i]));
+											arr.push('');
+											arr.push('');
+											arr.push('');
+											arr.push('');
+											arr.push('');
+											arr.push('');
+											arr.push('');
+											arr.push('');
+											arr.push('0');
+											arr.push('0');
+											arr.push(window.localStorage.getItem(G_COMKEY + ".userId"));
+											arr.push(window.localStorage.getItem(G_COMKEY + ".userName"));
+											arr.push(createtime);
+											arr.push(createtime);
+											arr.push(relativePath);
+											localStu.insertStu(arr);
+											relativePath = null;
+
+										}); /*-------------- 没有写完------------- 下载头像*/
+
+									}, 100);
+								})(i)
 							}
 							getAudits();
 						}
@@ -201,6 +215,33 @@
 					}
 				});
 			}
+		},
+		downloadPhoto: function(downloadurl, relativePath) {
+			var options = {
+				method: "GET"
+			};
+			var download = plus.downloader.createDownload(downloadurl, {}, function(f, status) {
+				console.log("-----------------------");
+				if(status == 200) {
+					console.log('f:' + JSON.stringify(f));
+					//					plus.io.convertLocalFileSystemURL(relativePath);
+					console.log("下载成功=" + f.filename);
+					relativePath(plus.io.convertLocalFileSystemURL(f.filename));
+				} else {
+					console.log("下载失败=" + status + "==" + f.filename);
+					if(f.filename != null) {
+						plus.io.resolveLocalFileSystemURL(f.filename, function(entry) {
+							entry.remove(function(entry) {
+								console.log("文件删除成功==" + f.filename);
+							}, function(e) {
+								console.log("文件删除失败=" + f.filename);
+							});
+						});
+					}
+				}
+			});
+
+			download.start();
 		},
 		stuStatusName: function(status) {
 			/**

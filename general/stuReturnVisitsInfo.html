@@ -45,8 +45,15 @@
 					$("#stuReturnVisitsInfo .data-stuname").html(studentName);
 					$("#stuReturnVisitsInfo .data-returnInfo").html(data.returnInfo);
 					var html = '';
+					var role = window.localStorage.getItem(G_COMKEY + ".role");
+					var userType = window.localStorage.getItem(G_COMKEY + ".userType");
+					role = JSON.parse(role);
 					for(var i = 0; i < data.returnPhotos.length; i++) {
-						html += '<img src="' + G_IMGPREFIX + data.returnPhotos[i] + '" alt="data" />';
+						if(role != null && role.hasOwnProperty('roleCode') && role.roleCode != "teacher") {
+							html += '<img src="' + G_IMGPREFIX + data.returnPhotos[i] + '" alt="data" data-tkey="stuPhotoExportInfo" data-dir="general" data-transition="slide" onclick="common.loadPage(this)"/>';
+						} else {
+							html += '<img src="' + G_IMGPREFIX + data.returnPhotos[i] + '" alt="data" />';
+						}
 					}
 					$("#stuReturnVisitsInfo .data-photo").append(html);
 				}

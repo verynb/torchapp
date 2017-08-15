@@ -1,0 +1,72 @@
+<form>
+	<div class="list-panel">
+		<div class="padding-top-1"></div>
+		<div class="list-box">
+			<div class="list-defult-body box-h">
+				<div class="box-flex">
+					<span class="title">邮箱</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input" type="text" name="email" value="" required="required" data-check="^\w+([-+.]\w+)*@\w+([-.]\\w+)*\.\w+([-.]\w+)*$" data-warning-check="邮箱格式不正确" data-warning="邮箱不能为空" placeholder="必填" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+	</div>
+</form>
+
+<script type="text/javascript">
+	var downType = null;
+
+	function loadstuExportInfo(obj) {
+		downType = $(obj).attr("data-exportType");
+		if(downType == 'stuInfo') {
+			$.ui.setTitle("导出学生信息");
+		} else {
+			$.ui.setTitle("导出受助人承诺书");
+		}
+		stuExportInfoFooter();
+	}
+	/*--- 2017-08-11 修改*/
+	function stuExportInfoFooter() {
+		var btuHtml = '';
+		var jsondata = {};
+		btuHtml += '<div class="footerBtu bg-color-brown" onclick="stuExportInfoFooterFuncAdd(this)">';
+		btuHtml += '<a class="all stuExportInfo-save" href="javascript:void(0);">保存</a>';
+		btuHtml += '</div>';
+		jsondata.container = 'stuExportInfo';
+		jsondata.buttonHtml = btuHtml;
+		common.commonFooterBtu(jsondata);
+	}
+
+	function stuExportInfoFooterFuncAdd(obj) {
+		var params = common.serializeToJson("#stuExportInfo form");
+		if(!common.validate("#stuExportInfo form", obj)) {
+			return false;
+		} else {
+			if(downType == 'stuInfo') {
+				ajaxFuncs.get({
+					clickobj: obj,
+					urlname: "/api/students/export/" + stuViewStuId + "?email=" + params.email,
+					funcs: {
+						funcSuccessful: function(data) {
+							common.toast("发送成功");
+							$.ui.goBack();
+						}
+					}
+				})
+			} else if(downType == 'contractInfo') {
+				ajaxFuncs.get({
+					clickobj: obj,
+					urlname: "/api/undertaking/export/" + stuViewStuId + "?email=" + params.email,
+					funcs: {
+						funcSuccessful: function(data) {
+							common.toast("发送成功");
+							$.ui.goBack();
+						}
+					}
+				})
+			}
+		}
+	}
+</script>
