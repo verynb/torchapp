@@ -1,4 +1,4 @@
-<form>
+<form action="" onsubmit="return false;">
 	<div class="list-panel">
 		<div class="padding-top-1"></div>
 		<div class="list-box">
@@ -14,6 +14,11 @@
 			</div>
 		</div>
 	</div>
+	<div class="row2 padding-top-3">
+		<div class="rw1">
+			<a href="javascript:void(0);" class="login-btu bg-color-brown" onclick="stuPhotoExportInfoFooterFuncAdd(this)">确认导出</a>
+		</div>
+	</div>
 </form>
 
 <script type="text/javascript">
@@ -21,7 +26,7 @@
 		var srcPhoto = $(obj).attr('src');
 		srcPhoto = srcPhoto.substr(7, srcPhoto.length);
 		$("#stuPhotoExportInfo input[name='url']").val(srcPhoto);
-		stuPhotoExportInfoFooter();
+		//		stuPhotoExportInfoFooter();
 	}
 
 	/*--- 2017-08-11 修改*/

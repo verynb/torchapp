@@ -1065,3 +1065,27 @@ ul {
     text-align: justify;
     padding: 0.5rem 0rem 1rem;
 }
+
+#stuExportInfo,
+#stuPhotoExportInfo {
+    .row2 {
+        .rw1,
+        .rw2 {
+            height: 4.5rem;
+            padding: 0 3rem;
+            a {
+                display: block;
+                width: 100%;
+                height: 100%;
+                font-size: 1.6rem;
+                line-height: 4.5rem;
+                text-align: center;
+                color: #FFFFFF;
+                border-radius: 2.35rem;
+            }
+            a:active {
+                opacity: 0.6;
+            }
+        }
+    }
+}

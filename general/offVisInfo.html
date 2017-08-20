@@ -2,7 +2,7 @@
 	<form>
 		<div class="row1">
 			<textarea class="visInfo" placeholder="请录入家访内容..." name="visitInfo"></textarea>
-			<div class="applicationForm">
+			<div class="applicationForm hidden-important">
 				<span class="subtitle">（申请表含有姓名及照片）</span>
 				<div class="rw1 box-h">
 					<div class="r1 padding-right-12">
@@ -37,7 +37,7 @@
 			<span class="subtitle">（家庭成员照片）</span>
 			<div class="rw1 box-h">
 				<div class="r1 padding-right-12">
-					<img class="" src="img/example/4.jpg" alt="照相" onclick="showImgNow(this)" />
+					<img class="" src="img/example/3.jpg" alt="照相" onclick="showImgNow(this)" />
 				</div>
 				<div class="savebox">
 					<div class="box-h saveboxList"></div>
@@ -237,11 +237,12 @@
 		}
 		arrdata.push(ridiocheckarr.join('*'));
 		arrdata.push('1');
-		arrdata.push(common.formatTime(G_SERVERTIME, 3));
+		arrdata.push(common.formatTime(G_SERVERTIME, 2));
 		arrdata.push($("#offVisInfoHeader a.stuinfo").attr('data-stuid'));
 		arrdata.push($("#offVisInfoHeader a.stuinfo").attr('data-batchId'));
 
-		if(applicationForm.length != 0 && studentPhoto.length != 0 && familyPhoto.length != 0 && homePhoto.length != 0 && homeFeaturePhotos.length != 0 && InteractivePhoto.length != 0 && params.visitInfo != '' && ridiocheckarr.length == criterionLength) {
+		//		if(applicationForm.length != 0 && studentPhoto.length != 0 && familyPhoto.length != 0 && homePhoto.length != 0 && homeFeaturePhotos.length != 0 && InteractivePhoto.length != 0 && params.visitInfo != '' && ridiocheckarr.length == criterionLength) {
+		if(studentPhoto.length != 0 && familyPhoto.length != 0 && homePhoto.length != 0 && homeFeaturePhotos.length != 0 && InteractivePhoto.length != 0 && params.visitInfo != '' && ridiocheckarr.length == criterionLength) {
 			localStu.saveStuByIdAndBatId(arrdata);
 			$.ui.goBack();
 		} else {
@@ -312,7 +313,7 @@
 				html += '<input type="hidden"  placeholder="申请表图片" value="' + applicationForm[i] + '" />';
 				html += '</div>';
 			}
-			if(applicationForm.length < 4) {
+			if(applicationForm.length < 2) {
 				$("#offVisInfo .applicationForm .upphoto").show();
 			} else {
 				$("#offVisInfo .applicationForm .upphoto").hide();
@@ -326,7 +327,7 @@
 				html += '<input type="hidden"  placeholder="申请表图片" value="' + studentPhoto[i] + '" />';
 				html += '</div>';
 			}
-			if(studentPhoto.length < 4) {
+			if(studentPhoto.length < 2) {
 				$("#offVisInfo .studentPhoto .upphoto").show();
 			} else {
 				$("#offVisInfo .studentPhoto .upphoto").hide();
@@ -340,7 +341,7 @@
 				html += '<input type="hidden"  placeholder="申请表图片" value="' + familyPhoto[i] + '" />';
 				html += '</div>';
 			}
-			if(familyPhoto.length < 4) {
+			if(familyPhoto.length < 2) {
 				$("#offVisInfo .familyPhoto .upphoto").show();
 			} else {
 				$("#offVisInfo .familyPhoto .upphoto").hide();
@@ -354,7 +355,7 @@
 				html += '<input type="hidden"  placeholder="申请表图片" value="' + homePhoto[i] + '" />';
 				html += '</div>';
 			}
-			if(homePhoto.length < 4) {
+			if(homePhoto.length < 2) {
 				$("#offVisInfo .homePhoto .upphoto").show();
 			} else {
 				$("#offVisInfo .homePhoto .upphoto").hide();
@@ -368,7 +369,7 @@
 				html += '<input type="hidden"  placeholder="申请表图片" value="' + homeFeaturePhotos[i] + '" />';
 				html += '</div>';
 			}
-			if(homeFeaturePhotos.length < 4) {
+			if(homeFeaturePhotos.length < 2) {
 				$("#offVisInfo .homeFeaturePhotos .upphoto").show();
 			} else {
 				$("#offVisInfo .homeFeaturePhotos .upphoto").hide();
@@ -382,7 +383,7 @@
 				html += '<input type="hidden"  placeholder="申请表图片" value="' + InteractivePhoto[i] + '" />';
 				html += '</div>';
 			}
-			if(InteractivePhoto.length < 4) {
+			if(InteractivePhoto.length < 2) {
 				$("#offVisInfo .InteractivePhoto .upphoto").show();
 			} else {
 				$("#offVisInfo .InteractivePhoto .upphoto").hide();

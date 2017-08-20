@@ -314,7 +314,10 @@
 					"img/icon/icon-time.png",
 					"general/stuHomeVisitsInfo.html",
 					"general/stuHomeVisitsList.html",
-					"general/stuPhotoExportInfo.html"
+					"general/stuPhotoExportInfo.html",
+					"img/icon/icon-bg.png",
+					"img/icon/icon-more.png",
+					"img/example/1-1.jpg"
 				],
 				"refer": [],
 				"priority": 0
@@ -351,7 +354,6 @@
 				"img/icon/wechat.png",
 				"audio/shake.wav",
 				"general/relBatch.html",
-				"img/icon/icon-more.png",
 				"general/relEdit.html",
 				"general/subPayStyle.html",
 				"updatelog.txt",
@@ -370,7 +372,6 @@
 				"img/icon/camera.png",
 				"img/icon/icon-next.png",
 				"general/subPayStatus.html",
-				"img/icon/icon-bg.png",
 				"css/global.css.map",
 				"lib/plugins/convertor.js",
 				"js/plug/scrollerRefresh.js",

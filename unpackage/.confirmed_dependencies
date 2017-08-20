@@ -86,7 +86,10 @@
 			"img/icon/icon-time.png",
 			"general/stuHomeVisitsInfo.html",
 			"general/stuHomeVisitsList.html",
-			"general/stuPhotoExportInfo.html"
+			"general/stuPhotoExportInfo.html",
+			"img/icon/icon-bg.png",
+			"img/icon/icon-more.png",
+			"img/example/1-1.jpg"
 		],
 		"refer": [
 			"index.html"

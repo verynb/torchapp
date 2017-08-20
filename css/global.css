@@ -252,4 +252,8 @@ ul { list-style: none; }
 
 .markP { text-align: justify; padding: 0.5rem 0rem 1rem; }
 
+#stuExportInfo .row2 .rw1, #stuExportInfo .row2 .rw2, #stuPhotoExportInfo .row2 .rw1, #stuPhotoExportInfo .row2 .rw2 { height: 4.5rem; padding: 0 3rem; }
+#stuExportInfo .row2 .rw1 a, #stuExportInfo .row2 .rw2 a, #stuPhotoExportInfo .row2 .rw1 a, #stuPhotoExportInfo .row2 .rw2 a { display: block; width: 100%; height: 100%; font-size: 1.6rem; line-height: 4.5rem; text-align: center; color: #FFFFFF; border-radius: 2.35rem; }
+#stuExportInfo .row2 .rw1 a:active, #stuExportInfo .row2 .rw2 a:active, #stuPhotoExportInfo .row2 .rw1 a:active, #stuPhotoExportInfo .row2 .rw2 a:active { opacity: 0.6; }
+
 /*# sourceMappingURL=global.css.map */
