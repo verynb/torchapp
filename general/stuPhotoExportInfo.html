@@ -18,7 +18,9 @@
 
 <script type="text/javascript">
 	function loadstuPhotoExportInfo(obj) {
-		$("#stuPhotoExportInfo input[name='url']").val($(obj).attr('src'));
+		var srcPhoto = $(obj).attr('src');
+		srcPhoto = srcPhoto.substr(7, srcPhoto.length);
+		$("#stuPhotoExportInfo input[name='url']").val(srcPhoto);
 		stuPhotoExportInfoFooter();
 	}
 
@@ -40,11 +42,13 @@
 		if(!common.validate("#stuPhotoExportInfo form", obj)) {
 			return false;
 		} else {
+			$.ui.showMask("发送中...");
 			ajaxFuncs.get({
 				clickobj: obj,
 				urlname: "/api/studentPhoto/export/" + stuViewStuId + "?email=" + params.email + '&url=' + params.url,
 				funcs: {
 					funcSuccessful: function(data) {
+						$.ui.hideMask();
 						common.toast("发送成功");
 						$.ui.goBack();
 					}

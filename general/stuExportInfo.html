@@ -44,12 +44,14 @@
 		if(!common.validate("#stuExportInfo form", obj)) {
 			return false;
 		} else {
+			$.ui.showMask("发送中...");
 			if(downType == 'stuInfo') {
 				ajaxFuncs.get({
 					clickobj: obj,
 					urlname: "/api/students/export/" + stuViewStuId + "?email=" + params.email,
 					funcs: {
 						funcSuccessful: function(data) {
+							$.ui.hideMask();
 							common.toast("发送成功");
 							$.ui.goBack();
 						}
@@ -61,6 +63,7 @@
 					urlname: "/api/undertaking/export/" + stuViewStuId + "?email=" + params.email,
 					funcs: {
 						funcSuccessful: function(data) {
+							$.ui.hideMask();
 							common.toast("发送成功");
 							$.ui.goBack();
 						}

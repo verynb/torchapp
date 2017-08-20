@@ -5,10 +5,10 @@
 		<div class="list-box img-photo-box">
 			<div class="list-defult-body box-h boder-none">
 				<div class="box-flex">
-					<span class="title">头像</span>
+					<span class="title">半身照</span>
 				</div>
 				<div class="">
-					<img class="header-picture fromfield" data-fromfield="headPhoto" src="img/icon/defult-photo.png" alt="默认头像" onclick="common.pickImg(this)" />
+					<img class="header-picture fromfield" data-fromfield="headPhoto" src="img/example/1-1.jpg" alt="默认照片" onclick="common.pickImg(this)" />
 					<input class="editor-input fromfield" data-fromfield="headPhoto" type="hidden" name="headPhoto" value="" />
 				</div>
 				<div class="icon-next">
@@ -36,6 +36,17 @@
 				</div>
 				<div class="text-input-box">
 					<input class="editor-input fromfield" data-fromfield="name" type="text" name="name" required="required" data-warning="姓名不能为空" placeholder="未填写" value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h">
+				<div class="box-flex">
+					<span class="title">身份证</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="identityCard" type="text" name="identityCard" required="required" data-warning="身份证不能为空" placeholder="未填写" data-check="^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$" data-warning-check="身份证格式不正确" value="" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
@@ -188,17 +199,6 @@
 
 		<div class="header-title">
 			<span class="title">非必填项</span>
-		</div>
-		<div class="list-box">
-			<div class="list-defult-body box-h">
-				<div class="box-flex">
-					<span class="title">身份证</span>
-				</div>
-				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="identityCard" type="text" name="identityCard" placeholder="未填写" data-check="^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$" data-warning-check="身份证格式不正确" value="" />
-				</div>
-				<div class="icon-next"></div>
-			</div>
 		</div>
 		<div class="list-box">
 			<div class="list-defult-body box-h">

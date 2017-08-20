@@ -1,9 +1,11 @@
 <div id="subStuViewBody"></div>
 <script type="text/javascript">
 	function loadsubStuView(obj) {
-		subStuViewFooter();
 		var subscribeId = $(obj).attr('data-subscribeId');
+		initsubStuView(subscribeId);
+	}
 
+	function reloadSubStuView() {
 		initsubStuView(subscribeId);
 	}
 
@@ -45,15 +47,7 @@
 				"studentId": $("#subStuViewBody").attr('data-stuid')
 			},
 			funcs: {
-				funcSuccessful: function(data) {
-					loadData.load({
-						data: data,
-						container: "subStuInfo",
-						readOnly: true,
-						barbutton: true,
-						callback: function() {}
-					});
-				}
+				funcSuccessful: function(data) {}
 			}
 		});
 	}
@@ -68,6 +62,9 @@
 			funcs: {
 				funcSuccessful: function(data) {
 					var html = '';
+					if(data.subscribed) {
+						subStuViewFooter();
+					}
 					$("#subStuViewBody").attr('data-stuid', data.studentId); /*取消认捐  2017-08-11*/
 					html += '<div class="padding-top-1"></div>';
 					html += '<div class="info-panel-default">';

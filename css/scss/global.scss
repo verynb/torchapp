@@ -79,6 +79,10 @@ ul {
     padding-right: 0 !important;
 }
 
+.font-size-12 {
+    font-size: 1.2rem !important;
+}
+
 .padding-right-12 {
     padding-right: 1.2rem !important;
 }
@@ -232,19 +236,19 @@ ul {
         color: #05B1B3;
     }
     a.usercenter {
-        background: url(../img/icon/icon-users.png) center center no-repeat;
-        background-size: contain;
-        width: 2.1rem;
+        background: url(../img/icon/icon-users.png) center right no-repeat;
+        background-size: 2.1rem;
+        width: 4.1rem;
     }
     a.goback {
-        background: url(../img/icon/icon-back.png) center center no-repeat;
-        background-size: contain;
-        width: 2.1rem;
+        background: url(../img/icon/icon-back.png) center right no-repeat;
+        background-size: 2.1rem;
+        width: 4.1rem;
     }
     a.btuMore {
-        background: url(../img/icon/icon-more.png) center center no-repeat;
-        background-size: contain;
-        width: 2.1rem;
+        background: url(../img/icon/icon-more.png) center right no-repeat;
+        background-size: 2.1rem;
+        width: 4.1rem;
     }
     a.stuInfoDown {}
 }
@@ -254,8 +258,8 @@ ul {
     z-index: 999;
     .moreMenu {
         position: absolute;
-        top: 2.8rem;
-        right: 1.2rem;
+        top: 3rem;
+        right: 1rem;
         min-height: 5.2rem;
         width: 12rem;
         z-index: 999;
@@ -275,7 +279,7 @@ ul {
                 text-align: center;
                 height: 4rem;
                 line-height: 4rem;
-                font-size: 1.2rem;
+                font-size: 1.3rem;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.3);
             }
             li:last-child {

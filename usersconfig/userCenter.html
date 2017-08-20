@@ -11,10 +11,10 @@
 		<div class="list-box img-photo-box">
 			<div class="list-defult-body box-h boder-none">
 				<div class="box-flex">
-					<span class="title">名称</span>
+					<span class="title">头像</span>
 				</div>
 				<div class="">
-					<img class="header-picture fromfield" data-fromfield="photo" src="img/icon/defult-photo.png" alt="默认头像" onclick="common.pickImg(this)" />
+					<img class="header-picture fromfield" data-fromfield="photo" src="img/icon/defult-photo.png" alt="默认照片" onclick="common.pickImg(this)" />
 					<input class="editor-input fromfield" data-fromfield="photo" type="hidden" name="photo" value="" />
 				</div>
 				<div class="icon-next">
@@ -83,39 +83,6 @@
 			</div>
 		</div>
 		<div class="padding-top-1"></div>
-		<div class="list-box hidden">
-			<div class="list-defult-body box-h ">
-				<div class="box-flex">
-					<span class="title">密码</span>
-				</div>
-				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="password" type="text" name="password" data-check="^[0-9A-Za-z]{6,}$" data-warning="密码不能为空" placeholder="未填写" data-warning-check="密码至少为6位" />
-				</div>
-				<div class="icon-next"></div>
-			</div>
-		</div>
-		<div class="list-box">
-			<div class="list-defult-body box-h ">
-				<div class="box-flex">
-					<span class="title">邮箱</span>
-				</div>
-				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="email" type="text" name="email" data-check="^\w+([-+.]\w+)*@\w+([-.]\\w+)*\.\w+([-.]\w+)*$" data-warning-check="邮箱格式不正确" placeholder="未填写 " value="" />
-				</div>
-				<div class="icon-next"></div>
-			</div>
-		</div>
-		<div class="list-box">
-			<div class="list-defult-body box-h ">
-				<div class="box-flex">
-					<span class="title">QQ</span>
-				</div>
-				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="qq" type="text" name="qq" data-check="^[0-9]*$" data-warning-check="qq账号格式不正确" placeholder="未填写 " value="" />
-				</div>
-				<div class="icon-next"></div>
-			</div>
-		</div>
 		<div class="list-box">
 			<div class="list-defult-body box-h ">
 				<div class="box-flex">
@@ -155,12 +122,34 @@
 			</div>
 		</div>
 		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">邮箱</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="email" type="text" name="email" data-check="^\w+([-+.]\w+)*@\w+([-.]\\w+)*\.\w+([-.]\w+)*$" data-warning-check="邮箱格式不正确" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">QQ</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="qq" type="text" name="qq" data-check="^[0-9]*$" data-warning-check="qq账号格式不正确" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
 			<div class="list-defult-body box-h boder-none">
 				<div class="box-flex">
 					<span class="title">加入时间</span>
 				</div>
 				<div class="icon-text-box ">
-					<span class="nav fromfield" data-fromfield="joinTime" ></span>
+					<span class="nav fromfield" data-fromfield="joinTime"></span>
 				</div>
 				<div class="icon-next"></div>
 			</div>

@@ -3,10 +3,10 @@
 	<div class="list-box img-photo-box">
 		<div class="list-defult-body box-h boder-none">
 			<div class="box-flex">
-				<span class="title">头  像:</span>
+				<span class="title">照片:</span>
 			</div>
 			<div class="">
-				<img class="header-picture fromfield" data-fromfield="headPhoto" src="img/icon/defult-photo.png" alt="默认头像" onclick="showImgNow(this)" />
+				<img class="header-picture fromfield" data-fromfield="headPhoto" src="img/icon/defult-photo.png" alt="默认照片" onclick="showImgNow(this)" />
 			</div>
 			<div class="icon-next">
 			</div>
@@ -79,19 +79,19 @@
 			</div>
 		</div>
 	</div>
-	<div class="list-box hidden-important">
+	<div class="list-box item-needMoney">
 		<div class="list-defult-body box-h box-align">
 			<div class="box-flex">
 				<span class="title">资助金额：<span class="data-needMoney"></span>元</span>
 			</div>
 		</div>
 	</div>
-	<div class="list-box heightAuto hidden-important">
+	<div class="list-box heightAuto item-needMoneyMark ">
 		<div class="list-defult-body box-h box-align heightAuto">
 			<div class="">
-				<span class="title">发布备注：</span>
+				<span class="title">备注：</span>
 			</div>
-			<div class="box-flex markP fromfield" data-fromfield="remark"></div>
+			<div class="box-flex markP data-needMoneyMark"></div>
 		</div>
 	</div>
 </div>
@@ -105,9 +105,12 @@
 		} else {
 			if($("#subStuViewBody").length != 0) {
 				subStuInfoStuId = $("#subStuViewBody").attr('data-stuid');
+				$("#subStuInfo .item-needMoney").removeClass('hidden-important').addClass("hidden-important");
+				$("#subStuInfo .item-needMoneyMark").removeClass('hidden-important').addClass("hidden-important");
 			}
 		}
 		$("#subStuInfo .data-needMoney").text($(obj).attr('data-needmoney'));
+		$("#subStuInfo .data-needMoneyMark").text($(obj).attr('data-needMoneyMark'));
 		initsubStuInfo(subStuInfoStuId);
 	}
 

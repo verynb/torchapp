@@ -88,7 +88,7 @@
 							} else {
 								html += '<input class="editor-input width-7" type="text" data-stuid="' + data[i].studentId + '"  data-releaseStudentId="' + data[i].releaseStudentId + '" name="needMoney" required="required" placeholder="未填写 " readonly="readonly" value="' + pageCom.gradeMoneyChoose(data[i].grade) + '" data-warning="请填写所需金额" onfocus="common.inputGetFocus(this)"/>元';
 							}
-							if(data[i].hasOwnProperty("remark") && data[i].remark != '') {
+							if(data[i].hasOwnProperty("remark") && data[i].remark != '' && data[i].remark != null) {
 								html += '<span class="isremark">有备注</span>';
 							} else {
 								html += '<span class="isremark">无备注</span>';

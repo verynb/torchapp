@@ -127,13 +127,12 @@
 					createtime = common.formatTime(G_SERVERTIME, 6);
 					localStu.deleteStuAll();
 					localSta.deleteStaAll();
-					getStuInfo();
+					getAudits();
 				},
 				cancelCallback: function() {
 					$.ui.hideMask();
 				}
 			});
-			var progress = 0;
 
 			function getStuInfo() {
 				$.ui.showMask("开始下载学生信息");
@@ -141,52 +140,64 @@
 					urlname: "/api/release/" + relEditBatchNo,
 					funcs: {
 						funcSuccessful: function(data) {
+							var progress = 0;
 							data = data.releaseList;
-							var arr = [];
 							var relativePath = null;
 							for(var i = 0; i < data.length; i++) {
 								(function(i) {
-									progress = Math.floor(((i + 1) / data.length) * 100);
-									$.ui.hideMask();
-									$.ui.showMask('当前下载学生信息进度：' + progress + '%');
-									setTimeout(function() {
-										pageCom.downloadPhoto(G_IMGPREFIX + data[i].headPhoto, function(photourl) {
-											relativePath = photourl;
-											console.log('relativePath1==' + relativePath);
-
-											arr = [];
-											//batchId,studentId, name,stuJsonStrData,applicationForm,studentPhoto,familyPhoto,homePhoto,InteractivePhoto,visitInfo,createtime,updatetime
-											arr.push((data[i].releaseId).toString());
-											arr.push((data[i].studentId).toString());
-											arr.push(data[i].studentName);
-											arr.push(JSON.stringify(data[i]));
-											arr.push('');
-											arr.push('');
-											arr.push('');
-											arr.push('');
-											arr.push('');
-											arr.push('');
-											arr.push('');
-											arr.push('');
-											arr.push('0');
-											arr.push('0');
-											arr.push(window.localStorage.getItem(G_COMKEY + ".userId"));
-											arr.push(window.localStorage.getItem(G_COMKEY + ".userName"));
-											arr.push(createtime);
-											arr.push(createtime);
-											arr.push(relativePath);
-											localStu.insertStu(arr);
-											relativePath = null;
-
-										}); /*-------------- 没有写完------------- 下载头像*/
-
-									}, 100);
+									if(data[i].headPhoto == '') {
+										progress = Math.floor(((i + 1) / data.length) * 100);
+										updateData(i, data, progress, '');
+									} else {
+										setTimeout(function() {
+											pageCom.downloadPhoto(G_IMGPREFIX + data[i].headPhoto, function(photourl) {
+												progress = Math.floor(((i + 1) / data.length) * 100);
+												relativePath = photourl;
+												console.log('relativePath1==' + relativePath);
+												updateData(i, data, progress, relativePath);
+												relativePath = null;
+											});
+										}, 100);
+									}
 								})(i)
 							}
-							getAudits();
 						}
 					}
 				});
+			}
+
+			function updateData(i, data, progress, relativePath) {
+				var arr = [];
+				//batchId,studentId, name,stuJsonStrData,applicationForm,studentPhoto,familyPhoto,homePhoto,InteractivePhoto,visitInfo,createtime,updatetime
+				arr.push((data[i].releaseId).toString());
+				arr.push((data[i].studentId).toString());
+				arr.push(data[i].studentName);
+				arr.push(JSON.stringify(data[i]));
+				arr.push('');
+				arr.push('');
+				arr.push('');
+				arr.push('');
+				arr.push('');
+				arr.push('');
+				arr.push('');
+				arr.push('');
+				arr.push('0');
+				arr.push('0');
+				arr.push(window.localStorage.getItem(G_COMKEY + ".userId"));
+				arr.push(window.localStorage.getItem(G_COMKEY + ".userName"));
+				arr.push(createtime);
+				arr.push(createtime);
+				arr.push(relativePath);
+				localStu.insertStu(arr);
+				$.ui.hideMask();
+				if(progress == 100) {
+					$.ui.showMask('当前下载学生信息进度：' + progress + '%');
+					setTimeout(function() {
+						$.ui.hideMask();
+					}, 3000);
+				} else {
+					$.ui.showMask('当前下载学生信息进度：' + progress + '%');
+				}
 			}
 
 			function getAudits() {
@@ -196,6 +207,7 @@
 					urlname: "/api/audits",
 					funcs: {
 						funcSuccessful: function(data) {
+							var progress = 0;
 							data = data.auditDtoList;
 							var arraud = [];
 							//	staid, title,staJsonStrData,createtime
@@ -210,7 +222,12 @@
 								arraud.push(createtime);
 								localSta.insertSta(arraud);
 							}
-							$.ui.hideMask();
+							if(progress == 100) {
+								setTimeout(function() {
+									$.ui.hideMask();
+									getStuInfo();
+								}, 3000);
+							}
 						}
 					}
 				});
@@ -242,6 +259,141 @@
 			});
 
 			download.start();
+		},
+		downloadStu: function() {
+			var createtime;
+			$.ui.popup({
+				title: "下载学生信息",
+				message: "请确定你本地离线家访数据均已提交，本数据下载后将覆盖原有数据。确定要继续下载？",
+				cancelText: "取消",
+				cancelOnly: false,
+				doneText: "继续",
+				doneCallback: function() {
+					createtime = common.formatTime(G_SERVERTIME, 6);
+					localStu.deleteStuAll();
+					getStuInfo();
+				},
+				cancelCallback: function() {
+					$.ui.hideMask();
+				}
+			});
+
+			function getStuInfo() {
+				$.ui.showMask("开始下载学生信息");
+				ajaxFuncs.get({
+					urlname: "/api/release/" + relEditBatchNo,
+					funcs: {
+						funcSuccessful: function(data) {
+							var progress = 0;
+							data = data.releaseList;
+							var relativePath = null;
+							for(var i = 0; i < data.length; i++) {
+								(function(i) {
+									if(data[i].headPhoto == '') {
+										progress = Math.floor(((i + 1) / data.length) * 100);
+										updateData(i, data, progress, '');
+									} else {
+										setTimeout(function() {
+											pageCom.downloadPhoto(G_IMGPREFIX + data[i].headPhoto, function(photourl) {
+												progress = Math.floor(((i + 1) / data.length) * 100);
+												relativePath = photourl;
+												console.log('relativePath1==' + relativePath);
+												updateData(i, data, progress, relativePath);
+												relativePath = null;
+											});
+										}, 100);
+									}
+								})(i)
+							}
+						}
+					}
+				});
+			}
+
+			function updateData(i, data, progress, relativePath) {
+				var arr = [];
+				//batchId,studentId, name,stuJsonStrData,applicationForm,studentPhoto,familyPhoto,homePhoto,InteractivePhoto,visitInfo,createtime,updatetime
+				arr.push((data[i].releaseId).toString());
+				arr.push((data[i].studentId).toString());
+				arr.push(data[i].studentName);
+				arr.push(JSON.stringify(data[i]));
+				arr.push('');
+				arr.push('');
+				arr.push('');
+				arr.push('');
+				arr.push('');
+				arr.push('');
+				arr.push('');
+				arr.push('');
+				arr.push('0');
+				arr.push('0');
+				arr.push(window.localStorage.getItem(G_COMKEY + ".userId"));
+				arr.push(window.localStorage.getItem(G_COMKEY + ".userName"));
+				arr.push(createtime);
+				arr.push(createtime);
+				arr.push(relativePath);
+				localStu.insertStu(arr);
+				$.ui.hideMask();
+				if(progress == 100) {
+					$.ui.showMask('当前下载学生信息进度：' + progress + '%');
+					setTimeout(function() {
+						$.ui.hideMask();
+					}, 3000);
+				} else {
+					$.ui.showMask('当前下载学生信息进度：' + progress + '%');
+				}
+			}
+
+		},
+		downloadQ: function() {
+			var createtime;
+			$.ui.popup({
+				title: "下载审核标准",
+				message: "确定要下载或更新本地审核标准,继续下载？",
+				cancelText: "取消",
+				cancelOnly: false,
+				doneText: "继续",
+				doneCallback: function() {
+					createtime = common.formatTime(G_SERVERTIME, 6);
+					localSta.deleteStaAll();
+					getAudits();
+				},
+				cancelCallback: function() {
+					$.ui.hideMask();
+				}
+			});
+
+			function getAudits() {
+				$.ui.hideMask();
+				$.ui.showMask("开始下载审核标准");
+				ajaxFuncs.get({
+					urlname: "/api/audits",
+					funcs: {
+						funcSuccessful: function(data) {
+							var progress = 0;
+							data = data.auditDtoList;
+							var arraud = [];
+							//	staid, title,staJsonStrData,createtime
+							for(var j = 0; j < data.length; j++) {
+								progress = Math.floor(((j + 1) / data.length) * 100);
+								$.ui.hideMask();
+								$.ui.showMask('当前下载学生审核标准：' + progress + '%');
+								arraud = [];
+								arraud.push((data[j].id).toString());
+								arraud.push(data[j].title);
+								arraud.push(JSON.stringify(data[j]));
+								arraud.push(createtime);
+								localSta.insertSta(arraud);
+							}
+							if(progress == 100) {
+								setTimeout(function() {
+									$.ui.hideMask();
+								}, 3000);
+							}
+						}
+					}
+				});
+			}
 		},
 		stuStatusName: function(status) {
 			/**

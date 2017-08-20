@@ -210,16 +210,16 @@
 				<div title='编辑学生' id="relEdit" class="panel" data-header="relEditHeader" data-footerShowHide="true" data-back="reloadrelEdit" data-footer="" data-nopushhistory="0">
 					<div id="relEditContent"></div>
 				</div>
-				<div title='确认信息1' id="relConfirm" class="panel" data-footer="" data-nopushhistory="0">
+				<div title='确认信息' id="relConfirm" class="panel" data-footer="" data-nopushhistory="0">
 					<div id="relConfirmContent"></div>
 				</div>
 				<div title='填写金额' id="relMoney" class="panel" data-header="" refresh="true" data-footer="" data-nopushhistory="0">
 					<div id="relMoneyContent"></div>
 				</div>
-				<div title='填写金额' id="relMoneyInfo" class="panel" data-header="relMoneyInfoHeader" refresh="true" data-footer="" data-nopushhistory="0">
+				<div title='填写金额' id="relMoneyInfo" class="panel" data-header="relMoneyInfoHeader" refresh="true" data-footerShowHide="true" data-footer="" data-nopushhistory="0">
 					<div id="relMoneyInfoContent"></div>
 				</div>
-				<div title='发布记录' id="relRecSearch" class="panel" data-footer="" data-nopushhistory="0">
+				<div title='发布记录' id="relRecSearch" class="panel" data-footer="" data-footerShowHide="true" data-nopushhistory="0">
 					<div id="relRecSearchContent"></div>
 				</div>
 				<div title='批次列表' id="relRecList" class="panel scrollPanel-box" data-footer="" data-nopushhistory="0">
@@ -329,7 +329,9 @@
 					<ul>
 						<li data-tkey="relBatchEdit" data-dir="general" data-transition="slide" onclick="common.moreMenuLi(this)">编辑批次</li>
 						<li data-tkey="relAddTwo" data-dir="general" data-transition="slide" onclick="common.moreMenuLi(this)">添加学生</li>
-						<li onclick="pageCom.downloadStuAndQ()">下载信息</li>
+						<li onclick="pageCom.downloadStuAndQ()">下载家访信息</li>
+						<!--<li onclick="pageCom.downloadQ()">下载审核标准</li>
+						<li onclick="pageCom.downloadStu()">下载学生信息</li>-->
 					</ul>
 				</div>
 			</header>
@@ -353,7 +355,7 @@
 				<div class="moreMenu">
 					<ul>
 						<li data-tkey="stuExportInfo" data-dir="general" data-transition="slide" data-exportType="stuInfo" onclick="common.moreMenuLi(this)">导出学生信息</li>
-						<li data-tkey="stuExportInfo" data-dir="general" data-transition="slide" data-exportType="contractInfo" onclick="common.moreMenuLi(this)">导出受助人承诺书</li>
+						<li data-tkey="stuExportInfo" class="font-size-12" data-dir="general" data-transition="slide" data-exportType="contractInfo" onclick="common.moreMenuLi(this)">导出受助人承诺书</li>
 						<!--合并下载 原有的打印资料和打印资助合同 并发送到当前账号个人资料的邮箱-->
 						<li data-tkey="relRecMoneyRemitAdd" data-dir="general" data-transition="slide" onclick="common.moreMenuLi(this)">汇款录入</li>
 						<li data-tkey="relRecMoneyAdd" data-dir="general" data-transition="slide" onclick="common.moreMenuLi(this)">放款录入</li>

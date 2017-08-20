@@ -4,10 +4,10 @@
 	<div class="list-box img-photo-box">
 		<div class="list-defult-body box-h boder-none">
 			<div class="box-flex">
-				<span class="title">头像</span>
+				<span class="title">照片</span>
 			</div>
 			<div class="">
-				<img class="header-picture fromfield" src="img/icon/defult-photo.png" alt="默认头像" onclick="showImgNow(this)" />
+				<img class="header-picture fromfield" src="img/icon/defult-photo.png" alt="默认照片" onerror="this.src='img/icon/defult-photo.png'" onclick="showImgNow(this)" />
 			</div>
 			<div class="icon-next"></div>
 		</div>
@@ -105,7 +105,7 @@
 	function initoffVisStuView(data) {
 		console.log(JSON.stringify(data));
 		if(data.status == 1) {
-			$("#offVisStuView .header-picture").attr('src',data.info.relativePath);
+			$("#offVisStuView .header-picture").attr('src', data.info.relativePath);
 			loadData.load({
 				data: JSON.parse(data.info.stuJsonStrData),
 				container: "offVisStuView",
