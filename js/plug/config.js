@@ -1,7 +1,7 @@
 G_ENV = "1"; //test
 G_USERTYPE = "1"; //   1.client端  2.server端   3.小宝
 G_COMKEY = "torh";
-G_APPNAME = "昵窝";
+G_APPNAME = "火炬助学";
 G_CHECKVERONSTART = false; //0打开应用即检测，1登录后检测
 G_BINDPUSH = false; /*是否在登录成功绑定webSocket */
 G_OSTYPE = 0; /*安装平台类型：1安卓，2iOS*/

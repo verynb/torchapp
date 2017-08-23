@@ -202,6 +202,7 @@ ul {
     overflow: initial !important;
 }
 
+#loginHeader,
 #homeHeader,
 #userPwdHeader,
 #stuEditHeader,
@@ -237,6 +238,11 @@ ul {
     }
     a.usercenter {
         background: url(../img/icon/icon-users.png) center right no-repeat;
+        background-size: 2.1rem;
+        width: 4.1rem;
+    }
+    a.setting {
+        background: url(../img/icon/icon-setting.png) center right no-repeat;
         background-size: 2.1rem;
         width: 4.1rem;
     }
@@ -1088,4 +1094,81 @@ ul {
             }
         }
     }
+}
+
+#aboutApp {
+    #aboutAppContent {
+        //      border-top: 1px solid #dcdcdc;
+    }
+    .logo {
+        text-align: center;
+        padding-top: 4.3rem;
+        padding-bottom: 0.25rem;
+        img {
+            width: 12.8rem;
+            height: auto;
+            margin: 0 auto;
+            border-radius: 0.5rem;
+        }
+    }
+    .nav {
+        display: flex;
+        justify-content: center;
+        .nav-body {
+            text-align: left;
+            p {
+                padding: 0;
+                margin: 0 auto;
+                color: #262931;
+                line-height: 4rem;
+            }
+        }
+    }
+    .p-info {
+        padding-top: 2.3rem;
+        text-align: justify;
+        width: 80%;
+        margin: 0 auto;
+        p {
+            font-style: 1.2rem;
+            line-height: 2.4rem;
+            text-indent: 2.4rem;
+        }
+    }
+}
+
+#welcome {
+    background-color: white !important;
+    text-align: center;
+    .img_contain {
+        display: inline-block;
+        width: 12.8rem;
+        height: auto;
+        margin: 5rem 0 1.5rem;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    p {
+        color: #C9C9C9;
+    }
+    .p1 {
+        font-size: 1.7rem;
+    }
+    .p2 {
+        font-size: 1.4rem;
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        width: 20rem;
+        margin-left: -10rem;
+        text-align: center;
+    }
+}
+
+#welcomeFooter {
+    text-align: center;
+    background-color: white !important;
+    border: none;
 }

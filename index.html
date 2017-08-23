@@ -126,12 +126,12 @@
 
 			<footer id="welcomeFooter"></footer>
 			<div id="content">
-				<div id="welcome" class="panel" data-header="none" data-footer="welcomeFooter" data-nopushhistory="1">
-					<div class="img_contain"><img src="img/nidone.png" /></div>
-					<p class="p2">六零加云平台</p>
+				<div id="welcome" class="panel" data-header="none" data-footer="welcomeFooter" data-nopushhistory="1" selected="true">
+					<div class="img_contain"><img src="img/logo.png" /></div>
+					<p class="p2">火炬助学平台</p>
 				</div>
 				<!---------------------------------------------------- common 分类 ------------------------------------------------------------------>
-				<div title='登录' id="login" class="panel" data-footer="" selected="true" data-nopushhistory="0">
+				<div title='登录' id="login" class="panel" data-header="loginHeader" data-footer="" data-nopushhistory="0">
 					<div id="loginContent"></div>
 				</div>
 				<div title='首页' id="home" class="panel" data-header="homeHeader" data-footer="" data-nopushhistory="0">
@@ -142,6 +142,9 @@
 				</div>
 				<div title='个人中心' id="userPwd" class="panel" data-header="userPwdHeader" data-footer="" data-nopushhistory="1">
 					<div id="userPwdContent"></div>
+				</div>
+				<div title='关于我们' id="aboutApp" class="panel" data-footer="" data-nopushhistory="1">
+					<div id="aboutAppContent"></div>
 				</div>
 				<!-----------------------------------------------------general 分类------------------------------------>
 				<div title='重置密码' id="restPwd" class="panel" data-footer="" data-nopushhistory="1">
@@ -315,11 +318,27 @@
 				<h1>首页</h1>
 				<a href="javascript:void(0);" class="right usercenter" data-tkey="userCenter" data-dir="usersconfig" data-transition="slide" onclick="common.loadPage(this,false)"></a>
 			</header>
+			<header id="loginHeader">
+				<a href="javascript:void(0);"><span></span></a>
+				<h1>登录</h1>
+				<a href="javascript:void(0);" class="right setting" data-tkey="aboutApp" data-dir="usersconfig" data-transition="slide" onclick="common.loadPage(this,false)"></a>
+			</header>
 			<header id="userPwdHeader">
 				<a href="javascript:void(0);" class="backButton" onclick="$.ui.goBack(2)"></a>
 				<h1>个人中心</h1>
 				<a href="javascript:void(0);" class="right"></a>
 			</header>
+			<!--<header id="homeHeader" class="moreBox">
+				<a href="javascript:void(0);"><span></span></a>
+				<h1>首页</h1>
+				<a href="javascript:void(0);" class="right btuMore" onclick="common.moreMenu(this)"></a>
+				<div class="moreMenu">
+					<ul>
+						<li data-tkey="userCenter" data-dir="usersconfig" data-transition="slide" onclick="common.moreMenuLi(this)">个人中心</li>
+						<li data-tkey="aboutApp" data-dir="usersconfig" data-transition="slide" onclick="common.moreMenuLi(this)">关于我们</li>
+					</ul>
+				</div>
+			</header>-->
 			<header id="relEditHeader" class="moreBox">
 				<a href="javascript:void(0);" class="backButton" onclick="$.ui.goBack()"></a>
 				<h1>编辑批次</h1>

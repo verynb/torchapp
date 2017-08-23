@@ -80,14 +80,15 @@ ul { list-style: none; }
 
 #afui .header { overflow: initial !important; }
 
-#homeHeader h1, #userPwdHeader h1, #stuEditHeader h1, #relMoneyHeader h1, #relRecStuViewHeader h1, #stuViewHeader h1, #relEditHeader h1, #relMoneyInfoHeader h1, #subStuViewHeader h1, #offVisInfoHeader h1 { top: 0; font-size: 1.9rem; }
-#homeHeader a, #userPwdHeader a, #stuEditHeader a, #relMoneyHeader a, #relRecStuViewHeader a, #stuViewHeader a, #relEditHeader a, #relMoneyInfoHeader a, #subStuViewHeader a, #offVisInfoHeader a { height: 100%; display: table; color: #262931; }
-#homeHeader a span, #userPwdHeader a span, #stuEditHeader a span, #relMoneyHeader a span, #relRecStuViewHeader a span, #stuViewHeader a span, #relEditHeader a span, #relMoneyInfoHeader a span, #subStuViewHeader a span, #offVisInfoHeader a span { display: table-cell; vertical-align: middle; }
-#homeHeader a:first-child, #userPwdHeader a:first-child, #stuEditHeader a:first-child, #relMoneyHeader a:first-child, #relRecStuViewHeader a:first-child, #stuViewHeader a:first-child, #relEditHeader a:first-child, #relMoneyInfoHeader a:first-child, #subStuViewHeader a:first-child, #offVisInfoHeader a:first-child { margin-left: 1.2rem; float: left; }
-#homeHeader a.right, #userPwdHeader a.right, #stuEditHeader a.right, #relMoneyHeader a.right, #relRecStuViewHeader a.right, #stuViewHeader a.right, #relEditHeader a.right, #relMoneyInfoHeader a.right, #subStuViewHeader a.right, #offVisInfoHeader a.right { float: right; margin-right: 1.2rem; color: #05B1B3; }
-#homeHeader a.usercenter, #userPwdHeader a.usercenter, #stuEditHeader a.usercenter, #relMoneyHeader a.usercenter, #relRecStuViewHeader a.usercenter, #stuViewHeader a.usercenter, #relEditHeader a.usercenter, #relMoneyInfoHeader a.usercenter, #subStuViewHeader a.usercenter, #offVisInfoHeader a.usercenter { background: url(../img/icon/icon-users.png) center right no-repeat; background-size: 2.1rem; width: 4.1rem; }
-#homeHeader a.goback, #userPwdHeader a.goback, #stuEditHeader a.goback, #relMoneyHeader a.goback, #relRecStuViewHeader a.goback, #stuViewHeader a.goback, #relEditHeader a.goback, #relMoneyInfoHeader a.goback, #subStuViewHeader a.goback, #offVisInfoHeader a.goback { background: url(../img/icon/icon-back.png) center right no-repeat; background-size: 2.1rem; width: 4.1rem; }
-#homeHeader a.btuMore, #userPwdHeader a.btuMore, #stuEditHeader a.btuMore, #relMoneyHeader a.btuMore, #relRecStuViewHeader a.btuMore, #stuViewHeader a.btuMore, #relEditHeader a.btuMore, #relMoneyInfoHeader a.btuMore, #subStuViewHeader a.btuMore, #offVisInfoHeader a.btuMore { background: url(../img/icon/icon-more.png) center right no-repeat; background-size: 2.1rem; width: 4.1rem; }
+#loginHeader h1, #homeHeader h1, #userPwdHeader h1, #stuEditHeader h1, #relMoneyHeader h1, #relRecStuViewHeader h1, #stuViewHeader h1, #relEditHeader h1, #relMoneyInfoHeader h1, #subStuViewHeader h1, #offVisInfoHeader h1 { top: 0; font-size: 1.9rem; }
+#loginHeader a, #homeHeader a, #userPwdHeader a, #stuEditHeader a, #relMoneyHeader a, #relRecStuViewHeader a, #stuViewHeader a, #relEditHeader a, #relMoneyInfoHeader a, #subStuViewHeader a, #offVisInfoHeader a { height: 100%; display: table; color: #262931; }
+#loginHeader a span, #homeHeader a span, #userPwdHeader a span, #stuEditHeader a span, #relMoneyHeader a span, #relRecStuViewHeader a span, #stuViewHeader a span, #relEditHeader a span, #relMoneyInfoHeader a span, #subStuViewHeader a span, #offVisInfoHeader a span { display: table-cell; vertical-align: middle; }
+#loginHeader a:first-child, #homeHeader a:first-child, #userPwdHeader a:first-child, #stuEditHeader a:first-child, #relMoneyHeader a:first-child, #relRecStuViewHeader a:first-child, #stuViewHeader a:first-child, #relEditHeader a:first-child, #relMoneyInfoHeader a:first-child, #subStuViewHeader a:first-child, #offVisInfoHeader a:first-child { margin-left: 1.2rem; float: left; }
+#loginHeader a.right, #homeHeader a.right, #userPwdHeader a.right, #stuEditHeader a.right, #relMoneyHeader a.right, #relRecStuViewHeader a.right, #stuViewHeader a.right, #relEditHeader a.right, #relMoneyInfoHeader a.right, #subStuViewHeader a.right, #offVisInfoHeader a.right { float: right; margin-right: 1.2rem; color: #05B1B3; }
+#loginHeader a.usercenter, #homeHeader a.usercenter, #userPwdHeader a.usercenter, #stuEditHeader a.usercenter, #relMoneyHeader a.usercenter, #relRecStuViewHeader a.usercenter, #stuViewHeader a.usercenter, #relEditHeader a.usercenter, #relMoneyInfoHeader a.usercenter, #subStuViewHeader a.usercenter, #offVisInfoHeader a.usercenter { background: url(../img/icon/icon-users.png) center right no-repeat; background-size: 2.1rem; width: 4.1rem; }
+#loginHeader a.setting, #homeHeader a.setting, #userPwdHeader a.setting, #stuEditHeader a.setting, #relMoneyHeader a.setting, #relRecStuViewHeader a.setting, #stuViewHeader a.setting, #relEditHeader a.setting, #relMoneyInfoHeader a.setting, #subStuViewHeader a.setting, #offVisInfoHeader a.setting { background: url(../img/icon/icon-setting.png) center right no-repeat; background-size: 2.1rem; width: 4.1rem; }
+#loginHeader a.goback, #homeHeader a.goback, #userPwdHeader a.goback, #stuEditHeader a.goback, #relMoneyHeader a.goback, #relRecStuViewHeader a.goback, #stuViewHeader a.goback, #relEditHeader a.goback, #relMoneyInfoHeader a.goback, #subStuViewHeader a.goback, #offVisInfoHeader a.goback { background: url(../img/icon/icon-back.png) center right no-repeat; background-size: 2.1rem; width: 4.1rem; }
+#loginHeader a.btuMore, #homeHeader a.btuMore, #userPwdHeader a.btuMore, #stuEditHeader a.btuMore, #relMoneyHeader a.btuMore, #relRecStuViewHeader a.btuMore, #stuViewHeader a.btuMore, #relEditHeader a.btuMore, #relMoneyInfoHeader a.btuMore, #subStuViewHeader a.btuMore, #offVisInfoHeader a.btuMore { background: url(../img/icon/icon-more.png) center right no-repeat; background-size: 2.1rem; width: 4.1rem; }
 
 .moreBox { position: relative; z-index: 999; }
 .moreBox .moreMenu { position: absolute; top: 3rem; right: 1rem; min-height: 5.2rem; width: 12rem; z-index: 999; padding-top: 1rem; background: url(../img/icon/icon-bg.png) top right no-repeat; background-size: auto 1rem; display: none; }
@@ -255,5 +256,22 @@ ul { list-style: none; }
 #stuExportInfo .row2 .rw1, #stuExportInfo .row2 .rw2, #stuPhotoExportInfo .row2 .rw1, #stuPhotoExportInfo .row2 .rw2 { height: 4.5rem; padding: 0 3rem; }
 #stuExportInfo .row2 .rw1 a, #stuExportInfo .row2 .rw2 a, #stuPhotoExportInfo .row2 .rw1 a, #stuPhotoExportInfo .row2 .rw2 a { display: block; width: 100%; height: 100%; font-size: 1.6rem; line-height: 4.5rem; text-align: center; color: #FFFFFF; border-radius: 2.35rem; }
 #stuExportInfo .row2 .rw1 a:active, #stuExportInfo .row2 .rw2 a:active, #stuPhotoExportInfo .row2 .rw1 a:active, #stuPhotoExportInfo .row2 .rw2 a:active { opacity: 0.6; }
+
+#aboutApp .logo { text-align: center; padding-top: 4.3rem; padding-bottom: 0.25rem; }
+#aboutApp .logo img { width: 12.8rem; height: auto; margin: 0 auto; border-radius: 0.5rem; }
+#aboutApp .nav { display: flex; justify-content: center; }
+#aboutApp .nav .nav-body { text-align: left; }
+#aboutApp .nav .nav-body p { padding: 0; margin: 0 auto; color: #262931; line-height: 4rem; }
+#aboutApp .p-info { padding-top: 2.3rem; text-align: justify; width: 80%; margin: 0 auto; }
+#aboutApp .p-info p { font-style: 1.2rem; line-height: 2.4rem; text-indent: 2.4rem; }
+
+#welcome { background-color: white !important; text-align: center; }
+#welcome .img_contain { display: inline-block; width: 12.8rem; height: auto; margin: 5rem 0 1.5rem; }
+#welcome .img_contain img { width: 100%; height: 100%; }
+#welcome p { color: #C9C9C9; }
+#welcome .p1 { font-size: 1.7rem; }
+#welcome .p2 { font-size: 1.4rem; position: absolute; bottom: 2rem; left: 50%; width: 20rem; margin-left: -10rem; text-align: center; }
+
+#welcomeFooter { text-align: center; background-color: white !important; border: none; }
 
 /*# sourceMappingURL=global.css.map */

@@ -317,7 +317,10 @@
 					"general/stuPhotoExportInfo.html",
 					"img/icon/icon-bg.png",
 					"img/icon/icon-more.png",
-					"img/example/1-1.jpg"
+					"img/example/1-1.jpg",
+					"usersconfig/aboutApp.html",
+					"img/icon/icon-setting.png",
+					"img/logo.png"
 				],
 				"refer": [],
 				"priority": 0
@@ -336,7 +339,6 @@
 				"lib/plugins/af.selectBox.js",
 				"data.json",
 				"css/icon.css.map",
-				"img/banner.jpg",
 				"img/icon/up.png",
 				"img/icon/icon-check.png",
 				"img/icon/al.png",
