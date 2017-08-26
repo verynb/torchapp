@@ -47,7 +47,9 @@
 				"studentId": $("#subStuViewBody").attr('data-stuid')
 			},
 			funcs: {
-				funcSuccessful: function(data) {}
+				funcSuccessful: function(data) {
+					reloadSubStuView();
+				}
 			}
 		});
 	}

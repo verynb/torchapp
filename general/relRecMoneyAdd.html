@@ -7,7 +7,7 @@
 					<span class="title">放款金额</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="name" type="text" name="money" required="required" placeholder="未填写 " value="" />
+					<input class="editor-input fromfield" data-fromfield="name" type="text" name="money" readonly="readonly" required="required" placeholder="未填写 " value="" />&nbsp;元
 				</div>
 				<div class="icon-next"></div>
 			</div>
@@ -58,6 +58,7 @@
 	function loadrelRecMoneyAdd(obj) {
 		$("#relRecMoneyAdd span.data-sponsorName").text(relStuMsgInfo.sponsorName);
 		$("#relRecMoneyAdd input[name='sponsorId']").val(relStuMsgInfo.sponsorId);
+		$("#relRecMoneyAdd input[name='money']").val(relStuMsgInfo.needMoney);
 		relRecMoneyAddFooter();
 	}
 

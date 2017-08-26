@@ -52,6 +52,7 @@
 				funcSuccessful: function(data) {
 					if(data.releases.length != 0) {
 						var html = '';
+						var htmlNo = '';
 						for(var i = 0; i < data.releases.length; i++) {
 							html += '<div class="list-box" data-batchId="' + data.releases[i].id + '" data-batchNo="' + data.releases[i].batchNo + '" data-batchProvince="' + data.releases[i].province + '" data-batchCity="' + data.releases[i].city + '" data-dir="general" data-tkey="relEdit" data-transition="slide" onclick="common.loadPage(this);">';
 							//							html += '<div class="list-box" data-batchId="' + data.releases[i].id + '" data-batchNo="' + data.releases[i].batchNo + '" data-batchProvince="四川省" data-batchCity="成都市" data-dir="general" data-tkey="relEdit" data-transition="slide" onclick="common.loadPage(this);">';
@@ -65,8 +66,8 @@
 							html += '</div>';
 							html += '</div>';
 						}
+
 						if(data.releases.length > 6) {
-							var htmlNo = '';
 							if($("#relList .noMoreData").length == 0) {
 								htmlNo += '<p class="noMoreData">没有更多了</p>';
 							}

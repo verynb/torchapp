@@ -34,8 +34,14 @@
 			relBatchData.city = relEditBatchCity;
 		}
 		initrelEditChoose();
-		relEditFooter();
 
+		var role = window.localStorage.getItem(G_COMKEY + ".role");
+		var userType = window.localStorage.getItem(G_COMKEY + ".userType");
+		role = JSON.parse(role);
+
+		if(userType == 0 && role.roleCode != "teacher") {
+			relEditFooter();
+		}
 	}
 
 	function reloadrelEdit() {

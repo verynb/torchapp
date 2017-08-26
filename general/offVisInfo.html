@@ -37,7 +37,7 @@
 			<span class="subtitle">（家庭成员照片）</span>
 			<div class="rw1 box-h">
 				<div class="r1 padding-right-12">
-					<img class="" src="img/example/3.jpg" alt="照相" onclick="showImgNow(this)" />
+					<img class="" src="img/example/4.jpg" alt="照相" onclick="showImgNow(this)" />
 				</div>
 				<div class="savebox">
 					<div class="box-h saveboxList"></div>
@@ -52,7 +52,7 @@
 			<span class="subtitle">（家庭环境全景照片）</span>
 			<div class="rw1 box-h">
 				<div class="r1 padding-right-12">
-					<img class="" src="img/example/6.jpg" alt="照相" onclick="showImgNow(this)" />
+					<img class="" src="img/example/2.jpg" alt="照相" onclick="showImgNow(this)" />
 				</div>
 				<div class="savebox">
 					<div class="box-h saveboxList"></div>
@@ -195,7 +195,7 @@
 			homePhoto = [],
 			homeFeaturePhotos = [],
 			InteractivePhoto = [];
-		var el_applicationForm_photo = $("#offVisInfo .applicationForm .saveboxList .saveboxListItem"),
+		var el_applicationForm_photo = [],
 			el_studentPhoto_photo = $("#offVisInfo .studentPhoto .saveboxList .saveboxListItem"),
 			el_familyPhoto_photo = $("#offVisInfo .familyPhoto .saveboxList .saveboxListItem"),
 			el_homePhoto_photo = $("#offVisInfo .homePhoto .saveboxList .saveboxListItem"),
@@ -237,7 +237,7 @@
 		}
 		arrdata.push(ridiocheckarr.join('*'));
 		arrdata.push('1');
-		arrdata.push(common.formatTime(G_SERVERTIME, 2));
+		arrdata.push(common.formatTime(G_SERVERTIME, 3));
 		arrdata.push($("#offVisInfoHeader a.stuinfo").attr('data-stuid'));
 		arrdata.push($("#offVisInfoHeader a.stuinfo").attr('data-batchId'));
 

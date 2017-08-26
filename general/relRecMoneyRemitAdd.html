@@ -7,7 +7,7 @@
 					<span class="title">汇款金额</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input" type="text" name="remittanceMoney" required="required" placeholder="未填写 " data-warning="请填写汇款金额" value="" />
+					<input class="editor-input" type="text" name="remittanceMoney" readonly="readonly" required="required" placeholder="未填写 " data-warning="请填写汇款金额" value="" />&nbsp;元
 				</div>
 				<div class="icon-next"></div>
 			</div>
@@ -38,6 +38,7 @@
 	function loadrelRecMoneyRemitAdd(obj) {
 		$("#relRecMoneyRemitAdd span.data-sponsorName").text(relStuMsgInfo.sponsorName);
 		$("#relRecMoneyRemitAdd input[name='sponsorId']").val(relStuMsgInfo.sponsorId);
+		$("#relRecMoneyRemitAdd input[name='remittanceMoney']").val(relStuMsgInfo.needMoney);
 		relRecMoneyRemitAddFooter();
 	}
 

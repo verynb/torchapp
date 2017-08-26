@@ -325,7 +325,8 @@
 					"general/schSearch.html",
 					"general/stuSearch.html",
 					"general/relList11.html",
-					"general/relLista.html"
+					"general/relLista.html",
+					"general/supSearch.html"
 				],
 				"refer": [],
 				"priority": 0

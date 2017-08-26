@@ -175,8 +175,8 @@
 			urlname: "/api/student/" + stuId,
 			funcs: {
 				funcSuccessful: function(data) {
-					relStuMsgInfo = data;
 					data.needMoney = needMoney;
+					relStuMsgInfo = data;
 					loadData.load({
 						data: data,
 						container: "relRecStuView",
