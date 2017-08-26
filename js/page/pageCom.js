@@ -431,6 +431,23 @@
 					break;
 			}
 
+		},
+		localSearch: function(obj, pageName) {
+			var searchText = $(obj).val();
+			console.log(searchText);
+			var el_list = $('#' + pageName + ' .list-panel .list-item');
+			$(el_list).css('display', 'block');
+			if(searchText != '') {
+				for(var i = 0; i < el_list.length; i++) {
+					if(($(el_list[i]).text()).indexOf(searchText) >= 0) {
+						$(el_list[i]).css('display', 'block');
+					} else {
+						$(el_list[i]).css('display', 'none');
+					}
+				}
+			} else {
+				$(el_list).css('display', 'block');
+			}
 		}
 	};
 	window.pageCom = pageCom;

@@ -1,3 +1,8 @@
+<div class="search-box box-h">
+	<div class="input-text box-flex">
+		<input type="text" name="searchKey" placeholder="请输入学校名称" oninput="pageCom.localSearch(this,'schChooseR')" />
+	</div>
+</div>
 <div class="list-panel schChooseRData">
 	<!--start-->
 	<!--<div class="list-box">
@@ -53,28 +58,49 @@
 	}
 
 	function schChooseRinit(obj) {
+		/*---2017-07-31 修改  学生发布至家访后，老师不能修改学生资料*/
+		var role = window.localStorage.getItem(G_COMKEY + ".role");
+		var userId = window.localStorage.getItem(G_COMKEY + ".userId");
+		role = JSON.parse(role);
+		var urlname = null;
+		if(role.hasOwnProperty('roleCode') && role.roleCode == "teacher") {
+			urlname = "/api/teacher/schools/" + userId;
+		} else {
+			urlname = "/api/schools?pageSize=0&currentPage=0";
+		}
 		ajaxFuncs.get({
-			urlname: "/api/schools?pageSize=0&currentPage=0",
+			urlname: urlname,
 			funcs: {
 				funcSuccessful: function(data) {
-					if(data.schools.length != 0) {
+					var respones, schId;
+					if(data.hasOwnProperty("schools")) {
+						respones = data.schools;
+					} else if(data.hasOwnProperty("tschoolds")) {
+						respones = data.tschoolds;
+					}
+					if(respones.length != 0) {
 						var html = '';
-						for(var i = 0; i < data.schools.length; i++) {
+						for(var i = 0; i < respones.length; i++) {
 							var ischeck = false;
-							html += '<div class="list-box">';
+							if(respones[i].hasOwnProperty("id")) {
+								schId = respones[i].id;
+							} else if(respones[i].hasOwnProperty("schoolId")) {
+								schId = respones[i].schoolId;
+							}
+							html += '<div class="list-box list-item">';
 							html += '<div class="list-defult-body box-h box-align">';
 							html += '<div class="box-flex">';
-							html += '<span class="title-other">' + data.schools[i].schoolName + '</span>';
+							html += '<span class="title-other">' + respones[i].schoolName + '</span>';
 							html += '</div>';
 							html += '<div class="radio-box">';
-							html += '<label for="schChooseRradio_' + data.schools[i].id + '">';
+							html += '<label for="schChooseRradio_' + schId + '">';
 
-							if(oldschChooseR != null && data.schools[i].id == oldschChooseR) {
+							if(oldschChooseR != null && schId == oldschChooseR) {
 								ischeck = true;
-								html += '<span class="radio-btu radio-btu-active" data-name="' + data.schools[i].schoolName + '" data-id="' + data.schools[i].id + '"></span>';
+								html += '<span class="radio-btu radio-btu-active" data-name="' + respones[i].schoolName + '" data-id="' + schId + '"></span>';
 							}
 							if(!ischeck) {
-								html += '<span class="radio-btu" data-name="' + data.schools[i].schoolName + '" data-id="' + data.schools[i].id + '" ></span>';
+								html += '<span class="radio-btu" data-name="' + respones[i].schoolName + '" data-id="' + schId + '" ></span>';
 							}
 							html += '</label>';
 							html += '</div>';

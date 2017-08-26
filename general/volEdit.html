@@ -69,7 +69,7 @@
 			</div>
 		</div>
 		<div class="list-box hidden isshool">
-			<div class="list-defult-body box-h boder-none" data-tkey="schChoose" data-dir="general" data-transition="slide" onclick="common.loadPage(this)">
+			<div class="list-defult-body box-h " data-tkey="schChoose" data-dir="general" data-transition="slide" onclick="common.loadPage(this)">
 				<div class="box-flex">
 					<span class="title dataRoleName">学校</span>
 				</div>
@@ -80,6 +80,33 @@
 				<div class="icon-next">
 					<i class="icon-img icon-img-next"></i>
 				</div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">省市区</span>
+				</div>
+				<div class="icon-text-box " id="sel_city6">
+					<span class="nav fromfield set_city" data-unionchar=" " data-fromfield="province,city,area">未选择</span>
+					<input hidden="hidden" class="editor-input fromfield" required="required" data-warning="请选择省市区" data-fromfield="province" name="province" value="" />
+					<input hidden="hidden" class="editor-input fromfield" required="required" data-warning="请选择省市区" data-fromfield="city" name="city" value="" />
+					<input hidden="hidden" class="editor-input fromfield" required="required" data-warning="请选择省市区" data-fromfield="area" name="area" value="" />
+				</div>
+				<div class="icon-next">
+					<i class="icon-img icon-img-next"></i>
+				</div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h boder-none">
+				<div class="box-flex">
+					<span class="title">详细地址</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="address" type="text" name="address" data-warning="请选择" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
 			</div>
 		</div>
 		<div class="padding-top-1"></div>
@@ -127,33 +154,7 @@
 				<div class="icon-next"></div>
 			</div>
 		</div>
-		<div class="list-box">
-			<div class="list-defult-body box-h ">
-				<div class="box-flex">
-					<span class="title">省市区</span>
-				</div>
-				<div class="icon-text-box " id="sel_city6">
-					<span class="nav fromfield set_city" data-unionchar=" " data-fromfield="province,city,area">未选择</span>
-					<input hidden="hidden" class="editor-input fromfield" data-fromfield="province" name="province" value="" />
-					<input hidden="hidden" class="editor-input fromfield" data-fromfield="city" name="city" value="" />
-					<input hidden="hidden" class="editor-input fromfield" data-fromfield="area" name="area" value="" />
-				</div>
-				<div class="icon-next">
-					<i class="icon-img icon-img-next"></i>
-				</div>
-			</div>
-		</div>
-		<div class="list-box">
-			<div class="list-defult-body box-h ">
-				<div class="box-flex">
-					<span class="title">详细地址</span>
-				</div>
-				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="address" type="text" name="address" data-warning="请选择" placeholder="未填写 " value="" />
-				</div>
-				<div class="icon-next"></div>
-			</div>
-		</div>
+
 		<div class="list-box">
 			<div class="list-defult-body box-h boder-none">
 				<div class="box-flex">
@@ -231,12 +232,20 @@
 	}
 
 	function volEditFooterFuncPut(obj) {
+		debugger
 		var params = common.serializeToJson("#volEdit form");
 		if(!common.validate("#volEdit form", obj)) {
 			return false;
 		} else {
-			var schoolIds = params.schoolIds;
-			params.schoolIds = schoolIds.split(',');
+			if(params.roleName == "老师") {
+				var schoolIds = params.schoolIds;
+				params.schoolIds = schoolIds.split(',');
+				if(params.schoolIds == "" || params.schoolIds.length == 0) {
+					common.toast("请选择老师所属学校");
+					$(obj).removeAttr("submited");
+					return false;
+				}
+			}
 			params.id = updateId;
 			ajaxFuncs.put({
 				clickobj: obj,
@@ -259,8 +268,15 @@
 		if(!common.validate("#volEdit form", obj)) {
 			return false;
 		} else {
-			var schoolIds = params.schoolIds;
-			params.schoolIds = schoolIds.split(',');
+			if(params.roleName == "老师") {
+				var schoolIds = params.schoolIds;
+				params.schoolIds = schoolIds.split(',');
+				if(params.schoolIds == "" || params.schoolIds.length == 0) {
+					common.toast("请选择老师所属学校");
+					$(obj).removeAttr("submited");
+					return false;
+				}
+			}
 			ajaxFuncs.post({
 				clickobj: obj,
 				urlname: "/api/user/volunteer",

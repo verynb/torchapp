@@ -13,7 +13,7 @@
 			</div>
 		</div>
 		<div class="list-box">
-			<div class="list-defult-body box-h ">
+			<!--<div class="list-defult-body box-h ">
 				<div class="box-flex">
 					<span class="title">资助人</span>
 				</div>
@@ -23,6 +23,18 @@
 				</div>
 				<div class="icon-next">
 					<i class="icon-img icon-img-next"></i>
+				</div>
+			</div>-->
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">资助人</span>
+				</div>
+				<div class="icon-text-box">
+					<span class="nav fromfield data-sponsorName"></span>
+					<input class="editor-input fromfield" type="hidden" name="sponsorId" required="required" data-warning="该学生当前资助人为空，请确认信息" value="" />
+				</div>
+				<div class="icon-next">
+					<!--<i class="icon-img icon-img-next"></i>-->
 				</div>
 			</div>
 		</div>
@@ -44,6 +56,8 @@
 
 <script type="text/javascript">
 	function loadrelRecMoneyAdd(obj) {
+		$("#relRecMoneyAdd span.data-sponsorName").text(relStuMsgInfo.sponsorName);
+		$("#relRecMoneyAdd input[name='sponsorId']").val(relStuMsgInfo.sponsorId);
 		relRecMoneyAddFooter();
 	}
 

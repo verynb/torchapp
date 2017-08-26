@@ -22,22 +22,22 @@
 					"icon": "icon-volunteer",
 					"title": "义工维护",
 					"dir": "general",
-					"tkey": "volList"
+					"tkey": "volSearch"
 				}, {
 					"icon": "icon-support",
 					"title": "资助人维护",
 					"dir": "general",
-					"tkey": "supList"
+					"tkey": "supSearch"
 				}, {
 					"icon": "icon-school",
 					"title": "学校维护",
 					"dir": "general",
-					"tkey": "schList"
+					"tkey": "schSearch"
 				}, {
 					"icon": "icon-stus",
 					"title": "学生维护",
 					"dir": "general",
-					"tkey": "stuList"
+					"tkey": "stuSearch"
 				}, {
 					"icon": "icon-release",
 					"title": "发布资助",
@@ -66,7 +66,7 @@
 					"icon": "icon-stus",
 					"title": "学生维护",
 					"dir": "general",
-					"tkey": "stuList"
+					"tkey": "stuSearch"
 				}]
 			};
 			var sponsor = {

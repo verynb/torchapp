@@ -17,12 +17,16 @@
 				<div class="box-flex">
 					<span class="title">资助人</span>
 				</div>
-				<div class="icon-text-box min-width" data-tkey="relRecChooseSup" data-dir="general" data-transition="slide" onclick="common.loadPage(this)">
+				<!--<div class="icon-text-box min-width" data-tkey="relRecChooseSup" data-dir="general" data-transition="slide" onclick="common.loadPage(this)">
 					<span class="nav sponsorname-data">选择资助人</span>
 					<input class="editor-input fromfield" type="hidden" name="sponsorId" required="required" data-warning="请选择资助人" value="21" />
+				</div>-->
+				<div class="icon-text-box">
+					<span class="nav fromfield data-sponsorName"></span>
+					<input class="editor-input fromfield" type="hidden" name="sponsorId" required="required" data-warning="该学生当前资助人为空，请确认信息" value="" />
 				</div>
 				<div class="icon-next">
-					<i class="icon-img icon-img-next"></i>
+					<!--<i class="icon-img icon-img-next"></i>-->
 				</div>
 			</div>
 		</div>
@@ -32,6 +36,8 @@
 
 <script type="text/javascript">
 	function loadrelRecMoneyRemitAdd(obj) {
+		$("#relRecMoneyRemitAdd span.data-sponsorName").text(relStuMsgInfo.sponsorName);
+		$("#relRecMoneyRemitAdd input[name='sponsorId']").val(relStuMsgInfo.sponsorId);
 		relRecMoneyRemitAddFooter();
 	}
 

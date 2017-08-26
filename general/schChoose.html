@@ -1,3 +1,8 @@
+<div class="search-box box-h">
+	<div class="input-text box-flex">
+		<input type="text" name="searchKey" placeholder="请输入学校名称" oninput="pageCom.localSearch(this,'schChoose')" />
+	</div>
+</div>
 <div class="list-panel schChooseData">
 	<!--start-->
 	<!--<div class="list-box">
@@ -67,7 +72,7 @@
 						var html = '';
 						for(var i = 0; i < data.schools.length; i++) {
 							var ischeck = false;
-							html += '<div class="list-box">';
+							html += '<div class="list-box list-item">';
 							html += '<div class="list-defult-body box-h box-align">';
 							html += '<div class="box-flex">';
 							html += '<span class="title-other">' + data.schools[i].schoolName + '</span>';

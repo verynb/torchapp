@@ -274,4 +274,11 @@ ul { list-style: none; }
 
 #welcomeFooter { text-align: center; background-color: white !important; border: none; }
 
+.search-box { padding: 1rem 1.2rem; }
+.search-box .input-text input { width: 100%; height: 4rem; text-align: left; text-indent: 1rem; }
+.search-box .input-text input::-webkit-input-placeholder { text-align: center; color: #C9C9C9; }
+.search-box .search-btu { width: 8rem; height: 4rem; }
+.search-box .search-btu a { display: inline-block; width: 100%; height: 100%; color: #FFFFFF; text-align: center; font-size: 1.4rem; line-height: 4rem; background-color: #05B1B3; }
+.search-box .search-btu a:active { opacity: 0.5; }
+
 /*# sourceMappingURL=global.css.map */

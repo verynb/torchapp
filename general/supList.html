@@ -49,17 +49,23 @@
 
 	function supListPullDownAction(obj, callback) {
 		ajaxFuncs.get({
-			urlname: "/api/user/sponsors?pageSize=15&currentPage=0",
+			urlname: "/api/user/sponsors?pageSize=15&currentPage=0&name=" + supSearchVal.name + "&phone=" + supSearchVal.phone,
 			funcs: {
 				funcSuccessful: function(data) {
 					supListPage = 0;
+					var htmlNo = '';
+					var html = '';
 					if(data.resultDtos.length < 15) {
 						supisAddPage = false;
+						if(data.resultDtos.length > 6) {
+							if($("#supList .noMoreData").length == 0) {
+								htmlNo += '<p class="noMoreData">没有更多了</p>';
+							}
+						}
 					} else {
 						supisAddPage = true;
 					}
 					if(data.resultDtos.length != 0) {
-						var html = '';
 						for(var i = 0; i < data.resultDtos.length; i++) {
 							html += '<div class="list-box" data-id="' + data.resultDtos[i].id + '" data-dir="general" data-tkey="supEdit" data-transition="slide" onclick="common.loadPage(this);">';
 							html += '<div class="list-defult-body box-h box-align">';
@@ -72,7 +78,7 @@
 							html += '</div>';
 							html += '</div>';
 						}
-						$("#supList .list-panel").empty().append(html);
+						$("#supList .list-panel").empty().append(html + htmlNo);
 						if(supListNowObjScroll != null) {
 							supListNowObjScroll.refresh();
 						}
@@ -115,7 +121,7 @@
 		if(supisAddPage == true) {
 			supListPage = supListPage + 1;
 			ajaxFuncs.get({
-				urlname: "/api/user/sponsors?pageSize=15&currentPage=" + supListPage,
+				urlname: "/api/user/sponsors?pageSize=15&currentPage=" + supListPage + "&name=" + supSearchVal.name + "&phone=" + supSearchVal.phone,
 				funcs: {
 					funcSuccessful: function(data) {
 						if(data.resultDtos.length != 0) {

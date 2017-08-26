@@ -284,6 +284,7 @@
 							barbutton: true,
 							callback: function() {
 								$("#stuEdit .data-statusName").text(pageCom.stuStatusName(data.status));
+								common.toast("该学生处于" + pageCom.stuStatusName(data.status) + "状态下不可编辑");
 							}
 						});
 					} else {

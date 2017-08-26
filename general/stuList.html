@@ -50,7 +50,9 @@
 	function stuListPullDownAction(obj, callback) {
 		var params = {
 			"currentPage": "0",
-			"pageSize": "15"
+			"pageSize": "15",
+			"name": stuSearchVal.name,
+			"sNo:": stuSearchVal.sNo
 		}
 		ajaxFuncs.post({
 			urlname: "/api/students/filter",
@@ -58,13 +60,19 @@
 			funcs: {
 				funcSuccessful: function(data) {
 					stuListPage = 0;
+					var htmlNo = '';
+					var html = '';
 					if(data.studentLists.length < 15) {
 						stuisAddPage = false;
+						if(data.studentLists.length > 6) {
+							if($("#stuList .noMoreData").length == 0) {
+								htmlNo += '<p class="noMoreData">没有更多了</p>';
+							}
+						}
 					} else {
 						stuisAddPage = true;
 					}
 					if(data.studentLists.length != 0) {
-						var html = '';
 						for(var i = 0; i < data.studentLists.length; i++) {
 							html += '<div class="list-box" data-id="' + data.studentLists[i].id + '" data-dir="general" data-tkey="stuEdit" data-transition="slide" onclick="common.loadPage(this);">';
 							html += '<div class="list-defult-body box-h box-align">';
@@ -77,7 +85,7 @@
 							html += '</div>';
 							html += '</div>';
 						}
-						$("#stuList .list-panel").empty().append(html);
+						$("#stuList .list-panel").empty().append(html + htmlNo);
 						if(stuListNowObjScroll != null) {
 							stuListNowObjScroll.refresh();
 						}
@@ -121,7 +129,9 @@
 			stuListPage = stuListPage + 1;
 			var params = {
 				"currentPage": stuListPage,
-				"pageSize": "15"
+				"pageSize": "15",
+				"name": stuSearchVal.name,
+				"sNo:": stuSearchVal.sNo
 			}
 			ajaxFuncs.post({
 				urlname: "/api/students/filter",

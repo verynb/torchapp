@@ -1,6 +1,7 @@
-<div class="list-panel">
-	<!--start-->
-	<!--<div class="list-box" data-dir="general" data-tkey="relEdit" data-transition="slide" onclick="common.loadPage(this);">
+<div id="relListBody" class="">
+	<div class="list-panel">
+		<!--start-->
+		<!--<div class="list-box" data-dir="general" data-tkey="relEdit" data-transition="slide" onclick="common.loadPage(this);">
 		<div class="list-defult-body box-h box-align">
 			<div class="box-flex">
 				<span class="title">发布批次号（存在多条）</span>
@@ -10,7 +11,8 @@
 			</div>
 		</div>
 	</div>-->
-	<!--end-->
+		<!--end-->
+	</div>
 </div>
 <script type="text/javascript">
 	function loadrelList(obj) {
@@ -63,7 +65,13 @@
 							html += '</div>';
 							html += '</div>';
 						}
-						$("#relList .list-panel").empty().append(html);
+						if(data.releases.length > 6) {
+							var htmlNo = '';
+							if($("#relList .noMoreData").length == 0) {
+								htmlNo += '<p class="noMoreData">没有更多了</p>';
+							}
+						}
+						$("#relList .list-panel").empty().append(html + htmlNo);
 					} else {
 						common.handleDefaultPage({
 							type: 2,
