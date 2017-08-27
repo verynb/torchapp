@@ -1,0 +1,60 @@
+<form>
+	<div class="list-panel">
+		<div class="padding-top-1"></div>
+		<div class="list-box">
+			<div class="list-defult-body box-h">
+				<div class="box-flex">
+					<span class="title">资助人姓名</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input" type="text" name="name" placeholder="选填" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h">
+				<div class="box-flex">
+					<span class="title">资助人电话</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input" type="text" name="phone" placeholder="选填" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+	</div>
+</form>
+<!--{
+  "currentPage": 0,
+  "pageSize": 0,
+  "startTime": 0,
+  "endTime": 0,
+  "province": "string",
+  "city": "string",
+  "batchNo": "string"
+}-->
+
+<script type="text/javascript">
+	var supSearchVal;
+
+	function loadsupSearch(obj) {
+		supSearchFooter();
+	}
+
+	function supSearchFooter() {
+		var btuHtml = '';
+		var jsondata = {};
+		btuHtml += '<div class="footerBtu bg-color-brown" data-tkey="supList" data-dir="general" data-transition="slide" onclick="supSearchFooterFunc(this)">';
+		btuHtml += '<a class="all supSearch-save" href="javascript:void(0);">查询</a>';
+		btuHtml += '</div>';
+		jsondata.container = 'supSearch';
+		jsondata.buttonHtml = btuHtml;
+		common.commonFooterBtu(jsondata);
+	}
+
+	function supSearchFooterFunc(obj) {
+		supSearchVal = common.serializeToJson("#supSearch form");
+		common.loadPage($(obj));
+	}
+</script>

@@ -1,0 +1,49 @@
+<form>
+	<div class="list-panel">
+		<div class="padding-top-1"></div>
+		<div class="list-box">
+			<div class="list-defult-body box-h">
+				<div class="box-flex">
+					<span class="title">义工姓名</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input" type="text" name="name" placeholder="选填" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+	</div>
+</form>
+<!--{
+  "currentPage": 0,
+  "pageSize": 0,
+  "startTime": 0,
+  "endTime": 0,
+  "province": "string",
+  "city": "string",
+  "batchNo": "string"
+}-->
+
+<script type="text/javascript">
+	var volSearchVal;
+
+	function loadvolSearch(obj) {
+		volSearchFooter();
+	}
+
+	function volSearchFooter() {
+		var btuHtml = '';
+		var jsondata = {};
+		btuHtml += '<div class="footerBtu bg-color-brown" data-tkey="volList" data-dir="general" data-transition="slide" onclick="volSearchFooterFunc(this)">';
+		btuHtml += '<a class="all volSearch-save" href="javascript:void(0);">查询</a>';
+		btuHtml += '</div>';
+		jsondata.container = 'volSearch';
+		jsondata.buttonHtml = btuHtml;
+		common.commonFooterBtu(jsondata);
+	}
+
+	function volSearchFooterFunc(obj) {
+		volSearchVal = common.serializeToJson("#volSearch form");
+		common.loadPage($(obj));
+	}
+</script>

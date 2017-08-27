@@ -1,4 +1,15 @@
 var city = [{
+	value: '',
+	text: '请选择',
+	children: [{
+		value: "",
+		text: "请选择",
+		children: [{
+			value: "",
+			text: "请选择"
+		}]
+	}]
+}, {
 	value: '110000',
 	text: '北京市',
 	children: [{

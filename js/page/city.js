@@ -52,10 +52,18 @@
 				var text2 = second[selectedIndex[1]].text;
 				var text3 = third[selectedIndex[2]] ? third[selectedIndex[2]].text : '';
 
-				$("#" + idName).find('.set_city').text(text1 + ' ' + text2 + ' ' + text3);
-				$("#" + idName).find("input[name='province']").val(text1);
-				$("#" + idName).find("input[name='city']").val(text2);
-				$("#" + idName).find("input[name='area']").val(text3);
+				if(text1 != "请选择" && text2 != "请选择" && text3 != "请选择") {
+					$("#" + idName).find('.set_city').text(text1 + ' ' + text2 + ' ' + text3);
+					$("#" + idName).find("input[name='province']").val(text1);
+					$("#" + idName).find("input[name='city']").val(text2);
+					$("#" + idName).find("input[name='area']").val(text3);
+				} else {
+					$("#" + idName).find('.set_city').text("暂无");
+					$("#" + idName).find("input[name='province']").val("");
+					$("#" + idName).find("input[name='city']").val("");
+					$("#" + idName).find("input[name='area']").val("");
+				}
+
 			});
 
 			picker.on('picker.change', function(index, selectedIndex) {
@@ -169,9 +177,16 @@
 				var text1 = first[selectedIndex[0]].text;
 				var text2 = second[selectedIndex[1]].text;
 
-				$("#" + idName).find('.sel_city').text(text1 + ' ' + text2);
-				$("#" + idName).find("input[name='province']").val(text1);
-				$("#" + idName).find("input[name='city']").val(text2);
+				if(text1 != "请选择" && text2 != "请选择") {
+					$("#" + idName).find('.sel_city').text(text1 + ' ' + text2);
+					$("#" + idName).find("input[name='province']").val(text1);
+					$("#" + idName).find("input[name='city']").val(text2);
+				} else {
+					$("#" + idName).find('.sel_city').text("暂无");
+					$("#" + idName).find("input[name='province']").val("");
+					$("#" + idName).find("input[name='city']").val("");
+				}
+
 			});
 
 			picker.on('picker.change', function(index, selectedIndex) {

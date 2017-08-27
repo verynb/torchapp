@@ -1,0 +1,76 @@
+<form>
+	<div class="list-panel">
+		<div class="padding-top-1"></div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">学校名称</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input" type="text" name="schoolName" placeholder="选填" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">负责人姓名</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input" type="text" name="leaderName" placeholder="选填" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">省市</span>
+				</div>
+				<div class="icon-text-box " id="sel_city12">
+					<span class="nav sel_city">选填</span>
+					<input hidden="hidden" class="editor-input" data-warning="省市不能为空" name="province" value="" />
+					<input hidden="hidden" class="editor-input" data-warning="省市不能为空" name="city" value="" />
+				</div>
+				<div class="icon-next">
+					<i class="icon-img icon-img-next"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+<!--{
+  "currentPage": 0,
+  "pageSize": 0,
+  "startTime": 0,
+  "endTime": 0,
+  "province": "string",
+  "city": "string",
+  "batchNo": "string"
+}-->
+
+<script type="text/javascript">
+	var schSearchVal;
+
+	function loadschSearch(obj) {
+		schSearchFooter();
+		cityfunc.addTwo("sel_city12");
+	}
+
+	function schSearchFooter() {
+		var btuHtml = '';
+		var jsondata = {};
+		btuHtml += '<div class="footerBtu bg-color-brown" data-tkey="schList" data-dir="general" data-transition="slide" onclick="schSearchFooterFunc(this)">';
+		btuHtml += '<a class="all schSearch-save" href="javascript:void(0);">查询</a>';
+		btuHtml += '</div>';
+		jsondata.container = 'schSearch';
+		jsondata.buttonHtml = btuHtml;
+		common.commonFooterBtu(jsondata);
+	}
+
+	function schSearchFooterFunc(obj) {
+		schSearchVal = common.serializeToJson("#schSearch form");
+		common.loadPage($(obj));
+	}
+</script>

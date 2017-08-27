@@ -1,0 +1,60 @@
+<form>
+	<div class="list-panel">
+		<div class="padding-top-1"></div>
+		<div class="list-box">
+			<div class="list-defult-body box-h">
+				<div class="box-flex">
+					<span class="title">学生编号</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input" type="text" name="sNo" placeholder="选填" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h">
+				<div class="box-flex">
+					<span class="title">学生姓名</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input" type="text" name="name" placeholder="选填" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+	</div>
+</form>
+<!--{
+  "currentPage": 0,
+  "pageSize": 0,
+  "startTime": 0,
+  "endTime": 0,
+  "province": "string",
+  "city": "string",
+  "batchNo": "string"
+}-->
+
+<script type="text/javascript">
+	var stuSearchVal;
+
+	function loadstuSearch(obj) {
+		stuSearchFooter();
+	}
+
+	function stuSearchFooter() {
+		var btuHtml = '';
+		var jsondata = {};
+		btuHtml += '<div class="footerBtu bg-color-brown" data-tkey="stuList" data-dir="general" data-transition="slide" onclick="stuSearchFooterFunc(this)">';
+		btuHtml += '<a class="all stuSearch-save" href="javascript:void(0);">查询</a>';
+		btuHtml += '</div>';
+		jsondata.container = 'stuSearch';
+		jsondata.buttonHtml = btuHtml;
+		common.commonFooterBtu(jsondata);
+	}
+
+	function stuSearchFooterFunc(obj) {
+		stuSearchVal = common.serializeToJson("#stuSearch form");
+		common.loadPage($(obj));
+	}
+</script>
