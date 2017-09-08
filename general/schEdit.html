@@ -48,7 +48,55 @@
 					<span class="title">姓名</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="leaderName" type="text" name="leaderName" required="required" data-warning="负责人不能为空" placeholder="未填写 " value="" />
+					<input class="editor-input fromfield" data-fromfield="leaderName" type="text" name="leaderName" required="required" data-warning="负责人姓名不能为空" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h">
+				<div class="box-flex">
+					<span class="title">电话</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="mobile" type="text" name="mobile" required="required" data-warning="负责人联系电话不能为空" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h">
+				<div class="box-flex">
+					<span class="title">邮箱</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="email" type="text" name="email" data-check="^\w+([-+.]\w+)*@\w+([-.]\\w+)*\.\w+([-.]\w+)*$" data-warning-check="负责人邮箱格式不正确" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h">
+				<div class="box-flex">
+					<span class="title">QQ</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="qq" type="text" name="qq" data-check="^[0-9]*$" data-warning-check="负责人qq账号格式不正确" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+
+		<div class="header-title">
+			<span class="title">对接人</span>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h ">
+				<div class="box-flex">
+					<span class="title">姓名</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="buttName" type="text" name="buttName" required="required" data-warning="对接人姓名不能为空" placeholder="未填写 " value="" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
@@ -59,7 +107,7 @@
 					<span class="title">电话</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="mobile" type="text" name="mobile" required="required" data-warning="联系电话不能为空" placeholder="未填写 " value="" />
+					<input class="editor-input fromfield" data-fromfield="buttMobile" type="text" name="buttMobile" required="required" data-warning="对接人联系电话不能为空" placeholder="未填写 " value="" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
@@ -70,33 +118,30 @@
 					<span class="title">邮箱</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="email" type="text" name="email" data-check="^\w+([-+.]\w+)*@\w+([-.]\\w+)*\.\w+([-.]\w+)*$" data-warning-check="邮箱格式不正确" placeholder="未填写 " value="" />
+					<input class="editor-input fromfield" data-fromfield="buttEmail" type="text" name="buttEmail" data-check="^\w+([-+.]\w+)*@\w+([-.]\\w+)*\.\w+([-.]\w+)*$" data-warning-check="对接人邮箱格式不正确" placeholder="未填写 " value="" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
 		</div>
 		<div class="list-box">
-			<div class="list-defult-body box-h ">
+			<div class="list-defult-body box-h boder-none">
 				<div class="box-flex">
 					<span class="title">QQ</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="qq" type="text" name="qq" data-check="^[0-9]*$" data-warning-check="qq账号格式不正确" placeholder="未填写 " value="" />
+					<input class="editor-input fromfield" data-fromfield="buttqq" type="text" name="buttqq" data-check="^[0-9]*$" data-warning-check="对接人qq账号格式不正确" placeholder="未填写 " value="" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
 		</div>
-
-		<div class="list-box">
-			<div class="list-defult-body box-h boder-none">
+		<div class="padding-top-1"></div>
+		<div class="list-box heightAuto">
+			<div class="list-defult-body box-h boder-none heightAuto">
 				<div class="box-flex">
-					<span class="title">备注</span>
+					<span class="title">备注:</span>
 				</div>
-				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="remark" type="text" name="remark" placeholder="未填写 " value="" />
-				</div>
-				<div class="icon-next"></div>
 			</div>
+			<textarea class="visInfo fromfield" style="height: 20rem; width: 100%;padding: 0.5rem; border: 1px solid #dcdbdb;" data-fromfield="remark" placeholder="请输入备注内容..." name="remark"></textarea>
 		</div>
 	</div>
 </form>

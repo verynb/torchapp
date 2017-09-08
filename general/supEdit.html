@@ -33,10 +33,21 @@
 		<div class="list-box">
 			<div class="list-defult-body box-h ">
 				<div class="box-flex">
-					<span class="title">网名</span>
+					<span class="title">称呼</span>
 				</div>
 				<div class="text-input-box">
 					<input class="editor-input fromfield" data-fromfield="netName" type="text" name="netName" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h">
+				<div class="box-flex">
+					<span class="title">性别</span>
+				</div>
+				<div class="text-input-box" onclick="pageCom.chooseSex()">
+					<input class="editor-input fromfield" data-fromfield="gender" type="text" readonly="readonly" name="gender" required="required" data-warning="请选择性别" placeholder="未填写 " value="" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
@@ -137,7 +148,7 @@
 			</div>
 		</div>
 		<div class="list-box">
-			<div class="list-defult-body box-h boder-none">
+			<div class="list-defult-body box-h">
 				<div class="box-flex">
 					<span class="title">加入时间</span>
 				</div>
@@ -146,6 +157,14 @@
 				</div>
 				<div class="icon-next"></div>
 			</div>
+		</div>
+		<div class="list-box heightAuto">
+			<div class="list-defult-body box-h boder-none heightAuto">
+				<div class="box-flex">
+					<span class="title">备注:</span>
+				</div>
+			</div>
+			<textarea class="visInfo fromfield" style="height: 20rem; width: 100%;padding: 0.5rem; border: 1px solid #dcdbdb;" data-fromfield="remark" placeholder="请输入备注内容..." name="remark"></textarea>
 		</div>
 	</div>
 </form>

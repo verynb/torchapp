@@ -432,6 +432,95 @@
 			}
 
 		},
+		volStatusName: function(status) {
+			/**
+			 * 0.正常
+			 * 1.结案
+			 * 2.冻结
+			 * 3.预发布
+			 * 4.已发布
+			 * 5.预订
+			 * 6.已结队
+			 */
+			switch(status) {
+				case 0:
+					return "正常";
+					break;
+				case 1:
+					return "冻结";
+					break;
+				default:
+					break;
+			}
+
+		},
+		stuGetStatus: function() {
+			/**
+			 * 0.正常
+			 * 1.结案
+			 * 2.冻结
+			 * 3.预发布
+			 * 4.已发布
+			 * 5.预订
+			 * 6.已结队
+			 */
+			var titleName = "学生状态选择";
+			var buttons = [{
+				'title': "正常"
+			}, {
+				'title': "结案"
+			}, {
+				'title': "冻结"
+			}, {
+				'title': "预发布"
+			}, {
+				'title': "已发布"
+			}, {
+				'title': "预订"
+			}, {
+				'title': "已结队"
+			}];
+			plus.nativeUI.actionSheet({
+				title: titleName,
+				cancel: "取消",
+				buttons: buttons
+			}, function(selected) { /*actionSheet 按钮点击事件*/
+				var buttonsobj = buttons[selected.index - 1];
+				var typeval = buttonsobj.title;
+				var typeid = selected.index;
+				var container = "#" + $.ui.activeDiv.id;
+				$(container + " .data-statusName").text(typeval);
+				$(container + " input[name='status']").val(typeid);
+				$(container + " input[name='status']").attr("readonly", "readonly");
+			});
+
+		},
+		volGetStatus: function() {
+			/**
+			 * 0.正常
+			 * 1.冻结
+			 */
+			var titleName = "学生状态选择";
+			var buttons = [{
+				'title': "正常"
+			}, {
+				'title': "冻结"
+			}];
+			plus.nativeUI.actionSheet({
+				title: titleName,
+				cancel: "取消",
+				buttons: buttons
+			}, function(selected) { /*actionSheet 按钮点击事件*/
+				var buttonsobj = buttons[selected.index - 1];
+				var typeval = buttonsobj.title;
+				var typeid = selected.index;
+				var container = "#" + $.ui.activeDiv.id;
+				$(container + " .data-statusName").text(typeval);
+				$(container + " input[name='status']").val(typeid);
+				$(container + " input[name='status']").attr("readonly", "readonly");
+			});
+
+		},
 		localSearch: function(obj, pageName) {
 			var searchText = $(obj).val();
 			console.log(searchText);

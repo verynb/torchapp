@@ -196,10 +196,6 @@
 				<div class="icon-next"></div>
 			</div>
 		</div>
-
-		<div class="header-title">
-			<span class="title">非必填项</span>
-		</div>
 		<div class="list-box">
 			<div class="list-defult-body box-h">
 				<div class="box-flex">
@@ -213,7 +209,7 @@
 			</div>
 		</div>
 		<div class="list-box">
-			<div class="list-defult-body box-h">
+			<div class="list-defult-body box-h stuVolIsShow">
 				<div class="box-flex">
 					<span class="title">学生状态</span>
 				</div>
@@ -223,13 +219,57 @@
 				</div>
 			</div>
 		</div>
+		<div class="list-box heightAuto teacherNONE">
+			<div class="list-defult-body box-h boder-none heightAuto">
+				<div class="box-flex">
+					<span class="title">家庭人员构成及身体状况:</span>
+				</div>
+			</div>
+			<textarea class="visInfo fromfield" style="height: 20rem; width: 100%;padding: 0.5rem; border: 1px solid #dcdbdb;" data-fromfield="familyComposition" placeholder="请输入备注内容..." name="familyComposition"></textarea>
+		</div>
+		<div class="list-box heightAuto teacherNONE">
+			<div class="list-defult-body box-h boder-none heightAuto">
+				<div class="box-flex">
+					<span class="title">家庭经济状态描述:</span>
+				</div>
+			</div>
+			<textarea class="visInfo fromfield" style="height: 20rem; width: 100%;padding: 0.5rem; border: 1px solid #dcdbdb;" data-fromfield="familyEconomy" placeholder="请输入备注内容..." name="familyEconomy"></textarea>
+		</div>
 		<div class="list-box heightAuto">
+			<div class="list-defult-body box-h boder-none heightAuto">
+				<div class="box-flex">
+					<span class="title">学习状况:</span>
+				</div>
+			</div>
+			<textarea class="visInfo fromfield" style="height: 20rem; width: 100%;padding: 0.5rem; border: 1px solid #dcdbdb;" data-fromfield="learningStatus" placeholder="请输入备注内容..." name="learningStatus"></textarea>
+		</div>
+		<div class="list-box heightAuto">
+			<div class="list-defult-body box-h boder-none heightAuto">
+				<div class="box-flex">
+					<span class="title">表现描述:</span>
+				</div>
+			</div>
+			<textarea class="visInfo fromfield" style="height: 20rem; width: 100%;padding: 0.5rem; border: 1px solid #dcdbdb;" data-fromfield="remark" placeholder="请输入备注内容..." name="remark"></textarea>
+		</div>
+
+		<!--<div class="list-box">
+			<div class="list-defult-body box-h">
+				<div class="box-flex">
+					<span class="title">学生状态</span>
+				</div>
+				<div class="icon-text-box">
+					<span class="nav data-statusName"></span>
+					<input class="editor-input fromfield" data-fromfield="status" type="hidden" name="status" readonly="readonly" placeholder="未填写" value="" />
+				</div>
+			</div>
+		</div>-->
+		<div class="list-box heightAuto ">
 			<div class="list-defult-body box-h boder-none heightAuto">
 				<div class="box-flex">
 					<span class="title">其他:</span>
 				</div>
 			</div>
-			<textarea class="visInfo fromfield" style="height: 8rem; width: 100%;padding: 0.5rem; border: 1px solid #dcdbdb;" data-fromfield="other" placeholder="请输入其他内容..." name="other"></textarea>
+			<textarea class="visInfo fromfield" style="height: 20rem; width: 100%;padding: 0.5rem; border: 1px solid #dcdbdb;" data-fromfield="other" placeholder="请输入其他内容..." name="other"></textarea>
 		</div>
 	</div>
 </form>
@@ -276,6 +316,14 @@
 					var role = window.localStorage.getItem(G_COMKEY + ".role");
 					var userType = window.localStorage.getItem(G_COMKEY + ".userType");
 					role = JSON.parse(role);
+					if(role.hasOwnProperty('roleCode') && role.roleCode == "teacher") {
+						$("#stuEdit .teacherNONE").removeClass("hidden-important").addClass("hidden-important");
+						$('#stuEdit .stuVolIsShow').unbind('click');
+					} else {
+						$('#stuEdit .stuVolIsShow').unbind('click').bind('click', function() {
+							pageCom.stuGetStatus(this);
+						});
+					}
 					if(role.hasOwnProperty('roleCode') && role.roleCode == "teacher" && data.status != 0) {
 						loadData.load({
 							data: data,
