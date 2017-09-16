@@ -2,15 +2,48 @@
 	<form>
 		<div class="row1">
 			<textarea class="visInfo" placeholder="请录入回访内容..." name="returnInfo"></textarea>
-			<div class="returnVisitsPhoto">
-				<span class="subtitle">（申请表含有姓名及照片）</span>
+			<div class="studentPhotos">
+				<span class="subtitle">（受助学生本人照片）</span>
 				<div class="rw1 box-h">
+					<div class="r1 padding-right-12">
+						<img class="" src="img/example/3.jpg" alt="照相" onclick="showImgNow(this)" />
+					</div>
 					<div class="savebox">
 						<div class="box-h saveboxList"></div>
 					</div>
 					<div class="r1 box-flex upphoto">
 						<img class="" src="img/icon/camera.png" alt="照相" onclick="common.pickImgLoca(this);" />
 					</div>
+				</div>
+			</div>
+		</div>
+		<div class="padding-top-1"></div>
+		<div class="row2 familyPhotos">
+			<span class="subtitle">（受助家庭与义工照）</span>
+			<div class="rw1 box-h">
+				<div class="r1 padding-right-12">
+					<img class="" src="img/example/6.jpg" alt="照相" onclick="showImgNow(this)" />
+				</div>
+				<div class="savebox">
+					<div class="box-h saveboxList"></div>
+				</div>
+				<div class="r1 box-flex upphoto">
+					<img class="" src="img/icon/camera.png" alt="照相" onclick="common.pickImgLoca(this);" />
+				</div>
+			</div>
+		</div>
+		<div class="padding-top-1"></div>
+		<div class="row2 environmentPhotos">
+			<span class="subtitle">（现场环境照片）</span>
+			<div class="rw1 box-h">
+				<div class="r1 padding-right-12">
+					<img class="" src="img/example/5.jpg" alt="照相" onclick="showImgNow(this)" />
+				</div>
+				<div class="savebox">
+					<div class="box-h saveboxList"></div>
+				</div>
+				<div class="r1 box-flex upphoto">
+					<img class="" src="img/icon/camera.png" alt="照相" onclick="common.pickImgLoca(this);" />
 				</div>
 			</div>
 		</div>
@@ -36,20 +69,38 @@
 	function stuReturnVisitsAddFooterFunc(obj) {
 		$.ui.showMask('保存中...');
 		var returnInfo_val = $('#stuReturnVisitsAdd .visInfo').val().trim();
-		var returnPhoto_val = [];
+		var studentPhotos_val = [],
+			familyPhotos_val = [],
+			environmentPhotos_val = [];
 		var jsondata = {};
-		var el_upphoto = $("#stuReturnVisitsAdd .returnVisitsPhoto .saveboxListItem");
-		for(var i = 0; i < el_upphoto.length; i++) {
-			common.uploadSelectedPictureServers($(el_upphoto[i]).find("input").val(),
+		var el_studentPhotos = $("#stuReturnVisitsAdd .studentPhotos .saveboxListItem");
+		var el_familyPhotos = $("#stuReturnVisitsAdd .familyPhotos .saveboxListItem");
+		var el_environmentPhotos = $("#stuReturnVisitsAdd .environmentPhotos .saveboxListItem");
+		for(var i = 0; i < el_studentPhotos.length; i++) {
+			common.uploadSelectedPictureServers($(el_studentPhotos[i]).find("input").val(),
 				function(base64) {
-					returnPhoto_val.push(base64);
+					studentPhotos_val.push(base64);
+				});
+		}
+		for(var i = 0; i < el_familyPhotos.length; i++) {
+			common.uploadSelectedPictureServers($(el_familyPhotos[i]).find("input").val(),
+				function(base64) {
+					familyPhotos_val.push(base64);
+				});
+		}
+		for(var i = 0; i < el_environmentPhotos.length; i++) {
+			common.uploadSelectedPictureServers($(el_environmentPhotos[i]).find("input").val(),
+				function(base64) {
+					environmentPhotos_val.push(base64);
 				});
 		}
 		if(returnInfo_val != '') {
 			setTimeout(function() {
 				jsondata.studentId = stuViewStuId;
 				jsondata.returnInfo = returnInfo_val;
-				jsondata.returnPhotos = returnPhoto_val;
+				jsondata.studentPhotos = studentPhotos_val;
+				jsondata.familyPhotos = familyPhotos_val;
+				jsondata.environmentPhotos = environmentPhotos_val;
 				stuReturnVisitsAddSavefuc(jsondata);
 			}, 3000);
 		} else {

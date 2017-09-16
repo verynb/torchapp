@@ -1,7 +1,9 @@
 <div id="subStuViewBody"></div>
 <script type="text/javascript">
+	var subscribeId;
+
 	function loadsubStuView(obj) {
-		var subscribeId = $(obj).attr('data-subscribeId');
+		subscribeId = $(obj).attr('data-subscribeId');
 		initsubStuView(subscribeId);
 	}
 
@@ -13,7 +15,7 @@
 		var btuHtml = '';
 		var jsondata = {};
 		btuHtml += '<div class="footerBtu">';
-		btuHtml += '<a class="all subStuView-save  bg-color-brown" href="javascript:void(0);" onclick="subStuViewFooterOneFunc(this)">取消汇款</a>';
+		btuHtml += '<a class="all subStuView-save  bg-color-brown" href="javascript:void(0);" onclick="subStuViewFooterOneFunc(this)">取消认捐</a>';
 		//		btuHtml += '<a class="all-1 subStuView-save bg-color-brown" href="javascript:void(0);" data-tkey="subPayStyle" data-dir="general" data-transition="slide" onclick="subStuViewFooterTwoFunc(this)">汇款</a>';
 		btuHtml += '</div>';
 		jsondata.container = 'subStuView';
@@ -66,6 +68,8 @@
 					var html = '';
 					if(data.subscribed) {
 						subStuViewFooter();
+					} else {
+						$("#navbar").css("display", "none");
 					}
 					$("#subStuViewBody").attr('data-stuid', data.studentId); /*取消认捐  2017-08-11*/
 					html += '<div class="padding-top-1"></div>';

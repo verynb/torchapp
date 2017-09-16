@@ -513,7 +513,7 @@
 			}, function(selected) { /*actionSheet 按钮点击事件*/
 				var buttonsobj = buttons[selected.index - 1];
 				var typeval = buttonsobj.title;
-				var typeid = selected.index;
+				var typeid = selected.index - 1;
 				var container = "#" + $.ui.activeDiv.id;
 				$(container + " .data-statusName").text(typeval);
 				$(container + " input[name='status']").val(typeid);
