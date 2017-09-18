@@ -41,17 +41,6 @@
 			</div>
 		</div>
 		<div class="list-box">
-			<div class="list-defult-body box-h">
-				<div class="box-flex">
-					<span class="title">身份证</span>
-				</div>
-				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="identityCard" type="text" name="identityCard" required="required" data-warning="身份证不能为空" placeholder="未填写" data-check="^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$" data-warning-check="身份证格式不正确" value="" />
-				</div>
-				<div class="icon-next"></div>
-			</div>
-		</div>
-		<div class="list-box">
 			<div class="list-defult-body box-h" onclick="pageCom.chooseSex(this);">
 				<div class="box-flex">
 					<span class="title">性别</span>
@@ -65,15 +54,26 @@
 		<div class="list-box">
 			<div class="list-defult-body box-h">
 				<div class="box-flex">
-					<span class="title">民族</span>
+					<span class="title">身份证</span>
 				</div>
 				<div class="text-input-box">
-					<input class="editor-input fromfield" data-fromfield="nation" type="text" name="nation" required="required" data-warning="名族不能为空" placeholder="未填写" value="" />
+					<input class="editor-input fromfield" data-fromfield="identityCard" type="text" name="identityCard" required="required" oninput="ageFuc(this)" data-warning="身份证不能为空" placeholder="未填写" data-check="^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$" data-warning-check="身份证格式不正确" value="" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
 		</div>
 		<div class="list-box">
+			<div class="list-defult-body box-h">
+				<div class="box-flex">
+					<span class="title">民族</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="nation" type="text" name="nation" required="required" data-warning="名族不能为空" placeholder="未填写" value="汉" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<!--<div class="list-box">
 			<div class="list-defult-body box-h">
 				<div class="box-flex">
 					<span class="title">出生日期</span>
@@ -83,7 +83,7 @@
 				</div>
 				<div class="icon-next"></div>
 			</div>
-		</div>
+		</div>-->
 		<div class="list-box">
 			<div class="list-defult-body box-h">
 				<div class="box-flex">
@@ -114,6 +114,17 @@
 				</div>
 				<div class="text-input-box">
 					<input class="editor-input fromfield" data-fromfield="weight" type="number" name="weight" required="required" data-warning="体重不能为空" placeholder="未填写KG" value="" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list-defult-body box-h">
+				<div class="box-flex">
+					<span class="title">家庭联系电话</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="familyPhone" type="text" name="familyPhone" required="required" data-warning="请填写家庭联系电话" placeholder="未填写 " value="" />
 				</div>
 				<div class="icon-next"></div>
 			</div>
@@ -209,6 +220,17 @@
 			</div>
 		</div>
 		<div class="list-box">
+			<div class="list-defult-body box-h">
+				<div class="box-flex">
+					<span class="title">当前资助人电话</span>
+				</div>
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="sponsorPhone" type="text" name="sponsorPhone" readonly="readonly" placeholder="未填写" value="无" />
+				</div>
+				<div class="icon-next"></div>
+			</div>
+		</div>
+		<div class="list-box">
 			<div class="list-defult-body box-h stuVolIsShow">
 				<div class="box-flex">
 					<span class="title">学生状态</span>
@@ -296,6 +318,17 @@
 		jsondata.container = 'stuEdit';
 		jsondata.buttonHtml = btuHtml;
 		common.commonFooterBtu(jsondata);
+	}
+
+	function ageFuc(obj) {
+		var idCard = $(obj).val().trim();
+		var check = /^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/;
+		var age = "";
+		if(new RegExp(check).test(idCard)) {
+			age = common.IdCard(idCard, 3);
+		}
+		$("#stuEdit input[name='age']").val(age);
+		$("#stuEdit span.data-age").text(age);
 	}
 
 	function iniSupEditInfo() {

@@ -51,7 +51,7 @@
 			</div>
 		</div>
 	</div>-->
-	<div class="list-box">
+	<div class="list-box item-stuView hidden-important">
 		<div class="list-defult-body box-h box-align">
 			<div class="box-flex">
 				<span class="title">学  校：<span class="fromfield" data-fromfield="schoolName"></span></span>
@@ -65,7 +65,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="list-box">
+	<div class="list-box item-stuView hidden-important">
 		<div class="list-defult-body box-h box-align">
 			<div class="box-flex">
 				<div class="box-h">
@@ -107,6 +107,7 @@
 				subStuInfoStuId = $("#subStuViewBody").attr('data-stuid');
 				$("#subStuInfo .item-needMoney").removeClass('hidden-important').addClass("hidden-important");
 				$("#subStuInfo .item-needMoneyMark").removeClass('hidden-important').addClass("hidden-important");
+				$("#subStuInfo .item-stuView").removeClass('hidden-important');
 			}
 		}
 		$("#subStuInfo .data-needMoney").text($(obj).attr('data-needmoney'));

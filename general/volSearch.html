@@ -34,8 +34,9 @@
 	function volSearchFooter() {
 		var btuHtml = '';
 		var jsondata = {};
-		btuHtml += '<div class="footerBtu bg-color-brown" data-tkey="volList" data-dir="general" data-transition="slide" onclick="volSearchFooterFunc(this)">';
-		btuHtml += '<a class="all volSearch-save" href="javascript:void(0);">查询</a>';
+		btuHtml += '<div class="footerBtu" >';
+		btuHtml += '<a class="all-1 volSearch-save bg-color-grey" href="javascript:void(0);" data-tkey="volEdit" data-dir="general" data-transition="slide" onclick="common.loadPage(this)" data-id="0">添加</a>';
+		btuHtml += '<a class="all-2 volSearch-save bg-color-brown" href="javascript:void(0);" data-tkey="volList" data-dir="general" data-transition="slide"  onclick="volSearchFooterFunc(this)">查询</a>';
 		btuHtml += '</div>';
 		jsondata.container = 'volSearch';
 		jsondata.buttonHtml = btuHtml;

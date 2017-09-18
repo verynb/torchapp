@@ -45,8 +45,9 @@
 	function stuSearchFooter() {
 		var btuHtml = '';
 		var jsondata = {};
-		btuHtml += '<div class="footerBtu bg-color-brown" data-tkey="stuList" data-dir="general" data-transition="slide" onclick="stuSearchFooterFunc(this)">';
-		btuHtml += '<a class="all stuSearch-save" href="javascript:void(0);">查询</a>';
+		btuHtml += '<div class="footerBtu bg-color-brown">';
+		btuHtml += '<a class="all-1 supSearch-save bg-color-grey" href="javascript:void(0);" data-tkey="stuEdit" data-dir="general" data-transition="slide" onclick="common.loadPage(this)" data-id="0">添加</a>';
+		btuHtml += '<a class="all-2 supSearch-save bg-color-brown" href="javascript:void(0);"data-tkey="stuList" data-dir="general" data-transition="slide" onclick="stuSearchFooterFunc(this)">查询</a>';
 		btuHtml += '</div>';
 		jsondata.container = 'stuSearch';
 		jsondata.buttonHtml = btuHtml;

@@ -52,12 +52,12 @@
 	}
 
 	function offVisListFooterFunc(obj) {
-		if(isAllowed) {
-			window.localStorage.setItem(G_COMKEY + ".isAllowed", "true");
-			localStu.selectAllstatus(saveAllData);
-		} else {
-			common.toast("还有学生没有进行家访，暂时不能上传");
-		}
+		//		if(isAllowed) {
+		window.localStorage.setItem(G_COMKEY + ".isAllowed", "true");
+		localStu.selectAllstatus(saveAllData);
+		//		} else {
+		//			common.toast("还有学生没有进行家访，暂时不能上传");
+		//		}
 	}
 
 	function saveAllData(data) {
@@ -134,7 +134,7 @@
 				}, 3000);
 			}
 		} else {
-			common.toast("已经全部上传成功");
+			common.toast("暂无满足条件可上传数据");
 			$.unblockUI();
 			window.localStorage.setItem(G_COMKEY + ".isAllowed", "false");
 		}

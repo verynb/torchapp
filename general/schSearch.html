@@ -61,8 +61,9 @@
 	function schSearchFooter() {
 		var btuHtml = '';
 		var jsondata = {};
-		btuHtml += '<div class="footerBtu bg-color-brown" data-tkey="schList" data-dir="general" data-transition="slide" onclick="schSearchFooterFunc(this)">';
-		btuHtml += '<a class="all schSearch-save" href="javascript:void(0);">查询</a>';
+		btuHtml += '<div class="footerBtu">';
+		btuHtml += '<a class="all-1 supSearch-save bg-color-grey" href="javascript:void(0);" data-tkey="schEdit" data-dir="general" data-transition="slide" onclick="common.loadPage(this)" data-id="0">添加</a>';
+		btuHtml += '<a class="all-2 supSearch-save bg-color-brown" href="javascript:void(0);" data-tkey="schList" data-dir="general" data-transition="slide" onclick="schSearchFooterFunc(this)">查询</a>';
 		btuHtml += '</div>';
 		jsondata.container = 'schSearch';
 		jsondata.buttonHtml = btuHtml;

@@ -1,5 +1,5 @@
 <div id="relListBody" class="">
-	<div class="list-panel">
+	<div class="list-panel ">
 		<!--start-->
 		<!--<div class="list-box" data-dir="general" data-tkey="relEdit" data-transition="slide" onclick="common.loadPage(this);">
 		<div class="list-defult-body box-h box-align">
@@ -54,7 +54,7 @@
 						var html = '';
 						var htmlNo = '';
 						for(var i = 0; i < data.releases.length; i++) {
-							html += '<div class="list-box" data-batchId="' + data.releases[i].id + '" data-batchNo="' + data.releases[i].batchNo + '" data-batchProvince="' + data.releases[i].province + '" data-batchCity="' + data.releases[i].city + '" data-dir="general" data-tkey="relEdit" data-transition="slide" onclick="common.loadPage(this);">';
+							html += '<div class="list-box list-box-active" data-batchId="' + data.releases[i].id + '" data-batchNo="' + data.releases[i].batchNo + '" data-batchProvince="' + data.releases[i].province + '" data-batchCity="' + data.releases[i].city + '" data-dir="general" data-tkey="relEdit" data-transition="slide" >';
 							//							html += '<div class="list-box" data-batchId="' + data.releases[i].id + '" data-batchNo="' + data.releases[i].batchNo + '" data-batchProvince="四川省" data-batchCity="成都市" data-dir="general" data-tkey="relEdit" data-transition="slide" onclick="common.loadPage(this);">';
 							html += '<div class="list-defult-body box-h box-align">';
 							html += '<div class="box-flex">';
@@ -73,6 +73,26 @@
 							}
 						}
 						$("#relList .list-panel").empty().append(html + htmlNo);
+						$("#relList .list-panel .list-box").on("tap longTap", function(e) {
+							e.stopPropagation();
+							var that = this;
+							if(e.type == "tap") {
+								common.loadPage($(that));
+							} else if(e.type == "longTap") {
+								$.ui.popup({
+									title: "删除提示",
+									message: "您确定要删除" + $(that).find('span').text() + "批次吗？",
+									cancelText: "取消",
+									cancelOnly: false,
+									doneText: "确定",
+									doneCallback: function() {
+										longTapDel($(that), $(that).attr("data-batchId"));
+									},
+									cancelCallback: function() {}
+								});
+							}
+
+						});
 					} else {
 						common.handleDefaultPage({
 							type: 2,
@@ -82,5 +102,18 @@
 				}
 			}
 		});
+	}
+
+	function longTapDel(obj, id) {
+		ajaxFuncs.delete({
+			clickobj: obj,
+			urlname: "/api/release/" + id,
+			funcs: {
+				funcSuccessful: function(data) {
+					common.toast("删除成功");
+					relListreload();
+				}
+			}
+		})
 	}
 </script>

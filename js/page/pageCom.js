@@ -404,6 +404,7 @@
 			 * 4.已发布
 			 * 5.预订
 			 * 6.已结队
+			 * 7.审核不通过
 			 */
 			switch(status) {
 				case 0:
@@ -425,7 +426,10 @@
 					return "预订";
 					break;
 				case 6:
-					return "已结队";
+					return "已结对";
+					break;
+				case 7:
+					return "审核不通过";
 					break;
 				default:
 					break;
@@ -440,7 +444,7 @@
 			 * 3.预发布
 			 * 4.已发布
 			 * 5.预订
-			 * 6.已结队
+			 * 6.已结对
 			 */
 			switch(status) {
 				case 0:
@@ -462,7 +466,8 @@
 			 * 3.预发布
 			 * 4.已发布
 			 * 5.预订
-			 * 6.已结队
+			 * 6.已结对
+			 * 7.审核不通过
 			 */
 			var titleName = "学生状态选择";
 			var buttons = [{
@@ -478,7 +483,9 @@
 			}, {
 				'title': "预订"
 			}, {
-				'title': "已结队"
+				'title': "已结对"
+			}, {
+				'title': "审核不通过"
 			}];
 			plus.nativeUI.actionSheet({
 				title: titleName,

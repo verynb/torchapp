@@ -67,11 +67,11 @@
 		}
 	}
 
-	function relEditDel(obj) {
+	function relEditDel(obj, status) {
 		///api/release/student/{id}
 		var releaseStudentId = $(obj).attr("data-releaseStudentId");
 		ajaxFuncs.delete({
-			urlname: "/api/release/student/" + releaseStudentId,
+			urlname: "/api/release/student/" + releaseStudentId + "?approval=" + status,
 			funcs: {
 				funcSuccessful: function(data) {
 					initrelEditChoose();
@@ -96,7 +96,7 @@
 							html += '<div class="list-defult-body box-h box-align">';
 							html += '<div class="box-flex" data-stuid="' + data[i].studentId + '" data-dir="general" data-tkey="stuView" data-transition="slide" onclick="common.loadPage(this);">';
 							html += '<span class="title-other">' + data[i].studentName + '</span>';
-							if(data[i].scores != 0) {
+							if(data[i].scores != null && data[i].scores != 0) {
 								html += '<span class="subtitle-make">' + data[i].scores + '分</span>';
 							} else {
 								isrelBatchgo = false;
@@ -114,19 +114,36 @@
 						$("#relEdit .list-panel").empty().append(html);
 						$('#relEdit label').on('click', function() {
 							var that = this;
-							$.ui.popup({
-								title: "删除提示",
-								message: "你确定要删除该学生吗？",
-								cancelText: "取消",
-								cancelOnly: false,
-								doneText: "确定",
-								doneCallback: function() {
-									relEditDel(that);
-								},
-								cancelCallback: function() {
+							debugger
+							if($(that).parents(".list-box").find(".subtitle-make").length != 0) {
+								$.ui.popup({
+									title: "提示",
+									message: "你确定要将该学生标记为审核不通过吗？",
+									cancelText: "取消",
+									cancelOnly: false,
+									doneText: "确定",
+									doneCallback: function() {
+										relEditDel(that, false);
+									},
+									cancelCallback: function() {
 
-								}
-							});
+									}
+								});
+							} else {
+								$.ui.popup({
+									title: "删除提示",
+									message: "你确定要删除该学生吗？",
+									cancelText: "取消",
+									cancelOnly: false,
+									doneText: "确定",
+									doneCallback: function() {
+										relEditDel(that, true);
+									},
+									cancelCallback: function() {
+
+									}
+								});
+							}
 						});
 					} else {
 						common.handleDefaultPage({
