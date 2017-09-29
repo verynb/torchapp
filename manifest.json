@@ -7,7 +7,7 @@
 	"id": "org.youyougongyi.torch",/*应用的标识，创建应用时自动生成，勿手动修改*/
 	"name": "火炬助学",/*应用名称，程序桌面图标名称*/
 	"version": {
-		"name": "1.1.8",/*应用版本名称*/
+		"name": "1.1.9",/*应用版本名称*/
 		"code": ""
 	},
 	"description": "",/*应用描述信息*/
@@ -197,29 +197,29 @@
 				"ios": {
 					"iphone": {
 						"default": "", /*iPhone3启动图片选，分辨率：320x480*/
-						"retina35": "D:/火炬助学系统/火炬启动页/火炬启动页/ios/640x960.png",/*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
-						"retina40": "D:/火炬助学系统/火炬启动页/火炬启动页/ios/640x1136.png",/*4.0 英寸设备(iPhone5/iPhone5s)启动图片，分辨率：640x1136*/
-						"retina47": "D:/火炬助学系统/火炬启动页/火炬启动页/ios/750x1334.png",/*4.7 英寸设备(iPhone6)启动图片，分辨率：750x1334*/
+						"retina35": "unpackage/res/start/640x960.png",/*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
+						"retina40": "unpackage/res/start/640x1136.png",/*4.0 英寸设备(iPhone5/iPhone5s)启动图片，分辨率：640x1136*/
+						"retina47": "unpackage/res/start/750x1334.png",/*4.7 英寸设备(iPhone6)启动图片，分辨率：750x1334*/
 						"retina55": "D:/火炬助学系统/火炬启动页/火炬启动页/ios/1242x2208.png",/*5.5 英寸设备(iPhone6 Plus)启动图片，分辨率：1242x2208*/
 						"retina55l": "D:/火炬助学系统/火炬启动页/火炬启动页/ios/2208x1242.png"
 					},
 					"ipad": {
 						"portrait": "D:/火炬助学系统/火炬启动页/火炬启动页/ios/768x1004.png", /*iPad竖屏启动图片，分辨率：768x1004*/
-						"portrait-retina": "D:/火炬助学系统/火炬启动页/火炬启动页/ios/1536x2008.png",/*iPad高分屏竖屏图片，分辨率：1536x2008*/
+						"portrait-retina": "unpackage/res/start/1536x2008.png",/*iPad高分屏竖屏图片，分辨率：1536x2008*/
 						"landscape": "D:/火炬助学系统/火炬启动页/火炬启动页/ios/1024x748.png", /*iPad横屏启动图片，分辨率：1024x748*/
-						"landscape-retina": "D:/火炬助学系统/火炬启动页/火炬启动页/ios/2048x1496.png", /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
+						"landscape-retina": "unpackage/res/start/2048x1496.png", /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
 						"portrait7": "D:/火炬助学系统/火炬启动页/火炬启动页/ios/768x1024.png", /*iPad iOS7竖屏启动图��，分辨率：768x1024*/
-						"portrait-retina7": "D:/火炬助学系统/火炬启动页/火炬启动页/ios/1536x2048.png",/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
-						"landscape7": "D:/火炬助学系统/火炬启动页/火炬启动页/ios/1024x768.png", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
-						"landscape-retina7": "D:/火炬助学系统/火炬启动页/火炬启动页/ios/2048x1536.png"
+						"portrait-retina7": "unpackage/res/start/1536x2048.png",/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
+						"landscape7": "unpackage/res/start/1024x768.png", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
+						"landscape-retina7": "unpackage/res/start/2048x1536.png"
 					}
 				},
 				"android": {
 					"mdpi": "", /*普通屏启动图片，分辨率：240x282*/
 					"ldpi": "", /*大屏启动图片，分辨率：320x442*/
-					"hdpi": "D:/火炬助学系统/火炬启动页/火炬启动页/android/480x762.png", /*高分屏启动图片，分辨率：480x762*/
-					"xhdpi": "D:/火炬助学系统/火炬启动页/火炬启动页/android/720x1242.png", /*720P高分屏启动图片，分辨率：720x1242*/
-					"xxhdpi": "D:/火炬助学系统/火炬启动页/火炬启动页/android/1080x1882.png"
+					"hdpi": "unpackage/res/start/480x762.png", /*高分屏启动图片，分辨率：480x762*/
+					"xhdpi": "unpackage/res/start/720x1242.png", /*720P高分屏启动图片，分辨率：720x1242*/
+					"xxhdpi": "unpackage/res/start/1080x1882.png"
 				}
 			},
 			"debug": true
