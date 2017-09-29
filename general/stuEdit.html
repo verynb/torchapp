@@ -30,6 +30,20 @@
 			</div>
 		</div>
 		<div class="list-box">
+			<div class="list-defult-body box-h" data-tkey="schChooseR" data-dir="general" data-transition="slide" onclick="common.loadPage(this)">
+				<div class="box-flex">
+					<span class="title">助学点学校</span>
+				</div>
+				<div class="icon-text-box min-width">
+					<span class="nav fromfield schoolName" data-fromfield="schoolName">选择学校</span>
+					<input class="editor-input fromfield" data-fromfield="schoolId" type="hidden" name="schoolId" readonly="readonly" required="required" data-warning="请选择学校" placeholder="未填写 " value="" />
+				</div>
+				<div class="icon-next">
+					<i class="icon-img icon-img-next"></i>
+				</div>
+			</div>
+		</div>
+		<div class="list-box">
 			<div class="list-defult-body box-h">
 				<div class="box-flex">
 					<span class="title">姓名</span>
@@ -73,7 +87,7 @@
 				<div class="icon-next"></div>
 			</div>
 		</div>
-		<!--<div class="list-box">
+		<div class="list-box hidden-important">
 			<div class="list-defult-body box-h">
 				<div class="box-flex">
 					<span class="title">出生日期</span>
@@ -83,7 +97,7 @@
 				</div>
 				<div class="icon-next"></div>
 			</div>
-		</div>-->
+		</div>
 		<div class="list-box">
 			<div class="list-defult-body box-h">
 				<div class="box-flex">
@@ -159,17 +173,16 @@
 		<div class="list-box">
 			<div class="list-defult-body box-h" data-tkey="schChooseR" data-dir="general" data-transition="slide" onclick="common.loadPage(this)">
 				<div class="box-flex">
-					<span class="title">学校</span>
+					<span class="title">就读学校</span>
 				</div>
-				<div class="icon-text-box min-width">
-					<span class="nav fromfield schoolName" data-fromfield="schoolName">选择学校</span>
-					<input class="editor-input fromfield" data-fromfield="schoolId" type="hidden" name="schoolId" readonly="readonly" required="required" data-warning="请选择学校" placeholder="未填写 " value="" />
+				<div class="text-input-box">
+					<input class="editor-input fromfield" data-fromfield="attendSchool" type="text" name="attendSchool" required="required" data-warning="就读学校不能为空" placeholder="未填写" value="" />
 				</div>
 				<div class="icon-next">
-					<i class="icon-img icon-img-next"></i>
 				</div>
 			</div>
 		</div>
+
 		<div class="list-box">
 			<div class="list-defult-body box-h" data-tkey="stuGradeR" data-dir="general" data-transition="slide" onclick="common.loadPage(this)">
 				<div class="box-flex">

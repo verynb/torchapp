@@ -168,7 +168,7 @@ ul { list-style: none; }
 .list-panel .img-photo-box .icon-next { height: 9.5rem !important; }
 .list-panel .img-photo-box .icon-next i { height: 9.5rem !important; }
 .list-panel .table-box { display: table; height: 5.5rem; }
-.list-panel .table-box .table-cell { height: 5.5rem; display: table-cell; vertical-align: middle; }
+.list-panel .table-box .table-cell { height: 5.5rem; display: table-cell; vertical-align: middle; padding: 1rem 0; }
 
 .tab-menu { text-align: center; }
 .tab-menu div > div { height: 4.05rem; line-height: 4.05rem; text-align: center; background-color: #FFFFFF; }
