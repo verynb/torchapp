@@ -140,12 +140,13 @@
 					urlname: "/api/release/" + relEditBatchNo,
 					funcs: {
 						funcSuccessful: function(data) {
+							debugger
 							var progress = 0;
 							data = data.releaseList;
 							var relativePath = null;
 							for(var i = 0; i < data.length; i++) {
 								(function(i) {
-									if(data[i].headPhoto == '') {
+									if(data[i].headPhoto == null || data[i].headPhoto == '') {
 										progress = Math.floor(((i + 1) / data.length) * 100);
 										updateData(i, data, progress, '');
 									} else {
