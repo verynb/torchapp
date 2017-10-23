@@ -140,7 +140,6 @@
 					urlname: "/api/release/" + relEditBatchNo,
 					funcs: {
 						funcSuccessful: function(data) {
-							debugger
 							var progress = 0;
 							data = data.releaseList;
 							var relativePath = null;
