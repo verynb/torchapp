@@ -136,7 +136,7 @@
 						"spotlight-retina": "unpackage/res/icons/58x58.png",
 						"spotlight-normal": "unpackage/res/icons/29x29.png",
 						"settings-retina8": "unpackage/res/icons/87x87.png",
-						"spotlight-retina7": "unpackage/res/icons/80x80.png"
+						"spotlight-retina7": "unpackage/res/icons/80x80.png","spotlight@3x":"unpackage/res/icons/120x120.png","notification@3x":"unpackage/res/icons/60x60.png","notification@2x":"unpackage/res/icons/40x40.png"
 					},
 					"ipad": {
 						"retina": "unpackage/res/icons/144x144.png",
@@ -148,8 +148,8 @@
 						"spotlight-retina": "unpackage/res/icons/100x100.png",
 						"spotlight-normal": "unpackage/res/icons/50x50.png",
 						"spotlight-normal7": "unpackage/res/icons/40x40.png",
-						"spotlight-retina7": "unpackage/res/icons/80x80.png"
-					}
+						"spotlight-retina7": "unpackage/res/icons/80x80.png","proapp@2x":"unpackage/res/icons/167x167.png","notification":"unpackage/res/icons/20x20.png","notification@2x":"unpackage/res/icons/40x40.png"
+					},"appstore":"unpackage/res/icons/1024x1024.png"
 				},
 				"android": {
 					"ldpi": "unpackage/res/icons/48x48.png",
@@ -190,7 +190,7 @@
 				}
 			},
 			"debug": true
-		}
+		},"ads":{"rp":false,"splash":false,"push":false},"adid":""
 	},
 	"dependencies": {
 		"pages": {
