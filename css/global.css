@@ -126,8 +126,8 @@ ul { list-style: none; }
 
 .list-panel .list-box-active:active { background-color: #FAFAFA; }
 .list-panel .choose-active { background-color: rgba(5, 177, 179, 0.16) !important; }
-.list-panel .list-box { height: 5.5rem; padding: 0 1.2rem; background-color: #FFFFFF; }
-.list-panel .list-box .list-defult-body { height: 5.5rem; border-bottom: 1px solid #EFEFEF; }
+.list-panel .list-box { min-height: 5.5rem; padding: 0 1.2rem; background-color: #FFFFFF; }
+.list-panel .list-box .list-defult-body { min-height: 5.5rem; border-bottom: 1px solid #EFEFEF; }
 .list-panel .list-box span.title { font-size: 1.5rem; }
 .list-panel .list-box .img-box { width: 4.25rem; height: 100%; }
 .list-panel .list-box .img-box i.pay { display: inline-block; width: 4.25rem; height: 100%; }
@@ -148,7 +148,7 @@ ul { list-style: none; }
 .list-panel .list-box .icon-next { width: 0.8rem; }
 .list-panel .list-box .icon-next i.icon-img { display: inline-block; height: 5.5rem; width: 0.8rem; }
 .list-panel .list-box .icon-next i.icon-img-next { background: url(../img/icon/icon-next.png) center left no-repeat; background-size: 0.8rem auto; }
-.list-panel .list-box .icon-text-box span.nav { line-height: 5.5rem; padding-right: 1.2rem; color: #85878b; }
+.list-panel .list-box .icon-text-box span.nav { display: inline-block; max-width: 26rem; line-height: 5.5rem; padding-right: 1.2rem; color: #85878b; }
 .list-panel .list-box .onoroff-panel { padding-right: 0.9rem; padding-top: 1.3rem; }
 .list-panel .list-box .text-input-box { height: 5.3rem; padding: 0.1rem 1rem 0; }
 .list-panel .list-box .text-input-box input.editor-input { height: 5.25rem; font-size: 1.5rem; color: #85878b; border: none; outline: none; text-align: right; }
